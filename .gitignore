@@ -1,0 +1,21 @@
+# Local deploy secrets — never commit
+deploy.local.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Node
+node_modules/
+package-lock.json
+
+# Accidental backup copies
+*.php4
+
+# Prepared DB for one-time import
+scripts/sqldump-dev-ready.sql
+
+# Cursor local (optional; commands are committed)
+# .cursor/

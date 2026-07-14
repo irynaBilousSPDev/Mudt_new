@@ -1,0 +1,15 @@
+{
+  "name": "mudt-new-theme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MUDT WordPress theme — dev deploy to iratest.site",
+  "scripts": {
+    "deploy:dev": "node scripts/deploy-dev.js dev",
+    "import:db:dev": "node scripts/import-db-dev.js",
+    "import:uploads:dev": "node scripts/import-uploads-dev.js"
+  },
+  "devDependencies": {
+    "basic-ftp": "^6.0.1",
+    "ssh2-sftp-client": "^12.1.1"
+  }
+}
