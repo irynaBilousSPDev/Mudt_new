@@ -1,4 +1,6 @@
-Deploy the **Mudt_new** theme to **dev** — branch **`dev`**: commit → **push GitHub** → SFTP [iratest.site](https://iratest.site/).
+Deploy the **Mudt_new** theme to **dev (Hostinger)** — branch **`dev`**: commit → **push GitHub** → SFTP [iratest.site](https://iratest.site/).
+
+Hostinger SFTP: `ftp.iratest.site`, port **65002** (not 22). Config in `deploy.local.env`.
 
 The user invoked `/deploy-dev` — **commit**, **push**, and **deploy** are allowed. **Never commit** `deploy.local.env`.
 

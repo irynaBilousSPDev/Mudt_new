@@ -1,82 +1,35 @@
 /**
- * Deploy Mudt_new theme via SFTP (reads deploy.local.env).
+ * Deploy Mudt_new theme via FTP (Hostinger, port 21).
  * Usage: npm run deploy:dev
  */
-const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
-const SftpClient = require('ssh2-sftp-client');
+const {
+	ROOT,
+	loadEnv,
+	envFlag,
+	normalizeRemotePath,
+	connectFtp,
+	resetCwd,
+	ensureRemoteDir,
+	remoteFileSize,
+} = require('./ftp-client');
 
-const ROOT = path.resolve(__dirname, '..');
 const ENV_FILE = path.join(ROOT, 'deploy.local.env');
 
-const EXCLUDE_DIR_NAMES = new Set([
-	'node_modules',
-	'.git',
-	'.cursor',
-	'scripts',
-]);
-
+const EXCLUDE_DIR_NAMES = new Set(['node_modules', '.git', '.cursor', 'scripts']);
 const EXCLUDE_FILE_NAMES = new Set([
 	'deploy.local.env',
 	'deploy.local.env.example',
 	'.DS_Store',
 	'Thumbs.db',
 ]);
-
-const EXCLUDE_FILE_BASENAMES = new Set([
-	'package.json',
-	'package-lock.json',
-]);
-
-function loadEnv(filePath) {
-	if (!fs.existsSync(filePath)) {
-		throw new Error(
-			`Missing ${path.basename(filePath)}. Copy deploy.local.env.example and fill in SFTP_* values.`
-		);
-	}
-	const env = {};
-	for (const line of fs.readFileSync(filePath, 'utf8').split(/\r?\n/)) {
-		const trimmed = line.trim();
-		if (!trimmed || trimmed.startsWith('#')) {
-			continue;
-		}
-		const eq = trimmed.indexOf('=');
-		if (eq === -1) {
-			continue;
-		}
-		const key = trimmed.slice(0, eq).trim();
-		let value = trimmed.slice(eq + 1).trim();
-		if (
-			(value.startsWith('"') && value.endsWith('"')) ||
-			(value.startsWith("'") && value.endsWith("'"))
-		) {
-			value = value.slice(1, -1);
-		}
-		env[key] = value;
-	}
-	['DEPLOY_GIT_REF', 'DEPLOY_FULL', 'DEPLOY_GIT_ONLY', 'DEPLOY_ALLOW_DIRTY', 'DEPLOY_ALLOW_UNPUSHED', 'DRY_RUN'].forEach(
-		(key) => {
-			if (process.env[key] !== undefined) {
-				env[key] = process.env[key];
-			}
-		}
-	);
-	return env;
-}
-
-function envFlag(env, key) {
-	return String(env[key] || '').toLowerCase() === 'true';
-}
+const EXCLUDE_FILE_BASENAMES = new Set(['package.json', 'package-lock.json']);
 
 function deployGitOnlyEnabled(env) {
-	if (envFlag(env, 'DEPLOY_FULL')) {
-		return false;
-	}
-	if (env.DEPLOY_GIT_ONLY !== undefined) {
-		return envFlag(env, 'DEPLOY_GIT_ONLY');
-	}
+	if (envFlag(env, 'DEPLOY_FULL')) return false;
+	if (env.DEPLOY_GIT_ONLY !== undefined) return envFlag(env, 'DEPLOY_GIT_ONLY');
 	return true;
 }
 
@@ -127,17 +80,11 @@ function getGitDeployRelativePaths(env) {
 function shouldSkip(relativePosix) {
 	const parts = relativePosix.split('/');
 	for (const part of parts) {
-		if (EXCLUDE_DIR_NAMES.has(part)) {
-			return true;
-		}
+		if (EXCLUDE_DIR_NAMES.has(part)) return true;
 	}
 	const base = parts[parts.length - 1];
-	if (EXCLUDE_FILE_NAMES.has(base) || EXCLUDE_FILE_BASENAMES.has(base)) {
-		return true;
-	}
-	if (base.endsWith('.php4')) {
-		return true;
-	}
+	if (EXCLUDE_FILE_NAMES.has(base) || EXCLUDE_FILE_BASENAMES.has(base)) return true;
+	if (base.endsWith('.php4')) return true;
 	return false;
 }
 
@@ -145,109 +92,32 @@ function walkFiles(dir, baseDir, list) {
 	for (const name of fs.readdirSync(dir)) {
 		const full = path.join(dir, name);
 		const rel = path.relative(baseDir, full).split(path.sep).join('/');
-		if (shouldSkip(rel)) {
-			continue;
-		}
+		if (shouldSkip(rel)) continue;
 		const stat = fs.statSync(full);
 		if (stat.isDirectory()) {
 			walkFiles(full, baseDir, list);
 		} else {
-			list.push({ local: full, relative: rel, mtime: stat.mtimeMs, size: stat.size });
+			list.push({ local: full, relative: rel, size: stat.size });
 		}
-	}
-}
-
-function buildSftpConfig(env) {
-	const host = env.SFTP_HOST;
-	const port = parseInt(env.SFTP_PORT || '22', 10);
-	const username = env.SFTP_USER;
-	const remotePath = env.SFTP_REMOTE_PATH;
-	const password = env.SFTP_PASSWORD;
-
-	if (!host || !username || !remotePath) {
-		throw new Error('SFTP_HOST, SFTP_USER, and SFTP_REMOTE_PATH are required in deploy.local.env');
-	}
-	if (!password) {
-		throw new Error('Set SFTP_PASSWORD in deploy.local.env');
-	}
-
-	return {
-		config: { host, port, username, password, readyTimeout: 30000 },
-		remotePath: remotePath.replace(/\\/g, '/').replace(/\/+$/, ''),
-	};
-}
-
-async function ensureRemoteDir(sftp, remoteDir) {
-	const normalized = remoteDir.replace(/\\/g, '/').replace(/\/+$/, '');
-	if (!normalized) {
-		return;
-	}
-	try {
-		await sftp.mkdir(normalized, true);
-	} catch (err) {
-		if (err.code !== 4) {
-			throw err;
-		}
-	}
-}
-
-function localFileHash(filePath) {
-	return crypto.createHash('md5').update(fs.readFileSync(filePath)).digest('hex');
-}
-
-async function remoteNeedsUpload(sftp, remoteFile, localMeta) {
-	try {
-		const stat = await sftp.stat(remoteFile);
-		if (stat.size !== localMeta.size) {
-			return true;
-		}
-		const remoteData = await sftp.get(remoteFile);
-		let remoteBuffer;
-		if (Buffer.isBuffer(remoteData)) {
-			remoteBuffer = remoteData;
-		} else if (Array.isArray(remoteData)) {
-			remoteBuffer = Buffer.concat(remoteData);
-		} else {
-			remoteBuffer = Buffer.from(remoteData);
-		}
-		return localFileHash(localMeta.local) !== crypto.createHash('md5').update(remoteBuffer).digest('hex');
-	} catch (err) {
-		const msg = String(err.message || '');
-		if (err.code === 2 || /no such file/i.test(msg)) {
-			return true;
-		}
-		throw err;
 	}
 }
 
 function listDirtyTrackedFiles() {
 	const out = execSync('git status --porcelain', { cwd: ROOT, encoding: 'utf8' });
-	const files = [];
-	for (const line of out.split(/\r?\n/)) {
-		if (!line.trim()) {
-			continue;
-		}
-		files.push(line.slice(3).trim().replace(/\\/g, '/'));
-	}
-	return files;
+	return out
+		.split(/\r?\n/)
+		.filter((line) => line.trim())
+		.map((line) => line.slice(3).trim().replace(/\\/g, '/'));
 }
 
 function assertGitReadyForDeploy(env) {
-	if (envFlag(env, 'DEPLOY_ALLOW_DIRTY')) {
-		return;
-	}
+	if (envFlag(env, 'DEPLOY_ALLOW_DIRTY')) return;
 	const dirty = listDirtyTrackedFiles();
 	if (dirty.length) {
-		throw new Error(
-			`Deploy blocked: uncommitted changes (${dirty.join(', ')}). Commit first.`
-		);
+		throw new Error(`Deploy blocked: uncommitted changes (${dirty.join(', ')}). Commit first.`);
 	}
-	if (envFlag(env, 'DEPLOY_ALLOW_UNPUSHED')) {
-		return;
-	}
-	if (!gitRefExists('origin/dev')) {
-		return;
-	}
+	if (envFlag(env, 'DEPLOY_ALLOW_UNPUSHED')) return;
+	if (!gitRefExists('origin/dev')) return;
 	const ahead = execSync('git rev-list --count origin/dev..HEAD', {
 		cwd: ROOT,
 		encoding: 'utf8',
@@ -262,9 +132,9 @@ function assertGitReadyForDeploy(env) {
 async function main() {
 	const env = loadEnv(ENV_FILE);
 	const dryRun = envFlag(env, 'DRY_RUN');
-	const { config, remotePath } = buildSftpConfig(env);
+	const remotePath = normalizeRemotePath(env.SFTP_REMOTE_PATH || 'wp-content/themes/Mudt_new');
 
-	console.log(`Deploy target: dev → ${config.host}`);
+	console.log(`Deploy target: dev → ${env.SFTP_HOST} (FTP port ${env.SFTP_PORT || 21})`);
 	assertGitReadyForDeploy(env);
 	console.log('Git check OK.');
 
@@ -276,9 +146,7 @@ async function main() {
 		const gitPaths = new Set(getGitDeployRelativePaths(env));
 		const before = files.length;
 		files = files.filter((file) => gitPaths.has(file.relative));
-		console.log(
-			`Git-only deploy: ${files.length} file(s) (${before} in theme; DEPLOY_FULL=true for full sync)`
-		);
+		console.log(`Git-only deploy: ${files.length} file(s) (${before} in theme)`);
 	} else {
 		console.log(`Full deploy: ${files.length} theme file(s)`);
 	}
@@ -289,37 +157,53 @@ async function main() {
 	}
 
 	if (dryRun) {
-		console.log('DRY_RUN=true — no upload.');
 		for (const file of files) {
 			console.log(`[dry-run] ${file.relative}`);
 		}
 		return;
 	}
 
-	const sftp = new SftpClient();
+	let client = await connectFtp(env);
 	let uploaded = 0;
 	let skipped = 0;
+	let reconnects = 0;
+
+	async function uploadOne(activeClient, file) {
+		const remoteFile = `${remotePath}/${file.relative}`.replace(/\/+/g, '/');
+		await ensureRemoteDir(activeClient, path.posix.dirname(remoteFile));
+
+		const remoteSize = await remoteFileSize(activeClient, remoteFile);
+		if (remoteSize === file.size) {
+			skipped += 1;
+			return;
+		}
+
+		process.stdout.write(`↑ ${file.relative}\n`);
+		await resetCwd(activeClient);
+		await activeClient.uploadFrom(file.local, remoteFile);
+		uploaded += 1;
+	}
 
 	try {
-		console.log(`Connecting to ${config.host}:${config.port} as ${config.username}...`);
-		await sftp.connect(config);
-		await ensureRemoteDir(sftp, remotePath);
+		await ensureRemoteDir(client, remotePath);
 
 		for (const file of files) {
-			const remoteFile = `${remotePath}/${file.relative}`.replace(/\/+/g, '/');
-			const remoteDir = path.posix.dirname(remoteFile);
-			await ensureRemoteDir(sftp, remoteDir);
-
-			if (await remoteNeedsUpload(sftp, remoteFile, file)) {
-				process.stdout.write(`↑ ${file.relative}\n`);
-				await sftp.fastPut(file.local, remoteFile);
-				uploaded += 1;
-			} else {
-				skipped += 1;
+			try {
+				await uploadOne(client, file);
+			} catch (err) {
+				const msg = String(err.message || '');
+				if (!/fin packet|closed|timeout|econnreset/i.test(msg) || reconnects >= 5) {
+					throw err;
+				}
+				reconnects += 1;
+				console.log(`Reconnecting (${reconnects}/5)...`);
+				try { client.close(); } catch (_) {}
+				client = await connectFtp(env);
+				await uploadOne(client, file);
 			}
 		}
 	} finally {
-		await sftp.end();
+		client.close();
 	}
 
 	console.log(`Done. Uploaded: ${uploaded}, unchanged: ${skipped}`);

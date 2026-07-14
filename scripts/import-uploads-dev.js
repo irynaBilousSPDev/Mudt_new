@@ -1,34 +1,20 @@
 /**
- * One-time: upload wp-content/uploads from Plesk backup to dev via SFTP.
- * Usage: npm run import:uploads:dev
+ * One-time: upload wp-content/uploads from Plesk prod backup to Hostinger dev via FTP.
  */
 const fs = require('fs');
 const path = require('path');
-const SftpClient = require('ssh2-sftp-client');
+const {
+	loadEnv,
+	normalizeRemotePath,
+	connectFtp,
+	resetCwd,
+	ensureRemoteDir,
+	remoteFileSize,
+} = require('./ftp-client');
 
 const ROOT = path.resolve(__dirname, '..');
 const ENV_FILE = path.join(ROOT, 'deploy.local.env');
 const DEFAULT_UPLOADS = path.resolve(ROOT, '../../../uploads');
-
-function loadEnv(filePath) {
-	if (!fs.existsSync(filePath)) {
-		throw new Error(`Missing ${path.basename(filePath)}`);
-	}
-	const env = {};
-	for (const line of fs.readFileSync(filePath, 'utf8').split(/\r?\n/)) {
-		const trimmed = line.trim();
-		if (!trimmed || trimmed.startsWith('#')) continue;
-		const eq = trimmed.indexOf('=');
-		if (eq === -1) continue;
-		const key = trimmed.slice(0, eq).trim();
-		let value = trimmed.slice(eq + 1).trim();
-		if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
-			value = value.slice(1, -1);
-		}
-		env[key] = value;
-	}
-	return env;
-}
 
 function walkFiles(dir, baseDir, list) {
 	for (const name of fs.readdirSync(dir)) {
@@ -43,20 +29,13 @@ function walkFiles(dir, baseDir, list) {
 	}
 }
 
-async function ensureRemoteDir(sftp, remoteDir) {
-	try {
-		await sftp.mkdir(remoteDir.replace(/\\/g, '/').replace(/\/+$/, ''), true);
-	} catch (err) {
-		if (err.code !== 4) throw err;
-	}
-}
-
 async function main() {
 	const env = loadEnv(ENV_FILE);
 	const uploadsLocal = env.BACKUP_UPLOADS || DEFAULT_UPLOADS;
-	const themeRemote = env.SFTP_REMOTE_PATH;
-	const uploadsRemote = env.SFTP_UPLOADS_REMOTE_PATH
-		|| themeRemote.replace(/\/themes\/[^/]+$/, '/uploads');
+	const themeRemote = normalizeRemotePath(env.SFTP_REMOTE_PATH || 'wp-content/themes/Mudt_new');
+	const uploadsRemote = normalizeRemotePath(
+		env.SFTP_UPLOADS_REMOTE_PATH || themeRemote.replace(/\/themes\/[^/]+$/, '/uploads')
+	);
 
 	if (!fs.existsSync(uploadsLocal)) {
 		throw new Error(`Uploads folder not found: ${uploadsLocal}`);
@@ -66,38 +45,33 @@ async function main() {
 	walkFiles(uploadsLocal, uploadsLocal, files);
 	console.log(`Uploading ${files.length} media file(s) to ${uploadsRemote}`);
 
-	const sftp = new SftpClient();
+	const client = await connectFtp(env);
 	let uploaded = 0;
+	let skipped = 0;
+
 	try {
-		await sftp.connect({
-			host: env.SFTP_HOST,
-			port: parseInt(env.SFTP_PORT || '22', 10),
-			username: env.SFTP_USER,
-			password: env.SFTP_PASSWORD,
-			readyTimeout: 30000,
-		});
-		await ensureRemoteDir(sftp, uploadsRemote);
+		await ensureRemoteDir(client, uploadsRemote);
 
 		for (const file of files) {
 			const remoteFile = `${uploadsRemote}/${file.relative}`.replace(/\/+/g, '/');
-			await ensureRemoteDir(sftp, path.posix.dirname(remoteFile));
-			try {
-				const stat = await sftp.stat(remoteFile);
-				if (stat.size === file.size) {
-					continue;
-				}
-			} catch (err) {
-				// upload
+			await ensureRemoteDir(client, path.posix.dirname(remoteFile));
+
+			const remoteSize = await remoteFileSize(client, remoteFile);
+			if (remoteSize === file.size) {
+				skipped += 1;
+				continue;
 			}
+
 			process.stdout.write(`↑ ${file.relative}\n`);
-			await sftp.fastPut(file.local, remoteFile);
+			await resetCwd(client);
+			await client.uploadFrom(file.local, remoteFile);
 			uploaded += 1;
 		}
 	} finally {
-		await sftp.end();
+		client.close();
 	}
 
-	console.log(`Done. Uploaded: ${uploaded} new/changed files.`);
+	console.log(`Done. Uploaded: ${uploaded}, unchanged: ${skipped}`);
 }
 
 main().catch((err) => {

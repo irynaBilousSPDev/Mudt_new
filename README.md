@@ -1,6 +1,15 @@
 # MUDT WordPress Theme (Mudt_new)
 
-Custom theme for Munich University of Digital Technologies — deployed to dev at [iratest.site](https://iratest.site/).
+Custom theme for Munich University of Digital Technologies.
+
+## Infrastructure
+
+| Site | URL | Hosting |
+|------|-----|---------|
+| Production | uni-munich.de | Plesk (backup source) |
+| **Dev** | [iratest.site](https://iratest.site/) | **Hostinger** (SFTP port `65002`) |
+
+Dev deploy uses **Hostinger SFTP**, not Plesk. The local backup folder is from Plesk prod — only the **source** for one-time DB/media import.
 
 ## Requirements
 
