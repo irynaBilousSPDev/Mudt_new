@@ -35,6 +35,7 @@ function loadEnv(filePath = ENV_FILE) {
 		'DEPLOY_ALLOW_DIRTY',
 		'DEPLOY_ALLOW_UNPUSHED',
 		'DRY_RUN',
+		'FTP_PASSIVE',
 	].forEach((key) => {
 		if (process.env[key] !== undefined) {
 			env[key] = process.env[key];
@@ -63,6 +64,9 @@ async function connectFtp(env) {
 
 	const client = new ftp.Client(120000);
 	client.ftp.verbose = false;
+	if (env.FTP_PASSIVE === 'false') {
+		client.ftp.passive = false;
+	}
 	await client.access({
 		host,
 		port,
