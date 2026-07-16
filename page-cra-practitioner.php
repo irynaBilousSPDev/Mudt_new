@@ -18,10 +18,13 @@ $sub = get_field('cra_hero_sub') ?: 'The EU Cyber Resilience Act - from regulati
 $note = get_field('cra_hero_note') ?: '<b>First cohort: 31 Aug - 2 Sep 2026</b> - further dates will follow. In-house courses for a single organisation are available on request.';
 $cta_primary = get_field('cra_hero_cta_primary');
 $cta_secondary = get_field('cra_hero_cta_secondary');
-$cta_primary_url = is_array($cta_primary) && !empty($cta_primary['url']) ? $cta_primary['url'] : '#enquire';
+$cta_primary_url = is_array($cta_primary) && !empty($cta_primary['url']) ? $cta_primary['url'] : '#layout_id_6';
 $cta_primary_title = is_array($cta_primary) && !empty($cta_primary['title']) ? $cta_primary['title'] : 'Register / request a call';
 $cta_secondary_url = is_array($cta_secondary) && !empty($cta_secondary['url']) ? $cta_secondary['url'] : '#webinar';
 $cta_secondary_title = is_array($cta_secondary) && !empty($cta_secondary['title']) ? $cta_secondary['title'] : 'Join the free CRA webinar';
+if ($cta_primary_url === '#enquire') {
+    $cta_primary_url = '#layout_id_6';
+}
 
 $facts = get_field('cra_hero_facts');
 if (empty($facts)) {
@@ -69,7 +72,7 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     $wn_title = get_field('cra_why_title') ?: 'The deadlines are no longer on the horizon';
     $wn_lead = get_field('cra_why_lead') ?: 'Unlike earlier guidance, the CRA carries real enforcement: fines of up to €15 million or 2.5% of global annual turnover, and the authority to withdraw non-compliant products from the EU market. Its notification obligations apply from 11 September 2026 and its essential requirements from 11 December 2027. Building the vulnerability tracking, incident detection and reporting workflows the CRA requires takes months - this course gives your team the shared understanding to start building the right things straight away.';
     ?>
-    <section class="pt-section">
+    <section class="pt-section section_sub_menu" id="layout_id_1">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($wn_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($wn_title); ?></h2>
@@ -93,7 +96,7 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
         );
     }
     ?>
-    <section class="pt-section alt">
+    <section class="pt-section alt section_sub_menu" id="layout_id_2">
         <div class="pt-wrap">
             <h2><?php echo mudt_pt_plain($who_title); ?></h2>
             <div class="pt-lead"><?php echo mudt_pt_html($who_lead); ?></div>
@@ -191,7 +194,7 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
         );
     }
     ?>
-    <section class="pt-section">
+    <section class="pt-section section_sub_menu" id="layout_id_3">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($days_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($days_title); ?></h2>
@@ -227,7 +230,7 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     }
     $fmt_fee_note = get_field('cra_format_fee_note') ?: '* Per participant for all three days, excl. VAT - request a quote.';
     ?>
-    <section class="pt-section alt">
+    <section class="pt-section alt section_sub_menu" id="layout_id_4">
         <div class="pt-wrap">
             <div class="pt-grid2">
                 <div>
@@ -278,7 +281,7 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
         );
     }
     ?>
-    <section class="pt-section">
+    <section class="pt-section section_sub_menu" id="layout_id_5">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($tr_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($tr_title); ?></h2>
@@ -342,7 +345,7 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     $eq_title = get_field('cra_enquire_title') ?: 'Register or request a quote';
     $eq_lead = get_field('cra_enquire_lead') ?: 'Tell us a little about you and we\'ll come back within one working day.';
     ?>
-    <section class="pt-section" id="enquire">
+    <section class="pt-section section_sub_menu" id="layout_id_6">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($eq_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($eq_title); ?></h2>
@@ -360,7 +363,10 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     <?php
     $wb_text = get_field('cra_webinar_text') ?: '<b>Free 60-minute webinar</b> - "CRA in practice: what to do before the deadlines" · 12 August 2026, 13:00-14:00';
     $wb_btn = get_field('cra_webinar_btn');
-    $wb_btn_url = is_array($wb_btn) && !empty($wb_btn['url']) ? $wb_btn['url'] : '#enquire';
+    $wb_btn_url = is_array($wb_btn) && !empty($wb_btn['url']) ? $wb_btn['url'] : '#layout_id_6';
+    if ($wb_btn_url === '#enquire') {
+        $wb_btn_url = '#layout_id_6';
+    }
     $wb_btn_title = is_array($wb_btn) && !empty($wb_btn['title']) ? $wb_btn['title'] : 'Register for the webinar';
     $wb_note = get_field('cra_webinar_note') ?: 'Dates, figures and fees are indicative and to be confirmed.';
     ?>

@@ -16,7 +16,10 @@ $cta_primary = get_field('pt_hero_cta_primary');
 $cta_secondary = get_field('pt_hero_cta_secondary');
 $cta_primary_url = is_array($cta_primary) && !empty($cta_primary['url']) ? $cta_primary['url'] : home_url('/cra-practitioner/');
 $cta_primary_title = is_array($cta_primary) && !empty($cta_primary['title']) ? $cta_primary['title'] : 'See the CRA Practitioner';
-$cta_secondary_url = is_array($cta_secondary) && !empty($cta_secondary['url']) ? $cta_secondary['url'] : '#centers';
+$cta_secondary_url = is_array($cta_secondary) && !empty($cta_secondary['url']) ? $cta_secondary['url'] : '#layout_id_3';
+if ($cta_secondary_url === '#centers') {
+    $cta_secondary_url = '#layout_id_3';
+}
 $cta_secondary_title = is_array($cta_secondary) && !empty($cta_secondary['title']) ? $cta_secondary['title'] : 'Explore the centers';
 
 $form_shortcode = trim((string) get_field('pt_form_shortcode'));
@@ -60,7 +63,10 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
     $fc_btn_url = is_array($fc_btn) && !empty($fc_btn['url']) ? $fc_btn['url'] : home_url('/cra-practitioner/');
     $fc_btn_title = is_array($fc_btn) && !empty($fc_btn['title']) ? $fc_btn['title'] : 'Course details →';
     $fc_quote = get_field('pt_featured_quote');
-    $fc_quote_url = is_array($fc_quote) && !empty($fc_quote['url']) ? $fc_quote['url'] : '#enquire';
+    $fc_quote_url = is_array($fc_quote) && !empty($fc_quote['url']) ? $fc_quote['url'] : '#layout_id_6';
+    if ($fc_quote_url === '#enquire') {
+        $fc_quote_url = '#layout_id_6';
+    }
     $fc_quote_title = is_array($fc_quote) && !empty($fc_quote['title']) ? $fc_quote['title'] : 'Request a quote';
     $fc_side_title = get_field('pt_featured_side_title') ?: 'At a glance';
     $fc_kv = get_field('pt_featured_kv');
@@ -73,7 +79,7 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
         );
     }
     ?>
-    <section class="pt-section">
+    <section class="pt-section section_sub_menu" id="layout_id_1">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($fc_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($fc_title); ?></h2>
@@ -147,7 +153,7 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
         );
     }
     ?>
-    <section class="pt-section alt">
+    <section class="pt-section alt section_sub_menu" id="layout_id_2">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($cat_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($cat_title); ?></h2>
@@ -199,7 +205,7 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
         );
     }
     ?>
-    <section class="pt-section" id="centers">
+    <section class="pt-section section_sub_menu" id="layout_id_3">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($cen_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($cen_title); ?></h2>
@@ -239,7 +245,7 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
         );
     }
     ?>
-    <section class="pt-section alt">
+    <section class="pt-section alt section_sub_menu" id="layout_id_4">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($why_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($why_title); ?></h2>
@@ -255,8 +261,7 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
     </section>
 
     <?php
-    $ws_kicker = get_field('pt_workshops_kicker') ?: 'Beyond training';
-    $ws_title = get_field('pt_workshops_title') ?: 'Workshops and consulting';
+    $ws_kicker = get_field('pt_workshops_kicker') ?: 'Beyond training';    $ws_title = get_field('pt_workshops_title') ?: 'Workshops and consulting';
     $ws_lead = get_field('pt_workshops_lead') ?: 'The same experts who teach also work with organisations directly - at the depth you need.';
     $ws_cards = get_field('pt_workshops_cards');
     if (empty($ws_cards)) {
@@ -274,7 +279,7 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
         );
     }
     ?>
-    <section class="pt-section">
+    <section class="pt-section section_sub_menu" id="layout_id_5">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($ws_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($ws_title); ?></h2>
@@ -282,12 +287,16 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
             <div class="pt-cards">
                 <?php foreach ($ws_cards as $card) :
                     $link = $card['link'] ?? null;
+                    $link_url = is_array($link) && !empty($link['url']) ? $link['url'] : '';
+                    if ($link_url === '#enquire') {
+                        $link_url = '#layout_id_6';
+                    }
                     ?>
                     <div class="pt-card">
                         <h3><?php echo mudt_pt_plain($card['title'] ?? ''); ?></h3>
                         <div><?php echo mudt_pt_html($card['text'] ?? ''); ?></div>
-                        <?php if (is_array($link) && !empty($link['url'])) : ?>
-                            <a class="pt-btn" href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['title'] ?: 'Enquire'); ?></a>
+                        <?php if ($link_url) : ?>
+                            <a class="pt-btn" href="<?php echo esc_url($link_url); ?>"><?php echo esc_html($link['title'] ?: 'Enquire'); ?></a>
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
@@ -296,12 +305,11 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
     </section>
 
     <?php
-    $eq_kicker = get_field('pt_enquire_kicker') ?: 'Get in touch';
-    $eq_title = get_field('pt_enquire_title') ?: 'Training, workshops or consulting - let\'s talk';
+    $eq_kicker = get_field('pt_enquire_kicker') ?: 'Get in touch';    $eq_title = get_field('pt_enquire_title') ?: 'Training, workshops or consulting - let\'s talk';
     $eq_lead = get_field('pt_enquire_lead') ?: 'Whatever you need - a scheduled course, an in-house workshop, a session on a special topic, or hands-on consulting on your own project - tell us and we will get back to you within one working day.';
     $eq_note = get_field('pt_enquire_note') ?: 'Dates, figures and fees are indicative and to be confirmed.';
     ?>
-    <section class="pt-section alt" id="enquire">
+    <section class="pt-section alt section_sub_menu" id="layout_id_6">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($eq_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($eq_title); ?></h2>

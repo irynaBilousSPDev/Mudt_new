@@ -12,7 +12,7 @@
   --pt-line: #e0e0e0;
   --pt-soft: #F5F5F5;
   --pt-wrap: 1440px;
-  --pt-header-offset: 150px;
+  --pt-header-offset: 180px;
   color: var(--pt-grey);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
@@ -36,7 +36,7 @@ main.pt-page > .pt-hero:first-child {
 
 @media (max-width: 767px) {
   .pt-page {
-    --pt-header-offset: 120px;
+    --pt-header-offset: 130px;
   }
 }
 
