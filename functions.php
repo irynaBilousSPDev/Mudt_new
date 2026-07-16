@@ -96,38 +96,6 @@ require_once('inc/duplicate-posts.php');
 // PT / CRA ACF first-load defaults
 require_once('inc/pt-acf-defaults.php');
 
-/**
- * Default sub_header items for PT templates when ACF sub_menu_page is empty.
- * Order must match layout_id_N / section_sub_menu sections in the page templates.
- */
-add_filter('mudt_sub_menu_page_items', function ($items, $page_id) {
-    $template = get_page_template_slug($page_id);
-
-    if ($template === 'page-professional-training.php') {
-        return array(
-            array('title' => 'First course'),
-            array('title' => 'Courses'),
-            array('title' => 'Centers'),
-            array('title' => 'Why us'),
-            array('title' => 'Workshops'),
-            array('title' => 'Enquire'),
-        );
-    }
-
-    if ($template === 'page-cra-practitioner.php') {
-        return array(
-            array('title' => 'Why now'),
-            array('title' => 'Who it\'s for'),
-            array('title' => 'Topics'),
-            array('title' => 'Format & fee'),
-            array('title' => 'Trainers'),
-            array('title' => 'Register'),
-        );
-    }
-
-    return $items;
-}, 10, 2);
-
 if (function_exists('acf_add_options_page')) {
 
     acf_add_options_page(array(
