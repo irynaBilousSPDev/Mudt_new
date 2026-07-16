@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Name: CRA Practitioner
  */
@@ -55,11 +55,11 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     <div class="pt-hero">
         <img class="pt-facet" src="<?php echo esc_url($facet_url); ?>" alt="">
         <div class="pt-wrap">
-            <div class="pt-eyebrow"><?php echo esc_html($eyebrow); ?></div>
-            <h1><?php echo esc_html($title); ?></h1>
-            <p class="pt-sub"><?php echo esc_html($sub); ?></p>
+            <div class="pt-eyebrow"><?php echo mudt_pt_plain($eyebrow); ?></div>
+            <h1><?php echo mudt_pt_plain($title); ?></h1>
+            <div class="pt-sub"><?php echo mudt_pt_html($sub); ?></div>
             <?php if ($note) : ?>
-                <p class="pt-hero-note"><?php echo wp_kses_post($note); ?></p>
+                <div class="pt-hero-note"><?php echo mudt_pt_html($note); ?></div>
             <?php endif; ?>
             <div class="pt-cta">
                 <a class="pt-btn" href="<?php echo esc_url($cta_primary_url); ?>"><?php echo esc_html($cta_primary_title); ?></a>
@@ -85,9 +85,9 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     ?>
     <section class="pt-section">
         <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo esc_html($wn_kicker); ?></div>
-            <h2><?php echo esc_html($wn_title); ?></h2>
-            <p class="pt-lead"><?php echo esc_html($wn_lead); ?></p>
+            <div class="pt-kicker"><?php echo mudt_pt_plain($wn_kicker); ?></div>
+            <h2><?php echo mudt_pt_plain($wn_title); ?></h2>
+            <div class="pt-lead"><?php echo mudt_pt_html($wn_lead); ?></div>
         </div>
     </section>
 
@@ -109,8 +109,8 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     ?>
     <section class="pt-section alt">
         <div class="pt-wrap">
-            <h2><?php echo esc_html($who_title); ?></h2>
-            <p class="pt-lead"><?php echo esc_html($who_lead); ?></p>
+            <h2><?php echo mudt_pt_plain($who_title); ?></h2>
+            <div class="pt-lead"><?php echo mudt_pt_html($who_lead); ?></div>
             <div class="pt-chips">
                 <?php foreach ($who_chips as $chip) :
                     $label = is_array($chip) ? ($chip['label'] ?? '') : $chip;
@@ -139,9 +139,9 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     ?>
     <section class="pt-section">
         <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo esc_html($ap_kicker); ?></div>
-            <h2><?php echo esc_html($ap_title); ?></h2>
-            <p class="pt-lead"><?php echo esc_html($ap_lead); ?></p>
+            <div class="pt-kicker"><?php echo mudt_pt_plain($ap_kicker); ?></div>
+            <h2><?php echo mudt_pt_plain($ap_title); ?></h2>
+            <div class="pt-lead"><?php echo mudt_pt_html($ap_lead); ?></div>
             <div class="pt-chips" style="margin-top:6px">
                 <?php foreach ($ap_chips as $chip) :
                     $label = is_array($chip) ? ($chip['label'] ?? '') : $chip;
@@ -169,13 +169,13 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     ?>
     <section class="pt-section alt">
         <div class="pt-wrap">
-            <h2><?php echo esc_html($out_title); ?></h2>
+            <h2><?php echo mudt_pt_plain($out_title); ?></h2>
             <ul class="pt-check">
                 <?php foreach ($outcomes as $item) :
                     $text = is_array($item) ? ($item['text'] ?? '') : $item;
                     if (!$text) continue;
                     ?>
-                    <li><?php echo esc_html($text); ?></li>
+                    <li><?php echo mudt_pt_html($text); ?></li>
                 <?php endforeach; ?>
             </ul>
         </div>
@@ -207,16 +207,16 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     ?>
     <section class="pt-section">
         <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo esc_html($days_kicker); ?></div>
-            <h2><?php echo esc_html($days_title); ?></h2>
+            <div class="pt-kicker"><?php echo mudt_pt_plain($days_kicker); ?></div>
+            <h2><?php echo mudt_pt_plain($days_title); ?></h2>
             <div class="pt-days">
                 <?php foreach ($days as $day) : ?>
                     <div class="pt-day">
                         <?php if (!empty($day['badge'])) : ?>
-                            <span class="pt-badge"><?php echo esc_html($day['badge']); ?></span>
+                            <span class="pt-badge"><?php echo mudt_pt_plain($day['badge']); ?></span>
                         <?php endif; ?>
-                        <h3><?php echo esc_html($day['title'] ?? ''); ?></h3>
-                        <p><?php echo esc_html($day['text'] ?? ''); ?></p>
+                        <h3><?php echo mudt_pt_plain($day['title'] ?? ''); ?></h3>
+                        <div><?php echo mudt_pt_html($day['text'] ?? ''); ?></div>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -245,9 +245,9 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
         <div class="pt-wrap">
             <div class="pt-grid2">
                 <div>
-                    <h2><?php echo esc_html($fmt_title); ?></h2>
-                    <p class="pt-lead"><?php echo esc_html($fmt_lead_1); ?></p>
-                    <p class="pt-lead"><?php echo esc_html($fmt_lead_2); ?></p>
+                    <h2><?php echo mudt_pt_plain($fmt_title); ?></h2>
+                    <div class="pt-lead"><?php echo mudt_pt_html($fmt_lead_1); ?></div>
+                    <div class="pt-lead"><?php echo mudt_pt_html($fmt_lead_2); ?></div>
                 </div>
                 <div class="pt-panel">
                     <h3><?php echo esc_html($fmt_panel_title); ?></h3>
@@ -260,7 +260,7 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
                         <?php endforeach; ?>
                     </div>
                     <?php if ($fmt_fee_note) : ?>
-                        <p class="pt-reassure"><?php echo esc_html($fmt_fee_note); ?></p>
+                        <p class="pt-reassure"><?php echo mudt_pt_plain($fmt_fee_note); ?></p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -294,8 +294,8 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     ?>
     <section class="pt-section">
         <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo esc_html($tr_kicker); ?></div>
-            <h2><?php echo esc_html($tr_title); ?></h2>
+            <div class="pt-kicker"><?php echo mudt_pt_plain($tr_kicker); ?></div>
+            <h2><?php echo mudt_pt_plain($tr_title); ?></h2>
             <div class="pt-cards">
                 <?php foreach ($trainers as $trainer) :
                     $photo = $trainer['photo'] ?? null;
@@ -310,11 +310,11 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
                                  alt="<?php echo esc_attr($trainer['name'] ?? ''); ?>">
                         <?php endif; ?>
                         <div class="pbody">
-                            <h3><?php echo esc_html($trainer['name'] ?? ''); ?></h3>
+                            <h3><?php echo mudt_pt_plain($trainer['name'] ?? ''); ?></h3>
                             <?php if (!empty($trainer['role'])) : ?>
-                                <div class="role"><?php echo esc_html($trainer['role']); ?></div>
+                                <div class="role"><?php echo mudt_pt_plain($trainer['role']); ?></div>
                             <?php endif; ?>
-                            <p><?php echo esc_html($trainer['bio'] ?? ''); ?></p>
+                            <div><?php echo mudt_pt_html($trainer['bio'] ?? ''); ?></div>
                             <?php if (is_array($link) && !empty($link['url'])) : ?>
                                 <a class="pt-btn" href="<?php echo esc_url($link['url']); ?>" target="_blank" rel="noopener"><?php echo esc_html($link['title'] ?: 'LinkedIn profile'); ?></a>
                             <?php endif; ?>
@@ -339,12 +339,12 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     ?>
     <section class="pt-section alt">
         <div class="pt-wrap">
-            <h2><?php echo esc_html($faq_title); ?></h2>
+            <h2><?php echo mudt_pt_plain($faq_title); ?></h2>
             <div class="pt-faq">
                 <?php foreach ($faqs as $faq) : ?>
                     <details>
-                        <summary><?php echo esc_html($faq['question'] ?? ''); ?></summary>
-                        <p><?php echo esc_html($faq['answer'] ?? ''); ?></p>
+                        <summary><?php echo mudt_pt_plain($faq['question'] ?? ''); ?></summary>
+                        <div><?php echo mudt_pt_html($faq['answer'] ?? ''); ?></div>
                     </details>
                 <?php endforeach; ?>
             </div>
@@ -358,9 +358,9 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
     ?>
     <section class="pt-section" id="enquire">
         <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo esc_html($eq_kicker); ?></div>
-            <h2><?php echo esc_html($eq_title); ?></h2>
-            <p class="pt-lead"><?php echo esc_html($eq_lead); ?></p>
+            <div class="pt-kicker"><?php echo mudt_pt_plain($eq_kicker); ?></div>
+            <h2><?php echo mudt_pt_plain($eq_title); ?></h2>
+            <div class="pt-lead"><?php echo mudt_pt_html($eq_lead); ?></div>
             <div class="pt-enquire-form">
                 <?php if ($form_shortcode) : ?>
                     <?php echo do_shortcode($form_shortcode); ?>
@@ -385,7 +385,7 @@ $form_shortcode = trim((string) get_field('cra_form_shortcode'));
                 <a class="pt-btn" href="<?php echo esc_url($wb_btn_url); ?>"><?php echo esc_html($wb_btn_title); ?></a>
             </div>
             <?php if ($wb_note) : ?>
-                <p class="pt-note"><?php echo esc_html($wb_note); ?></p>
+                <p class="pt-note"><?php echo mudt_pt_plain($wb_note); ?></p>
             <?php endif; ?>
         </div>
     </section>

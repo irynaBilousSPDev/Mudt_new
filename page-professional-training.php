@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Name: Professional Training
  */
@@ -26,11 +26,11 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
     <div class="pt-hero">
         <img class="pt-facet" src="<?php echo esc_url($facet_url); ?>" alt="">
         <div class="pt-wrap">
-            <div class="pt-eyebrow"><?php echo esc_html($eyebrow); ?></div>
-            <h1><?php echo esc_html($title); ?></h1>
-            <p class="pt-sub"><?php echo esc_html($sub); ?></p>
+            <div class="pt-eyebrow"><?php echo mudt_pt_plain($eyebrow); ?></div>
+            <h1><?php echo mudt_pt_plain($title); ?></h1>
+            <div class="pt-sub"><?php echo mudt_pt_html($sub); ?></div>
             <?php if ($note) : ?>
-                <p class="pt-hero-note"><?php echo wp_kses_post($note); ?></p>
+                <div class="pt-hero-note"><?php echo mudt_pt_html($note); ?></div>
             <?php endif; ?>
             <div class="pt-cta">
                 <a class="pt-btn" href="<?php echo esc_url($cta_primary_url); ?>"><?php echo esc_html($cta_primary_title); ?></a>
@@ -75,14 +75,14 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
     ?>
     <section class="pt-section">
         <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo esc_html($fc_kicker); ?></div>
-            <h2><?php echo esc_html($fc_title); ?></h2>
-            <p class="pt-lead"><?php echo esc_html($fc_lead); ?></p>
+            <div class="pt-kicker"><?php echo mudt_pt_plain($fc_kicker); ?></div>
+            <h2><?php echo mudt_pt_plain($fc_title); ?></h2>
+            <div class="pt-lead"><?php echo mudt_pt_html($fc_lead); ?></div>
             <div class="pt-featured">
                 <div>
                     <?php if ($fc_badge) : ?><span class="pt-badge"><?php echo esc_html($fc_badge); ?></span><?php endif; ?>
-                    <h3><?php echo esc_html($fc_heading); ?></h3>
-                    <p><?php echo esc_html($fc_text); ?></p>
+                    <h3><?php echo mudt_pt_plain($fc_heading); ?></h3>
+                    <div><?php echo mudt_pt_html($fc_text); ?></div>
                     <?php if ($fc_tags) : ?>
                         <div class="fx">
                             <?php foreach ($fc_tags as $tag) :
@@ -149,9 +149,9 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
     ?>
     <section class="pt-section alt">
         <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo esc_html($cat_kicker); ?></div>
-            <h2><?php echo esc_html($cat_title); ?></h2>
-            <p class="pt-lead"><?php echo esc_html($cat_lead); ?></p>
+            <div class="pt-kicker"><?php echo mudt_pt_plain($cat_kicker); ?></div>
+            <h2><?php echo mudt_pt_plain($cat_title); ?></h2>
+            <div class="pt-lead"><?php echo mudt_pt_html($cat_lead); ?></div>
             <div class="pt-cards">
                 <?php foreach ($courses as $card) :
                     $soon = !empty($card['soon']);
@@ -160,10 +160,10 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
                     ?>
                     <div class="pt-card<?php echo $soon ? ' soon' : ''; ?>">
                         <?php if (!empty($card['badge'])) : ?>
-                            <span class="pt-badge<?php echo $badge_grey ? ' grey' : ''; ?>"><?php echo esc_html($card['badge']); ?></span>
+                            <span class="pt-badge<?php echo $badge_grey ? ' grey' : ''; ?>"><?php echo mudt_pt_plain($card['badge']); ?></span>
                         <?php endif; ?>
-                        <h3><?php echo esc_html($card['title'] ?? ''); ?></h3>
-                        <p><?php echo esc_html($card['text'] ?? ''); ?></p>
+                        <h3><?php echo mudt_pt_plain($card['title'] ?? ''); ?></h3>
+                        <div><?php echo mudt_pt_html($card['text'] ?? ''); ?></div>
                         <?php if (is_array($link) && !empty($link['url'])) : ?>
                             <a class="pt-btn" href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['title'] ?: 'Learn more'); ?></a>
                         <?php endif; ?>
@@ -201,9 +201,9 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
     ?>
     <section class="pt-section" id="centers">
         <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo esc_html($cen_kicker); ?></div>
-            <h2><?php echo esc_html($cen_title); ?></h2>
-            <p class="pt-lead"><?php echo esc_html($cen_lead); ?></p>
+            <div class="pt-kicker"><?php echo mudt_pt_plain($cen_kicker); ?></div>
+            <h2><?php echo mudt_pt_plain($cen_title); ?></h2>
+            <div class="pt-lead"><?php echo mudt_pt_html($cen_lead); ?></div>
             <div class="pt-cards">
                 <?php foreach ($centers as $card) :
                     $soon = !empty($card['soon']);
@@ -212,10 +212,10 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
                     ?>
                     <div class="pt-card<?php echo $soon ? ' soon' : ''; ?>">
                         <?php if (!empty($card['badge'])) : ?>
-                            <span class="pt-badge<?php echo $badge_grey ? ' grey' : ''; ?>"><?php echo esc_html($card['badge']); ?></span>
+                            <span class="pt-badge<?php echo $badge_grey ? ' grey' : ''; ?>"><?php echo mudt_pt_plain($card['badge']); ?></span>
                         <?php endif; ?>
-                        <h3><?php echo esc_html($card['title'] ?? ''); ?></h3>
-                        <p><?php echo esc_html($card['text'] ?? ''); ?></p>
+                        <h3><?php echo mudt_pt_plain($card['title'] ?? ''); ?></h3>
+                        <div><?php echo mudt_pt_html($card['text'] ?? ''); ?></div>
                         <?php if (is_array($link) && !empty($link['url']) && $link['url'] !== '#') : ?>
                             <a class="pt-btn" href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['title'] ?: 'Learn more'); ?></a>
                         <?php elseif (is_array($link) && !empty($link['title'])) : ?>
@@ -241,13 +241,13 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
     ?>
     <section class="pt-section alt">
         <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo esc_html($why_kicker); ?></div>
-            <h2><?php echo esc_html($why_title); ?></h2>
+            <div class="pt-kicker"><?php echo mudt_pt_plain($why_kicker); ?></div>
+            <h2><?php echo mudt_pt_plain($why_title); ?></h2>
             <div class="pt-cards">
                 <?php foreach ($why_cards as $card) : ?>
                     <div class="pt-card">
-                        <h3><?php echo esc_html($card['title'] ?? ''); ?></h3>
-                        <p><?php echo esc_html($card['text'] ?? ''); ?></p>
+                        <h3><?php echo mudt_pt_plain($card['title'] ?? ''); ?></h3>
+                        <div><?php echo mudt_pt_html($card['text'] ?? ''); ?></div>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -276,16 +276,16 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
     ?>
     <section class="pt-section">
         <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo esc_html($ws_kicker); ?></div>
-            <h2><?php echo esc_html($ws_title); ?></h2>
-            <p class="pt-lead"><?php echo esc_html($ws_lead); ?></p>
+            <div class="pt-kicker"><?php echo mudt_pt_plain($ws_kicker); ?></div>
+            <h2><?php echo mudt_pt_plain($ws_title); ?></h2>
+            <div class="pt-lead"><?php echo mudt_pt_html($ws_lead); ?></div>
             <div class="pt-cards">
                 <?php foreach ($ws_cards as $card) :
                     $link = $card['link'] ?? null;
                     ?>
                     <div class="pt-card">
-                        <h3><?php echo esc_html($card['title'] ?? ''); ?></h3>
-                        <p><?php echo esc_html($card['text'] ?? ''); ?></p>
+                        <h3><?php echo mudt_pt_plain($card['title'] ?? ''); ?></h3>
+                        <div><?php echo mudt_pt_html($card['text'] ?? ''); ?></div>
                         <?php if (is_array($link) && !empty($link['url'])) : ?>
                             <a class="pt-btn" href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['title'] ?: 'Enquire'); ?></a>
                         <?php endif; ?>
@@ -303,9 +303,9 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
     ?>
     <section class="pt-section alt" id="enquire">
         <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo esc_html($eq_kicker); ?></div>
-            <h2><?php echo esc_html($eq_title); ?></h2>
-            <p class="pt-lead"><?php echo esc_html($eq_lead); ?></p>
+            <div class="pt-kicker"><?php echo mudt_pt_plain($eq_kicker); ?></div>
+            <h2><?php echo mudt_pt_plain($eq_title); ?></h2>
+            <div class="pt-lead"><?php echo mudt_pt_html($eq_lead); ?></div>
             <div class="pt-enquire-form">
                 <?php if ($form_shortcode) : ?>
                     <?php echo do_shortcode($form_shortcode); ?>
@@ -314,7 +314,7 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
                 <?php endif; ?>
             </div>
             <?php if ($eq_note) : ?>
-                <p class="pt-note"><?php echo esc_html($eq_note); ?></p>
+                <p class="pt-note"><?php echo mudt_pt_plain($eq_note); ?></p>
             <?php endif; ?>
         </div>
     </section>

@@ -354,6 +354,28 @@ function mudt_pt_acf_defaults()
 }
 
 /**
+ * Safe HTML from ACF textarea/wysiwyg (wpautop may wrap in <p>).
+ */
+function mudt_pt_html($value)
+{
+    if ($value === null || $value === false || $value === '') {
+        return '';
+    }
+    return wp_kses_post($value);
+}
+
+/**
+ * Plain text for titles / labels (strip any ACF <p> wrappers).
+ */
+function mudt_pt_plain($value)
+{
+    if ($value === null || $value === false || $value === '') {
+        return '';
+    }
+    return esc_html(wp_strip_all_tags((string) $value));
+}
+
+/**
  * Page templates that use the PT content sync button.
  */
 function mudt_pt_sync_templates()

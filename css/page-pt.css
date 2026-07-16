@@ -171,6 +171,26 @@
   margin: 0;
 }
 
+.pt-page .pt-sub p,
+.pt-page .pt-lead p,
+.pt-page .pt-hero-note p,
+.pt-page .pt-card > div p,
+.pt-page .pt-day > div p,
+.pt-page .pbody > div p,
+.pt-page .pt-faq details > div p {
+  margin: 0 0 0.6em;
+}
+
+.pt-page .pt-sub p:last-child,
+.pt-page .pt-lead p:last-child,
+.pt-page .pt-hero-note p:last-child,
+.pt-page .pt-card > div p:last-child,
+.pt-page .pt-day > div p:last-child,
+.pt-page .pbody > div p:last-child,
+.pt-page .pt-faq details > div p:last-child {
+  margin-bottom: 0;
+}
+
 .pt-page .pt-facts {
   display: flex;
   flex-wrap: wrap;
