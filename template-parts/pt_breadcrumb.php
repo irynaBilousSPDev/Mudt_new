@@ -34,7 +34,7 @@ if ($template === 'page-professional-training.php') {
     <div class="container">
         <nav class="pt-breadcrumb" aria-label="Breadcrumb">
             <?php foreach ($items as $i => $item) :
-                if ($i > 0) : ?><span class="sep" aria-hidden="true">›</span><?php endif;
+                if ($i > 0) : ?><span class="sep" aria-hidden="true">&rsaquo;</span><?php endif;
                 if (!empty($item['url'])) : ?>
                     <a href="<?php echo esc_url($item['url']); ?>"><?php echo esc_html($item['label']); ?></a>
                 <?php else : ?>
