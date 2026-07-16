@@ -38,7 +38,7 @@ if (empty($facts)) {
     );
 }
 
-$form_shortcode = get_field('cra_form_shortcode') ?: '[contact-form-7 id="87b4094" title="Contact Program"]';
+$form_shortcode = trim((string) get_field('cra_form_shortcode'));
 ?>
 <main class="page custom-page pt-page page_cra_practitioner">
 
@@ -362,7 +362,11 @@ $form_shortcode = get_field('cra_form_shortcode') ?: '[contact-form-7 id="87b409
             <h2><?php echo esc_html($eq_title); ?></h2>
             <p class="pt-lead"><?php echo esc_html($eq_lead); ?></p>
             <div class="pt-enquire-form">
-                <?php echo do_shortcode($form_shortcode); ?>
+                <?php if ($form_shortcode) : ?>
+                    <?php echo do_shortcode($form_shortcode); ?>
+                <?php else : ?>
+                    <div class="pt-enquire-missing">Add a Contact Form 7 shortcode in the ACF field <strong>CF7 shortcode</strong> on this page.</div>
+                <?php endif; ?>
             </div>
         </div>
     </section>

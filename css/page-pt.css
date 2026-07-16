@@ -8,9 +8,18 @@
   --pt-light: #EAF4FB;
   --pt-line: #e4e9ef;
   --pt-soft: #f6f9fc;
+  --pt-wrap: 1440px;
   color: var(--pt-grey);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Neutralize theme globals (styles.css sets img { width: 100% }) */
+.pt-page img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 .pt-page a {
@@ -19,9 +28,33 @@
 }
 
 .pt-page .pt-wrap {
-  max-width: 1080px;
+  max-width: var(--pt-wrap);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1601px) {
+  .pt-page {
+    --pt-wrap: 1640px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .pt-page {
+    --pt-wrap: 1280px;
+  }
+
+  .pt-page .pt-wrap {
+    padding: 0 32px;
+  }
+}
+
+@media (max-width: 991px) {
+  .pt-page .pt-wrap {
+    padding: 0 20px;
+  }
 }
 
 .pt-page .pt-btn {
@@ -100,14 +133,17 @@
   position: absolute;
   right: -40px;
   top: 0;
+  width: auto;
+  max-width: none;
   height: 118%;
   opacity: .5;
   pointer-events: none;
+  object-fit: contain;
 }
 
 .pt-page .pt-hero .pt-wrap {
   position: relative;
-  padding: 58px 24px 50px;
+  padding: 64px 40px 56px;
 }
 
 .pt-page .pt-eyebrow {
@@ -124,14 +160,14 @@
   line-height: 1.08;
   font-weight: 800;
   margin: 0 0 14px;
-  max-width: 15ch;
+  max-width: 22ch;
   color: #fff;
 }
 
 .pt-page .pt-hero .pt-sub {
   font-size: 20px;
   color: #c7d6e8;
-  max-width: 60ch;
+  max-width: 68ch;
   margin: 0;
 }
 
@@ -178,15 +214,17 @@
 
 .pt-page .pt-section h2 {
   color: var(--pt-navy);
-  font-size: 28px;
-  margin: 0 0 8px;
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 0 0 10px;
   font-weight: 800;
 }
 
 .pt-page .pt-lead {
   font-size: 17px;
-  max-width: 74ch;
+  max-width: 90ch;
   color: #3c4653;
+  margin: 0;
 }
 
 .pt-page .pt-kicker {
@@ -200,9 +238,21 @@
 
 .pt-page .pt-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
-  margin-top: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 28px;
+}
+
+@media (max-width: 1100px) {
+  .pt-page .pt-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .pt-page .pt-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 .pt-page .pt-card {
@@ -244,6 +294,7 @@
 
 .pt-page .pt-card.person img.trainer {
   width: 200px;
+  max-width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
@@ -340,9 +391,15 @@
 
 .pt-page .pt-days {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
-  margin-top: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 28px;
+}
+
+@media (max-width: 900px) {
+  .pt-page .pt-days {
+    grid-template-columns: 1fr;
+  }
 }
 
 .pt-page .pt-day {
@@ -432,7 +489,22 @@
 
 .pt-page .pt-enquire-form {
   margin-top: 18px;
-  max-width: 640px;
+  max-width: 720px;
+}
+
+.pt-page .pt-enquire-form .wpcf7,
+.pt-page .pt-enquire-form form {
+  margin: 0;
+}
+
+.pt-page .pt-enquire-missing {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border: 1px dashed var(--pt-line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--pt-muted);
+  font-size: 14px;
 }
 
 .pt-page .pt-reassure {
@@ -527,6 +599,16 @@
 @media (max-width: 760px) {
   .pt-page .pt-hero h1 {
     font-size: 34px;
+    max-width: none;
+  }
+
+  .pt-page .pt-hero .pt-wrap {
+    padding: 48px 20px 44px;
+  }
+
+  .pt-page .pt-hero .pt-facet {
+    right: -80px;
+    opacity: .35;
   }
 
   .pt-page .pt-grid2 {
@@ -536,5 +618,9 @@
   .pt-page .pt-featured {
     grid-template-columns: 1fr;
     padding: 22px;
+  }
+
+  .pt-page .pt-section {
+    padding: 36px 0;
   }
 }

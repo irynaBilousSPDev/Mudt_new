@@ -19,7 +19,7 @@ $cta_primary_title = is_array($cta_primary) && !empty($cta_primary['title']) ? $
 $cta_secondary_url = is_array($cta_secondary) && !empty($cta_secondary['url']) ? $cta_secondary['url'] : '#centers';
 $cta_secondary_title = is_array($cta_secondary) && !empty($cta_secondary['title']) ? $cta_secondary['title'] : 'Explore the centers';
 
-$form_shortcode = get_field('pt_form_shortcode') ?: '[contact-form-7 id="87b4094" title="Contact Program"]';
+$form_shortcode = trim((string) get_field('pt_form_shortcode'));
 ?>
 <main class="page custom-page pt-page page_professional_training">
 
@@ -307,7 +307,11 @@ $form_shortcode = get_field('pt_form_shortcode') ?: '[contact-form-7 id="87b4094
             <h2><?php echo esc_html($eq_title); ?></h2>
             <p class="pt-lead"><?php echo esc_html($eq_lead); ?></p>
             <div class="pt-enquire-form">
-                <?php echo do_shortcode($form_shortcode); ?>
+                <?php if ($form_shortcode) : ?>
+                    <?php echo do_shortcode($form_shortcode); ?>
+                <?php else : ?>
+                    <div class="pt-enquire-missing">Add a Contact Form 7 shortcode in the ACF field <strong>CF7 shortcode</strong> on this page.</div>
+                <?php endif; ?>
             </div>
             <?php if ($eq_note) : ?>
                 <p class="pt-note"><?php echo esc_html($eq_note); ?></p>
