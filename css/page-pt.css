@@ -11,12 +11,18 @@
   --pt-light-2: #E9F3FF;
   --pt-line: #e0e0e0;
   --pt-soft: #F5F5F5;
-  /* Match theme .container widths (styles.css) */
-  --pt-header-offset: 160px;
+  /* Match theme header (no sub_menu / breadcrumb on these pages) */
+  --pt-header-offset: 150px;
   color: var(--pt-grey);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* No sub_header strip on PT templates — main menu only */
+body.page-template-page-professional-training-php .sub_header,
+body.page-template-page-cra-practitioner-php .sub_header {
+  display: none;
 }
 
 /*
@@ -108,38 +114,6 @@ main.pt-page > .pt-hero:first-child {
   .pt-page .pt-wrap {
     max-width: 1640px;
   }
-}
-
-/* Breadcrumb in navy sub_header */
-.pt-sub-crumb .pt-breadcrumb {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 0 14px;
-  font-size: 13px;
-  line-height: 1.3;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.pt-sub-crumb .pt-breadcrumb a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.pt-sub-crumb .pt-breadcrumb a:hover {
-  color: #2994FF;
-}
-
-.pt-sub-crumb .pt-breadcrumb .sep {
-  color: rgba(255, 255, 255, 0.35);
-  font-weight: 400;
-}
-
-.pt-sub-crumb .pt-breadcrumb .current {
-  color: #fff;
-  font-weight: 600;
 }
 
 .pt-page .pt-btn {

@@ -2,9 +2,8 @@
 $page_id = get_the_id();
 $template = get_page_template_slug($page_id);
 
-// PT / CRA: custom breadcrumb instead of section anchor menu
+// PT / CRA: no sub_menu and no breadcrumb — main header menu only
 if (in_array($template, array('page-professional-training.php', 'page-cra-practitioner.php'), true)) {
-    get_template_part('template-parts/pt_breadcrumb');
     return;
 }
 
