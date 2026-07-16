@@ -1,36 +1,38 @@
 ================================================================================
 CF7 form 1 of 2 — Professional Training enquire
 ================================================================================
-WordPress admin → Contact → Add New
+WordPress admin → Contact → Edit form (or Add New)
 Title: Professional Training Enquire
 
 ----- TAB: Form -----
-Paste everything below this line (until MAIL):
+Replace the Form tab with this (matches professional-training.html):
 
-<div class="row pt-cf7">
-	<div class="col-md-6">
-		<p>[text* your-name autocomplete:name placeholder "Name*"]</p>
-	</div>
-	<div class="col-md-6">
-		<p>[email* your-email autocomplete:email placeholder "Email*"]</p>
-	</div>
-	<div class="col-md-6">
-		<p>[tel tel-phone placeholder "Phone"]</p>
-	</div>
-	<div class="col-md-6">
-		<p>[text your-organisation placeholder "Organisation"]</p>
-	</div>
-	<div class="col-12">
-		<p>[select interest include_blank "Interest" "Scheduled course" "In-house workshop" "Consulting / advisory" "Special topic / other"]</p>
-	</div>
-	<div class="col-12">
-		<p>[textarea your-message placeholder "Message"]</p>
-	</div>
-	<div class="col-12">
-		<p>[acceptance acceptance-privacy] I agree to my personal data being processed in accordance with the Privacy Policy of the Munich University of Digital Technologies to use my personal data to provide me with further information about educational offers, discount campaigns, events and consultations by email and phone and Whatsapp [/acceptance]</p>
-	</div>
-	<div class="col-12">
-		<p>[submit "Send enquiry"]</p>
+<div class="pt-cf7">
+	<p class="pt-cf7-field">
+		<label>Name</label>
+		[text* your-name autocomplete:name placeholder "Your name"]
+	</p>
+	<p class="pt-cf7-field">
+		<label>Work email</label>
+		[email* your-email autocomplete:email placeholder "name@company.com"]
+	</p>
+	<p class="pt-cf7-field">
+		<label>Company</label>
+		[text your-organisation placeholder "Company"]
+	</p>
+	<p class="pt-cf7-field">
+		<label>I'm interested in</label>
+		[select interest "CRA Practitioner course" "In-house workshop" "A special topic" "Consulting &amp; advisory" "Not sure yet"]
+	</p>
+	<p class="pt-cf7-field full">
+		<label>Message</label>
+		[textarea your-message rows:3 placeholder "Tell us briefly what you are looking for"]
+	</p>
+	<p class="pt-cf7-field full pt-cf7-accept">
+		[acceptance acceptance-privacy] I agree to my personal data being processed in accordance with the Privacy Policy of the Munich University of Digital Technologies. [/acceptance]
+	</p>
+	<div class="pt-cf7-full">
+		[submit "Send enquiry"]
 	</div>
 </div>
 
@@ -45,8 +47,7 @@ Professional Training enquiry
 
 Name: [your-name]
 Email: [your-email]
-Phone: [tel-phone]
-Organisation: [your-organisation]
+Company: [your-organisation]
 Interest: [interest]
 
 Message:
@@ -54,11 +55,3 @@ Message:
 
 --
 Sent from the Professional Training page
-
------ TAB: Messages (optional) -----
-Mail sent successfully: Thank you. We will get back to you within one working day.
-
------ After save -----
-Copy the shortcode if needed, or (preferred) on the Professional Training page
-open ACF → Enquire → Contact form and select "Professional Training Enquire"
-from the dropdown.

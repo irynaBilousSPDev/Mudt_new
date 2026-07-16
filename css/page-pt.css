@@ -572,7 +572,7 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-enquire-form {
   margin-top: 18px;
-  max-width: 720px;
+  max-width: 640px;
 }
 
 .pt-page .pt-enquire-form .wpcf7,
@@ -580,53 +580,93 @@ main.pt-page > .pt-hero:first-child {
   margin: 0;
 }
 
-.pt-page .pt-enquire-form .pt-cf7 .col-md-6,
-.pt-page .pt-enquire-form .pt-cf7 .col-12 {
-  margin-bottom: 4px;
+/* Match HTML prototype .form grid */
+.pt-page .pt-enquire-form .pt-cf7 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  max-width: 640px;
+  margin: 0;
 }
 
-.pt-page .pt-enquire-form input:not([type="checkbox"]):not([type="submit"]),
+.pt-page .pt-enquire-form .pt-cf7-field,
+.pt-page .pt-enquire-form .pt-cf7-full {
+  margin: 0;
+  min-width: 0;
+}
+
+.pt-page .pt-enquire-form .pt-cf7-field {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: var(--pt-muted);
+  gap: 5px;
+}
+
+.pt-page .pt-enquire-form .pt-cf7-field > label,
+.pt-page .pt-enquire-form .pt-cf7-field > .wpcf7-form-control-wrap {
+  display: block;
+}
+
+.pt-page .pt-enquire-form .pt-cf7-field > label {
+  font-size: 13px;
+  color: var(--pt-muted);
+  font-weight: 400;
+  margin: 0;
+}
+
+.pt-page .pt-enquire-form .pt-cf7-field.full,
+.pt-page .pt-enquire-form .pt-cf7-full {
+  grid-column: 1 / -1;
+}
+
+.pt-page .pt-enquire-form .wpcf7-form-control-wrap {
+  display: block;
+  width: 100%;
+}
+
+.pt-page .pt-enquire-form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
 .pt-page .pt-enquire-form select,
 .pt-page .pt-enquire-form textarea {
   width: 100%;
-  border-radius: 17px;
-  background-color: #fff;
-  padding: 10px 22px;
-  font-size: 16px;
-  line-height: 19px;
-  color: #000;
-  border: 1px solid #d7e0ea;
+  font: inherit;
+  font-size: 15px;
+  padding: 10px 12px;
+  border: 1px solid var(--pt-line);
+  border-radius: 8px;
+  color: var(--pt-grey);
+  background: #fff;
   box-sizing: border-box;
+  line-height: 1.4;
+  height: auto;
+  min-height: 0;
 }
 
 .pt-page .pt-enquire-form textarea {
-  min-height: 120px;
+  min-height: 84px;
   resize: vertical;
 }
 
 .pt-page .pt-enquire-form input::placeholder,
 .pt-page .pt-enquire-form textarea::placeholder {
-  color: #A8A8A8;
+  color: #9aa5b1;
 }
 
 .pt-page .pt-enquire-form select {
-  color: #A8A8A8;
+  color: var(--pt-grey);
+  appearance: auto;
 }
 
-.pt-page .pt-enquire-form select:valid,
-.pt-page .pt-enquire-form select option {
-  color: #000;
+.pt-page .pt-enquire-form input:focus,
+.pt-page .pt-enquire-form select:focus,
+.pt-page .pt-enquire-form textarea:focus {
+  outline: none;
+  border-color: var(--pt-blue);
 }
 
-.pt-page .pt-enquire-form input:focus-visible,
-.pt-page .pt-enquire-form select:focus-visible,
-.pt-page .pt-enquire-form textarea:focus-visible {
-  outline: #2994FF auto 1px;
-}
-
-.pt-page .pt-enquire-form .wpcf7-acceptance {
+.pt-page .pt-enquire-form .pt-cf7-accept .wpcf7-acceptance {
   display: block;
-  margin: 8px 0 16px;
+  margin: 0;
 }
 
 .pt-page .pt-enquire-form .wpcf7-acceptance .wpcf7-list-item {
@@ -639,26 +679,63 @@ main.pt-page > .pt-hero:first-child {
   color: var(--pt-muted);
 }
 
-.pt-page .pt-enquire-form .wpcf7-submit {
-  font-size: 16px;
-  line-height: 19px;
-  font-weight: 700;
-  display: inline-flex;
-  min-height: 37px;
+.pt-page .pt-enquire-form .pt-cf7-actions {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  border-radius: 34px;
-  border: 1px solid var(--pt-blue);
-  background-color: var(--pt-blue);
+  gap: 10px;
+}
+
+.pt-page .pt-enquire-form .wpcf7-submit {
+  display: inline-block;
+  background: var(--pt-blue);
   color: #fff;
-  padding: 8px 28px;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  border: 1px solid var(--pt-blue);
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  line-height: 1.2;
+  width: auto;
+  min-height: 0;
+  height: auto;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .pt-page .pt-enquire-form .wpcf7-submit:hover {
-  background-color: var(--pt-navy-deep);
-  border-color: var(--pt-navy-deep);
+  background: var(--pt-blued);
+  border-color: var(--pt-blued);
+  color: #fff;
+}
+
+.pt-page .pt-enquire-form .wpcf7-submit.pt-cf7-secondary {
+  background: #fff;
+  color: var(--pt-navy);
+  border-color: var(--pt-line);
+}
+
+.pt-page .pt-enquire-form .wpcf7-submit.pt-cf7-secondary:hover {
+  background: var(--pt-soft);
+  color: var(--pt-navy);
+  border-color: var(--pt-line);
+}
+
+.pt-page .pt-enquire-form .wpcf7-not-valid-tip,
+.pt-page .pt-enquire-form .wpcf7-response-output {
+  font-size: 13px;
+  margin: 8px 0 0;
+}
+
+@media (max-width: 760px) {
+  .pt-page .pt-enquire-form .pt-cf7 {
+    grid-template-columns: 1fr;
+  }
+
+  .pt-page .pt-enquire-form .pt-cf7-field.full,
+  .pt-page .pt-enquire-form .pt-cf7-full {
+    grid-column: 1;
+  }
 }
 
 .pt-page .pt-enquire-missing {

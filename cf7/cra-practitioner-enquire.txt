@@ -1,46 +1,54 @@
 ================================================================================
 CF7 form 2 of 2 — CRA Practitioner enquire
 ================================================================================
-WordPress admin → Contact → Add New
+WordPress admin → Contact → Edit form (or Add New)
 Title: CRA Practitioner Enquire
 
 ----- TAB: Form -----
-Paste everything below this line (until MAIL):
+Replace the Form tab with this (matches cra-practitioner.html):
 
-<div class="row pt-cf7">
-	<div class="col-md-6">
-		<p>[text* your-name autocomplete:name placeholder "Name*"]</p>
-	</div>
-	<div class="col-md-6">
-		<p>[email* your-email autocomplete:email placeholder "Email*"]</p>
-	</div>
-	<div class="col-md-6">
-		<p>[tel tel-phone placeholder "Phone"]</p>
-	</div>
-	<div class="col-md-6">
-		<p>[text your-organisation placeholder "Organisation"]</p>
-	</div>
-	<div class="col-md-6">
-		<p>[text your-role placeholder "Role / job title"]</p>
-	</div>
-	<div class="col-md-6">
-		<p>[select interest include_blank "Interest" "Register for 31 Aug – 2 Sep 2026" "Request a quote" "In-house / team booking" "Free CRA webinar" "Later cohort / other"]</p>
-	</div>
-	<div class="col-12">
-		<p>[textarea your-message placeholder "Message"]</p>
-	</div>
-	<div class="col-12">
-		<p>[acceptance acceptance-privacy] I agree to my personal data being processed in accordance with the Privacy Policy of the Munich University of Digital Technologies to use my personal data to provide me with further information about educational offers, discount campaigns, events and consultations by email and phone and Whatsapp [/acceptance]</p>
-	</div>
-	<div class="col-12">
-		<p>[submit "Register / request a call"]</p>
+<div class="pt-cf7">
+	<p class="pt-cf7-field">
+		<label>Name</label>
+		[text* your-name autocomplete:name placeholder "Your name"]
+	</p>
+	<p class="pt-cf7-field">
+		<label>Work email</label>
+		[email* your-email autocomplete:email placeholder "name@company.com"]
+	</p>
+	<p class="pt-cf7-field">
+		<label>Company</label>
+		[text your-organisation placeholder "Company"]
+	</p>
+	<p class="pt-cf7-field">
+		<label>Role</label>
+		[text your-role placeholder "e.g. CISO, AppSec lead"]
+	</p>
+	<p class="pt-cf7-field">
+		<label>Attendance</label>
+		[select attendance "On-site - first cohort (Munich)" "Remote - a later cohort" "In-house for my team"]
+	</p>
+	<p class="pt-cf7-field">
+		<label>Participants</label>
+		[select participants "1" "2-4" "5+" "Whole team"]
+	</p>
+	<p class="pt-cf7-field full">
+		<label>Message (optional)</label>
+		[textarea your-message rows:3 placeholder "Anything we should know?"]
+	</p>
+	<p class="pt-cf7-field full pt-cf7-accept">
+		[acceptance acceptance-privacy] I agree to my personal data being processed in accordance with the Privacy Policy of the Munich University of Digital Technologies. [/acceptance]
+	</p>
+	<div class="pt-cf7-full pt-cf7-actions">
+		[submit "Register"]
+		[submit class:pt-cf7-secondary "Request a quote"]
 	</div>
 </div>
 
 ----- TAB: Mail -----
 To: (your admissions / training email)
 From: [your-name] <[your-email]>
-Subject: CRA Practitioner enquiry — [interest]
+Subject: CRA Practitioner enquiry
 
 Message body:
 
@@ -48,20 +56,13 @@ CRA Practitioner enquiry
 
 Name: [your-name]
 Email: [your-email]
-Phone: [tel-phone]
-Organisation: [your-organisation]
+Company: [your-organisation]
 Role: [your-role]
-Interest: [interest]
+Attendance: [attendance]
+Participants: [participants]
 
 Message:
 [your-message]
 
 --
 Sent from the CRA Practitioner page
-
------ TAB: Messages (optional) -----
-Mail sent successfully: Thank you. We will get back to you within one working day.
-
------ After save -----
-On the CRA Practitioner page open ACF → Enquire → Contact form
-and select "CRA Practitioner Enquire" from the dropdown.
