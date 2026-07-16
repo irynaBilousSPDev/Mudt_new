@@ -9,10 +9,32 @@
   --pt-line: #e4e9ef;
   --pt-soft: #f6f9fc;
   --pt-wrap: 1440px;
+  --pt-header-offset: 150px;
   color: var(--pt-grey);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/*
+ * Theme sets main { margin-top: 180px } for the fixed header — leaves a white strip
+ * above PT pages. Cancel that and extend the first block under the header instead.
+ */
+main.pt-page {
+  margin-top: 0 !important;
+  padding-top: 0;
+}
+
+main.pt-page > .pt-crumb:first-child,
+main.pt-page > .pt-hero:first-child {
+  margin-top: 0;
+  padding-top: var(--pt-header-offset);
+}
+
+@media (max-width: 767px) {
+  .pt-page {
+    --pt-header-offset: 120px;
+  }
 }
 
 /* Neutralize theme globals (styles.css sets img { width: 100% }) */
@@ -143,7 +165,7 @@
 
 .pt-page .pt-hero .pt-wrap {
   position: relative;
-  padding: 64px 40px 56px;
+  padding: 40px 40px 56px;
 }
 
 .pt-page .pt-eyebrow {

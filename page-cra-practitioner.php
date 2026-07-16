@@ -8,15 +8,11 @@ $uri = get_template_directory_uri();
 $facet = get_field('cra_hero_facet');
 $facet_url = is_array($facet) && !empty($facet['url']) ? $facet['url'] : $uri . '/images/pt-hero-facet.png';
 
-$crumb_pt = get_field('cra_crumb_pt');
-$crumb_center = get_field('cra_crumb_center');
-$crumb_pt_url = is_array($crumb_pt) && !empty($crumb_pt['url']) ? $crumb_pt['url'] : home_url('/professional-training/');
-$crumb_pt_title = is_array($crumb_pt) && !empty($crumb_pt['title']) ? $crumb_pt['title'] : 'Professional Training';
-$crumb_center_url = is_array($crumb_center) && !empty($crumb_center['url']) ? $crumb_center['url'] : '#';
-$crumb_center_title = is_array($crumb_center) && !empty($crumb_center['title']) ? $crumb_center['title'] : 'Center for Cyber Security and AI';
-$crumb_current = get_field('cra_crumb_current') ?: 'CRA Practitioner';
-
-$eyebrow = get_field('cra_hero_eyebrow') ?: 'Professional Centers › Center for Cyber Security and AI › CRA Practitioner';
+$eyebrow = get_field('cra_hero_eyebrow') ?: 'Professional Training';
+// Temporary: ignore breadcrumb-style eyebrow from earlier sync
+if (is_string($eyebrow) && (strpos($eyebrow, '›') !== false || substr_count($eyebrow, '>') >= 2)) {
+    $eyebrow = 'Professional Training';
+}
 $title = get_field('cra_hero_title') ?: 'CRA Practitioner';
 $sub = get_field('cra_hero_sub') ?: 'The EU Cyber Resilience Act - from regulation to engineering practice. A 3-day practitioner course for the teams that have to implement it.';
 $note = get_field('cra_hero_note') ?: '<b>First cohort: 31 Aug - 2 Sep 2026</b> - further dates will follow. In-house courses for a single organisation are available on request.';
@@ -41,16 +37,6 @@ if (empty($facts)) {
 $form_shortcode = trim((string) get_field('cra_form_shortcode'));
 ?>
 <main class="page custom-page pt-page page_cra_practitioner">
-
-    <div class="pt-crumb">
-        <div class="pt-wrap">
-            <a href="<?php echo esc_url($crumb_pt_url); ?>"><?php echo esc_html($crumb_pt_title); ?></a>
-            <span class="sep"> › </span>
-            <a href="<?php echo esc_url($crumb_center_url); ?>"><?php echo esc_html($crumb_center_title); ?></a>
-            <span class="sep"> › </span>
-            <b><?php echo esc_html($crumb_current); ?></b>
-        </div>
-    </div>
 
     <div class="pt-hero">
         <img class="pt-facet" src="<?php echo esc_url($facet_url); ?>" alt="">
