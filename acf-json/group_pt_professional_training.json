@@ -951,11 +951,11 @@
             "new_lines": "wpautop"
         },
         {
-            "key": "field_pt_form_shortcode",
-            "label": "CF7 shortcode",
-            "name": "pt_form_shortcode",
-            "type": "text",
-            "instructions": "",
+            "key": "field_pt_cf7_form",
+            "label": "Contact form",
+            "name": "pt_cf7_form",
+            "type": "post_object",
+            "instructions": "Create the form in Contact → Contact Forms (see theme file cf7/professional-training-enquire.txt), then select it here.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -963,7 +963,14 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": ""
+            "post_type": [
+                "wpcf7_contact_form"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
         },
         {
             "key": "field_pt_enquire_note",
@@ -1001,5 +1008,5 @@
     "active": true,
     "description": "Text fields have default_value. Repeaters stay empty in admin until filled; PHP template fallbacks keep the front filled.",
     "show_in_rest": 0,
-    "modified": 1784230275
+    "modified": 1784235000
 }

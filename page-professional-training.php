@@ -22,7 +22,7 @@ if ($cta_secondary_url === '#centers') {
 }
 $cta_secondary_title = is_array($cta_secondary) && !empty($cta_secondary['title']) ? $cta_secondary['title'] : 'Explore the centers';
 
-$form_shortcode = trim((string) get_field('pt_form_shortcode'));
+$form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('pt_form_shortcode'));
 ?>
 <main class="page custom-page pt-page page_professional_training">
 
@@ -318,7 +318,7 @@ $form_shortcode = trim((string) get_field('pt_form_shortcode'));
                 <?php if ($form_shortcode) : ?>
                     <?php echo do_shortcode($form_shortcode); ?>
                 <?php else : ?>
-                    <div class="pt-enquire-missing">Add a Contact Form 7 shortcode in the ACF field <strong>CF7 shortcode</strong> on this page.</div>
+                    <div class="pt-enquire-missing">Select a Contact Form in the ACF field <strong>Contact form</strong> on this page (Enquire tab).</div>
                 <?php endif; ?>
             </div>
             <?php if ($eq_note) : ?>

@@ -96,6 +96,29 @@ require_once('inc/duplicate-posts.php');
 // PT / CRA ACF first-load defaults
 require_once('inc/pt-acf-defaults.php');
 
+/**
+ * Resolve ACF CF7 field (post ID, WP_Post, or legacy shortcode string) to a shortcode.
+ */
+function mudt_pt_cf7_shortcode($value)
+{
+    if ($value instanceof WP_Post) {
+        $value = $value->ID;
+    }
+
+    if (is_numeric($value) && (int) $value > 0) {
+        return '[contact-form-7 id="' . (int) $value . '"]';
+    }
+
+    if (is_string($value)) {
+        $value = trim($value);
+        if ($value !== '' && strpos($value, '[contact-form-7') === 0) {
+            return $value;
+        }
+    }
+
+    return '';
+}
+
 if (function_exists('acf_add_options_page')) {
 
     acf_add_options_page(array(

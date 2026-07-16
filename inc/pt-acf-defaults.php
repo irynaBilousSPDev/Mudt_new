@@ -179,7 +179,7 @@ function mudt_pt_acf_defaults()
         'pt_enquire_title' => 'Training, workshops or consulting - let\'s talk',
         'pt_enquire_lead' => 'Whatever you need - a scheduled course, an in-house workshop, a session on a special topic, or hands-on consulting on your own project - tell us and we will get back to you within one working day.',
         'pt_enquire_note' => 'Dates, figures and fees are indicative and to be confirmed.',
-        'pt_form_shortcode' => '',
+        'pt_cf7_form' => '',
 
         // —— CRA Practitioner ——
         'cra_hero_eyebrow' => 'Professional Training',
@@ -327,7 +327,7 @@ function mudt_pt_acf_defaults()
         'cra_enquire_kicker' => 'Get CRA-ready',
         'cra_enquire_title' => 'Register or request a quote',
         'cra_enquire_lead' => 'Tell us a little about you and we\'ll come back within one working day.',
-        'cra_form_shortcode' => '',
+        'cra_cf7_form' => '',
 
         'cra_webinar_text' => '<b>Free 60-minute webinar</b> - "CRA in practice: what to do before the deadlines" · 12 August 2026, 13:00-14:00',
         'cra_webinar_btn' => array(
