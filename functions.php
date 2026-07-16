@@ -34,9 +34,27 @@ function my_theme_enqueue_styles()
     wp_enqueue_style('page-styles');
     wp_enqueue_style('styles');
 
+    if (is_page_template('page-professional-training.php') || is_page_template('page-cra-practitioner.php')) {
+        wp_enqueue_style(
+            'page-pt',
+            get_template_directory_uri() . '/css/page-pt.css',
+            array('styles'),
+            filemtime(get_template_directory() . '/css/page-pt.css')
+        );
+    }
+
 }
 
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
+
+add_filter('acf/settings/save_json', function ($path) {
+    return get_stylesheet_directory() . '/acf-json';
+});
+
+add_filter('acf/settings/load_json', function ($paths) {
+    $paths[] = get_stylesheet_directory() . '/acf-json';
+    return $paths;
+});
 
 function theme_scripts()
 {
