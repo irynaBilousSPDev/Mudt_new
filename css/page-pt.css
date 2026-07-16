@@ -1,13 +1,16 @@
 /* Professional Training pages — scoped; load only on PT templates */
+/* Colors aligned with Mudt_new theme (styles.css / page-styles.css) */
 .pt-page {
-  --pt-navy: #0C1330;
-  --pt-blue: #1C9CD8;
-  --pt-blued: #1577B0;
-  --pt-grey: #333;
-  --pt-muted: #5c6b7a;
-  --pt-light: #EAF4FB;
-  --pt-line: #e4e9ef;
-  --pt-soft: #f6f9fc;
+  --pt-navy: #1F1B51;
+  --pt-navy-deep: #1F1A51;
+  --pt-blue: #1F9CD8;
+  --pt-blued: #2994FF;
+  --pt-grey: #000;
+  --pt-muted: #707070;
+  --pt-light: #EEF7FF;
+  --pt-light-2: #E9F3FF;
+  --pt-line: #e0e0e0;
+  --pt-soft: #F5F5F5;
   --pt-wrap: 1440px;
   --pt-header-offset: 150px;
   color: var(--pt-grey);
@@ -83,41 +86,42 @@ main.pt-page > .pt-hero:first-child {
   display: inline-block;
   background: var(--pt-blue);
   color: #fff;
-  padding: 11px 20px;
-  border-radius: 8px;
+  padding: 11px 22px;
+  border-radius: 34px;
   font-weight: 700;
   font-size: 14px;
   border: 1px solid var(--pt-blue);
   cursor: pointer;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 
 .pt-page .pt-btn:hover {
-  background: var(--pt-blued);
-  border-color: var(--pt-blued);
+  background: var(--pt-navy-deep);
+  border-color: var(--pt-navy-deep);
   color: #fff;
 }
 
 .pt-page .pt-btn.ghost {
   background: transparent;
-  color: #dbe8f4;
-  border-color: rgba(255, 255, 255, .4);
+  color: #fff;
+  border-color: rgba(255, 255, 255, .55);
 }
 
 .pt-page .pt-btn.ghost:hover {
-  background: rgba(255, 255, 255, .08);
+  background: rgba(255, 255, 255, .12);
   color: #fff;
 }
 
 .pt-page .pt-btn.outline {
   background: #fff;
   color: var(--pt-navy);
-  border-color: var(--pt-line);
+  border-color: var(--pt-navy);
 }
 
 .pt-page .pt-btn.outline:hover {
-  background: var(--pt-soft);
-  color: var(--pt-navy);
+  background: var(--pt-navy);
+  color: #fff;
 }
 
 .pt-page .pt-crumb {
@@ -188,7 +192,7 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-hero .pt-sub {
   font-size: 20px;
-  color: #c7d6e8;
+  color: rgba(255, 255, 255, .82);
   max-width: 68ch;
   margin: 0;
 }
@@ -221,11 +225,11 @@ main.pt-page > .pt-hero:first-child {
 }
 
 .pt-page .pt-facts span {
-  border: 1px solid rgba(255, 255, 255, .32);
+  border: 1px solid rgba(255, 255, 255, .35);
   border-radius: 22px;
   padding: 6px 14px;
   font-size: 13px;
-  color: #e7eef7;
+  color: rgba(255, 255, 255, .92);
 }
 
 .pt-page .pt-cta {
@@ -238,7 +242,7 @@ main.pt-page > .pt-hero:first-child {
 .pt-page .pt-hero-note {
   margin: 18px 0 0;
   font-size: 14px;
-  color: #aebbcf;
+  color: rgba(255, 255, 255, .7);
   max-width: 70ch;
 }
 
@@ -265,7 +269,7 @@ main.pt-page > .pt-hero:first-child {
 .pt-page .pt-lead {
   font-size: 17px;
   max-width: 90ch;
-  color: #3c4653;
+  color: #333;
   margin: 0;
 }
 
@@ -273,7 +277,7 @@ main.pt-page > .pt-hero:first-child {
   font-size: 12.5px;
   font-weight: 800;
   letter-spacing: 2px;
-  color: var(--pt-blued);
+  color: var(--pt-blue);
   text-transform: uppercase;
   margin-bottom: 6px;
 }
@@ -312,9 +316,10 @@ main.pt-page > .pt-hero:first-child {
   font-size: 20px;
 }
 
-.pt-page .pt-card p {
+.pt-page .pt-card p,
+.pt-page .pt-card > div {
   margin: 0 0 16px;
-  color: #4a5563;
+  color: #333;
   font-size: 15px;
 }
 
@@ -386,7 +391,7 @@ main.pt-page > .pt-hero:first-child {
 }
 
 .pt-page .pt-badge.grey {
-  background: #eef1f5;
+  background: #F5F5F5;
   color: var(--pt-muted);
 }
 
@@ -461,10 +466,11 @@ main.pt-page > .pt-hero:first-child {
   margin: 0 0 8px;
 }
 
-.pt-page .pt-day p {
+.pt-page .pt-day p,
+.pt-page .pt-day > div {
   margin: 0;
   font-size: 14.5px;
-  color: #4a5563;
+  color: #333;
 }
 
 .pt-page .pt-grid2 {
@@ -523,9 +529,10 @@ main.pt-page > .pt-hero:first-child {
   font-size: 15.5px;
 }
 
-.pt-page .pt-faq p {
+.pt-page .pt-faq p,
+.pt-page .pt-faq details > div {
   margin: 8px 0 0;
-  color: #4a5563;
+  color: #333;
   font-size: 15px;
 }
 
@@ -562,7 +569,7 @@ main.pt-page > .pt-hero:first-child {
 }
 
 .pt-page .pt-featured {
-  border: 1px solid #cfe3f4;
+  border: 1px solid #c5ddf5;
   background: var(--pt-light);
   border-radius: 16px;
   padding: 26px 28px;
@@ -580,9 +587,10 @@ main.pt-page > .pt-hero:first-child {
   font-weight: 800;
 }
 
-.pt-page .pt-featured p {
+.pt-page .pt-featured p,
+.pt-page .pt-featured > div > div:first-child {
   margin: 0 0 14px;
-  color: #3c4653;
+  color: #333;
   font-size: 15.5px;
 }
 
@@ -595,7 +603,7 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-featured .fx span {
   background: #fff;
-  border: 1px solid #cfe3f4;
+  border: 1px solid #c5ddf5;
   border-radius: 18px;
   padding: 6px 13px;
   font-size: 13px;
@@ -623,7 +631,7 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-webinar {
   background: var(--pt-light);
-  border: 1px solid #cfe3f4;
+  border: 1px solid #c5ddf5;
   border-radius: 14px;
   padding: 22px 24px;
   display: flex;
