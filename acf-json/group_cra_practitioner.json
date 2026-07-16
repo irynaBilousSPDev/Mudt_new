@@ -15,6 +15,14 @@
             "label": "Professional Training link",
             "name": "cra_crumb_pt",
             "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array"
         },
         {
@@ -22,6 +30,14 @@
             "label": "Center link",
             "name": "cra_crumb_center",
             "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array"
         },
         {
@@ -31,11 +47,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "CRA Practitioner",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "CRA Practitioner"
         },
         {
             "key": "field_cra_tab_hero",
@@ -50,6 +68,14 @@
             "label": "Hero facet image",
             "name": "cra_hero_facet",
             "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array",
             "preview_size": "medium",
             "library": "all"
@@ -61,11 +87,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Professional Centers › Center for Cyber Security and AI › CRA Practitioner"
         },
         {
             "key": "field_cra_hero_title",
@@ -74,11 +102,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "CRA Practitioner",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "CRA Practitioner"
         },
         {
             "key": "field_cra_hero_sub",
@@ -87,37 +117,48 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "The EU Cyber Resilience Act - from regulation to engineering practice. A 3-day practitioner course for the teams that have to implement it.",
             "rows": 4,
             "new_lines": "wpautop"
         },
         {
             "key": "field_cra_hero_note",
-            "label": "Hero note (HTML)",
+            "label": "Hero note",
             "name": "cra_hero_note",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": "wpautop",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<b>First cohort: 31 Aug - 2 Sep 2026</b> - further dates will follow. In-house courses for a single organisation are available on request.",
             "tabs": "all",
             "toolbar": "basic",
-            "media_upload": 0
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_cra_hero_cta_primary",
             "label": "Primary CTA",
             "name": "cra_hero_cta_primary",
             "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array"
         },
         {
@@ -125,6 +166,14 @@
             "label": "Secondary CTA",
             "name": "cra_hero_cta_secondary",
             "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array"
         },
         {
@@ -132,6 +181,14 @@
             "label": "Facts",
             "name": "cra_hero_facts",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -142,11 +199,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 }
             ]
         },
@@ -165,11 +224,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Why now",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Why now"
         },
         {
             "key": "field_cra_why_title",
@@ -178,11 +239,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "The deadlines are no longer on the horizon"
         },
         {
             "key": "field_cra_why_lead",
@@ -191,11 +254,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Unlike earlier guidance, the CRA carries real enforcement: fines of up to €15 million or 2.5% of global annual turnover, and the authority to withdraw non-compliant products from the EU market. Its notification obligations apply from 11 September 2026 and its essential requirements from 11 December 2027. Building the vulnerability tracking, incident detection and reporting workflows the CRA requires takes months - this course gives your team the shared understanding to start building the right things straight away.",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -214,11 +279,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Who it's for",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Who it's for"
         },
         {
             "key": "field_cra_who_lead",
@@ -227,11 +294,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "The cross-functional roles that have to implement the CRA. It is relevant to anyone who touches a product that falls under the CRA, not just the security team - and no prior CRA knowledge is required. Best attended as a team - you leave with a shared vocabulary and an aligned view of who does what.",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -240,6 +309,14 @@
             "label": "Role chips",
             "name": "cra_who_chips",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -250,11 +327,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 }
             ]
         },
@@ -273,11 +352,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Course approach",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Course approach"
         },
         {
             "key": "field_cra_approach_title",
@@ -286,11 +367,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Expert-led and built around your products"
         },
         {
             "key": "field_cra_approach_lead",
@@ -299,11 +382,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Each day combines expert-led instruction with guided discussion and worked examples. Participants work through real CRA requirements and map them to realistic products - whether software, connected hardware or industrial systems, with practical rather than hypothetical scenarios. Because the course is designed for cross-functional groups, product, engineering, legal and security teams build a shared understanding of the law and what it means for their work. It ends with a structured action-planning session, so teams leave with concrete next steps rather than just notes.",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -312,6 +397,14 @@
             "label": "Chips",
             "name": "cra_approach_chips",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -322,11 +415,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 }
             ]
         },
@@ -345,17 +440,27 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "What you'll be able to do",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "What you'll be able to do"
         },
         {
             "key": "field_cra_outcomes",
             "label": "Outcomes",
             "name": "cra_outcomes",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -366,11 +471,13 @@
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
                     "rows": 4,
                     "new_lines": "wpautop"
                 }
@@ -391,11 +498,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Topics outline",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Topics outline"
         },
         {
             "key": "field_cra_days_title",
@@ -404,17 +513,27 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "What the three days cover",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "What the three days cover"
         },
         {
             "key": "field_cra_days",
             "label": "Days",
             "name": "cra_days",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -425,11 +544,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_cra_day_title",
@@ -438,11 +559,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_cra_day_text",
@@ -451,11 +574,13 @@
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
                     "rows": 4,
                     "new_lines": "wpautop"
                 }
@@ -476,11 +601,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Format & facilities",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Format & facilities"
         },
         {
             "key": "field_cra_format_lead_1",
@@ -489,11 +616,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Delivered by the Center for Cyber Security and AI at MUDT, combining applied research with an expert partner network. Grounded in recognised frameworks - OWASP SAMM and the ENISA Secure-by-Design & Default playbook - so what you learn is repeatable and auditable.",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -504,11 +633,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "This first cohort (31 Aug - 2 Sep 2026) runs fully on-site at MUDT on the Siemens Campus in Neuperlach, Munich. Further dates follow, and later cohorts can also be delivered fully remote.",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -519,17 +650,27 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "At a glance",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "At a glance"
         },
         {
             "key": "field_cra_format_kv",
             "label": "At a glance",
             "name": "cra_format_kv",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -540,11 +681,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_cra_format_kv_value",
@@ -553,11 +696,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 }
             ]
         },
@@ -568,11 +713,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "* Per participant for all three days, excl. VAT - request a quote."
         },
         {
             "key": "field_cra_tab_trainers",
@@ -589,11 +736,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Trainers",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Trainers"
         },
         {
             "key": "field_cra_trainers_title",
@@ -602,17 +751,27 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Who teaches",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Who teaches"
         },
         {
             "key": "field_cra_trainers",
             "label": "Trainers",
             "name": "cra_trainers",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -621,6 +780,14 @@
                     "label": "Photo",
                     "name": "photo",
                     "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "return_format": "array",
                     "preview_size": "medium",
                     "library": "all"
@@ -632,11 +799,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_cra_trainer_photo_style",
@@ -645,11 +814,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_cra_trainer_name",
@@ -658,11 +829,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_cra_trainer_role",
@@ -671,11 +844,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_cra_trainer_bio",
@@ -684,11 +859,13 @@
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
                     "rows": 4,
                     "new_lines": "wpautop"
                 },
@@ -697,6 +874,14 @@
                     "label": "Link",
                     "name": "link",
                     "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "return_format": "array"
                 }
             ]
@@ -716,17 +901,27 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Questions",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Questions"
         },
         {
             "key": "field_cra_faq",
             "label": "FAQ",
             "name": "cra_faq",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -737,11 +932,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_cra_faq_a",
@@ -750,11 +947,13 @@
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
                     "rows": 4,
                     "new_lines": "wpautop"
                 }
@@ -775,11 +974,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Get CRA-ready",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Get CRA-ready"
         },
         {
             "key": "field_cra_enquire_title",
@@ -788,11 +989,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Register or request a quote",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Register or request a quote"
         },
         {
             "key": "field_cra_enquire_lead",
@@ -801,11 +1004,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Tell us a little about you and we'll come back within one working day.",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -816,11 +1021,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "[contact-form-7 id=\"87b4094\" title=\"Contact Program\"]",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
         },
         {
             "key": "field_cra_tab_webinar",
@@ -832,27 +1039,36 @@
         },
         {
             "key": "field_cra_webinar_text",
-            "label": "Webinar text (HTML)",
+            "label": "Webinar text",
             "name": "cra_webinar_text",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": "wpautop",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<b>Free 60-minute webinar</b> - \"CRA in practice: what to do before the deadlines\" · 12 August 2026, 13:00-14:00",
             "tabs": "all",
             "toolbar": "basic",
-            "media_upload": 0
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_cra_webinar_btn",
             "label": "Webinar button",
             "name": "cra_webinar_btn",
             "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array"
         },
         {
@@ -862,11 +1078,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Dates, figures and fees are indicative and to be confirmed."
         }
     ],
     "location": [
@@ -885,7 +1103,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "",
+    "description": "Text fields have default_value. Repeaters stay empty in admin until filled; PHP template fallbacks keep the front filled.",
     "show_in_rest": 0,
-    "modified": 1784229120
+    "modified": 1784230275
 }

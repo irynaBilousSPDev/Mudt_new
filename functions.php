@@ -35,26 +35,20 @@ function my_theme_enqueue_styles()
     wp_enqueue_style('styles');
 
     if (is_page_template('page-professional-training.php') || is_page_template('page-cra-practitioner.php')) {
-        wp_enqueue_style(
-            'page-pt',
-            get_template_directory_uri() . '/css/page-pt.css',
-            array('styles'),
-            filemtime(get_template_directory() . '/css/page-pt.css')
-        );
+        $pt_css = get_template_directory() . '/css/page-pt.css';
+        if (file_exists($pt_css)) {
+            wp_enqueue_style(
+                'page-pt',
+                get_template_directory_uri() . '/css/page-pt.css',
+                array('styles'),
+                filemtime($pt_css)
+            );
+        }
     }
 
 }
 
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
-
-add_filter('acf/settings/save_json', function ($path) {
-    return get_stylesheet_directory() . '/acf-json';
-});
-
-add_filter('acf/settings/load_json', function ($paths) {
-    $paths[] = get_stylesheet_directory() . '/acf-json';
-    return $paths;
-});
 
 function theme_scripts()
 {
@@ -98,6 +92,9 @@ require_once('inc/cpt.php');
 
 //dublicate cpt admin
 require_once('inc/duplicate-posts.php');
+
+// PT / CRA ACF first-load defaults
+require_once('inc/pt-acf-defaults.php');
 
 if (function_exists('acf_add_options_page')) {
 

@@ -15,6 +15,14 @@
             "label": "Hero facet image",
             "name": "pt_hero_facet",
             "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array",
             "preview_size": "medium",
             "library": "all"
@@ -26,11 +34,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Professional Training",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Professional Training"
         },
         {
             "key": "field_pt_hero_title",
@@ -39,11 +49,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "Training taught and delivered by the people who practise it",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -54,37 +66,48 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "Advanced courses for working professionals and their organisations - led by seasoned experts with years of hands-on experience in their field, backed by the university's academic standards and an established partner network.",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
             "rows": 4,
             "new_lines": "wpautop"
         },
         {
             "key": "field_pt_hero_note",
-            "label": "Hero note (HTML allowed)",
+            "label": "Hero note",
             "name": "pt_hero_note",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "<b>First course: CRA Practitioner, 31 Aug - 2 Sep 2026</b> - on-site in Munich. Further dates will follow.",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": "wpautop",
             "tabs": "all",
             "toolbar": "basic",
-            "media_upload": 0
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_pt_hero_cta_primary",
             "label": "Primary CTA",
             "name": "pt_hero_cta_primary",
             "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array"
         },
         {
@@ -92,6 +115,14 @@
             "label": "Secondary CTA",
             "name": "pt_hero_cta_secondary",
             "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array"
         },
         {
@@ -109,11 +140,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "First course",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "First course"
         },
         {
             "key": "field_pt_featured_title",
@@ -122,11 +155,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "CRA Practitioner",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "CRA Practitioner"
         },
         {
             "key": "field_pt_featured_lead",
@@ -135,11 +170,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "The EU Cyber Resilience Act, from regulation to engineering practice. A 3-day practitioner course for the cross-functional teams that have to implement it.",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -150,11 +187,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Enrolling now",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Enrolling now"
         },
         {
             "key": "field_pt_featured_heading",
@@ -163,11 +202,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Get CRA-ready before the deadlines",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Get CRA-ready before the deadlines"
         },
         {
             "key": "field_pt_featured_text",
@@ -176,11 +217,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "Notification obligations apply from 11 September 2026 and the essential requirements from 11 December 2027, with fines of up to € 15 million or 2.5% of global annual turnover. This course turns the regulation into concrete processes, architecture and evidence.",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -189,6 +232,14 @@
             "label": "Tags",
             "name": "pt_featured_tags",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -199,11 +250,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 }
             ]
         },
@@ -212,6 +265,14 @@
             "label": "Details button",
             "name": "pt_featured_btn",
             "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array"
         },
         {
@@ -219,6 +280,14 @@
             "label": "Quote button",
             "name": "pt_featured_quote",
             "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array"
         },
         {
@@ -228,17 +297,27 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "At a glance",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "At a glance"
         },
         {
             "key": "field_pt_featured_kv",
             "label": "At a glance rows",
             "name": "pt_featured_kv",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -249,11 +328,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_pt_featured_kv_value",
@@ -262,11 +343,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 }
             ]
         },
@@ -285,11 +368,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Course catalogue",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Course catalogue"
         },
         {
             "key": "field_pt_catalogue_title",
@@ -298,11 +383,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Our courses",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Our courses"
         },
         {
             "key": "field_pt_catalogue_lead",
@@ -311,11 +398,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "We open with the AppSec track and a current, urgent topic. Further courses follow in AppSec and in Compliance, Regulations and Frameworks.",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -324,6 +413,14 @@
             "label": "Courses",
             "name": "pt_courses",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -334,17 +431,27 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_pt_course_badge_grey",
                     "label": "Grey badge",
                     "name": "badge_grey",
                     "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "ui": 1,
                     "default_value": 0
                 },
@@ -353,6 +460,14 @@
                     "label": "Coming soon style",
                     "name": "soon",
                     "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "ui": 1,
                     "default_value": 0
                 },
@@ -363,11 +478,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_pt_course_text",
@@ -376,11 +493,13 @@
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
                     "rows": 4,
                     "new_lines": "wpautop"
                 },
@@ -389,6 +508,14 @@
                     "label": "Link",
                     "name": "link",
                     "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "return_format": "array"
                 }
             ]
@@ -408,11 +535,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "The centers",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "The centers"
         },
         {
             "key": "field_pt_centers_title",
@@ -421,11 +550,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Our centers",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Our centers"
         },
         {
             "key": "field_pt_centers_lead",
@@ -434,11 +565,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Our professional training is organised in centers. Each center brings together a clear theme, a faculty of experienced practitioners and an established partner network. Centers and their offerings grow over time; the first is the Center for Cyber Security and AI.",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -447,6 +580,14 @@
             "label": "Centers",
             "name": "pt_centers",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -457,17 +598,27 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_pt_center_badge_grey",
                     "label": "Grey badge",
                     "name": "badge_grey",
                     "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "ui": 1,
                     "default_value": 0
                 },
@@ -476,6 +627,14 @@
                     "label": "Coming soon style",
                     "name": "soon",
                     "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "ui": 1,
                     "default_value": 0
                 },
@@ -486,11 +645,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_pt_center_text",
@@ -499,11 +660,13 @@
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
                     "rows": 4,
                     "new_lines": "wpautop"
                 },
@@ -512,6 +675,14 @@
                     "label": "Link",
                     "name": "link",
                     "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "return_format": "array"
                 }
             ]
@@ -531,11 +702,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Why train with us",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Why train with us"
         },
         {
             "key": "field_pt_why_title",
@@ -544,17 +717,27 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "What sets our training apart",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "What sets our training apart"
         },
         {
             "key": "field_pt_why_cards",
             "label": "Cards",
             "name": "pt_why_cards",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -565,11 +748,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_pt_why_card_text",
@@ -578,11 +763,13 @@
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
                     "rows": 4,
                     "new_lines": "wpautop"
                 }
@@ -603,11 +790,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Beyond training",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Beyond training"
         },
         {
             "key": "field_pt_workshops_title",
@@ -616,11 +805,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Workshops and consulting",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Workshops and consulting"
         },
         {
             "key": "field_pt_workshops_lead",
@@ -629,11 +820,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "The same experts who teach also work with organisations directly - at the depth you need.",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -642,6 +835,14 @@
             "label": "Cards",
             "name": "pt_workshops_cards",
             "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add row",
             "sub_fields": [
@@ -652,11 +853,13 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
                 },
                 {
                     "key": "field_pt_ws_card_text",
@@ -665,11 +868,13 @@
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
                     "rows": 4,
                     "new_lines": "wpautop"
                 },
@@ -678,6 +883,14 @@
                     "label": "Link",
                     "name": "link",
                     "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "return_format": "array"
                 }
             ]
@@ -697,11 +910,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "Get in touch",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Get in touch"
         },
         {
             "key": "field_pt_enquire_title",
@@ -710,11 +925,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Training, workshops or consulting - let's talk"
         },
         {
             "key": "field_pt_enquire_lead",
@@ -723,11 +940,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Whatever you need - a scheduled course, an in-house workshop, a session on a special topic, or hands-on consulting on your own project - tell us and we will get back to you within one working day.",
             "rows": 4,
             "new_lines": "wpautop"
         },
@@ -738,11 +957,13 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "default_value": "[contact-form-7 id=\"87b4094\" title=\"Contact Program\"]",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
         },
         {
             "key": "field_pt_enquire_note",
@@ -751,11 +972,13 @@
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Dates, figures and fees are indicative and to be confirmed.",
             "rows": 4,
             "new_lines": "wpautop"
         }
@@ -776,7 +999,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "",
+    "description": "Text fields have default_value. Repeaters stay empty in admin until filled; PHP template fallbacks keep the front filled.",
     "show_in_rest": 0,
-    "modified": 1784229120
+    "modified": 1784230275
 }
