@@ -278,11 +278,11 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
         $trainers = $trainer_defaults;
     }
     ?>
-    <section class="pt-section">
-        <div class="pt-wrap">
-            <div class="pt-kicker"><?php echo mudt_pt_plain($tr_kicker); ?></div>
+    <section class="pt-section pt-trainers">
+        <div class="wrap">
+            <div class="kicker"><?php echo mudt_pt_plain($tr_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($tr_title); ?></h2>
-            <div class="pt-cards">
+            <div class="cards">
                 <?php foreach ($trainers as $i => $trainer) :
                     $def = $trainer_defaults[$i] ?? array();
                     $photo = $trainer['photo'] ?? null;
@@ -297,10 +297,11 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
                     if (!is_array($link) || empty($link['url'])) {
                         $link = $def['link'] ?? null;
                     }
+                    $img_class = 'trainer' . ($style === 'contain' ? ' contain' : '');
                     ?>
-                    <div class="pt-card person">
+                    <div class="card person">
                         <?php if ($photo_url) : ?>
-                            <img class="trainer<?php echo $style === 'contain' ? ' contain' : ''; ?>"
+                            <img class="<?php echo esc_attr(trim($img_class)); ?>"
                                  src="<?php echo esc_url($photo_url); ?>"
                                  alt="<?php echo esc_attr($name); ?>">
                         <?php endif; ?>
@@ -309,9 +310,9 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
                             <?php if ($role) : ?>
                                 <div class="role"><?php echo mudt_pt_plain($role); ?></div>
                             <?php endif; ?>
-                            <p><?php echo mudt_pt_html($bio); ?></p>
+                            <p><?php echo esc_html(wp_strip_all_tags((string) $bio)); ?></p>
                             <?php if (is_array($link) && !empty($link['url'])) : ?>
-                                <a class="pt-btn" href="<?php echo esc_url($link['url']); ?>" target="_blank" rel="noopener"><?php echo esc_html($link['title'] ?: 'LinkedIn profile'); ?></a>
+                                <a class="btn" href="<?php echo esc_url($link['url']); ?>" target="_blank" rel="noopener"><?php echo esc_html($link['title'] ?: 'LinkedIn profile'); ?></a>
                             <?php endif; ?>
                         </div>
                     </div>

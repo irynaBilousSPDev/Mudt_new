@@ -422,6 +422,113 @@ main.pt-page > .pt-hero:first-child {
   margin: 0 0 10px;
 }
 
+/* cra-practitioner.html — Trainers section (verbatim prototype markup/classes) */
+.pt-page .pt-trainers .wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.pt-page .pt-trainers .kicker {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--pt-blued);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.pt-page .pt-trainers h2 {
+  color: var(--pt-navy);
+  font-size: 28px;
+  margin: 0 0 8px;
+  font-weight: 800;
+}
+
+.pt-page .pt-trainers .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.pt-page .pt-trainers .card.person {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pt-page .pt-trainers .card.person img.trainer {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(100%);
+  background: var(--pt-soft);
+  margin-bottom: 16px;
+  display: block;
+  max-width: none;
+}
+
+.pt-page .pt-trainers .card.person img.trainer.contain {
+  object-fit: contain;
+  object-position: center;
+  background: #e9eef3;
+  filter: none;
+}
+
+.pt-page .pt-trainers .card.person .pbody {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.pt-page .pt-trainers .card.person h3 {
+  color: var(--pt-navy);
+  margin: 0 0 3px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.pt-page .pt-trainers .card .role {
+  color: var(--pt-navy);
+  font-size: 14px;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.pt-page .pt-trainers .card.person p {
+  margin: 0 0 16px;
+  color: #4a5563;
+  font-size: 15px;
+}
+
+.pt-page .pt-trainers .card.person .btn {
+  display: inline-block;
+  background: var(--pt-blue);
+  color: #fff;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  border: 1px solid var(--pt-blue);
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: auto;
+  text-decoration: none;
+}
+
+.pt-page .pt-trainers .card.person .btn:hover {
+  background: var(--pt-blued);
+  border-color: var(--pt-blued);
+  color: #fff;
+}
+
 .pt-page .pt-badge {
   display: inline-block;
   background: var(--pt-light);
