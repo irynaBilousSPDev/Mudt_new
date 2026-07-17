@@ -1,11 +1,7 @@
 ================================================================================
-CF7 form 2 of 2 — CRA Practitioner enquire
+CF7 form — CRA Practitioner enquire (matches cra-practitioner.html)
 ================================================================================
-WordPress admin → Contact → Edit form (or Add New)
-Title: CRA Practitioner Enquire
-
------ TAB: Form -----
-Replace the Form tab with this (matches cra-practitioner.html):
+Contact → Edit "CRA Practitioner Enquire" → replace entire Form tab:
 
 <div class="pt-cf7">
 	<p class="pt-cf7-field">
@@ -36,25 +32,17 @@ Replace the Form tab with this (matches cra-practitioner.html):
 		<label>Message (optional)</label>
 		[textarea your-message rows:3 placeholder "Anything we should know?"]
 	</p>
-	<p class="pt-cf7-field full pt-cf7-accept">
-		[acceptance acceptance-privacy] I agree to my personal data being processed in accordance with the Privacy Policy of the Munich University of Digital Technologies. [/acceptance]
+	<p class="pt-cf7-full pt-cf7-actions">
+		<input type="submit" class="wpcf7-form-control wpcf7-submit" value="Register" />
+		<input type="submit" class="wpcf7-form-control wpcf7-submit pt-cf7-secondary" value="Request a quote" />
 	</p>
-	<div class="pt-cf7-full pt-cf7-actions">
-		[submit "Register"]
-		[submit class:pt-cf7-secondary "Request a quote"]
-	</div>
 </div>
 
------ TAB: Mail -----
-To: (your admissions / training email)
-From: [your-name] <[your-email]>
-Subject: CRA Practitioner enquiry
+----- MAIL -----
+Subject: CRA Practitioner — [your-name]
 
-Message body:
-
-CRA Practitioner enquiry
-
-Name: [your-name]
+Body:
+ [your-name]
 Email: [your-email]
 Company: [your-organisation]
 Role: [your-role]
@@ -66,3 +54,5 @@ Message:
 
 --
 Sent from the CRA Practitioner page
+
+Note: no privacy checkbox in the HTML prototype. Add one later if required for production.

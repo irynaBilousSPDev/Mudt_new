@@ -580,8 +580,9 @@ main.pt-page > .pt-hero:first-child {
   margin: 0;
 }
 
-/* Match HTML prototype .form grid */
-.pt-page .pt-enquire-form .pt-cf7 {
+/* HTML prototype: .form grid */
+.pt-page .pt-enquire-form .pt-cf7,
+.pt-page .pt-enquire-form .row.pt-cf7 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
@@ -589,8 +590,21 @@ main.pt-page > .pt-hero:first-child {
   margin: 0;
 }
 
+.pt-page .pt-enquire-form .row.pt-cf7 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.pt-page .pt-enquire-form .row.pt-cf7 > [class*="col-"] {
+  padding: 0;
+  max-width: none;
+  flex: none;
+  width: auto;
+}
+
 .pt-page .pt-enquire-form .pt-cf7-field,
-.pt-page .pt-enquire-form .pt-cf7-full {
+.pt-page .pt-enquire-form .pt-cf7-full,
+.pt-page .pt-enquire-form .row.pt-cf7 > [class*="col-"] {
   margin: 0;
   min-width: 0;
 }
@@ -603,21 +617,23 @@ main.pt-page > .pt-hero:first-child {
   gap: 5px;
 }
 
-.pt-page .pt-enquire-form .pt-cf7-field > label,
-.pt-page .pt-enquire-form .pt-cf7-field > .wpcf7-form-control-wrap {
-  display: block;
-}
-
 .pt-page .pt-enquire-form .pt-cf7-field > label {
   font-size: 13px;
   color: var(--pt-muted);
   font-weight: 400;
   margin: 0;
+  line-height: 1.3;
 }
 
 .pt-page .pt-enquire-form .pt-cf7-field.full,
-.pt-page .pt-enquire-form .pt-cf7-full {
+.pt-page .pt-enquire-form .pt-cf7-full,
+.pt-page .pt-enquire-form .row.pt-cf7 .col-12 {
   grid-column: 1 / -1;
+}
+
+.pt-page .pt-enquire-form .pt-cf7-field p,
+.pt-page .pt-enquire-form .row.pt-cf7 p {
+  margin: 0;
 }
 
 .pt-page .pt-enquire-form .wpcf7-form-control-wrap {
@@ -640,6 +656,7 @@ main.pt-page > .pt-hero:first-child {
   line-height: 1.4;
   height: auto;
   min-height: 0;
+  margin: 0;
 }
 
 .pt-page .pt-enquire-form textarea {
@@ -664,26 +681,12 @@ main.pt-page > .pt-hero:first-child {
   border-color: var(--pt-blue);
 }
 
-.pt-page .pt-enquire-form .pt-cf7-accept .wpcf7-acceptance {
-  display: block;
-  margin: 0;
-}
-
-.pt-page .pt-enquire-form .wpcf7-acceptance .wpcf7-list-item {
-  margin: 0;
-}
-
-.pt-page .pt-enquire-form .wpcf7-acceptance .wpcf7-list-item-label {
-  font-size: 13px;
-  line-height: 1.45;
-  color: var(--pt-muted);
-}
-
 .pt-page .pt-enquire-form .pt-cf7-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
+  margin: 0;
 }
 
 .pt-page .pt-enquire-form .wpcf7-submit {
@@ -721,19 +724,29 @@ main.pt-page > .pt-hero:first-child {
   border-color: var(--pt-line);
 }
 
+.pt-page .pt-reassure {
+  font-size: 13px;
+  color: var(--pt-muted);
+  margin-top: 10px;
+  max-width: 640px;
+}
+
 .pt-page .pt-enquire-form .wpcf7-not-valid-tip,
 .pt-page .pt-enquire-form .wpcf7-response-output {
   font-size: 13px;
   margin: 8px 0 0;
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 760px) {
-  .pt-page .pt-enquire-form .pt-cf7 {
+  .pt-page .pt-enquire-form .pt-cf7,
+  .pt-page .pt-enquire-form .row.pt-cf7 {
     grid-template-columns: 1fr;
   }
 
   .pt-page .pt-enquire-form .pt-cf7-field.full,
-  .pt-page .pt-enquire-form .pt-cf7-full {
+  .pt-page .pt-enquire-form .pt-cf7-full,
+  .pt-page .pt-enquire-form .row.pt-cf7 .col-12 {
     grid-column: 1;
   }
 }

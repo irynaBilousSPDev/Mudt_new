@@ -18,12 +18,12 @@ $sub = get_field('cra_hero_sub') ?: 'The EU Cyber Resilience Act - from regulati
 $note = get_field('cra_hero_note') ?: '<b>First cohort: 31 Aug - 2 Sep 2026</b> - further dates will follow. In-house courses for a single organisation are available on request.';
 $cta_primary = get_field('cra_hero_cta_primary');
 $cta_secondary = get_field('cra_hero_cta_secondary');
-$cta_primary_url = is_array($cta_primary) && !empty($cta_primary['url']) ? $cta_primary['url'] : '#layout_id_6';
+$cta_primary_url = is_array($cta_primary) && !empty($cta_primary['url']) ? $cta_primary['url'] : '#enquire';
 $cta_primary_title = is_array($cta_primary) && !empty($cta_primary['title']) ? $cta_primary['title'] : 'Register / request a call';
 $cta_secondary_url = is_array($cta_secondary) && !empty($cta_secondary['url']) ? $cta_secondary['url'] : '#webinar';
 $cta_secondary_title = is_array($cta_secondary) && !empty($cta_secondary['title']) ? $cta_secondary['title'] : 'Join the free CRA webinar';
-if ($cta_primary_url === '#enquire') {
-    $cta_primary_url = '#layout_id_6';
+if ($cta_primary_url === '#enquire' || $cta_primary_url === '#layout_id_6') {
+    $cta_primary_url = '#enquire';
 }
 
 $facts = get_field('cra_hero_facts');
@@ -344,8 +344,9 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
     $eq_kicker = get_field('cra_enquire_kicker') ?: 'Get CRA-ready';
     $eq_title = get_field('cra_enquire_title') ?: 'Register or request a quote';
     $eq_lead = get_field('cra_enquire_lead') ?: 'Tell us a little about you and we\'ll come back within one working day.';
+    $eq_note = get_field('cra_enquire_note');
     ?>
-    <section class="pt-section section_sub_menu" id="layout_id_6">
+    <section class="pt-section" id="enquire">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($eq_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($eq_title); ?></h2>
@@ -357,15 +358,18 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
                     <div class="pt-enquire-missing">Select a Contact Form in the ACF field <strong>Contact form</strong> on this page (Enquire tab).</div>
                 <?php endif; ?>
             </div>
+            <?php if ($eq_note) : ?>
+                <p class="pt-reassure"><?php echo mudt_pt_plain($eq_note); ?></p>
+            <?php endif; ?>
         </div>
     </section>
 
     <?php
     $wb_text = get_field('cra_webinar_text') ?: '<b>Free 60-minute webinar</b> - "CRA in practice: what to do before the deadlines" · 12 August 2026, 13:00-14:00';
     $wb_btn = get_field('cra_webinar_btn');
-    $wb_btn_url = is_array($wb_btn) && !empty($wb_btn['url']) ? $wb_btn['url'] : '#layout_id_6';
-    if ($wb_btn_url === '#enquire') {
-        $wb_btn_url = '#layout_id_6';
+    $wb_btn_url = is_array($wb_btn) && !empty($wb_btn['url']) ? $wb_btn['url'] : '#enquire';
+    if ($wb_btn_url === '#enquire' || $wb_btn_url === '#layout_id_6') {
+        $wb_btn_url = '#enquire';
     }
     $wb_btn_title = is_array($wb_btn) && !empty($wb_btn['title']) ? $wb_btn['title'] : 'Register for the webinar';
     $wb_note = get_field('cra_webinar_note') ?: 'Dates, figures and fees are indicative and to be confirmed.';
