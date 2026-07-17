@@ -94,12 +94,8 @@ require_once('inc/cpt.php');
 //dublicate cpt admin
 require_once('inc/duplicate-posts.php');
 
-// PT / CRA ACF first-load defaults
 require_once('inc/pt-acf-defaults.php');
 
-/**
- * Resolve ACF CF7 field (post ID, WP_Post, or legacy shortcode string) to a shortcode.
- */
 function mudt_pt_cf7_shortcode($value)
 {
     if ($value instanceof WP_Post) {
@@ -120,9 +116,6 @@ function mudt_pt_cf7_shortcode($value)
     return '';
 }
 
-/**
- * PT / CRA CF7 forms use class pt-cf7 in the Form tab.
- */
 function mudt_pt_cf7_is_pt_form($contact_form)
 {
     if (!$contact_form instanceof WPCF7_ContactForm) {
@@ -143,9 +136,6 @@ function mudt_pt_cf7_messages_map()
     );
 }
 
-/**
- * English messages for PT enquire forms (works on AJAX too — not is_page_template).
- */
 add_filter('wpcf7_contact_form_properties', function ($properties, $contact_form) {
     if (!mudt_pt_cf7_is_pt_form($contact_form)) {
         return $properties;
@@ -170,9 +160,6 @@ add_filter('wpcf7_display_message', function ($message, $status) {
     return $messages[$status] ?? $message;
 }, 10, 2);
 
-/**
- * Scroll to CF7 response and unhide it after submit (CF7 6 keeps aria-hidden).
- */
 function mudt_pt_enqueue_cf7_feedback_script()
 {
     wp_register_script('pt-cf7-feedback', '', array(), null, true);

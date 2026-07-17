@@ -361,7 +361,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
                 <?php if ($form_shortcode) : ?>
                     <?php echo do_shortcode($form_shortcode); ?>
                 <?php else : ?>
-                    <div class="pt-enquire-missing">Select a Contact Form in the ACF field <strong>Contact form</strong> on this page (Enquire tab).</div>
+                    <div class="pt-enquire-missing">Contact form not configured.</div>
                 <?php endif; ?>
             </div>
             <?php if ($eq_note) : ?>

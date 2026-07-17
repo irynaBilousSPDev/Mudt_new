@@ -794,7 +794,7 @@
                 },
                 {
                     "key": "field_cra_trainer_photo_url",
-                    "label": "Photo URL (fallback)",
+                    "label": "Photo URL",
                     "name": "photo_url",
                     "type": "text",
                     "instructions": "",
@@ -1110,7 +1110,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Text fields have default_value. Repeaters stay empty in admin until filled; PHP template fallbacks keep the front filled.",
+    "description": "",
     "show_in_rest": 0,
     "modified": 1784235000
 }

@@ -1,5 +1,3 @@
-/* Professional Training pages — scoped; load only on PT templates */
-/* Colors aligned with Mudt_new theme (styles.css / page-styles.css) */
 .pt-page {
   --pt-navy: #1F1B51;
   --pt-navy-deep: #1F1A51;
@@ -11,7 +9,6 @@
   --pt-light-2: #E9F3FF;
   --pt-line: #e0e0e0;
   --pt-soft: #F5F5F5;
-  /* Match theme header (no sub_menu / breadcrumb on these pages) */
   --pt-header-offset: 150px;
   color: var(--pt-grey);
   line-height: 1.55;
@@ -19,16 +16,11 @@
   overflow-x: hidden;
 }
 
-/* No sub_header strip on PT templates — main menu only */
 body.page-template-page-professional-training-php .sub_header,
 body.page-template-page-cra-practitioner-php .sub_header {
   display: none;
 }
 
-/*
- * Theme sets main { margin-top: 180px } for the fixed header — leaves a white strip
- * above PT pages. Cancel that and extend the first block under the header instead.
- */
 main.pt-page {
   margin-top: 0 !important;
   padding-top: 0;
@@ -46,7 +38,6 @@ main.pt-page > .pt-hero:first-child {
   }
 }
 
-/* Neutralize theme globals (styles.css sets img { width: 100% }) */
 .pt-page img {
   width: auto;
   max-width: 100%;
@@ -58,7 +49,6 @@ main.pt-page > .pt-hero:first-child {
   text-decoration: none;
 }
 
-/* Align with theme .container (Bootstrap 4 + styles.css overrides) */
 .pt-page .pt-wrap {
   width: 100%;
   margin-right: auto;
@@ -323,7 +313,6 @@ main.pt-page > .pt-hero:first-child {
   margin-bottom: 6px;
 }
 
-/* professional-training.html — .cards */
 .pt-page .pt-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -437,7 +426,6 @@ main.pt-page > .pt-hero:first-child {
   text-align: left;
 }
 
-/* Trainers: 2 columns, left-aligned within theme container */
 .pt-page .pt-trainers .pt-cards {
   grid-template-columns: repeat(2, minmax(280px, 1fr));
   justify-content: start;
@@ -615,7 +603,6 @@ main.pt-page > .pt-hero:first-child {
   margin: 0;
 }
 
-/* CF7 inserts <br> for newlines in the form template — hide them */
 .pt-page .pt-enquire-form .pt-cf7 br {
   display: none;
 }
@@ -627,7 +614,6 @@ main.pt-page > .pt-hero:first-child {
   border: 0;
 }
 
-/* CF7 6 keeps aria-hidden on .wpcf7-response-output — show when it has text */
 .pt-page .pt-enquire-form .wpcf7-response-output:not(:empty) {
   display: block !important;
   margin: 16px 0 0;
@@ -652,7 +638,6 @@ main.pt-page > .pt-hero:first-child {
   color: #6b1a1a;
 }
 
-/* HTML prototype: .form grid */
 .pt-page .pt-enquire-form .pt-cf7,
 .pt-page .pt-enquire-form .row.pt-cf7 {
   display: grid;
@@ -681,7 +666,6 @@ main.pt-page > .pt-hero:first-child {
   min-width: 0;
 }
 
-/* prototype: label column with 5px gap to control */
 .pt-page .pt-enquire-form .pt-cf7-field {
   display: flex;
   flex-direction: column;

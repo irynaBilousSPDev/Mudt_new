@@ -1,8 +1,4 @@
 <?php
-/**
- * First-load defaults + one-time "Sync content" admin button for PT / CRA pages.
- * After both pages are synced, delete this file and remove require_once from functions.php.
- */
 
 function mudt_pt_acf_defaults()
 {
@@ -15,7 +11,6 @@ function mudt_pt_acf_defaults()
     $pt_url = home_url('/professional-training/');
 
     $defaults = array(
-        // —— Professional Training ——
         'pt_hero_eyebrow' => 'Professional Training',
         'pt_hero_title' => 'Training taught and delivered by the people who practise it',
         'pt_hero_sub' => 'Advanced courses for working professionals and their organisations - led by seasoned experts with years of hands-on experience in their field, backed by the university\'s academic standards and an established partner network.',
@@ -181,7 +176,6 @@ function mudt_pt_acf_defaults()
         'pt_enquire_note' => 'Dates, figures and fees are indicative and to be confirmed.',
         'pt_cf7_form' => '',
 
-        // —— CRA Practitioner ——
         'cra_hero_eyebrow' => 'Professional Centers › Center for Cyber Security and AI › CRA Practitioner',
         'cra_hero_title' => 'CRA Practitioner',
         'cra_hero_sub' => 'The EU Cyber Resilience Act - from regulation to engineering practice. A 3-day practitioner course for the teams that have to implement it.',
@@ -341,9 +335,6 @@ function mudt_pt_acf_defaults()
     return $defaults;
 }
 
-/**
- * Safe HTML from ACF textarea/wysiwyg (wpautop may wrap in <p>).
- */
 function mudt_pt_html($value)
 {
     if ($value === null || $value === false || $value === '') {
@@ -352,9 +343,6 @@ function mudt_pt_html($value)
     return wp_kses_post($value);
 }
 
-/**
- * Plain text for titles / labels (strip any ACF <p> wrappers).
- */
 function mudt_pt_plain($value)
 {
     if ($value === null || $value === false || $value === '') {
@@ -363,9 +351,6 @@ function mudt_pt_plain($value)
     return esc_html(wp_strip_all_tags((string) $value));
 }
 
-/**
- * Page templates that use the PT content sync button.
- */
 function mudt_pt_sync_templates()
 {
     return array(
@@ -387,9 +372,6 @@ function mudt_pt_content_is_synced($post_id)
     return (bool) get_post_meta((int) $post_id, '_mudt_pt_content_synced', true);
 }
 
-/**
- * Write all template defaults into ACF fields for this page.
- */
 function mudt_pt_sync_content_to_post($post_id)
 {
     $post_id = (int) $post_id;
@@ -409,21 +391,16 @@ function mudt_pt_sync_content_to_post($post_id)
     }
 
     update_post_meta($post_id, '_mudt_pt_content_synced', 1);
-    // Clear old auto-seed flag if present from earlier approach.
     delete_post_meta($post_id, '_mudt_pt_defaults_applied');
 
     return true;
 }
 
-/**
- * Admin metabox: one-time "Sync content" button.
- * After sync, the button is hidden. Later you can remove this whole block + require from functions.php.
- */
 add_action('add_meta_boxes', function () {
     foreach (array('page') as $screen) {
         add_meta_box(
             'mudt_pt_sync_content',
-            'PT content sync',
+            'Content sync',
             'mudt_pt_sync_content_metabox',
             $screen,
             'side',
@@ -435,13 +412,11 @@ add_action('add_meta_boxes', function () {
 function mudt_pt_sync_content_metabox($post)
 {
     if (!mudt_pt_is_sync_template($post->ID)) {
-        echo '<p style="margin:0;color:#646970;">Assign template <strong>Professional Training</strong> or <strong>CRA Practitioner</strong> to use sync.</p>';
         return;
     }
 
     if (mudt_pt_content_is_synced($post->ID)) {
-        echo '<p style="margin:0 0 8px;"><strong style="color:#008a20;">Content synced</strong></p>';
-        echo '<p style="margin:0;color:#646970;font-size:12px;">ACF fields were filled from the HTML template. You can edit them normally. When both pages are done, remove <code>inc/pt-acf-defaults.php</code> and its <code>require_once</code> from <code>functions.php</code>.</p>';
+        echo '<p style="margin:0;">Content synced.</p>';
         return;
     }
 
@@ -450,8 +425,8 @@ function mudt_pt_sync_content_metabox($post)
         'mudt_pt_sync_content_' . (int) $post->ID
     );
 
-    echo '<p style="margin:0 0 10px;">Fill all ACF fields (including repeaters) from the HTML template copy. One-time action.</p>';
-    echo '<p style="margin:0;"><a class="button button-primary" href="' . esc_url($url) . '">Sync content</a></p>';
+    echo '<p style="margin:0 0 10px;">Import default field values.</p>';
+    echo '<p style="margin:0;"><a class="button button-primary" href="' . esc_url($url) . '">Sync</a></p>';
 }
 
 add_action('admin_post_mudt_pt_sync_content', function () {
