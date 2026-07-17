@@ -8,11 +8,7 @@ $uri = get_template_directory_uri();
 $facet = get_field('cra_hero_facet');
 $facet_url = is_array($facet) && !empty($facet['url']) ? $facet['url'] : $uri . '/images/pt-hero-facet.png';
 
-$eyebrow = get_field('cra_hero_eyebrow') ?: 'Professional Training';
-// Temporary: ignore breadcrumb-style eyebrow from earlier sync
-if (is_string($eyebrow) && (strpos($eyebrow, '›') !== false || substr_count($eyebrow, '>') >= 2)) {
-    $eyebrow = 'Professional Training';
-}
+$eyebrow = get_field('cra_hero_eyebrow') ?: 'Professional Centers › Center for Cyber Security and AI › CRA Practitioner';
 $title = get_field('cra_hero_title') ?: 'CRA Practitioner';
 $sub = get_field('cra_hero_sub') ?: 'The EU Cyber Resilience Act - from regulation to engineering practice. A 3-day practitioner course for the teams that have to implement it.';
 $note = get_field('cra_hero_note') ?: '<b>First cohort: 31 Aug - 2 Sep 2026</b> - further dates will follow. In-house courses for a single organisation are available on request.';
@@ -72,7 +68,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
     $wn_title = get_field('cra_why_title') ?: 'The deadlines are no longer on the horizon';
     $wn_lead = get_field('cra_why_lead') ?: 'Unlike earlier guidance, the CRA carries real enforcement: fines of up to €15 million or 2.5% of global annual turnover, and the authority to withdraw non-compliant products from the EU market. Its notification obligations apply from 11 September 2026 and its essential requirements from 11 December 2027. Building the vulnerability tracking, incident detection and reporting workflows the CRA requires takes months - this course gives your team the shared understanding to start building the right things straight away.';
     ?>
-    <section class="pt-section section_sub_menu" id="layout_id_1">
+    <section class="pt-section">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($wn_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($wn_title); ?></h2>
@@ -96,7 +92,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
         );
     }
     ?>
-    <section class="pt-section alt section_sub_menu" id="layout_id_2">
+    <section class="pt-section alt">
         <div class="pt-wrap">
             <h2><?php echo mudt_pt_plain($who_title); ?></h2>
             <div class="pt-lead"><?php echo mudt_pt_html($who_lead); ?></div>
@@ -194,7 +190,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
         );
     }
     ?>
-    <section class="pt-section section_sub_menu" id="layout_id_3">
+    <section class="pt-section">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($days_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($days_title); ?></h2>
@@ -205,7 +201,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
                             <span class="pt-badge"><?php echo mudt_pt_plain($day['badge']); ?></span>
                         <?php endif; ?>
                         <h3><?php echo mudt_pt_plain($day['title'] ?? ''); ?></h3>
-                        <div><?php echo mudt_pt_html($day['text'] ?? ''); ?></div>
+                        <p><?php echo mudt_pt_html($day['text'] ?? ''); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -230,7 +226,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
     }
     $fmt_fee_note = get_field('cra_format_fee_note') ?: '* Per participant for all three days, excl. VAT - request a quote.';
     ?>
-    <section class="pt-section alt section_sub_menu" id="layout_id_4">
+    <section class="pt-section alt">
         <div class="pt-wrap">
             <div class="pt-grid2">
                 <div>
@@ -281,7 +277,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
         );
     }
     ?>
-    <section class="pt-section section_sub_menu" id="layout_id_5">
+    <section class="pt-section">
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($tr_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($tr_title); ?></h2>
@@ -303,7 +299,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
                             <?php if (!empty($trainer['role'])) : ?>
                                 <div class="role"><?php echo mudt_pt_plain($trainer['role']); ?></div>
                             <?php endif; ?>
-                            <div><?php echo mudt_pt_html($trainer['bio'] ?? ''); ?></div>
+                            <p><?php echo mudt_pt_html($trainer['bio'] ?? ''); ?></p>
                             <?php if (is_array($link) && !empty($link['url'])) : ?>
                                 <a class="pt-btn" href="<?php echo esc_url($link['url']); ?>" target="_blank" rel="noopener"><?php echo esc_html($link['title'] ?: 'LinkedIn profile'); ?></a>
                             <?php endif; ?>

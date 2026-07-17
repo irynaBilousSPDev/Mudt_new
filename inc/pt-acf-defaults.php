@@ -182,7 +182,7 @@ function mudt_pt_acf_defaults()
         'pt_cf7_form' => '',
 
         // —— CRA Practitioner ——
-        'cra_hero_eyebrow' => 'Professional Training',
+        'cra_hero_eyebrow' => 'Professional Centers › Center for Cyber Security and AI › CRA Practitioner',
         'cra_hero_title' => 'CRA Practitioner',
         'cra_hero_sub' => 'The EU Cyber Resilience Act - from regulation to engineering practice. A 3-day practitioner course for the teams that have to implement it.',
         'cra_hero_note' => '<b>First cohort: 31 Aug - 2 Sep 2026</b> - further dates will follow. In-house courses for a single organisation are available on request.',

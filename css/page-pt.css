@@ -315,28 +315,16 @@ main.pt-page > .pt-hero:first-child {
   font-size: 12.5px;
   font-weight: 800;
   letter-spacing: 2px;
-  color: var(--pt-blue);
+  color: var(--pt-blued);
   text-transform: uppercase;
   margin-bottom: 6px;
 }
 
 .pt-page .pt-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin-top: 28px;
-}
-
-@media (max-width: 1100px) {
-  .pt-page .pt-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 700px) {
-  .pt-page .pt-cards {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 22px;
 }
 
 .pt-page .pt-card {
@@ -355,9 +343,9 @@ main.pt-page > .pt-hero:first-child {
 }
 
 .pt-page .pt-card p,
-.pt-page .pt-card > div {
+.pt-page .pt-card > div:not(.pbody):not(.role) {
   margin: 0 0 16px;
-  color: #333;
+  color: #4a5563;
   font-size: 15px;
 }
 
@@ -407,6 +395,17 @@ main.pt-page > .pt-hero:first-child {
 .pt-page .pt-card.person h3 {
   margin: 0 0 3px;
   font-weight: 600;
+}
+
+.pt-page .pt-card.person .pbody p {
+  margin: 0 0 16px;
+  color: #4a5563;
+  font-size: 15px;
+}
+
+.pt-page .pt-card.person .pbody .pt-btn {
+  align-self: flex-start;
+  margin-top: auto;
 }
 
 .pt-page .pt-card .role {
@@ -476,15 +475,9 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-days {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin-top: 28px;
-}
-
-@media (max-width: 900px) {
-  .pt-page .pt-days {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 22px;
 }
 
 .pt-page .pt-day {
@@ -508,7 +501,7 @@ main.pt-page > .pt-hero:first-child {
 .pt-page .pt-day > div {
   margin: 0;
   font-size: 14.5px;
-  color: #333;
+  color: #4a5563;
 }
 
 .pt-page .pt-grid2 {
