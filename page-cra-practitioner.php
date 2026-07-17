@@ -312,7 +312,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
                             <?php endif; ?>
                             <p><?php echo esc_html(wp_strip_all_tags((string) $bio)); ?></p>
                             <?php if (is_array($link) && !empty($link['url'])) : ?>
-                                <a class="btn" href="<?php echo esc_url($link['url']); ?>" target="_blank" rel="noopener"><?php echo esc_html($link['title'] ?: 'LinkedIn profile'); ?></a>
+                                <a class="pt-btn" href="<?php echo esc_url($link['url']); ?>" target="_blank" rel="noopener"><?php echo esc_html($link['title'] ?: 'LinkedIn profile'); ?></a>
                             <?php endif; ?>
                         </div>
                     </div>
