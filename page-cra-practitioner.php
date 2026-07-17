@@ -255,26 +255,27 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
     <?php
     $tr_kicker = get_field('cra_trainers_kicker') ?: 'Trainers';
     $tr_title = get_field('cra_trainers_title') ?: 'Who teaches';
+    $trainer_defaults = array(
+        array(
+            'photo_url' => 'https://securehabits.nl/wp-content/uploads/2024/10/2023_November_square-Medium.jpg',
+            'photo_style' => '',
+            'name' => 'Nariman Aga-Tagiyev',
+            'role' => 'Product Security Architect',
+            'bio' => 'Application Security Architect with more than 20 years in software development - full-stack, backend, DevOps and cloud - and fully focused on application security since 2016. He is a member of the CEN/CLC/JTC 13/WG9 that develops the CRA standards.',
+            'link' => array('url' => 'https://www.linkedin.com/in/aganariman/', 'title' => 'LinkedIn profile'),
+        ),
+        array(
+            'photo_url' => 'https://securehabits.nl/wp-content/uploads/2026/06/dagmar.KZEwhguV_2plRTu.webp',
+            'photo_style' => 'contain',
+            'name' => 'Dagmar Stefanie Moser',
+            'role' => 'Consultant, Auditor and Lecturer',
+            'bio' => 'Seasoned IT security expert and founder of blueheads GmbH, with over 25 years in IT architecture, secure software engineering and information security; certified ISO/IEC 27001 Lead Auditor and lecturer at MUDT.',
+            'link' => array('url' => 'https://www.linkedin.com/in/dagmar-stefanie-moser-909777176/', 'title' => 'LinkedIn profile'),
+        ),
+    );
     $trainers = get_field('cra_trainers');
     if (empty($trainers)) {
-        $trainers = array(
-            array(
-                'photo_url' => 'https://securehabits.nl/wp-content/uploads/2024/10/2023_November_square-Medium.jpg',
-                'photo_style' => '',
-                'name' => 'Nariman Aga-Tagiyev',
-                'role' => 'Product Security Architect',
-                'bio' => 'Application Security Architect with more than 20 years in software development - full-stack, backend, DevOps and cloud - and fully focused on application security since 2016. He is a member of the CEN/CLC/JTC 13/WG9 that develops the CRA standards.',
-                'link' => array('url' => 'https://www.linkedin.com/in/aganariman/', 'title' => 'LinkedIn profile'),
-            ),
-            array(
-                'photo_url' => 'https://securehabits.nl/wp-content/uploads/2026/06/dagmar.KZEwhguV_2plRTu.webp',
-                'photo_style' => 'contain',
-                'name' => 'Dagmar Stefanie Moser',
-                'role' => 'Consultant, Auditor and Lecturer',
-                'bio' => 'Seasoned IT security expert and founder of blueheads GmbH, with over 25 years in IT architecture, secure software engineering and information security; certified ISO/IEC 27001 Lead Auditor and lecturer at MUDT.',
-                'link' => array('url' => 'https://www.linkedin.com/in/dagmar-stefanie-moser-909777176/', 'title' => 'LinkedIn profile'),
-            ),
-        );
+        $trainers = $trainer_defaults;
     }
     ?>
     <section class="pt-section">
@@ -282,24 +283,33 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
             <div class="pt-kicker"><?php echo mudt_pt_plain($tr_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($tr_title); ?></h2>
             <div class="pt-cards">
-                <?php foreach ($trainers as $trainer) :
+                <?php foreach ($trainers as $i => $trainer) :
+                    $def = $trainer_defaults[$i] ?? array();
                     $photo = $trainer['photo'] ?? null;
-                    $photo_url = is_array($photo) && !empty($photo['url']) ? $photo['url'] : ($trainer['photo_url'] ?? '');
-                    $style = $trainer['photo_style'] ?? '';
+                    $photo_url = is_array($photo) && !empty($photo['url'])
+                        ? $photo['url']
+                        : ($trainer['photo_url'] ?? ($def['photo_url'] ?? ''));
+                    $style = $trainer['photo_style'] ?? ($def['photo_style'] ?? '');
+                    $name = $trainer['name'] ?? ($def['name'] ?? '');
+                    $role = $trainer['role'] ?? ($def['role'] ?? '');
+                    $bio = $trainer['bio'] ?? ($def['bio'] ?? '');
                     $link = $trainer['link'] ?? null;
+                    if (!is_array($link) || empty($link['url'])) {
+                        $link = $def['link'] ?? null;
+                    }
                     ?>
                     <div class="pt-card person">
                         <?php if ($photo_url) : ?>
                             <img class="trainer<?php echo $style === 'contain' ? ' contain' : ''; ?>"
                                  src="<?php echo esc_url($photo_url); ?>"
-                                 alt="<?php echo esc_attr($trainer['name'] ?? ''); ?>">
+                                 alt="<?php echo esc_attr($name); ?>">
                         <?php endif; ?>
                         <div class="pbody">
-                            <h3><?php echo mudt_pt_plain($trainer['name'] ?? ''); ?></h3>
-                            <?php if (!empty($trainer['role'])) : ?>
-                                <div class="role"><?php echo mudt_pt_plain($trainer['role']); ?></div>
+                            <h3><?php echo mudt_pt_plain($name); ?></h3>
+                            <?php if ($role) : ?>
+                                <div class="role"><?php echo mudt_pt_plain($role); ?></div>
                             <?php endif; ?>
-                            <p><?php echo mudt_pt_html($trainer['bio'] ?? ''); ?></p>
+                            <p><?php echo mudt_pt_html($bio); ?></p>
                             <?php if (is_array($link) && !empty($link['url'])) : ?>
                                 <a class="pt-btn" href="<?php echo esc_url($link['url']); ?>" target="_blank" rel="noopener"><?php echo esc_html($link['title'] ?: 'LinkedIn profile'); ?></a>
                             <?php endif; ?>

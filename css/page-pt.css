@@ -352,6 +352,14 @@ main.pt-page > .pt-hero:first-child {
 .pt-page .pt-card .pt-btn {
   align-self: flex-start;
   margin-top: auto;
+  padding: 11px 20px;
+  border-radius: 8px;
+}
+
+.pt-page .pt-card .pt-btn:hover {
+  background: var(--pt-blued);
+  border-color: var(--pt-blued);
+  color: #fff;
 }
 
 .pt-page .pt-card.soon {
@@ -367,7 +375,6 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-card.person img.trainer {
   width: 200px;
-  max-width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
