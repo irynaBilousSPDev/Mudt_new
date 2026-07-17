@@ -121,17 +121,52 @@ function mudt_pt_cf7_shortcode($value)
 }
 
 /**
- * Clear English feedback on PT / CRA enquire forms.
+ * PT / CRA CF7 forms use class pt-cf7 in the Form tab.
  */
-add_filter('wpcf7_display_message', function ($message, $status) {
-    if (!is_page_template(array('page-professional-training.php', 'page-cra-practitioner.php'))) {
-        return $message;
+function mudt_pt_cf7_is_pt_form($contact_form)
+{
+    if (!$contact_form instanceof WPCF7_ContactForm) {
+        return false;
     }
-    $messages = array(
+    $form = (string) $contact_form->prop('form');
+    return strpos($form, 'pt-cf7') !== false;
+}
+
+function mudt_pt_cf7_messages_map()
+{
+    return array(
         'mail_sent_ok' => 'Thank you — your enquiry has been sent. We will get back to you within one working day.',
         'mail_sent_ng' => 'Sorry, something went wrong while sending. Please try again or contact us directly.',
         'validation_error' => 'Please check the highlighted fields and try again.',
+        'spam' => 'Sorry, something went wrong while sending. Please try again or contact us directly.',
+        'accept_terms' => 'You must accept the terms and conditions before sending your message.',
     );
+}
+
+/**
+ * English messages for PT enquire forms (works on AJAX too — not is_page_template).
+ */
+add_filter('wpcf7_contact_form_properties', function ($properties, $contact_form) {
+    if (!mudt_pt_cf7_is_pt_form($contact_form)) {
+        return $properties;
+    }
+    if (!isset($properties['messages']) || !is_array($properties['messages'])) {
+        $properties['messages'] = array();
+    }
+    foreach (mudt_pt_cf7_messages_map() as $key => $text) {
+        $properties['messages'][$key] = $text;
+    }
+    return $properties;
+}, 10, 2);
+
+add_filter('wpcf7_display_message', function ($message, $status) {
+    $contact_form = function_exists('wpcf7_get_current_contact_form')
+        ? wpcf7_get_current_contact_form()
+        : null;
+    if (!$contact_form || !mudt_pt_cf7_is_pt_form($contact_form)) {
+        return $message;
+    }
+    $messages = mudt_pt_cf7_messages_map();
     return $messages[$status] ?? $message;
 }, 10, 2);
 
