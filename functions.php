@@ -44,6 +44,7 @@ function my_theme_enqueue_styles()
                 filemtime($pt_css)
             );
         }
+        mudt_pt_enqueue_cf7_feedback_script();
     }
 
 }
@@ -117,6 +118,34 @@ function mudt_pt_cf7_shortcode($value)
     }
 
     return '';
+}
+
+/**
+ * Clear English feedback on PT / CRA enquire forms.
+ */
+add_filter('wpcf7_display_message', function ($message, $status) {
+    if (!is_page_template(array('page-professional-training.php', 'page-cra-practitioner.php'))) {
+        return $message;
+    }
+    $messages = array(
+        'mail_sent_ok' => 'Thank you — your enquiry has been sent. We will get back to you within one working day.',
+        'mail_sent_ng' => 'Sorry, something went wrong while sending. Please try again or contact us directly.',
+        'validation_error' => 'Please check the highlighted fields and try again.',
+    );
+    return $messages[$status] ?? $message;
+}, 10, 2);
+
+/**
+ * Scroll to CF7 response and unhide it after submit (CF7 6 keeps aria-hidden).
+ */
+function mudt_pt_enqueue_cf7_feedback_script()
+{
+    wp_register_script('pt-cf7-feedback', '', array(), null, true);
+    wp_enqueue_script('pt-cf7-feedback');
+    wp_add_inline_script(
+        'pt-cf7-feedback',
+        "document.addEventListener('wpcf7submit',function(e){var f=e.target;if(!f||!f.closest('.pt-enquire-form'))return;f.querySelectorAll('.wpcf7-response-output').forEach(function(el){el.removeAttribute('aria-hidden');});var m=f.querySelector('.wpcf7-response-output:not(:empty)');if(m)m.scrollIntoView({behavior:'smooth',block:'nearest'});});"
+    );
 }
 
 if (function_exists('acf_add_options_page')) {

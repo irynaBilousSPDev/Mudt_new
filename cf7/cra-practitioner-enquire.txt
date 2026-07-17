@@ -20,3 +20,19 @@ Participants: [participants]
 
 Message:
 [your-message]
+
+----- MESSAGES (Contact → Messages tab) -----
+Mail sent successfully:
+Thank you — your enquiry has been sent. We will get back to you within one working day.
+
+Mail sent failed:
+Sorry, something went wrong while sending. Please try again or contact us directly.
+
+Validation errors:
+Please check the highlighted fields and try again.
+
+----- MAIL SETTINGS -----
+To: your inbox email
+From: [your-name] <[your-email]>
+Reply-To: [your-email]
+Subject: CRA Practitioner — [your-name]

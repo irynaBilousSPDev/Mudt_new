@@ -672,12 +672,36 @@ main.pt-page > .pt-hero:first-child {
   display: none;
 }
 
-.pt-page .pt-enquire-form .wpcf7-response-output:empty,
-.pt-page .pt-enquire-form .wpcf7-response-output[aria-hidden="true"] {
+.pt-page .pt-enquire-form .wpcf7-response-output:empty {
   display: none;
   margin: 0;
   padding: 0;
   border: 0;
+}
+
+/* CF7 6 keeps aria-hidden on .wpcf7-response-output — show when it has text */
+.pt-page .pt-enquire-form .wpcf7-response-output:not(:empty) {
+  display: block !important;
+  margin: 16px 0 0;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.45;
+  max-width: 640px;
+}
+
+.pt-page .pt-enquire-form form.sent .wpcf7-response-output:not(:empty) {
+  border: 1px solid #8bc49a;
+  background: #edf8ef;
+  color: #1e4620;
+}
+
+.pt-page .pt-enquire-form form.failed .wpcf7-response-output:not(:empty),
+.pt-page .pt-enquire-form form.invalid .wpcf7-response-output:not(:empty),
+.pt-page .pt-enquire-form form.spam .wpcf7-response-output:not(:empty) {
+  border: 1px solid #e8b4b4;
+  background: #fdf0f0;
+  color: #6b1a1a;
 }
 
 /* HTML prototype: .form grid */
@@ -838,11 +862,9 @@ main.pt-page > .pt-hero:first-child {
   max-width: 640px;
 }
 
-.pt-page .pt-enquire-form .wpcf7-not-valid-tip,
-.pt-page .pt-enquire-form .wpcf7-response-output {
+.pt-page .pt-enquire-form .wpcf7-not-valid-tip {
   font-size: 13px;
   margin: 8px 0 0;
-  grid-column: 1 / -1;
 }
 
 @media (max-width: 760px) {
