@@ -58,62 +58,16 @@ main.pt-page > .pt-hero:first-child {
   text-decoration: none;
 }
 
-/* Align with theme .container (Bootstrap 4 + styles.css overrides) */
+/* HTML prototype: .wrap { max-width: 1080px; padding: 0 24px } */
 .pt-page .pt-wrap {
   width: 100%;
+  max-width: 1080px;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 24px;
+  padding-left: 24px;
   box-sizing: border-box;
-}
-
-@media (min-width: 576px) {
-  .pt-page .pt-wrap {
-    max-width: 540px;
-  }
-}
-
-@media (min-width: 768px) {
-  .pt-page .pt-wrap {
-    max-width: 720px;
-  }
-}
-
-@media (min-width: 992px) {
-  .pt-page .pt-wrap {
-    max-width: 960px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .pt-page .pt-wrap {
-    max-width: 1140px;
-  }
-}
-
-@media (min-width: 1360px) and (max-width: 1440px) {
-  .pt-page .pt-wrap {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1441px) and (max-width: 1600px) {
-  .pt-page .pt-wrap {
-    max-width: 1380px;
-  }
-}
-
-@media (min-width: 1601px) {
-  .pt-page .pt-wrap {
-    max-width: 1440px;
-  }
-}
-
-@media (min-width: 1920px) {
-  .pt-page .pt-wrap {
-    max-width: 1640px;
-  }
+  text-align: left;
 }
 
 .pt-page .pt-btn {
@@ -286,6 +240,7 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-section {
   padding: 46px 0;
+  text-align: left;
 }
 
 .pt-page .pt-section.alt {
@@ -322,9 +277,13 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 18px;
   margin-top: 22px;
+  justify-content: start;
+  justify-items: start;
+  width: 100%;
+  text-align: left;
 }
 
 .pt-page .pt-card {
@@ -334,6 +293,13 @@ main.pt-page > .pt-hero:first-child {
   background: #fff;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.pt-page .pt-card:not(.person) {
+  width: 100%;
 }
 
 .pt-page .pt-card h3 {
@@ -364,6 +330,8 @@ main.pt-page > .pt-hero:first-child {
   background: transparent;
   padding: 0;
   align-items: flex-start;
+  width: 100%;
+  justify-self: start;
 }
 
 .pt-page .pt-card.person img.trainer {
@@ -426,18 +394,20 @@ main.pt-page > .pt-hero:first-child {
   text-align: left;
 }
 
-/* cra-practitioner.html — Trainers: prototype .wrap 1080px, not full theme container */
-.pt-page .pt-trainers .pt-wrap {
-  max-width: 1080px;
-  padding-left: 24px;
-  padding-right: 24px;
+/* Trainers: 2 columns from left edge like cra-practitioner.html */
+.pt-page .pt-trainers .pt-cards {
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  justify-content: start;
+  place-content: start start;
+  place-items: start;
+  margin-left: 0;
+  margin-right: 0;
 }
 
-.pt-page .pt-trainers .pt-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
-  margin-top: 22px;
+@media (max-width: 659px) {
+  .pt-page .pt-trainers .pt-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 .pt-page .pt-badge {
