@@ -279,10 +279,10 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
     }
     ?>
     <section class="pt-section pt-trainers">
-        <div class="wrap">
-            <div class="kicker"><?php echo mudt_pt_plain($tr_kicker); ?></div>
+        <div class="pt-wrap">
+            <div class="pt-kicker"><?php echo mudt_pt_plain($tr_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($tr_title); ?></h2>
-            <div class="cards">
+            <div class="pt-cards">
                 <?php foreach ($trainers as $i => $trainer) :
                     $def = $trainer_defaults[$i] ?? array();
                     $photo = $trainer['photo'] ?? null;
@@ -297,11 +297,10 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('cra_cf7_form') ?: get_field('
                     if (!is_array($link) || empty($link['url'])) {
                         $link = $def['link'] ?? null;
                     }
-                    $img_class = 'trainer' . ($style === 'contain' ? ' contain' : '');
                     ?>
-                    <div class="card person">
+                    <div class="pt-card person">
                         <?php if ($photo_url) : ?>
-                            <img class="<?php echo esc_attr(trim($img_class)); ?>"
+                            <img class="trainer<?php echo $style === 'contain' ? ' contain' : ''; ?>"
                                  src="<?php echo esc_url($photo_url); ?>"
                                  alt="<?php echo esc_attr($name); ?>">
                         <?php endif; ?>
