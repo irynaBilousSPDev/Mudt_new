@@ -1,49 +1,15 @@
 ================================================================================
-CF7 form 1 of 2 — Professional Training enquire
+CF7 — Professional Training enquire (matches professional-training.html)
 ================================================================================
-WordPress admin → Contact → Edit form (or Add New)
-Title: Professional Training Enquire
+Contact → Edit "Professional Training Enquire" → replace entire Form tab.
 
------ TAB: Form -----
-Replace the Form tab with this (matches professional-training.html):
+IMPORTANT: keep each field on ONE line (no line breaks) — CF7 turns
+newlines into <br> and breaks spacing.
 
-<div class="pt-cf7">
-	<p class="pt-cf7-field">
-		<label>Name</label>
-		[text* your-name autocomplete:name placeholder "Your name"]
-	</p>
-	<p class="pt-cf7-field">
-		<label>Work email</label>
-		[email* your-email autocomplete:email placeholder "name@company.com"]
-	</p>
-	<p class="pt-cf7-field">
-		<label>Company</label>
-		[text your-organisation placeholder "Company"]
-	</p>
-	<p class="pt-cf7-field">
-		<label>I'm interested in</label>
-		[select interest "CRA Practitioner course" "In-house workshop" "A special topic" "Consulting &amp; advisory" "Not sure yet"]
-	</p>
-	<p class="pt-cf7-field full">
-		<label>Message</label>
-		[textarea your-message rows:3 placeholder "Tell us briefly what you are looking for"]
-	</p>
-	<p class="pt-cf7-field full pt-cf7-accept">
-		[acceptance acceptance-privacy] I agree to my personal data being processed in accordance with the Privacy Policy of the Munich University of Digital Technologies. [/acceptance]
-	</p>
-	<div class="pt-cf7-full">
-		[submit "Send enquiry"]
-	</div>
-</div>
+<div class="pt-cf7"><p class="pt-cf7-field"><label>Name</label>[text* your-name autocomplete:name placeholder "Your name"]</p><p class="pt-cf7-field"><label>Work email</label>[email* your-email autocomplete:email placeholder "name@company.com"]</p><p class="pt-cf7-field"><label>Company</label>[text your-organisation placeholder "Company"]</p><p class="pt-cf7-field"><label>I'm interested in</label>[select interest "CRA Practitioner course" "In-house workshop" "A special topic" "Consulting & advisory" "Not sure yet"]</p><p class="pt-cf7-field full"><label>Message</label>[textarea your-message rows:3 placeholder "Tell us briefly what you are looking for"]</p><p class="pt-cf7-full pt-cf7-actions">[submit "Send enquiry"]</p></div>
 
------ TAB: Mail -----
-To: (your admissions / training email)
-From: [your-name] <[your-email]>
+----- MAIL -----
 Subject: Professional Training enquiry — [interest]
-
-Message body:
-
-Professional Training enquiry
 
 Name: [your-name]
 Email: [your-email]
@@ -52,6 +18,3 @@ Interest: [interest]
 
 Message:
 [your-message]
-
---
-Sent from the Professional Training page

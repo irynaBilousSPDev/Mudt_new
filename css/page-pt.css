@@ -294,16 +294,20 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-section h2 {
   color: var(--pt-navy);
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1.2;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   font-weight: 800;
 }
 
 .pt-page .pt-lead {
   font-size: 17px;
-  max-width: 90ch;
-  color: #333;
+  max-width: 74ch;
+  color: #3c4653;
+  margin: 0;
+}
+
+.pt-page .pt-lead p {
   margin: 0;
 }
 
@@ -580,6 +584,19 @@ main.pt-page > .pt-hero:first-child {
   margin: 0;
 }
 
+/* CF7 inserts <br> for newlines in the form template — hide them */
+.pt-page .pt-enquire-form .pt-cf7 br {
+  display: none;
+}
+
+.pt-page .pt-enquire-form .wpcf7-response-output:empty,
+.pt-page .pt-enquire-form .wpcf7-response-output[aria-hidden="true"] {
+  display: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 /* HTML prototype: .form grid */
 .pt-page .pt-enquire-form .pt-cf7,
 .pt-page .pt-enquire-form .row.pt-cf7 {
@@ -609,6 +626,7 @@ main.pt-page > .pt-hero:first-child {
   min-width: 0;
 }
 
+/* prototype: label column with 5px gap to control */
 .pt-page .pt-enquire-form .pt-cf7-field {
   display: flex;
   flex-direction: column;
@@ -618,6 +636,7 @@ main.pt-page > .pt-hero:first-child {
 }
 
 .pt-page .pt-enquire-form .pt-cf7-field > label {
+  display: block;
   font-size: 13px;
   color: var(--pt-muted);
   font-weight: 400;
@@ -639,6 +658,7 @@ main.pt-page > .pt-hero:first-child {
 .pt-page .pt-enquire-form .wpcf7-form-control-wrap {
   display: block;
   width: 100%;
+  margin: 0;
 }
 
 .pt-page .pt-enquire-form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
@@ -687,6 +707,10 @@ main.pt-page > .pt-hero:first-child {
   align-items: center;
   gap: 10px;
   margin: 0;
+}
+
+.pt-page .pt-enquire-form .pt-cf7-actions .wpcf7-submit + .wpcf7-submit {
+  margin-left: 0;
 }
 
 .pt-page .pt-enquire-form .wpcf7-submit {
