@@ -151,12 +151,13 @@ main.pt-page > .pt-hero:first-child {
 .pt-page .pt-btn.outline {
   background: #fff;
   color: var(--pt-navy);
-  border-color: var(--pt-navy);
+  border-color: var(--pt-line);
 }
 
 .pt-page .pt-btn.outline:hover {
-  background: var(--pt-navy);
-  color: #fff;
+  background: var(--pt-soft);
+  color: var(--pt-navy);
+  border-color: var(--pt-line);
 }
 
 .pt-page .pt-crumb {
@@ -204,7 +205,7 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-hero .pt-wrap {
   position: relative;
-  padding: 40px 40px 56px;
+  padding: 58px 24px 50px;
 }
 
 .pt-page .pt-eyebrow {
@@ -221,14 +222,14 @@ main.pt-page > .pt-hero:first-child {
   line-height: 1.08;
   font-weight: 800;
   margin: 0 0 14px;
-  max-width: 22ch;
+  max-width: 15ch;
   color: #fff;
 }
 
 .pt-page .pt-hero .pt-sub {
   font-size: 20px;
-  color: rgba(255, 255, 255, .82);
-  max-width: 68ch;
+  color: #c7d6e8;
+  max-width: 60ch;
   margin: 0;
 }
 
@@ -277,7 +278,7 @@ main.pt-page > .pt-hero:first-child {
 .pt-page .pt-hero-note {
   margin: 18px 0 0;
   font-size: 14px;
-  color: rgba(255, 255, 255, .7);
+  color: #aebbcf;
   max-width: 70ch;
 }
 
@@ -322,15 +323,12 @@ main.pt-page > .pt-hero:first-child {
   margin-bottom: 6px;
 }
 
+/* professional-training.html — .cards */
 .pt-page .pt-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 18px;
   margin-top: 22px;
-  justify-content: start;
-  justify-items: start;
-  width: 100%;
-  text-align: left;
 }
 
 .pt-page .pt-card {
@@ -340,13 +338,6 @@ main.pt-page > .pt-hero:first-child {
   background: #fff;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.pt-page .pt-card:not(.person) {
-  width: 100%;
 }
 
 .pt-page .pt-card h3 {
@@ -355,7 +346,12 @@ main.pt-page > .pt-hero:first-child {
   font-size: 20px;
 }
 
-.pt-page .pt-card p,
+.pt-page .pt-card p {
+  margin: 0 0 16px;
+  color: #4a5563;
+  font-size: 15px;
+}
+
 .pt-page .pt-card > div:not(.pbody):not(.role) {
   margin: 0 0 16px;
   color: #4a5563;
@@ -470,7 +466,7 @@ main.pt-page > .pt-hero:first-child {
 }
 
 .pt-page .pt-badge.grey {
-  background: #F5F5F5;
+  background: #eef1f5;
   color: var(--pt-muted);
 }
 
@@ -855,7 +851,7 @@ main.pt-page > .pt-hero:first-child {
 }
 
 .pt-page .pt-featured {
-  border: 1px solid #c5ddf5;
+  border: 1px solid #cfe3f4;
   background: var(--pt-light);
   border-radius: 16px;
   padding: 26px 28px;
@@ -873,10 +869,9 @@ main.pt-page > .pt-hero:first-child {
   font-weight: 800;
 }
 
-.pt-page .pt-featured p,
-.pt-page .pt-featured > div > div:first-child {
+.pt-page .pt-featured p {
   margin: 0 0 14px;
-  color: #333;
+  color: #3c4653;
   font-size: 15.5px;
 }
 
@@ -889,7 +884,7 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-featured .fx span {
   background: #fff;
-  border: 1px solid #c5ddf5;
+  border: 1px solid #cfe3f4;
   border-radius: 18px;
   padding: 6px 13px;
   font-size: 13px;
@@ -917,7 +912,7 @@ main.pt-page > .pt-hero:first-child {
 
 .pt-page .pt-webinar {
   background: var(--pt-light);
-  border: 1px solid #c5ddf5;
+  border: 1px solid #cfe3f4;
   border-radius: 14px;
   padding: 22px 24px;
   display: flex;
@@ -939,7 +934,7 @@ main.pt-page > .pt-hero:first-child {
   }
 
   .pt-page .pt-hero .pt-wrap {
-    padding: 48px 20px 44px;
+    padding: 48px 24px 44px;
   }
 
   .pt-page .pt-hero .pt-facet {

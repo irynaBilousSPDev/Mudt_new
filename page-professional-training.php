@@ -31,9 +31,9 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
         <div class="pt-wrap">
             <div class="pt-eyebrow"><?php echo mudt_pt_plain($eyebrow); ?></div>
             <h1><?php echo mudt_pt_plain($title); ?></h1>
-            <div class="pt-sub"><?php echo mudt_pt_html($sub); ?></div>
+            <p class="pt-sub"><?php echo mudt_pt_plain($sub); ?></p>
             <?php if ($note) : ?>
-                <div class="pt-hero-note"><?php echo mudt_pt_html($note); ?></div>
+                <p class="pt-hero-note"><?php echo mudt_pt_html($note); ?></p>
             <?php endif; ?>
             <div class="pt-cta">
                 <a class="pt-btn" href="<?php echo esc_url($cta_primary_url); ?>"><?php echo esc_html($cta_primary_title); ?></a>
@@ -83,12 +83,12 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($fc_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($fc_title); ?></h2>
-            <div class="pt-lead"><?php echo mudt_pt_html($fc_lead); ?></div>
+            <p class="pt-lead"><?php echo mudt_pt_plain($fc_lead); ?></p>
             <div class="pt-featured">
                 <div>
                     <?php if ($fc_badge) : ?><span class="pt-badge"><?php echo esc_html($fc_badge); ?></span><?php endif; ?>
                     <h3><?php echo mudt_pt_plain($fc_heading); ?></h3>
-                    <div><?php echo mudt_pt_html($fc_text); ?></div>
+                    <p><?php echo mudt_pt_plain($fc_text); ?></p>
                     <?php if ($fc_tags) : ?>
                         <div class="fx">
                             <?php foreach ($fc_tags as $tag) :
@@ -157,7 +157,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($cat_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($cat_title); ?></h2>
-            <div class="pt-lead"><?php echo mudt_pt_html($cat_lead); ?></div>
+            <p class="pt-lead"><?php echo mudt_pt_plain($cat_lead); ?></p>
             <div class="pt-cards">
                 <?php foreach ($courses as $card) :
                     $soon = !empty($card['soon']);
@@ -169,7 +169,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
                             <span class="pt-badge<?php echo $badge_grey ? ' grey' : ''; ?>"><?php echo mudt_pt_plain($card['badge']); ?></span>
                         <?php endif; ?>
                         <h3><?php echo mudt_pt_plain($card['title'] ?? ''); ?></h3>
-                        <div><?php echo mudt_pt_html($card['text'] ?? ''); ?></div>
+                        <p><?php echo mudt_pt_plain($card['text'] ?? ''); ?></p>
                         <?php if (is_array($link) && !empty($link['url'])) : ?>
                             <a class="pt-btn" href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['title'] ?: 'Learn more'); ?></a>
                         <?php endif; ?>
@@ -209,7 +209,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($cen_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($cen_title); ?></h2>
-            <div class="pt-lead"><?php echo mudt_pt_html($cen_lead); ?></div>
+            <p class="pt-lead"><?php echo mudt_pt_plain($cen_lead); ?></p>
             <div class="pt-cards">
                 <?php foreach ($centers as $card) :
                     $soon = !empty($card['soon']);
@@ -221,7 +221,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
                             <span class="pt-badge<?php echo $badge_grey ? ' grey' : ''; ?>"><?php echo mudt_pt_plain($card['badge']); ?></span>
                         <?php endif; ?>
                         <h3><?php echo mudt_pt_plain($card['title'] ?? ''); ?></h3>
-                        <div><?php echo mudt_pt_html($card['text'] ?? ''); ?></div>
+                        <p><?php echo mudt_pt_plain($card['text'] ?? ''); ?></p>
                         <?php if (is_array($link) && !empty($link['url']) && $link['url'] !== '#') : ?>
                             <a class="pt-btn" href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['title'] ?: 'Learn more'); ?></a>
                         <?php elseif (is_array($link) && !empty($link['title'])) : ?>
@@ -253,7 +253,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
                 <?php foreach ($why_cards as $card) : ?>
                     <div class="pt-card">
                         <h3><?php echo mudt_pt_plain($card['title'] ?? ''); ?></h3>
-                        <div><?php echo mudt_pt_html($card['text'] ?? ''); ?></div>
+                        <p><?php echo mudt_pt_plain($card['text'] ?? ''); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -261,7 +261,8 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
     </section>
 
     <?php
-    $ws_kicker = get_field('pt_workshops_kicker') ?: 'Beyond training';    $ws_title = get_field('pt_workshops_title') ?: 'Workshops and consulting';
+    $ws_kicker = get_field('pt_workshops_kicker') ?: 'Beyond training';
+    $ws_title = get_field('pt_workshops_title') ?: 'Workshops and consulting';
     $ws_lead = get_field('pt_workshops_lead') ?: 'The same experts who teach also work with organisations directly - at the depth you need.';
     $ws_cards = get_field('pt_workshops_cards');
     if (empty($ws_cards)) {
@@ -283,7 +284,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($ws_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($ws_title); ?></h2>
-            <div class="pt-lead"><?php echo mudt_pt_html($ws_lead); ?></div>
+            <p class="pt-lead"><?php echo mudt_pt_plain($ws_lead); ?></p>
             <div class="pt-cards">
                 <?php foreach ($ws_cards as $card) :
                     $link = $card['link'] ?? null;
@@ -294,7 +295,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
                     ?>
                     <div class="pt-card">
                         <h3><?php echo mudt_pt_plain($card['title'] ?? ''); ?></h3>
-                        <div><?php echo mudt_pt_html($card['text'] ?? ''); ?></div>
+                        <p><?php echo mudt_pt_plain($card['text'] ?? ''); ?></p>
                         <?php if ($link_url) : ?>
                             <a class="pt-btn" href="<?php echo esc_url($link_url); ?>"><?php echo esc_html($link['title'] ?: 'Enquire'); ?></a>
                         <?php endif; ?>
@@ -305,7 +306,8 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
     </section>
 
     <?php
-    $eq_kicker = get_field('pt_enquire_kicker') ?: 'Get in touch';    $eq_title = get_field('pt_enquire_title') ?: 'Training, workshops or consulting - let\'s talk';
+    $eq_kicker = get_field('pt_enquire_kicker') ?: 'Get in touch';
+    $eq_title = get_field('pt_enquire_title') ?: 'Training, workshops or consulting - let\'s talk';
     $eq_lead = get_field('pt_enquire_lead') ?: 'Whatever you need - a scheduled course, an in-house workshop, a session on a special topic, or hands-on consulting on your own project - tell us and we will get back to you within one working day.';
     $eq_note = get_field('pt_enquire_note') ?: 'Dates, figures and fees are indicative and to be confirmed.';
     ?>
@@ -313,7 +315,7 @@ $form_shortcode = mudt_pt_cf7_shortcode(get_field('pt_cf7_form') ?: get_field('p
         <div class="pt-wrap">
             <div class="pt-kicker"><?php echo mudt_pt_plain($eq_kicker); ?></div>
             <h2><?php echo mudt_pt_plain($eq_title); ?></h2>
-            <div class="pt-lead"><?php echo mudt_pt_html($eq_lead); ?></div>
+            <p class="pt-lead"><?php echo mudt_pt_plain($eq_lead); ?></p>
             <div class="pt-enquire-form">
                 <?php if ($form_shortcode) : ?>
                     <?php echo do_shortcode($form_shortcode); ?>
