@@ -7,7 +7,9 @@
     "deploy:dev": "node scripts/deploy-dev.js dev",
     "import:db:dev": "node scripts/import-db-dev.js",
     "import:uploads:dev": "node scripts/import-uploads-dev.js",
-    "import:acf-pro:dev": "node scripts/import-plugin-dev.js advanced-custom-fields-pro"
+    "import:acf-pro:dev": "node scripts/import-plugin-dev.js advanced-custom-fields-pro",
+    "probe:dev": "node scripts/probe-sftp.js dev",
+    "probe:prod": "node scripts/probe-sftp.js prod"
   },
   "devDependencies": {
     "basic-ftp": "^6.0.1",

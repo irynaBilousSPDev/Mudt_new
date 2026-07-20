@@ -52,19 +52,25 @@ function normalizeRemotePath(remotePath) {
 	return remotePath.replace(/\\/g, '/').replace(/^\/+/, '').replace(/\/+$/, '');
 }
 
-async function connectFtp(env) {
-	const host = env.SFTP_HOST;
-	const port = parseInt(env.SFTP_PORT || '21', 10);
-	const user = env.SFTP_USER;
-	const password = env.SFTP_PASSWORD;
+async function connectFtpForTarget(env, target = 'dev') {
+	const host = cfg(env, target, 'HOST');
+	const port = parseInt(cfg(env, target, 'PORT') || '21', 10);
+	const user = cfg(env, target, 'USER');
+	const password = cfg(env, target, 'PASSWORD');
+	const prefix = target === 'prod' ? 'SFTP_PROD_' : 'SFTP_';
 
 	if (!host || !user || !password) {
-		throw new Error('SFTP_HOST, SFTP_USER, and SFTP_PASSWORD are required in deploy.local.env');
+		throw new Error(`${prefix}HOST, ${prefix}USER, and ${prefix}PASSWORD are required in deploy.local.env`);
 	}
+
+	const useFtps = envFlag(env, target === 'prod' ? 'SFTP_PROD_USE_FTPS' : 'SFTP_USE_FTPS');
+	const passiveOff =
+		String(env[target === 'prod' ? 'SFTP_PROD_FTP_PASSIVE' : 'FTP_PASSIVE'] || '').toLowerCase() ===
+		'false';
 
 	const client = new ftp.Client(120000);
 	client.ftp.verbose = false;
-	if (env.FTP_PASSIVE === 'false') {
+	if (passiveOff) {
 		client.ftp.passive = false;
 	}
 	await client.access({
@@ -72,11 +78,14 @@ async function connectFtp(env) {
 		port,
 		user,
 		password,
-		secure: false,
+		secure: useFtps,
 	});
-	// Remember FTP root (public_html) — ensureDir changes cwd on Hostinger.
 	client._deployRoot = await client.pwd();
 	return client;
+}
+
+async function connectFtp(env) {
+	return connectFtpForTarget(env, 'dev');
 }
 
 async function resetCwd(client) {
@@ -106,13 +115,66 @@ async function remoteFileSize(client, remoteFile) {
 	}
 }
 
+function cfg(env, target, key) {
+	if (target === 'prod') {
+		return env[`SFTP_PROD_${key}`];
+	}
+	return env[`SFTP_${key}`];
+}
+
+function targetLabel(target) {
+	return target === 'prod' ? 'prod' : 'dev';
+}
+
+async function connectSftp(env, target = 'dev') {
+	const SftpClient = require('ssh2-sftp-client');
+	const host = cfg(env, target, 'HOST');
+	const port = parseInt(cfg(env, target, 'PORT') || '22', 10);
+	const username = cfg(env, target, 'USER');
+	const password = cfg(env, target, 'PASSWORD');
+	const prefix = target === 'prod' ? 'SFTP_PROD_' : 'SFTP_';
+
+	if (!host || !username || !password) {
+		throw new Error(`${prefix}HOST, ${prefix}USER, and ${prefix}PASSWORD are required in deploy.local.env`);
+	}
+
+	const client = new SftpClient();
+	await client.connect({ host, port, username, password, readyTimeout: 30000 });
+	return client;
+}
+
+async function connectTarget(env, target = 'dev') {
+	const port = parseInt(cfg(env, target, 'PORT') || (target === 'prod' ? '21' : '21'), 10);
+	const useSftp =
+		envFlag(env, target === 'prod' ? 'SFTP_PROD_USE_SFTP' : 'SFTP_USE_SFTP') || port === 22;
+	if (useSftp) {
+		return { type: 'sftp', client: await connectSftp(env, target) };
+	}
+	return { type: 'ftp', client: await connectFtpForTarget(env, target) };
+}
+
+async function closeTarget(connection) {
+	if (!connection) return;
+	if (connection.type === 'sftp') {
+		await connection.client.end();
+		return;
+	}
+	connection.client.close();
+}
+
 module.exports = {
 	ROOT,
 	ENV_FILE,
 	loadEnv,
 	envFlag,
+	cfg,
+	targetLabel,
 	normalizeRemotePath,
 	connectFtp,
+	connectFtpForTarget,
+	connectSftp,
+	connectTarget,
+	closeTarget,
 	resetCwd,
 	ensureRemoteDir,
 	remoteFileSize,
