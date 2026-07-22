@@ -284,6 +284,41 @@ header .sm-container .sub-menu > li > a {
     transition: all 0.2s ease-in-out;
 }
 
+/* Primary menu — optional “NEW” badge (per menu item in WP admin) */
+header nav .menu-item--has-new > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #1d70b8;
+    font-weight: 700;
+}
+
+header nav .menu-item--has-new > a .menu-item__label {
+    display: inline-block;
+}
+
+header nav .menu-item--has-new > a .menu-item__new-badge {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #2994ff;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+header ul.mobile .menu-item--has-new > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: #1d70b8;
+}
 
 header .blue_border_btn a {
     font-size: 16px;

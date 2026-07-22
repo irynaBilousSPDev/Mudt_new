@@ -106,6 +106,7 @@ require_once('inc/duplicate-posts.php');
 
 require_once('inc/pt-acf-defaults.php');
 require_once('inc/footer-nav.php');
+require_once('inc/nav-menu-new-badge.php');
 
 function mudt_pt_cf7_shortcode($value)
 {
