@@ -285,39 +285,70 @@ header .sm-container .sub-menu > li > a {
 }
 
 /* Primary menu — optional “NEW” badge (per menu item in WP admin) */
-header nav .menu-item--has-new > a {
+header nav .primary_menu > li.menu-item--has-new > a {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    color: #1d70b8;
+    gap: 12px;
+    color: #2071a1;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+}
+
+header nav .primary_menu > li.menu-item--has-new:hover > a {
+    color: #2071a1;
     font-weight: 700;
 }
 
-header nav .menu-item--has-new > a .menu-item__label {
+header nav .primary_menu > li.menu-item--has-new > a .menu-item__label {
     display: inline-block;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
 }
 
-header nav .menu-item--has-new > a .menu-item__new-badge {
+header nav .primary_menu > li.menu-item--has-new > a .menu-item__new-badge {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    padding: 4px 10px;
+    min-height: 22px;
+    padding: 5px 11px;
     border-radius: 999px;
     background: #2994ff;
     color: #fff;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     line-height: 1;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
 }
 
-header ul.mobile .menu-item--has-new > a {
+header ul.mobile > li.menu-item--has-new > a {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    color: #2071a1;
     font-weight: 700;
-    color: #1d70b8;
+    text-decoration: none;
+}
+
+header ul.mobile > li.menu-item--has-new > a .menu-item__new-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 22px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: #2994ff;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
 header .blue_border_btn a {
