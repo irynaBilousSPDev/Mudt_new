@@ -105,6 +105,8 @@ $card_link = mudt_footer_pt_value('card_link');
 
                     <?php mudt_footer_render_nav_section($footer_by_slug['master'] ?? null, 'master'); ?>
                     <?php mudt_footer_render_nav_section($footer_by_slug['bachelor'] ?? null, 'bachelor'); ?>
+                    <?php mudt_footer_render_nav_section($footer_by_slug['candidates'] ?? null, 'candidates'); ?>
+                    <?php mudt_footer_render_nav_section($footer_by_slug['university'] ?? null, 'university'); ?>
 
                     <aside class="footer-pt-card">
                         <div class="footer-pt-card__head">
@@ -119,9 +121,6 @@ $card_link = mudt_footer_pt_value('card_link');
                             </a>
                         <?php endif; ?>
                     </aside>
-
-                    <?php mudt_footer_render_nav_section($footer_by_slug['candidates'] ?? null, 'candidates'); ?>
-                    <?php mudt_footer_render_nav_section($footer_by_slug['university'] ?? null, 'university'); ?>
                 </div>
 
                 <div class="bottom_footer_menu">
