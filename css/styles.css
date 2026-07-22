@@ -286,7 +286,7 @@ header .sm-container .sub-menu > li > a {
     transition: all 0.2s ease-in-out;
 }
 
-/* Primary menu — optional “NEW” badge (per menu item in WP admin) */
+/* Primary menu — optional “NEW” badge (theme colors: #1F1B51 / #2994FF) */
 header nav .primary_menu > li.menu-item--has-new > a {
     display: inline-flex;
     align-items: center;
