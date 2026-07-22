@@ -31,17 +31,15 @@ if (is_front_page() && !empty($cooperation_list_logos)) :
 
 <?php
 $footer_sections = mudt_footer_nav_sections();
-$footer_columns = mudt_footer_nav_columns($footer_sections);
-$footer_col_left = $footer_columns['left'];
-$footer_col_right = $footer_columns['right'];
+$footer_by_slug = mudt_footer_sections_by_slug($footer_sections);
 
 $banner_btn = mudt_footer_pt_value('banner_btn');
 $card_link = mudt_footer_pt_value('card_link');
 ?>
 
-    <div class="main_footer_section">
+    <div class="main_footer_section main_footer_section--redesign">
         <div class="container">
-            <div class="footer_menu_wrapper">
+            <div class="footer_menu_wrapper footer_menu_wrapper--redesign">
                 <div class="footer-pt-banner">
                     <div class="footer-pt-banner__content">
                         <p class="footer-pt-banner__kicker"><?php echo esc_html(mudt_footer_pt_value('banner_kicker')); ?></p>
@@ -105,13 +103,8 @@ $card_link = mudt_footer_pt_value('card_link');
                         <?php endif; ?>
                     </div>
 
-                    <div class="footer-nav-col">
-                        <?php mudt_footer_render_nav_sections($footer_col_left); ?>
-                    </div>
-
-                    <div class="footer-nav-col">
-                        <?php mudt_footer_render_nav_sections($footer_col_right); ?>
-                    </div>
+                    <?php mudt_footer_render_nav_section($footer_by_slug['master'] ?? null, 'master'); ?>
+                    <?php mudt_footer_render_nav_section($footer_by_slug['bachelor'] ?? null, 'bachelor'); ?>
 
                     <aside class="footer-pt-card">
                         <div class="footer-pt-card__head">
@@ -126,6 +119,9 @@ $card_link = mudt_footer_pt_value('card_link');
                             </a>
                         <?php endif; ?>
                     </aside>
+
+                    <?php mudt_footer_render_nav_section($footer_by_slug['candidates'] ?? null, 'candidates'); ?>
+                    <?php mudt_footer_render_nav_section($footer_by_slug['university'] ?? null, 'university'); ?>
                 </div>
 
                 <div class="bottom_footer_menu">

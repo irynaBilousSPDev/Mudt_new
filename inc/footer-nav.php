@@ -34,79 +34,48 @@ function mudt_footer_nav_sections()
     return array_values($sections);
 }
 
-function mudt_footer_nav_columns(array $sections)
+function mudt_footer_sections_by_slug(array $sections)
 {
-    $column_map = array(
-        'left' => array('master', 'candidates'),
-        'right' => array('bachelor', 'university'),
-    );
-
     $by_slug = array();
     foreach ($sections as $section) {
         $by_slug[sanitize_title($section['title'])] = $section;
     }
 
-    $columns = array(
-        'left' => array(),
-        'right' => array(),
-    );
-    $assigned = array();
-
-    foreach ($column_map as $column => $slugs) {
-        foreach ($slugs as $slug) {
-            if (!isset($by_slug[$slug])) {
-                continue;
-            }
-            $columns[$column][] = $by_slug[$slug];
-            $assigned[$slug] = true;
-        }
-    }
-
-    $remaining = array();
-    foreach ($sections as $section) {
-        $slug = sanitize_title($section['title']);
-        if (empty($assigned[$slug])) {
-            $remaining[] = $section;
-        }
-    }
-
-    if (!empty($remaining)) {
-        $split_at = (int) ceil(count($remaining) / 2);
-        $columns['left'] = array_merge($columns['left'], array_slice($remaining, 0, $split_at));
-        $columns['right'] = array_merge($columns['right'], array_slice($remaining, $split_at));
-    }
-
-    return $columns;
+    return $by_slug;
 }
 
-function mudt_footer_render_nav_sections(array $sections)
+function mudt_footer_render_nav_section($section, $modifier = '')
 {
-    if (empty($sections)) {
+    if (empty($section)) {
         return;
     }
 
-    foreach ($sections as $section) : ?>
-        <div class="footer-nav-section">
-            <?php if (!empty($section['children'])) : ?>
-                <h3 class="footer-nav-heading"><?php echo esc_html($section['title']); ?></h3>
-                <ul class="footer-nav-list">
-                    <?php foreach ($section['children'] as $child) : ?>
-                        <li>
-                            <a href="<?php echo esc_url($child->url); ?>"
-                               <?php echo $child->target ? ' target="' . esc_attr($child->target) . '"' : ''; ?>
-                               <?php echo $child->xfn ? ' rel="' . esc_attr($child->xfn) . '"' : ''; ?>>
-                                <?php echo esc_html($child->title); ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else : ?>
-                <h3 class="footer-nav-heading">
-                    <a href="<?php echo esc_url($section['url']); ?>"><?php echo esc_html($section['title']); ?></a>
-                </h3>
-            <?php endif; ?>
-        </div>
-    <?php endforeach;
+    $class = 'footer-nav-section';
+    if ($modifier !== '') {
+        $class .= ' footer-nav-section--' . sanitize_html_class($modifier);
+    }
+    ?>
+    <div class="<?php echo esc_attr($class); ?>">
+        <?php if (!empty($section['children'])) : ?>
+            <h3 class="footer-nav-heading"><?php echo esc_html($section['title']); ?></h3>
+            <ul class="footer-nav-list">
+                <?php foreach ($section['children'] as $child) : ?>
+                    <li>
+                        <a href="<?php echo esc_url($child->url); ?>"
+                           <?php echo $child->target ? ' target="' . esc_attr($child->target) . '"' : ''; ?>
+                           <?php echo $child->xfn ? ' rel="' . esc_attr($child->xfn) . '"' : ''; ?>>
+                            <?php echo esc_html($child->title); ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else : ?>
+            <h3 class="footer-nav-heading">
+                <a href="<?php echo esc_url($section['url']); ?>"><?php echo esc_html($section['title']); ?></a>
+            </h3>
+        <?php endif; ?>
+    </div>
+    <?php
 }
 
 function mudt_footer_pt_defaults()
