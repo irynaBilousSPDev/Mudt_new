@@ -224,7 +224,7 @@ header nav .primary_menu > li > a {
     display: block;
     font-weight: 400;
     padding: 15px;
-    color: #223c50;
+    color: #1F1B51;
     transition: all 0.2s ease-in-out;
     position: relative;
 }
@@ -232,7 +232,7 @@ header nav .primary_menu > li > a {
 header .sub-menu > li:hover > a,
 header nav .primary_menu > li:hover > a {
     font-weight: 600;
-    color: #223c50;
+    color: #1F1B51;
 }
 
 header nav .primary_menu > li > a:before {
@@ -291,7 +291,7 @@ header nav .primary_menu > li.menu-item--has-new > a {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #2e9ad0;
+    color: #2994FF;
     font-size: 20px;
     font-weight: 700;
     line-height: 1.2;
@@ -299,7 +299,7 @@ header nav .primary_menu > li.menu-item--has-new > a {
 }
 
 header nav .primary_menu > li.menu-item--has-new:hover > a {
-    color: #2e9ad0;
+    color: #2994FF;
     font-weight: 700;
 }
 
@@ -319,7 +319,7 @@ header nav .primary_menu > li.menu-item--has-new > a .menu-item__new-badge {
     min-height: 20px;
     padding: 4px 10px;
     border-radius: 999px;
-    background: #2e9ad0;
+    background: #2994FF;
     color: #fff;
     font-size: 9px;
     font-weight: 700;
@@ -332,7 +332,7 @@ header ul.mobile > li.menu-item--has-new > a {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #2e9ad0;
+    color: #2994FF;
     font-weight: 700;
     text-decoration: none;
 }
@@ -344,7 +344,7 @@ header ul.mobile > li.menu-item--has-new > a .menu-item__new-badge {
     min-height: 20px;
     padding: 4px 10px;
     border-radius: 999px;
-    background: #2e9ad0;
+    background: #2994FF;
     color: #fff;
     font-size: 9px;
     font-weight: 700;
