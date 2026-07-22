@@ -65,4 +65,4 @@ Config: `deploy.local.env` (copy from `deploy.local.env.example`).
 
 - Import database from `/deploy-dev`
 - Commit `deploy.local.env`
-- Deploy production unless explicitly asked
+- Deploy production — use `/deploy-prod` instead

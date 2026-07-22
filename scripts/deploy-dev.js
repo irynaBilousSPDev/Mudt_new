@@ -1,6 +1,7 @@
 /**
- * Deploy Mudt_new theme via FTP (Hostinger, port 21).
- * Usage: npm run deploy:dev
+ * Deploy Mudt_new theme via FTP/FTPS.
+ * Usage: npm run deploy:dev | npm run deploy:prod
+ * Target: node scripts/deploy-dev.js [dev|prod]
  */
 const fs = require('fs');
 const path = require('path');
@@ -9,14 +10,22 @@ const {
 	ROOT,
 	loadEnv,
 	envFlag,
+	cfg,
 	normalizeRemotePath,
 	connectFtp,
+	connectFtpForTarget,
 	resetCwd,
 	ensureRemoteDir,
 	remoteFileSize,
 } = require('./ftp-client');
 
 const ENV_FILE = path.join(ROOT, 'deploy.local.env');
+const TARGET = (process.argv[2] || 'dev').toLowerCase();
+
+if (TARGET !== 'dev' && TARGET !== 'prod') {
+	console.error('Usage: node scripts/deploy-dev.js [dev|prod]');
+	process.exit(1);
+}
 
 const EXCLUDE_DIR_NAMES = new Set(['node_modules', '.git', '.cursor', 'scripts']);
 const EXCLUDE_FILE_NAMES = new Set([
@@ -33,6 +42,17 @@ function deployGitOnlyEnabled(env) {
 	return true;
 }
 
+function resolveGitOnlyBaseRef(env) {
+	if (env.DEPLOY_GIT_REF) {
+		return env.DEPLOY_GIT_REF.trim();
+	}
+	return TARGET === 'prod' ? 'origin/main' : 'origin/dev';
+}
+
+function resolveTrackingBranch() {
+	return TARGET === 'prod' ? 'main' : 'dev';
+}
+
 function gitRefExists(ref) {
 	try {
 		execSync(`git rev-parse --verify ${ref}`, { cwd: ROOT, stdio: 'pipe' });
@@ -44,7 +64,7 @@ function gitRefExists(ref) {
 
 function getGitDeployRelativePaths(env) {
 	let files = [];
-	const baseRef = env.DEPLOY_GIT_REF ? env.DEPLOY_GIT_REF.trim() : 'origin/dev';
+	const baseRef = resolveGitOnlyBaseRef(env);
 
 	if (gitRefExists(baseRef)) {
 		try {
@@ -112,29 +132,64 @@ function listDirtyTrackedFiles() {
 
 function assertGitReadyForDeploy(env) {
 	if (envFlag(env, 'DEPLOY_ALLOW_DIRTY')) return;
+
 	const dirty = listDirtyTrackedFiles();
 	if (dirty.length) {
 		throw new Error(`Deploy blocked: uncommitted changes (${dirty.join(', ')}). Commit first.`);
 	}
+
+	const branch = resolveTrackingBranch();
+	const current = execSync('git branch --show-current', { cwd: ROOT, encoding: 'utf8' }).trim();
+	if (current !== branch) {
+		throw new Error(`Deploy blocked: checkout ${branch} first (current: ${current || 'detached'}).`);
+	}
+
 	if (envFlag(env, 'DEPLOY_ALLOW_UNPUSHED')) return;
-	if (!gitRefExists('origin/dev')) return;
-	const ahead = execSync('git rev-list --count origin/dev..HEAD', {
+
+	const remoteRef = `origin/${branch}`;
+	if (!gitRefExists(remoteRef)) {
+		return;
+	}
+
+	const ahead = execSync(`git rev-list --count ${remoteRef}..HEAD`, {
 		cwd: ROOT,
 		encoding: 'utf8',
 	}).trim();
 	if (parseInt(ahead, 10) > 0) {
 		throw new Error(
-			`Deploy blocked: push first (git push origin dev) — ${ahead} commit(s) not on GitHub yet.`
+			`Deploy blocked: push first (git push origin ${branch}) — ${ahead} commit(s) not on GitHub yet.`
 		);
 	}
+}
+
+function resolveRemotePath(env) {
+	const fallback = TARGET === 'prod'
+		? 'httpdocs/wp-content/themes/Mudt_new'
+		: 'wp-content/themes/Mudt_new';
+	return normalizeRemotePath(cfg(env, TARGET, 'REMOTE_PATH') || fallback);
+}
+
+function resolveDeployLabel(env) {
+	if (TARGET === 'prod') {
+		const secure = String(env.SFTP_PROD_USE_FTPS || '').toLowerCase() === 'true' ? 'FTPS' : 'FTP';
+		return `prod → ${cfg(env, 'prod', 'HOST')} (${secure} port ${cfg(env, 'prod', 'PORT') || 21})`;
+	}
+	return `dev → ${env.SFTP_HOST} (FTP port ${env.SFTP_PORT || 21})`;
+}
+
+async function connectDeployClient(env) {
+	if (TARGET === 'prod') {
+		return connectFtpForTarget(env, 'prod');
+	}
+	return connectFtp(env);
 }
 
 async function main() {
 	const env = loadEnv(ENV_FILE);
 	const dryRun = envFlag(env, 'DRY_RUN');
-	const remotePath = normalizeRemotePath(env.SFTP_REMOTE_PATH || 'wp-content/themes/Mudt_new');
+	const remotePath = resolveRemotePath(env);
 
-	console.log(`Deploy target: dev → ${env.SFTP_HOST} (FTP port ${env.SFTP_PORT || 21})`);
+	console.log(`Deploy target: ${resolveDeployLabel(env)}`);
 	assertGitReadyForDeploy(env);
 	console.log('Git check OK.');
 
@@ -163,7 +218,7 @@ async function main() {
 		return;
 	}
 
-	let client = await connectFtp(env);
+	let client = await connectDeployClient(env);
 	let uploaded = 0;
 	let skipped = 0;
 	let reconnects = 0;
@@ -198,7 +253,7 @@ async function main() {
 				reconnects += 1;
 				console.log(`Reconnecting (${reconnects}/5)...`);
 				try { client.close(); } catch (_) {}
-				client = await connectFtp(env);
+				client = await connectDeployClient(env);
 				await uploadOne(client, file);
 			}
 		}

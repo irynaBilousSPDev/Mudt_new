@@ -5,6 +5,7 @@
   "description": "MUDT WordPress theme — dev deploy to iratest.site",
   "scripts": {
     "deploy:dev": "node scripts/deploy-dev.js dev",
+    "deploy:prod": "node scripts/deploy-dev.js prod",
     "import:db:dev": "node scripts/import-db-dev.js",
     "import:uploads:dev": "node scripts/import-uploads-dev.js",
     "import:acf-pro:dev": "node scripts/import-plugin-dev.js advanced-custom-fields-pro",

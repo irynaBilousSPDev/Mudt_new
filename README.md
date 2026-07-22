@@ -21,7 +21,8 @@ Dev deploy uses **Hostinger SFTP**, not Plesk. The local backup folder is from P
 
 | Command | Purpose |
 |---------|---------|
-| `/deploy-dev` | Commit → push `dev` → SFTP theme to dev |
+| `/deploy-dev` | Commit → push `dev` → FTP theme to dev |
+| `/deploy-prod` | Merge `dev` → `main` → push → FTPS theme to prod |
 | `/import-db-dev` | **One-time** prod DB clone to dev |
 
 ## Local setup
@@ -39,7 +40,16 @@ git checkout dev
 npm run deploy:dev
 ```
 
-First deploy: `DEPLOY_FULL=true npm run deploy:dev`
+## Deploy theme to prod
+
+```bash
+git checkout main
+npm run deploy:prod
+```
+
+Use `/deploy-prod` in Cursor for the full merge → push → deploy flow.
+
+First deploy: `DEPLOY_FULL=true npm run deploy:prod`
 
 ## One-time dev clone from prod backup
 
@@ -52,4 +62,4 @@ npm run import:uploads:dev
 
 https://github.com/irynaBilousSPDev/Mudt_new.git
 
-Branch: `dev` (day-to-day work)
+Branch: `dev` (day-to-day work), `main` (production deploy via `/deploy-prod`)
