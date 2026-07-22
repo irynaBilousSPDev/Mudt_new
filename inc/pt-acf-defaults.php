@@ -411,12 +411,25 @@ add_action('add_meta_boxes', function () {
 
 function mudt_pt_sync_content_metabox($post)
 {
+    if (!function_exists('update_field')) {
+        echo '<p style="margin:0;">ACF is not active. Install Advanced Custom Fields Pro first.</p>';
+        return;
+    }
+
+    $template = get_page_template_slug((int) $post->ID);
     if (!mudt_pt_is_sync_template($post->ID)) {
+        echo '<p style="margin:0;">Select page template <strong>Professional Training</strong> or <strong>CRA Practitioner</strong>, save the page, then use Sync here.</p>';
         return;
     }
 
     if (mudt_pt_content_is_synced($post->ID)) {
         echo '<p style="margin:0;">Content synced.</p>';
+        echo '<p style="margin:8px 0 0;"><a class="button" href="' . esc_url(
+            wp_nonce_url(
+                admin_url('admin-post.php?action=mudt_pt_sync_content&post_id=' . (int) $post->ID . '&force=1'),
+                'mudt_pt_sync_content_' . (int) $post->ID
+            )
+        ) . '">Re-sync defaults</a></p>';
         return;
     }
 
@@ -425,7 +438,7 @@ function mudt_pt_sync_content_metabox($post)
         'mudt_pt_sync_content_' . (int) $post->ID
     );
 
-    echo '<p style="margin:0 0 10px;">Import default field values.</p>';
+    echo '<p style="margin:0 0 10px;">Import default field values for <code>' . esc_html($template) . '</code>.</p>';
     echo '<p style="margin:0;"><a class="button button-primary" href="' . esc_url($url) . '">Sync</a></p>';
 }
 
@@ -440,6 +453,12 @@ add_action('admin_post_mudt_pt_sync_content', function () {
 
     if (!mudt_pt_is_sync_template($post_id)) {
         wp_die('Wrong page template.');
+    }
+
+    $force = !empty($_GET['force']);
+    if (mudt_pt_content_is_synced($post_id) && !$force) {
+        wp_safe_redirect(get_edit_post_link($post_id, 'raw'));
+        exit;
     }
 
     mudt_pt_sync_content_to_post($post_id);
