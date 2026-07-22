@@ -34,6 +34,51 @@ function mudt_footer_nav_sections()
     return array_values($sections);
 }
 
+function mudt_footer_nav_columns(array $sections)
+{
+    $column_map = array(
+        'left' => array('master', 'candidates'),
+        'right' => array('bachelor', 'university'),
+    );
+
+    $by_slug = array();
+    foreach ($sections as $section) {
+        $by_slug[sanitize_title($section['title'])] = $section;
+    }
+
+    $columns = array(
+        'left' => array(),
+        'right' => array(),
+    );
+    $assigned = array();
+
+    foreach ($column_map as $column => $slugs) {
+        foreach ($slugs as $slug) {
+            if (!isset($by_slug[$slug])) {
+                continue;
+            }
+            $columns[$column][] = $by_slug[$slug];
+            $assigned[$slug] = true;
+        }
+    }
+
+    $remaining = array();
+    foreach ($sections as $section) {
+        $slug = sanitize_title($section['title']);
+        if (empty($assigned[$slug])) {
+            $remaining[] = $section;
+        }
+    }
+
+    if (!empty($remaining)) {
+        $split_at = (int) ceil(count($remaining) / 2);
+        $columns['left'] = array_merge($columns['left'], array_slice($remaining, 0, $split_at));
+        $columns['right'] = array_merge($columns['right'], array_slice($remaining, $split_at));
+    }
+
+    return $columns;
+}
+
 function mudt_footer_render_nav_sections(array $sections)
 {
     if (empty($sections)) {

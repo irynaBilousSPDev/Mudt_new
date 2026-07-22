@@ -31,9 +31,9 @@ if (is_front_page() && !empty($cooperation_list_logos)) :
 
 <?php
 $footer_sections = mudt_footer_nav_sections();
-$split_at = (int) ceil(count($footer_sections) / 2);
-$footer_col_left = array_slice($footer_sections, 0, $split_at);
-$footer_col_right = array_slice($footer_sections, $split_at);
+$footer_columns = mudt_footer_nav_columns($footer_sections);
+$footer_col_left = $footer_columns['left'];
+$footer_col_right = $footer_columns['right'];
 
 $banner_btn = mudt_footer_pt_value('banner_btn');
 $card_link = mudt_footer_pt_value('card_link');
