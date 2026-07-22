@@ -34,6 +34,16 @@ function my_theme_enqueue_styles()
     wp_enqueue_style('page-styles');
     wp_enqueue_style('styles');
 
+    $footer_css = get_template_directory() . '/css/footer.css';
+    if (file_exists($footer_css)) {
+        wp_enqueue_style(
+            'footer',
+            get_template_directory_uri() . '/css/footer.css',
+            array('styles'),
+            filemtime($footer_css)
+        );
+    }
+
     if (is_page_template('page-professional-training.php') || is_page_template('page-cra-practitioner.php')) {
         $pt_css = get_template_directory() . '/css/page-pt.css';
         if (file_exists($pt_css)) {
@@ -95,6 +105,7 @@ require_once('inc/cpt.php');
 require_once('inc/duplicate-posts.php');
 
 require_once('inc/pt-acf-defaults.php');
+require_once('inc/footer-nav.php');
 
 function mudt_pt_cf7_shortcode($value)
 {
