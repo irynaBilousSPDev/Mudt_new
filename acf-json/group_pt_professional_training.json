@@ -955,7 +955,7 @@
             "label": "Contact form",
             "name": "pt_cf7_form",
             "type": "post_object",
-            "instructions": "Create the form in Contact → Contact Forms (see theme file cf7/professional-training-enquire.txt), then select it here.",
+            "instructions": "Select the contact form for this page.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {

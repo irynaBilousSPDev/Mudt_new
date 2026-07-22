@@ -382,9 +382,13 @@ function mudt_pt_sync_content_to_post($post_id)
     $template = get_page_template_slug($post_id);
     $defaults = mudt_pt_acf_defaults();
     $prefix = ($template === 'page-cra-practitioner.php') ? 'cra_' : 'pt_';
+    $skip_on_sync = array('pt_cf7_form', 'cra_cf7_form');
 
     foreach ($defaults as $name => $value) {
         if (strpos($name, $prefix) !== 0) {
+            continue;
+        }
+        if (in_array($name, $skip_on_sync, true)) {
             continue;
         }
         update_field($name, $value, $post_id);
@@ -438,7 +442,7 @@ function mudt_pt_sync_content_metabox($post)
         'mudt_pt_sync_content_' . (int) $post->ID
     );
 
-    echo '<p style="margin:0 0 10px;">Import default field values for <code>' . esc_html($template) . '</code>.</p>';
+    echo '<p style="margin:0 0 10px;">Import the default page content.</p>';
     echo '<p style="margin:0;"><a class="button button-primary" href="' . esc_url($url) . '">Sync</a></p>';
 }
 
