@@ -2535,16 +2535,55 @@ footer a:hover {
         font-size: 14px;
     }
 
+    header .navbar {
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+
+    header .navbar-header {
+        flex: 0 1 auto;
+        min-width: 0;
+    }
+
+    header .navbar-brand img {
+        max-width: min(220px, 48vw);
+        width: 100%;
+        height: auto;
+    }
+
+    header .btn_group {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 100%;
+        gap: 0.35rem;
+    }
+
     header ul.mobile {
-        flex-wrap: wrap;
         display: flex;
-        gap: 40px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 0;
+        align-items: flex-start;
     }
 
     header ul.mobile > li > a {
         color: #1F1A51;
         font-size: 18px;
         font-weight: bold;
+    }
+
+    header ul.mobile .sub-menu {
+        list-style: none;
+        padding-left: 1rem;
+        margin: 0.25rem 0 0.75rem;
+    }
+
+    header ul.mobile .sub-menu a {
+        font-size: 15px;
+        font-weight: 500;
+        color: #1F1A51;
     }
 
     header ul a {
@@ -2557,9 +2596,18 @@ footer a:hover {
 @media (max-width: 481px) {
     header .custom_btn a,
     header .light_btn {
-
         line-height: 16px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 12px;
+    }
 
+    header .navbar-brand img {
+        max-width: min(160px, 42vw);
+    }
+
+    header .menu {
+        margin-right: 8px;
     }
 }
 
@@ -2648,7 +2696,7 @@ footer a:hover {
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1199.98px) {
     .collapse.show {
         display: block;
         max-height: none !important;
@@ -2669,7 +2717,7 @@ footer a:hover {
         height: 100vh;
         overflow-y: auto;
         overflow-x: hidden;
-        background-color: white; /* Or your menu background */
+        background-color: white;
         z-index: 9999;
     }
 
@@ -2786,7 +2834,8 @@ footer a:hover {
 
 @media (max-width: 767px) {
     header .btn_group {
-        width: 100%;
+        width: auto;
+        flex-shrink: 0;
     }
 
     .section_tabs_slider .tab-content-image {
