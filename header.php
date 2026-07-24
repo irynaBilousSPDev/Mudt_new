@@ -8,11 +8,17 @@
 
     <?php wp_head(); ?>
     <style id="mudt-header-offset-critical">
-        :root { --header-offset: 110px; }
-        main { margin-top: var(--header-offset) !important; }
+        :root {
+            --header-offset: 110px;
+            --header-gap: 2rem;
+        }
+        @media (max-width: 767.98px) {
+            :root { --header-gap: 1rem; }
+        }
+        main { margin-top: calc(var(--header-offset) + var(--header-gap)) !important; }
         body.home main {
             margin-top: 0 !important;
-            padding-top: var(--header-offset) !important;
+            padding-top: calc(var(--header-offset) + var(--header-gap)) !important;
         }
         body.home .section_main_banner {
             margin-top: 0 !important;

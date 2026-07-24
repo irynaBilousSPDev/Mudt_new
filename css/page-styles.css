@@ -430,6 +430,7 @@ candydaties
 /*about us____________________________________________*/
 :root {
     --header-offset: 110px;
+    --header-gap: 2rem;
 }
 
 @media (max-width: 1399.98px) {
@@ -441,17 +442,18 @@ candydaties
 @media (max-width: 767.98px) {
     :root {
         --header-offset: 145px;
+        --header-gap: 1rem;
     }
 }
 
 main {
-    margin-top: var(--header-offset);
+    margin-top: calc(var(--header-offset) + var(--header-gap));
 }
 
-/* Homepage: no extra gap under fixed header */
+/* Homepage: header clearance + small breathing gap */
 body.home main {
     margin-top: 0 !important;
-    padding-top: var(--header-offset) !important;
+    padding-top: calc(var(--header-offset) + var(--header-gap)) !important;
 }
 
 body.home .section_main_banner {
@@ -460,7 +462,7 @@ body.home .section_main_banner {
 }
 
 main.single_program {
-    margin-top: calc(var(--header-offset) + 10px);
+    margin-top: calc(var(--header-offset) + var(--header-gap) + 10px);
 }
 
 main.page .top_banner {

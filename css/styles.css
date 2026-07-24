@@ -3116,12 +3116,12 @@ footer a:hover {
     }
 
     main {
-        margin-top: var(--header-offset, 145px);
+        margin-top: calc(var(--header-offset, 145px) + var(--header-gap, 1rem));
     }
 
     body.home main {
         margin-top: 0 !important;
-        padding-top: var(--header-offset, 145px) !important;
+        padding-top: calc(var(--header-offset, 145px) + var(--header-gap, 1rem)) !important;
     }
 }
 
