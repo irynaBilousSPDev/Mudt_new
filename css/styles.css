@@ -474,7 +474,7 @@ header .blue_border_btn a {
 
 .header-container {
   background-color: #fff;
-  margin-top: var(--header-bar, 30px);
+  margin-top: var(--header-bar, 30px); /* responsive header-bar */
   position: relative;
 }
 
