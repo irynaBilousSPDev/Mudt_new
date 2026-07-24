@@ -2,8 +2,33 @@
 
     $(document).ready(function () {
 
-        // Header offset: single definition in header.php → window.mudtSetHeaderOffset
-        var setHeaderOffset = window.mudtSetHeaderOffset || function () {};
+        /***********************************/
+        /* Keep main content flush under fixed header on all viewports */
+        /***********************************/
+        function setHeaderOffset() {
+            var header = document.querySelector('header.header');
+            if (!header || document.body.classList.contains('menu-open')) {
+                return;
+            }
+            var anchor = header.querySelector('.sub_header') || header;
+            var bottom = anchor.getBoundingClientRect().bottom;
+            var admin = document.getElementById('wpadminbar');
+            var adminH = 0;
+            if (admin && window.getComputedStyle(admin).display !== 'none') {
+                adminH = admin.offsetHeight;
+            }
+            var offset = Math.max(0, Math.round(bottom - adminH));
+            document.documentElement.style.setProperty('--header-offset', offset + 'px');
+        }
+        // Keep in sync with early header.php helper (same measurement).
+        window.mudtSetHeaderOffset = setHeaderOffset;
+
+        setHeaderOffset();
+        $(window).on('resize orientationchange', setHeaderOffset);
+        window.addEventListener('load', setHeaderOffset);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(setHeaderOffset);
+        }
 
         /***********************************/
         AOS.init();
