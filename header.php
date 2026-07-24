@@ -11,7 +11,7 @@
         :root {
             --header-offset: 110px;
             --header-gap: 2rem;
-            --header-bar: 20px;
+            --header-bar: 20px; /* purple strip */
         }
         @media (max-width: 767.98px) {
             :root { --header-gap: 1rem; }
