@@ -498,7 +498,7 @@ header .blue_border_btn a {
 
 .header-container {
     background-color: #fff;
-    margin-top: 30px;
+    margin-top: var(--header-bar, 20px);
     position: relative;
 }
 
@@ -506,9 +506,9 @@ header .blue_border_btn a {
     position: absolute;
     content: '';
     left: 0;
-    top: -30px;
+    top: calc(-1 * var(--header-bar, 20px));
     width: 100%;
-    height: calc(100% + 30px);
+    height: calc(100% + var(--header-bar, 20px));
     background-color: #1F1A51;
     z-index: -1;
 }
@@ -517,9 +517,9 @@ header .blue_border_btn a {
     position: absolute;
     content: '';
     left: 0;
-    bottom: -30px;
+    bottom: calc(-1 * var(--header-bar, 20px));
     width: 100%;
-    height: calc(100% + 30px);
+    height: calc(100% + var(--header-bar, 20px));
     background-color: #1F1A51;
     z-index: -1;
 }
@@ -2767,8 +2767,8 @@ footer a:hover {
     }
 
     header .navbar-brand img {
-        max-width: min(260px, calc(100vw - 72px));
-        max-height: 52px;
+        max-width: min(300px, calc(100vw - 72px));
+        max-height: 60px;
     }
 
     header .header-cta {
@@ -2796,8 +2796,8 @@ footer a:hover {
 
 @media (max-width: 480px) {
     header .navbar-brand img {
-        max-width: min(200px, calc(100vw - 72px));
-        max-height: 46px;
+        max-width: min(240px, calc(100vw - 72px));
+        max-height: 54px;
     }
 }
 
@@ -3083,7 +3083,7 @@ footer a:hover {
 
     body.home main {
         margin-top: 0 !important;
-        padding-top: calc(var(--header-offset, 145px) + var(--header-bar, 30px)) !important;
+        padding-top: calc(var(--header-offset, 145px) + var(--header-bar, 20px)) !important;
     }
 
     body.home .section_main_banner {

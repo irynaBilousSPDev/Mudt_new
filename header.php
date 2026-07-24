@@ -11,7 +11,7 @@
         :root {
             --header-offset: 110px;
             --header-gap: 2rem;
-            --header-bar: 30px;
+            --header-bar: 20px;
         }
         @media (max-width: 767.98px) {
             :root { --header-gap: 1rem; }
