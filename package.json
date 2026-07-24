@@ -4,6 +4,7 @@
   "private": true,
   "description": "MUDT WordPress theme — dev deploy to iratest.site",
   "scripts": {
+    "build:js": "terser js/main.js -c -m -o js/main.min.js",
     "deploy:dev": "node scripts/deploy-dev.js dev",
     "deploy:prod": "node scripts/deploy-dev.js prod",
     "import:db:dev": "node scripts/import-db-dev.js",
