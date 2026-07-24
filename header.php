@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?php wp_head(); ?>
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="6b033d95-21a3-46f5-89e1-0bd2ebdded27" data-blockingmode="auto" type="text/javascript"></script>
     <style id="mudt-header-offset-critical">
         :root {
             --header-offset: 110px;
