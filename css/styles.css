@@ -272,6 +272,8 @@ header .btn_group .light_btn {
 
 header nav .primary_menu {
   flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem; /* same as .header-cta button spacing */
 }
 
 header nav .primary_menu > li > a,
@@ -303,7 +305,8 @@ header nav .primary_menu > li.menu-item--has-new > a {
     white-space: nowrap;
   }
   header .desktop {
-    margin-right: 0.25rem;
+    margin-right: 0.5rem;
+    gap: 0.35rem;
   }
   header .header-cta {
     gap: 0.35rem;
@@ -327,7 +330,7 @@ header nav .primary_menu > li.menu-item--has-new > a {
     white-space: nowrap;
   }
   header .desktop {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
   }
 }
 @media (min-width: 1920px) {
@@ -335,10 +338,10 @@ header nav .primary_menu > li.menu-item--has-new > a {
     max-width: 340px;
   }
   header .desktop {
-    margin-right: 1.5rem;
+    margin-right: 0.5rem;
   }
   header nav .primary_menu > li > a {
-    padding: 15px;
+    padding: 15px 8px;
   }
 }
 @media (min-width: 1400px) {
@@ -349,10 +352,11 @@ header nav .primary_menu > li.menu-item--has-new > a {
     display: inline-flex;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     margin-bottom: 0;
     flex: 1 1 auto;
     min-width: 0;
+    gap: 0.5rem;
   }
   header .navbar {
     display: flex;
@@ -380,7 +384,7 @@ header nav .primary_menu > li > a {
   line-height: 1.2;
   display: block;
   font-weight: 400;
-  padding: 15px;
+  padding: 15px 8px;
   color: #1F1B51;
   transition: all 0.2s ease-in-out;
   position: relative;
