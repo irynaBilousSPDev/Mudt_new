@@ -11,7 +11,10 @@
         :root {
             --header-offset: 110px;
             --header-gap: 2rem;
-            --header-bar: 20px; /* purple strip */
+            --header-bar: 30px; /* desktop */
+        }
+        @media (max-width: 1399.98px) {
+            :root { --header-bar: 20px; } /* mobile + tablet */
         }
         @media (max-width: 767.98px) {
             :root { --header-gap: 1rem; }

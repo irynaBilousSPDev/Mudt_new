@@ -400,12 +400,13 @@ candydaties
 :root {
   --header-offset: 110px;
   --header-gap: 2rem;
-  --header-bar: 20px; /* sync with header strip */
+  --header-bar: 30px; /* desktop purple strip */
 }
 
 @media (max-width: 1399.98px) {
   :root {
     --header-offset: 120px;
+    --header-bar: 20px; /* mobile + tablet */
   }
 }
 @media (max-width: 767.98px) {

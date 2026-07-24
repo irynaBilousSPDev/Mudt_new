@@ -498,7 +498,7 @@ header .blue_border_btn a {
 
 .header-container {
     background-color: #fff;
-    margin-top: var(--header-bar, 20px);
+    margin-top: var(--header-bar, 30px);
     position: relative;
 }
 
@@ -506,9 +506,9 @@ header .blue_border_btn a {
     position: absolute;
     content: '';
     left: 0;
-    top: calc(-1 * var(--header-bar, 20px));
+    top: calc(-1 * var(--header-bar, 30px));
     width: 100%;
-    height: calc(100% + var(--header-bar, 20px));
+    height: calc(100% + var(--header-bar, 30px));
     background-color: #1F1A51;
     z-index: -1;
 }
@@ -517,9 +517,9 @@ header .blue_border_btn a {
     position: absolute;
     content: '';
     left: 0;
-    bottom: calc(-1 * var(--header-bar, 20px));
+    bottom: calc(-1 * var(--header-bar, 30px));
     width: 100%;
-    height: calc(100% + var(--header-bar, 20px));
+    height: calc(100% + var(--header-bar, 30px));
     background-color: #1F1A51;
     z-index: -1;
 }
