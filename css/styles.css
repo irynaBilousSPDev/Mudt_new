@@ -3079,7 +3079,7 @@ footer a:hover {
 
     body.home main {
         margin-top: 0 !important;
-        padding-top: var(--header-offset, 145px) !important;
+        padding-top: calc(var(--header-offset, 145px) + var(--header-bar, 30px)) !important;
     }
 
     body.home .section_main_banner {

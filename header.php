@@ -11,6 +11,7 @@
         :root {
             --header-offset: 110px;
             --header-gap: 2rem;
+            --header-bar: 30px;
         }
         @media (max-width: 767.98px) {
             :root { --header-gap: 1rem; }
@@ -18,7 +19,8 @@
         main { margin-top: calc(var(--header-offset) + var(--header-gap)) !important; }
         body.home main {
             margin-top: 0 !important;
-            padding-top: var(--header-offset) !important;
+            /* Clear fixed header + purple :after (bottom: -30px) */
+            padding-top: calc(var(--header-offset) + var(--header-bar)) !important;
         }
         body.home .section_main_banner {
             margin-top: var(--header-gap) !important;
