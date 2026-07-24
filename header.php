@@ -130,11 +130,9 @@
             </div>
         </div>
     </div>
-    <div class="sub_header<?php echo is_front_page() ? ' sub_header--home' : ''; ?>"
-         style="background-color:#1F1A51;width:100%;<?php echo is_front_page() ? 'min-height:8px;height:8px;' : 'min-height:30px;'; ?>">
-        <?php if (is_front_page()): ?>
-
-        <?php endif; ?>
+    <?php if (!is_front_page()) : ?>
+    <div class="sub_header"
+         style="background-color:#1F1A51;width:100%;min-height:30px;">
         <?php if (is_singular('programs') && !is_single('pre-bachelor')): ?>
             <?php get_template_part('template-parts/sub_menu_program'); ?>
         <?php elseif (is_single('pre-bachelor')): ?>
@@ -143,6 +141,7 @@
             <?php get_template_part('template-parts/sub_menu_page'); ?>
         <?php endif; ?>
     </div>
+    <?php endif; ?>
 </header>
 <script>
 (function () {

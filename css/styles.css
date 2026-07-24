@@ -562,6 +562,17 @@ header .blue_border_btn a {
     z-index: -1;
 }
 
+.header-container:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: -30px;
+    width: 100%;
+    height: calc(100% + 30px);
+    background-color: #1F1A51;
+    z-index: -1;
+}
+
 .bg_color_top {
     position: relative;
 }
