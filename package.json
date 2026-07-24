@@ -4,7 +4,7 @@
   "private": true,
   "description": "MUDT WordPress theme — dev deploy to iratest.site",
   "scripts": {
-    "build:css": "sass scss/reset.scss:css/reset.css scss/fonts.scss:css/fonts.css scss/footer.scss:css/footer.css scss/page-pt.scss:css/page-pt.css scss/single-styles.scss:css/single-styles.css scss/styles.scss:css/styles.css --no-source-map",
+    "build:css": "sass scss/reset.scss:css/reset.css scss/fonts.scss:css/fonts.css scss/footer.scss:css/footer.css scss/page-pt.scss:css/page-pt.css scss/single-styles.scss:css/single-styles.css scss/styles.scss:css/styles.css scss/page-styles.scss:css/page-styles.css --no-source-map",
     "build:js": "terser js/main.js -c -m -o js/main.min.js",
     "build": "npm run build:css && npm run build:js",
     "deploy:dev": "node scripts/deploy-dev.js dev",
