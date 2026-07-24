@@ -23,7 +23,7 @@ function my_theme_enqueue_styles()
         'page-styles',
         get_template_directory_uri() . '/css/page-styles.css',
         array(),
-        file_exists($page_styles) ? filemtime($page_styles) : null
+        file_exists($page_styles) ? (string) filemtime($page_styles) : '20260724c'
     );
 
     $single_styles = get_template_directory() . '/css/single-styles.css';
@@ -31,15 +31,15 @@ function my_theme_enqueue_styles()
         'single-styles',
         get_template_directory_uri() . '/css/single-styles.css',
         array(),
-        file_exists($single_styles) ? filemtime($single_styles) : null
+        file_exists($single_styles) ? (string) filemtime($single_styles) : '20260724c'
     );
 
     $theme_styles = get_template_directory() . '/css/styles.css';
     wp_register_style(
         'styles',
         get_template_directory_uri() . '/css/styles.css',
-        array(),
-        file_exists($theme_styles) ? filemtime($theme_styles) : null
+        array('page-styles'),
+        file_exists($theme_styles) ? (string) filemtime($theme_styles) : '20260724c'
     );
 
     wp_enqueue_style('reset');
