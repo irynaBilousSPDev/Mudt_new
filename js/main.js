@@ -10,7 +10,14 @@
             if (!header || document.body.classList.contains('menu-open')) {
                 return;
             }
-            var offset = Math.ceil(header.getBoundingClientRect().height);
+            var anchor = header.querySelector('.sub_header') || header;
+            var bottom = anchor.getBoundingClientRect().bottom;
+            var admin = document.getElementById('wpadminbar');
+            var adminH = 0;
+            if (admin && window.getComputedStyle(admin).display !== 'none') {
+                adminH = admin.offsetHeight;
+            }
+            var offset = Math.max(0, Math.round(bottom - adminH));
             document.documentElement.style.setProperty('--header-offset', offset + 'px');
         }
 

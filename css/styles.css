@@ -3116,11 +3116,12 @@ footer a:hover {
     }
 
     main {
-        margin-top: var(--header-offset, 150px);
+        margin-top: var(--header-offset, 145px);
     }
 
     body.home main {
-        margin-top: var(--header-offset, 150px);
+        margin-top: 0 !important;
+        padding-top: var(--header-offset, 145px) !important;
     }
 }
 
