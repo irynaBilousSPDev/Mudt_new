@@ -3,6 +3,25 @@
     $(document).ready(function () {
 
         /***********************************/
+        /* Keep main content flush under fixed header on all viewports */
+        /***********************************/
+        function setHeaderOffset() {
+            var header = document.querySelector('header.header');
+            if (!header || document.body.classList.contains('menu-open')) {
+                return;
+            }
+            var offset = Math.ceil(header.getBoundingClientRect().height);
+            document.documentElement.style.setProperty('--header-offset', offset + 'px');
+        }
+
+        setHeaderOffset();
+        $(window).on('resize orientationchange', setHeaderOffset);
+        window.addEventListener('load', setHeaderOffset);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(setHeaderOffset);
+        }
+
+        /***********************************/
         AOS.init();
 
         $('.main_slider').slick({
@@ -258,6 +277,8 @@
                         $('body').addClass('menu-open');
                     } else {
                         $('body').removeClass('menu-open');
+                        // Recalculate after menu closes (header no longer full-viewport)
+                        window.requestAnimationFrame(setHeaderOffset);
                     }
                 }
             });

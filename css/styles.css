@@ -24,7 +24,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 999;
-    min-height: 120px;
+    min-height: 0;
 }
 
 .single #content,
@@ -1478,7 +1478,44 @@ body.programs-template-single-programs-prebachelors .item_offer_card_body_positi
 
 @media (max-width: 767px) {
     .section_main_banner {
-        margin-top: 1.5rem;
+        margin-top: 0;
+    }
+
+    .section_main_banner .youtube-container {
+        padding-bottom: 56.25%;
+        border-radius: 40px 40px 0 0;
+    }
+
+    .section_main_banner .image_video_wrapper .bg {
+        min-height: 0;
+        padding: 24px;
+    }
+
+    .section_main_banner .item_offer_card_title {
+        min-height: 0;
+        margin-bottom: 0.75rem;
+    }
+
+    .section_numbers_count {
+        padding: 2.5rem 0;
+    }
+
+    .section_offers {
+        margin: 2.5rem 0;
+    }
+
+    .section_offers .item_offer_card_title {
+        min-height: 0;
+    }
+
+    .item_offer_card_header_image {
+        min-height: 180px;
+    }
+
+    .slide_wrapper {
+        min-height: 0;
+        border-radius: 48px;
+        padding: 2rem 1.25rem;
     }
 }
 
@@ -1522,12 +1559,19 @@ body.programs-template-single-programs-prebachelors .item_offer_card_body_positi
     }
 }
 
-.section_main_banner .offers_side.two_programs .item_offer {
-    height: calc(50% - 7px);
+.section_main_banner .offers_side.two_programs .item_offer,
+.section_main_banner .offers_side.three_programs .item_offer {
+    height: auto;
 }
 
-.section_main_banner .offers_side.three_programs .item_offer {
-    height: calc(33.3% - 7px);
+@media (min-width: 1201px) {
+    .section_main_banner .offers_side.two_programs .item_offer {
+        height: calc(50% - 7px);
+    }
+
+    .section_main_banner .offers_side.three_programs .item_offer {
+        height: calc(33.3% - 7px);
+    }
 }
 
 @media (min-width: 1201px) {
@@ -3072,12 +3116,12 @@ footer a:hover {
         font-size: 12px;
     }
 
-    main:not(.single-munich_team main, body.news main, body.single-post main) {
-        margin-top: 240px;
+    main {
+        margin-top: var(--header-offset, 160px);
     }
 
     body.home main {
-        margin-top: 220px;
+        margin-top: var(--header-offset, 160px);
     }
 }
 
@@ -3113,9 +3157,9 @@ footer a:hover {
     }
 
     .slide_wrapper {
-        min-height: 1px;
-        border-radius: 80px;
-        padding: 80px 40px;
+        min-height: 0;
+        border-radius: 40px;
+        padding: 1.75rem 1.25rem;
     }
 
     .section_logo .logo_item {

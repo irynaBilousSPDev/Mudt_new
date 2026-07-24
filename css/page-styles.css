@@ -428,16 +428,20 @@ candydaties
 
 
 /*about us____________________________________________*/
+:root {
+    --header-offset: 170px;
+}
+
 main {
-    margin-top: 180px;
+    margin-top: var(--header-offset);
 }
 
 body.home main {
-    /*margin-top: 150px;*/
+    margin-top: var(--header-offset);
 }
 
 main.single_program {
-    margin-top: 190px;
+    margin-top: calc(var(--header-offset) + 20px);
 }
 
 main.page .top_banner {

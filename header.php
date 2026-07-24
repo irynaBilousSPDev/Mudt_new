@@ -112,7 +112,8 @@
             </div>
         </div>
     </div>
-    <div class="sub_header" style="background-color:#1F1A51;min-height:30px;width:100%;">
+    <div class="sub_header<?php echo is_front_page() ? ' sub_header--home' : ''; ?>"
+         style="background-color:#1F1A51;width:100%;<?php echo is_front_page() ? 'min-height:8px;height:8px;' : 'min-height:30px;'; ?>">
         <?php if (is_front_page()): ?>
 
         <?php endif; ?>
