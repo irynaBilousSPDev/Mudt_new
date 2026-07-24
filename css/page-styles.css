@@ -450,14 +450,14 @@ main {
     margin-top: calc(var(--header-offset) + var(--header-gap));
 }
 
-/* Homepage: header clearance + small breathing gap */
+/* Homepage: header clearance + breathing gap on banner (2rem / 1rem mobile) */
 body.home main {
     margin-top: 0 !important;
-    padding-top: calc(var(--header-offset) + var(--header-gap)) !important;
+    padding-top: var(--header-offset) !important;
 }
 
 body.home .section_main_banner {
-    margin-top: 0 !important;
+    margin-top: var(--header-gap) !important;
     padding-top: 0 !important;
 }
 

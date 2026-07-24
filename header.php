@@ -18,10 +18,10 @@
         main { margin-top: calc(var(--header-offset) + var(--header-gap)) !important; }
         body.home main {
             margin-top: 0 !important;
-            padding-top: calc(var(--header-offset) + var(--header-gap)) !important;
+            padding-top: var(--header-offset) !important;
         }
         body.home .section_main_banner {
-            margin-top: 0 !important;
+            margin-top: var(--header-gap) !important;
             padding-top: 0 !important;
         }
     </style>
