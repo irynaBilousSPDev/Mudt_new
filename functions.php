@@ -10,6 +10,7 @@ register_nav_menus(array(
 require_once get_template_directory() . '/inc/enqueue.php';
 require_once get_template_directory() . '/inc/cf7.php';
 require_once get_template_directory() . '/inc/acf-options.php';
+require_once get_template_directory() . '/inc/acf-json.php';
 require_once get_template_directory() . '/inc/nav-walker.php';
 
 if (function_exists('add_theme_support')) {
