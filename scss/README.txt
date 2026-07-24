@@ -9,6 +9,7 @@
  *   sections/_<{acf_layout}>.scss  → then wire into page-styles / styles entries
  *   templates/_front-page.scss, _single-programs.scss, _page-pt.scss
  *
- * Done: reset, fonts, footer, page-pt, single-styles
+ * Done: reset, fonts, footer, page-pt, single-styles, styles (legacy blob)
+ * Next: page-styles, then peel header / flexible sections out of legacy
  * Rules: no selector renames, no visual refactors in the same commit as a move.
  */
