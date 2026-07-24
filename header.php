@@ -162,9 +162,13 @@
         var offset = Math.max(0, Math.round(bottom - adminH));
         document.documentElement.style.setProperty('--header-offset', offset + 'px');
     }
+    window.mudtSetHeaderOffset = setHeaderOffset;
     setHeaderOffset();
     window.addEventListener('load', setHeaderOffset);
     window.addEventListener('resize', setHeaderOffset);
     window.addEventListener('orientationchange', setHeaderOffset);
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(setHeaderOffset);
+    }
 })();
 </script>

@@ -94,7 +94,19 @@ function theme_scripts()
     wp_enqueue_script('owl-carousel-js', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js', array('jquery'), null, true);
     wp_enqueue_script('aos-js', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array('jquery'), null, true);
 
-    wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array('jquery', 'slick-js'), null, true);
+    $main_src = '/js/main.js';
+    $main_min = get_template_directory() . '/js/main.min.js';
+    if (! (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) && file_exists($main_min)) {
+        $main_src = '/js/main.min.js';
+    }
+    $main_path = get_template_directory() . $main_src;
+    wp_enqueue_script(
+        'main',
+        get_template_directory_uri() . $main_src,
+        array('jquery', 'slick-js'),
+        file_exists($main_path) ? (string) filemtime($main_path) : null,
+        true
+    );
 
 }
 
