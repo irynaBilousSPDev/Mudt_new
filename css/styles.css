@@ -204,28 +204,16 @@ img {
 
 header .menu {
     margin-right: 0;
-    background-color: #EEF1F7;
-    border: 1.5px solid #1F1A51;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display: flex;
     padding: 0;
     outline: none;
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
     max-width: 48px;
     max-height: 48px;
     border-radius: 12px;
     flex-shrink: 0;
-    box-sizing: border-box;
-}
-
-header .menu svg {
-    width: 34px;
-    height: 34px;
-    display: block;
 }
 
 header .desktop {
@@ -610,43 +598,43 @@ header .blue_border_btn a {
 
 header .line {
     fill: none;
-    stroke: #1F1A51;
-    stroke-width: 3;
+    stroke: #000000;
+    stroke-width: 2;
     transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
     stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 header .line1 {
     stroke-dasharray: 60 207;
-    stroke-width: 3;
+    stroke-width: 2;
 }
 
 header .line2 {
     stroke-dasharray: 40 40;
-    stroke-width: 3;
+    stroke-width: 2;
 }
 
 header .line3 {
     stroke-dasharray: 60 207;
-    stroke-width: 3;
+    stroke-width: 2;
 }
 
 header .menu[aria-expanded="true"] .line1 {
     stroke-dasharray: 90 207;
     stroke-dashoffset: -134;
-    stroke-width: 3;
+    stroke-width: 2;
 }
 
 header .menu[aria-expanded="true"] .line2 {
     stroke-dasharray: 1 60;
     stroke-dashoffset: -30;
-    stroke-width: 3;
+    stroke-width: 2;
 }
 
 header .menu[aria-expanded="true"] .line3 {
     stroke-dasharray: 90 207;
     stroke-dashoffset: -134;
-    stroke-width: 3;
+    stroke-width: 2;
 }
 
 
@@ -2680,13 +2668,9 @@ footer a:hover {
 
     header .navbar {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        grid-template-areas:
-            "logo toggle"
-            "cta cta";
         align-items: center;
-        column-gap: 0.75rem;
-        row-gap: 0.75rem;
+        column-gap: 0.5rem;
+        row-gap: 0.5rem;
         margin-left: 0;
         margin-right: 0;
     }
@@ -2706,8 +2690,6 @@ footer a:hover {
         display: block;
         width: auto;
         height: auto;
-        max-width: min(340px, calc(100vw - 100px));
-        max-height: 64px;
         object-fit: contain;
         object-position: left center;
     }
@@ -2722,6 +2704,8 @@ footer a:hover {
         margin-right: 0;
         align-self: center;
         justify-self: end;
+        position: relative;
+        z-index: 2;
     }
 
     header .header-cta {
@@ -2731,7 +2715,7 @@ footer a:hover {
         justify-content: flex-end;
         align-items: center;
         gap: 0.5rem;
-        width: 100%;
+        width: auto;
     }
 
     header .custom_btn a,
@@ -2774,15 +2758,34 @@ footer a:hover {
 
 }
 
-/* Tablet / small laptop with hamburger */
-@media (min-width: 768px) and (max-width: 1399.98px) {
+/* From 481px: one row — logo | burger | buttons (logo never covers burger) */
+@media (min-width: 481px) and (max-width: 1399.98px) {
+    header .navbar {
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        grid-template-areas: "logo toggle cta";
+    }
+
     header .navbar-brand img {
-        max-width: min(300px, calc(100vw - 120px));
-        max-height: 60px;
+        max-width: min(280px, calc(100vw - 280px));
+        max-height: 56px;
     }
 
     header .header-cta {
+        width: auto;
         justify-content: flex-end;
+    }
+
+    header .custom_btn a,
+    header .light_btn {
+        font-size: 13px;
+        padding: 7px 12px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1399.98px) {
+    header .navbar-brand img {
+        max-width: min(300px, calc(100vw - 300px));
+        max-height: 60px;
     }
 
     header .custom_btn a,
@@ -2792,13 +2795,22 @@ footer a:hover {
     }
 }
 
-@media (max-width: 767.98px) {
+/* Phones ≤480: two rows so logo stays readable and burger stays clear */
+@media (max-width: 480px) {
+    header .navbar {
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "logo toggle"
+            "cta cta";
+    }
+
     header .navbar-brand img {
-        max-width: min(260px, calc(100vw - 96px));
-        max-height: 56px;
+        max-width: min(210px, calc(100vw - 72px));
+        max-height: 48px;
     }
 
     header .header-cta {
+        width: 100%;
         justify-content: stretch;
     }
 
@@ -2817,26 +2829,6 @@ footer a:hover {
         font-size: 13px;
         padding: 8px 10px;
         line-height: 1.2;
-    }
-}
-
-@media (max-width: 480px) {
-    header .navbar-brand img {
-        max-width: min(210px, calc(100vw - 88px));
-        max-height: 48px;
-    }
-
-    header .menu {
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        max-width: 44px;
-        max-height: 44px;
-    }
-
-    header .menu svg {
-        width: 30px;
-        height: 30px;
     }
 }
 
