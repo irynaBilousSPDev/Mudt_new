@@ -2758,15 +2758,15 @@ footer a:hover {
 
 }
 
-/* From 481px: one row — logo | burger | buttons (logo never covers burger) */
-@media (min-width: 481px) and (max-width: 1399.98px) {
+/* From 768px: one row — logo | burger | buttons */
+@media (min-width: 768px) and (max-width: 1399.98px) {
     header .navbar {
         grid-template-columns: minmax(0, 1fr) auto auto;
         grid-template-areas: "logo toggle cta";
     }
 
     header .navbar-brand img {
-        max-width: min(280px, calc(100vw - 280px));
+        max-width: min(280px, calc(100vw - 300px));
         max-height: 56px;
     }
 
@@ -2782,9 +2782,9 @@ footer a:hover {
     }
 }
 
-@media (min-width: 768px) and (max-width: 1399.98px) {
+@media (min-width: 992px) and (max-width: 1399.98px) {
     header .navbar-brand img {
-        max-width: min(300px, calc(100vw - 300px));
+        max-width: min(300px, calc(100vw - 320px));
         max-height: 60px;
     }
 
@@ -2795,8 +2795,8 @@ footer a:hover {
     }
 }
 
-/* Phones ≤480: two rows so logo stays readable and burger stays clear */
-@media (max-width: 480px) {
+/* ≤767: two rows — logo+burger, then buttons (481–767 does not fit one line) */
+@media (max-width: 767.98px) {
     header .navbar {
         grid-template-columns: minmax(0, 1fr) auto;
         grid-template-areas:
@@ -2805,8 +2805,8 @@ footer a:hover {
     }
 
     header .navbar-brand img {
-        max-width: min(210px, calc(100vw - 72px));
-        max-height: 48px;
+        max-width: min(260px, calc(100vw - 72px));
+        max-height: 52px;
     }
 
     header .header-cta {
@@ -2829,6 +2829,13 @@ footer a:hover {
         font-size: 13px;
         padding: 8px 10px;
         line-height: 1.2;
+    }
+}
+
+@media (max-width: 480px) {
+    header .navbar-brand img {
+        max-width: min(200px, calc(100vw - 72px));
+        max-height: 46px;
     }
 }
 
@@ -3109,11 +3116,11 @@ footer a:hover {
     }
 
     main {
-        margin-top: var(--header-offset, 160px);
+        margin-top: var(--header-offset, 150px);
     }
 
     body.home main {
-        margin-top: var(--header-offset, 160px);
+        margin-top: var(--header-offset, 150px);
     }
 }
 

@@ -126,3 +126,19 @@
         <?php endif; ?>
     </div>
 </header>
+<script>
+(function () {
+    function setHeaderOffset() {
+        var header = document.querySelector('header.header');
+        if (!header || document.body.classList.contains('menu-open')) {
+            return;
+        }
+        var offset = Math.ceil(header.getBoundingClientRect().height);
+        document.documentElement.style.setProperty('--header-offset', offset + 'px');
+    }
+    setHeaderOffset();
+    window.addEventListener('load', setHeaderOffset);
+    window.addEventListener('resize', setHeaderOffset);
+    window.addEventListener('orientationchange', setHeaderOffset);
+})();
+</script>

@@ -429,7 +429,19 @@ candydaties
 
 /*about us____________________________________________*/
 :root {
-    --header-offset: 170px;
+    --header-offset: 120px;
+}
+
+@media (max-width: 1399.98px) {
+    :root {
+        --header-offset: 125px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    :root {
+        --header-offset: 150px;
+    }
 }
 
 main {
@@ -441,7 +453,7 @@ body.home main {
 }
 
 main.single_program {
-    margin-top: calc(var(--header-offset) + 20px);
+    margin-top: calc(var(--header-offset) + 10px);
 }
 
 main.page .top_banner {
