@@ -9,6 +9,6 @@
  *   sections/_<{acf_layout}>.scss  → then wire into page-styles / styles entries
  *   templates/_front-page.scss, _single-programs.scss, _page-pt.scss
  *
- * Done: reset, fonts, footer
+ * Done: reset, fonts, footer, page-pt
  * Rules: no selector renames, no visual refactors in the same commit as a move.
  */
