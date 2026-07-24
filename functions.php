@@ -17,8 +17,22 @@ function my_theme_enqueue_styles()
     wp_register_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css');
     wp_register_style('owl-carousel-css', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css');
     wp_register_style('aos-css', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
-    wp_register_style('page-styles', get_template_directory_uri() . '/css/page-styles.css');
-    wp_register_style('single-styles', get_template_directory_uri() . '/css/single-styles.css');
+
+    $page_styles = get_template_directory() . '/css/page-styles.css';
+    wp_register_style(
+        'page-styles',
+        get_template_directory_uri() . '/css/page-styles.css',
+        array(),
+        file_exists($page_styles) ? filemtime($page_styles) : null
+    );
+
+    $single_styles = get_template_directory() . '/css/single-styles.css';
+    wp_register_style(
+        'single-styles',
+        get_template_directory_uri() . '/css/single-styles.css',
+        array(),
+        file_exists($single_styles) ? filemtime($single_styles) : null
+    );
 
     $theme_styles = get_template_directory() . '/css/styles.css';
     wp_register_style(

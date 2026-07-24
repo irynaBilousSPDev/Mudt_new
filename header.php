@@ -7,6 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?php wp_head(); ?>
+    <style id="mudt-header-offset-critical">
+        :root { --header-offset: 110px; }
+        main { margin-top: var(--header-offset) !important; }
+        body.home main {
+            margin-top: 0 !important;
+            padding-top: var(--header-offset) !important;
+        }
+        body.home .section_main_banner {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
