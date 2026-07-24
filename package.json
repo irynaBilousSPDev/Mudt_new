@@ -4,7 +4,9 @@
   "private": true,
   "description": "MUDT WordPress theme — dev deploy to iratest.site",
   "scripts": {
+    "build:css": "sass scss/reset.scss:css/reset.css scss/fonts.scss:css/fonts.css --no-source-map",
     "build:js": "terser js/main.js -c -m -o js/main.min.js",
+    "build": "npm run build:css && npm run build:js",
     "deploy:dev": "node scripts/deploy-dev.js dev",
     "deploy:prod": "node scripts/deploy-dev.js prod",
     "import:db:dev": "node scripts/import-db-dev.js",
@@ -15,6 +17,7 @@
   },
   "devDependencies": {
     "basic-ftp": "^6.0.1",
+    "sass": "^1.101.7",
     "ssh2-sftp-client": "^12.1.1",
     "terser": "^5.49.0"
   }
