@@ -1,0 +1,381 @@
+/* Footer — redesign: PT banner + 2-row nav grid (matches Figma) */
+
+.main_footer_section--redesign {
+    padding-top: 64px;
+    padding-bottom: 24px;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 48px;
+    padding: 32px 40px;
+    border: 1px solid rgba(41, 148, 255, 0.22);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-banner__kicker {
+    margin: 0 0 8px;
+    color: #2994ff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+    text-transform: uppercase;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-banner__title {
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+    display: block;
+    text-decoration: none;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-banner__text {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    line-height: 1.45;
+    max-width: 640px;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-banner__btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    min-height: 52px;
+    padding: 14px 32px;
+    border-radius: 999px;
+    background: #2994ff;
+    color: #fff !important;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none !important;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-banner__btn:hover {
+    background: #1f9cd8;
+    text-decoration: none !important;
+}
+
+/* Brand spans both rows; nav sections sit in a 2×2 grid beside PT card */
+.footer_menu_wrapper--redesign .footer-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 1.15fr) minmax(170px, 1fr) minmax(170px, 1fr) minmax(210px, 0.95fr);
+    grid-template-rows: auto auto;
+    column-gap: 40px;
+    row-gap: 40px;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+}
+
+.footer_menu_wrapper--redesign .footer-brand {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-section--master {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-section--bachelor {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-card {
+    grid-column: 4;
+    grid-row: 2;
+    align-self: start;
+    min-height: 196px;
+    padding: 24px 28px;
+    border: 1px solid rgba(41, 148, 255, 0.35);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    box-sizing: border-box;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-section--candidates {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-section--university {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.footer_menu_wrapper--redesign .footer-brand .navbar-brand {
+    display: inline-block;
+    margin-bottom: 28px;
+}
+
+.footer_menu_wrapper--redesign .footer-brand .navbar-brand img {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+}
+
+.footer_menu_wrapper--redesign .footer_address,
+.footer_menu_wrapper--redesign .footer_contact {
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.footer_menu_wrapper--redesign .footer_address p {
+    margin: 0;
+}
+
+.footer_menu_wrapper--redesign .footer_contact a {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.footer_menu_wrapper--redesign .footer_social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 12px 0 0;
+}
+
+.footer_menu_wrapper--redesign .footer_social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+    background: transparent;
+    overflow: hidden;
+    font-size: 0;
+    flex-shrink: 0;
+}
+
+.footer_menu_wrapper--redesign .footer_social a img {
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    object-fit: contain;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-section {
+    margin: 0;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-heading {
+    margin: 0 0 16px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-heading a {
+    color: #fff;
+    font-size: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-heading a:hover {
+    text-decoration: underline;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-list li {
+    margin: 0 0 8px;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-list li:last-child {
+    margin-bottom: 0;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-list a {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 16px;
+    line-height: 1.35;
+    text-decoration: none;
+}
+
+.footer_menu_wrapper--redesign .footer-nav-list a:hover {
+    text-decoration: underline;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-card__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-card__title {
+    margin: 0;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 11rem;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-card__badge {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #2994ff;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-card__link {
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none !important;
+}
+
+.footer_menu_wrapper--redesign .footer-pt-card__link:hover {
+    text-decoration: underline !important;
+}
+
+.footer_menu_wrapper--redesign .bottom_footer_menu {
+    margin-top: 56px;
+    position: relative;
+    z-index: 2;
+}
+
+.footer_menu_wrapper--redesign .bottom_footer_menu ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0;
+    gap: 0;
+}
+
+.footer_menu_wrapper--redesign .bottom_footer_menu ul a {
+    padding: 0 32px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0;
+}
+
+@media (max-width: 1199px) {
+    .footer_menu_wrapper--redesign .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        column-gap: 32px;
+        row-gap: 32px;
+    }
+
+    .footer_menu_wrapper--redesign .footer-brand,
+    .footer_menu_wrapper--redesign .footer-nav-section--master,
+    .footer_menu_wrapper--redesign .footer-nav-section--bachelor,
+    .footer_menu_wrapper--redesign .footer-pt-card,
+    .footer_menu_wrapper--redesign .footer-nav-section--candidates,
+    .footer_menu_wrapper--redesign .footer-nav-section--university {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .footer_menu_wrapper--redesign .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer_menu_wrapper--redesign .footer-pt-card {
+        max-width: 360px;
+    }
+}
+
+@media (max-width: 767px) {
+    .main_footer_section--redesign {
+        padding-top: 40px;
+    }
+
+    .footer_menu_wrapper--redesign .footer-pt-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+        margin-bottom: 32px;
+    }
+
+    .footer_menu_wrapper--redesign .footer-pt-banner__title {
+        font-size: 26px;
+    }
+
+    .footer_menu_wrapper--redesign .footer-pt-banner__btn {
+        width: 100%;
+    }
+
+    .footer_menu_wrapper--redesign .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .footer_menu_wrapper--redesign .footer-brand .navbar-brand img {
+        max-width: 200px;
+    }
+
+    .footer_menu_wrapper--redesign .footer-pt-card {
+        max-width: none;
+    }
+
+    .footer_menu_wrapper--redesign .bottom_footer_menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer_menu_wrapper--redesign .bottom_footer_menu ul a {
+        padding: 6px 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 481px) {
+    .footer_menu_wrapper--redesign .footer-pt-banner__kicker {
+        font-size: 10px;
+    }
+
+    .footer_menu_wrapper--redesign .footer-nav-heading,
+    .footer_menu_wrapper--redesign .footer-pt-card__title {
+        font-size: 20px;
+    }
+}

@@ -5,9 +5,10 @@
  * Output: existing css/*.css (enqueue unchanged).
  *
  * Next slices (DEV only, one at a time):
- *   layout/_header.scss, layout/_footer.scss
+ *   layout/_header.scss
  *   sections/_<{acf_layout}>.scss  → then wire into page-styles / styles entries
  *   templates/_front-page.scss, _single-programs.scss, _page-pt.scss
  *
+ * Done: reset, fonts, footer
  * Rules: no selector renames, no visual refactors in the same commit as a move.
  */
