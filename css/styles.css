@@ -451,12 +451,21 @@ header .navbar .navbar-brand {
 }
 
 header .btn_group {
+    display: flex;
     flex: 1 1 auto;
     min-width: 0;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-end;
     gap: 0.5rem;
+}
+
+header .header-cta {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
 }
 
 header .btn_group .light_btn,
@@ -467,7 +476,16 @@ header .btn_group .custom_btn {
 }
 
 header .btn_group .light_btn {
-    margin-right: 0.5rem;
+    margin-right: 0;
+}
+
+header nav .primary_menu {
+    flex-wrap: nowrap;
+}
+
+header nav .primary_menu > li > a,
+header nav .primary_menu > li.menu-item--has-new > a {
+    white-space: nowrap;
 }
 
 @media (min-width: 1360px) and (max-width: 1440px) {
@@ -484,59 +502,61 @@ header .btn_group .light_btn {
 
 }
 
-@media (min-width: 1441px) and (max-width: 1600px) {
-    header .navbar-brand img {
-        max-width: 260px;
-    }
-
-    header nav .primary_menu > li > a {
-        padding: 12px 8px;
-        font-size: 16px;
-    }
-
-    header nav .primary_menu > li.menu-item--has-new > a {
-        font-size: 16px;
-    }
-
-    header .custom_btn a,
-    header .light_btn {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-}
-
 @media (min-width: 1200px) and (max-width: 1440px) {
     header nav .primary_menu > li > a {
-        padding: 12px 6px;
-        font-size: 15px;
+        padding: 10px 5px;
+        font-size: 14px;
     }
 
     header nav .primary_menu > li.menu-item--has-new > a {
-        font-size: 15px;
+        font-size: 14px;
+        gap: 6px;
     }
 
     header nav .primary_menu > li.menu-item--has-new > a .menu-item__new-badge {
-        padding: 3px 8px;
+        padding: 3px 7px;
         font-size: 8px;
     }
 
     header .navbar-brand img {
-        max-width: 220px;
+        max-width: 190px;
     }
 
     header .desktop {
-        margin-right: 0.25rem;
+        margin-right: 0.15rem;
+    }
+
+    header .custom_btn a,
+    header .light_btn {
+        font-size: 12px;
+        padding: 6px 10px;
+        white-space: nowrap;
+    }
+
+    header .header-cta {
+        gap: 0.35rem;
+    }
+}
+
+@media (min-width: 1441px) and (max-width: 1600px) {
+    header .navbar-brand img {
+        max-width: 230px;
+    }
+
+    header nav .primary_menu > li > a {
+        padding: 10px 7px;
+        font-size: 15px;
+    }
+
+    header nav .primary_menu > li.menu-item--has-new > a {
+        font-size: 15px;
     }
 
     header .custom_btn a,
     header .light_btn {
         font-size: 13px;
-        padding: 7px 10px;
+        padding: 7px 11px;
         white-space: nowrap;
-    }
-
-    header .btn_group .light_btn {
-        margin-right: 0.35rem;
     }
 }
 
@@ -573,7 +593,7 @@ header .btn_group .light_btn {
     }
 
     header .btn_group {
-        display: flex;
+        display: flex !important;
         flex-wrap: nowrap;
     }
 
@@ -2633,15 +2653,15 @@ footer a:hover {
         display: block;
         width: auto;
         height: auto;
-        max-width: min(300px, calc(100vw - 96px));
-        max-height: 68px;
+        max-width: min(320px, calc(100vw - 96px));
+        max-height: 72px;
         object-fit: contain;
         object-position: left center;
     }
 
-    /* Let hamburger + CTAs sit in the navbar grid */
+    /* Critical: must beat any leftover utility classes */
     header .btn_group {
-        display: contents;
+        display: contents !important;
     }
 
     header .menu {
@@ -2654,7 +2674,7 @@ footer a:hover {
     header .header-cta {
         grid-area: cta;
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: flex-end;
         align-items: center;
         gap: 0.5rem;
