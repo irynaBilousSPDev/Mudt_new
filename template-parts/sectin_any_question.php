@@ -1,6 +1,6 @@
-<section class="section_contact_program" data-contact-layout="xl">
+<section class="section_contact_program" data-contact-layout="xl-v2">
     <div class="container">
-        <div class="row contact_program_row align-items-center">
+        <div class="row contact_program_row align-items-stretch">
             <div class="col-12 col-xl-4 contact_program_intro">
                 <div class="wrapper_content">
                     <h2 class="section_title">

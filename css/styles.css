@@ -2616,11 +2616,11 @@ footer a:hover {
     margin: 0.35rem 0;
   }
 }
-/* From 768px: one row — logo | burger | buttons */
+/* From 768px: one row — logo | buttons | burger */
 @media (min-width: 768px) and (max-width: 1399.98px) {
   header .navbar {
     grid-template-columns: minmax(0, 1fr) auto auto;
-    grid-template-areas: "logo toggle cta";
+    grid-template-areas: "logo cta toggle";
   }
   header .navbar-brand img {
     max-width: min(280px, 100vw - 300px);
@@ -2629,6 +2629,10 @@ footer a:hover {
   header .header-cta {
     width: auto;
     justify-content: flex-end;
+  }
+  header .menu {
+    justify-self: end;
+    margin-left: 0.15rem;
   }
   header .custom_btn a,
   header .light_btn {

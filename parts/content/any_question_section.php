@@ -5,9 +5,9 @@ $show_contacts = get_sub_field('show_contacts');
 $shortcode = get_sub_field('shortcode');
 $contact_form_title = get_sub_field('contact_form_title');
 ?>
-<section class="section_contact_program section_sub_menu" data-contact-layout="xl" id="layout_id_<?php echo get_row_index(); ?>">
+<section class="section_contact_program section_sub_menu" data-contact-layout="xl-v2" id="layout_id_<?php echo get_row_index(); ?>">
     <div class="container">
-        <div class="row contact_program_row align-items-center">
+        <div class="row contact_program_row align-items-stretch">
             <div class="col-12 col-xl-4 contact_program_intro">
                 <div class="wrapper_content">
                     <h2 class="section_title">
