@@ -56,6 +56,7 @@ function runAssetBuild(env) {
 	execSync('npm run build', { cwd: ROOT, stdio: 'inherit' });
 }
 
+function deployGitOnlyEnabled(env) {
 	if (envFlag(env, 'DEPLOY_FULL')) return false;
 	if (env.DEPLOY_GIT_ONLY !== undefined) return envFlag(env, 'DEPLOY_GIT_ONLY');
 	return true;
