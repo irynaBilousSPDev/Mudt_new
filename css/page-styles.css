@@ -1,10 +1,50 @@
 @charset "UTF-8";
+:root {
+  --section-space-y: 5rem; /* default desktop section pad/margin */
+  --section-space-y-lg: 5rem; /* was often 8–10rem — keep closer to standard */
+  --section-space-y-sm: 3rem;
+  --section-space-y-xs: 2rem;
+}
+
+/* ~MacBook / 1440-class desktops */
+@media (max-width: 1599.98px) {
+  :root {
+    --section-space-y: 3.5rem;
+    --section-space-y-lg: 4rem;
+    --section-space-y-sm: 2.5rem;
+    --section-space-y-xs: 1.5rem;
+  }
+}
+@media (max-width: 1199.98px) {
+  :root {
+    --section-space-y: 3rem;
+    --section-space-y-lg: 3.25rem;
+    --section-space-y-sm: 2rem;
+    --section-space-y-xs: 1.25rem;
+  }
+}
+@media (max-width: 767.98px) {
+  :root {
+    --section-space-y: 2rem;
+    --section-space-y-lg: 2.25rem;
+    --section-space-y-sm: 1.5rem;
+    --section-space-y-xs: 1rem;
+  }
+}
+@media (max-width: 575.98px) {
+  :root {
+    --section-space-y: 1.5rem;
+    --section-space-y-lg: 1.75rem;
+    --section-space-y-sm: 1.25rem;
+    --section-space-y-xs: 0.75rem;
+  }
+}
 /*pages start
 candydaties
 */
 .page_header {
   position: relative;
-  margin-bottom: 6rem;
+  margin-bottom: var(--section-space-y-lg, 5rem);
 }
 
 .page_header .title_wrapper {
@@ -191,7 +231,7 @@ candydaties
 /*section_application_seps*/
 .section_application_steps {
   position: relative;
-  padding: 100px 0;
+  padding: var(--section-space-y-lg, 5rem) 0;
 }
 
 .section_application_steps .title_wrapper {
@@ -863,7 +903,7 @@ main.page .scholarships_financing_card .card_title {
 
 /*scholarship_paralax_section*/
 .scholarship_parallax_section {
-  margin: 5rem 0;
+  margin: var(--section-space-y, 5rem) 0;
 }
 
 /*page_visa_guide*/
@@ -911,7 +951,7 @@ main.page .scholarships_financing_card .card_title {
 
 .text_image_section .bg_color,
 .text_section.bg_color {
-  padding: 120px 0;
+  padding: var(--section-space-y-lg, 5rem) 0;
 }
 
 .text_section .description.segoe_ui {
@@ -970,7 +1010,7 @@ main.page .scholarships_financing_card .card_title {
 
 /*bg_image_section*/
 .bg_image_section {
-  margin: 5rem auto;
+  margin: var(--section-space-y, 5rem) auto;
 }
 
 .bg_image_section.content .bg:before {
@@ -1022,7 +1062,7 @@ main.page .scholarships_financing_card .card_title {
 
 /*video_section*/
 .video_section {
-  margin: 5rem 0;
+  margin: var(--section-space-y, 5rem) 0;
 }
 
 .video_section .youtube-container {
@@ -1198,7 +1238,7 @@ main.page .scholarships_financing_card .card_title {
 }
 /*section_types_visa*/
 .section_types_visa {
-  margin-bottom: 8rem;
+  margin-bottom: var(--section-space-y-lg, 5rem);
 }
 
 .header_types_visa .section_title {
@@ -1252,7 +1292,7 @@ main.page .scholarships_financing_card .card_title {
 }
 /*section_applying_visa*/
 .section_applying_visa {
-  margin-bottom: 8rem;
+  margin-bottom: var(--section-space-y-lg, 5rem);
 }
 
 .section_applying_visa .section_title {
@@ -1322,9 +1362,9 @@ main.page .scholarships_financing_card .card_title {
 
 /*section_interviews*/
 .section_interviews {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-  padding: 8rem 0;
+  margin-top: var(--section-space-y, 5rem);
+  margin-bottom: var(--section-space-y, 5rem);
+  padding: var(--section-space-y-lg, 5rem) 0;
   background-color: #EEF7FF;
 }
 
@@ -1391,7 +1431,7 @@ main.page .scholarships_financing_card .card_title {
 /*section_application_deadlines*/
 .section_application_deadlines {
   position: relative;
-  padding: 5rem 0;
+  padding: var(--section-space-y, 5rem) 0 var(--section-space-y-sm, 3rem);
 }
 
 .section_application_deadlines ul li {
@@ -1507,7 +1547,7 @@ main.page .scholarships_financing_card .card_title {
 /* Tablet: center copy on top, Fall + Spring side by side */
 @media (max-width: 1199.98px) {
   .section_application_deadlines {
-    padding: 3.5rem 0;
+    padding: var(--section-space-y, 3rem) 0 var(--section-space-y-sm, 2rem);
   }
   .application_deadlines_col--center {
     order: -1;
@@ -1543,7 +1583,7 @@ main.page .scholarships_financing_card .card_title {
 /* Mobile: stack all cards, softer pills */
 @media (max-width: 767.98px) {
   .section_application_deadlines {
-    padding: 2.5rem 0;
+    padding: var(--section-space-y, 2rem) 0 var(--section-space-y-xs, 1rem);
   }
   .application_deadlines_col--fall,
   .application_deadlines_col--spring,
@@ -1581,7 +1621,7 @@ main.page .scholarships_financing_card .card_title {
 }
 @media (max-width: 575.98px) {
   .section_application_deadlines {
-    padding: 2rem 0;
+    padding: var(--section-space-y, 1.5rem) 0;
   }
   .application_deadlines_item {
     border-radius: 32px;
@@ -1590,7 +1630,7 @@ main.page .scholarships_financing_card .card_title {
 }
 /*section_scholarships*/
 .section_scholarships {
-  padding: 100px 0;
+  padding: var(--section-space-y-lg, 5rem) 0;
   background-color: #F5F5F5;
 }
 

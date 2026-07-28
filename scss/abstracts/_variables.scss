@@ -1,1 +1,44 @@
-// Placeholder — tokens later (colors, gaps). Do not change visual CSS yet.
+// Theme spacing tokens — section rhythm scales by viewport
+:root {
+    --section-space-y: 5rem;      /* default desktop section pad/margin */
+    --section-space-y-lg: 5rem;   /* was often 8–10rem — keep closer to standard */
+    --section-space-y-sm: 3rem;
+    --section-space-y-xs: 2rem;
+}
+
+/* ~MacBook / 1440-class desktops */
+@media (max-width: 1599.98px) {
+    :root {
+        --section-space-y: 3.5rem;
+        --section-space-y-lg: 4rem;
+        --section-space-y-sm: 2.5rem;
+        --section-space-y-xs: 1.5rem;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    :root {
+        --section-space-y: 3rem;
+        --section-space-y-lg: 3.25rem;
+        --section-space-y-sm: 2rem;
+        --section-space-y-xs: 1.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    :root {
+        --section-space-y: 2rem;
+        --section-space-y-lg: 2.25rem;
+        --section-space-y-sm: 1.5rem;
+        --section-space-y-xs: 1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    :root {
+        --section-space-y: 1.5rem;
+        --section-space-y-lg: 1.75rem;
+        --section-space-y-sm: 1.25rem;
+        --section-space-y-xs: 0.75rem;
+    }
+}

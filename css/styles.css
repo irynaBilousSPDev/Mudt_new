@@ -1841,7 +1841,7 @@ body.programs-template-single-programs-prebachelors .item_offer_card_body_positi
 /*section_cooperation start*/
 .section_logo,
 .section_cooperation {
-  margin: 8rem 0 10rem 0;
+  margin: var(--section-space-y-lg, 5rem) 0;
 }
 
 footer .section_cooperation {
@@ -3069,5 +3069,148 @@ footer a:hover {
   }
   .column_item .image_wrapper .bg {
     height: 280px;
+  }
+}
+/* Global section rhythm — scales large desktop pad/margin without rewriting every block */
+:root {
+  --section-space-y: 5rem; /* default desktop section pad/margin */
+  --section-space-y-lg: 5rem; /* was often 8–10rem — keep closer to standard */
+  --section-space-y-sm: 3rem;
+  --section-space-y-xs: 2rem;
+}
+
+/* ~MacBook / 1440-class desktops */
+@media (max-width: 1599.98px) {
+  :root {
+    --section-space-y: 3.5rem;
+    --section-space-y-lg: 4rem;
+    --section-space-y-sm: 2.5rem;
+    --section-space-y-xs: 1.5rem;
+  }
+}
+@media (max-width: 1199.98px) {
+  :root {
+    --section-space-y: 3rem;
+    --section-space-y-lg: 3.25rem;
+    --section-space-y-sm: 2rem;
+    --section-space-y-xs: 1.25rem;
+  }
+}
+@media (max-width: 767.98px) {
+  :root {
+    --section-space-y: 2rem;
+    --section-space-y-lg: 2.25rem;
+    --section-space-y-sm: 1.5rem;
+    --section-space-y-xs: 1rem;
+  }
+}
+@media (max-width: 575.98px) {
+  :root {
+    --section-space-y: 1.5rem;
+    --section-space-y-lg: 1.75rem;
+    --section-space-y-sm: 1.25rem;
+    --section-space-y-xs: 0.75rem;
+  }
+}
+/* Bootstrap utility stacks (mb-5 = 3rem) add extra white space under sections */
+.section_application_deadlines.mb-5,
+.section_contact_program.mb-5,
+.section_sub_menu.mb-5,
+.admissions_section.mb-5,
+.bg_image_section.mb-5,
+.video_section.mb-5,
+.how_apply_section.mb-5 {
+  margin-bottom: var(--section-space-y-sm) !important;
+}
+
+.section_application_deadlines.mb-5 {
+  margin-bottom: 0 !important;
+}
+
+/* —— Standard vertical sections —— */
+.section_application_deadlines,
+.how_apply_section,
+.section_fees,
+.section_scholarships,
+.section_campus,
+.section_tabs_slider,
+.faculty_expertise_section,
+.why_program_section,
+.curriculum_section,
+.section_after_arrival,
+.section_working_as_student,
+.section_admission_requirements,
+.section_application_scholarships,
+.get_in_touch,
+.faq_section,
+.section_news {
+  padding-top: var(--section-space-y);
+  padding-bottom: var(--section-space-y);
+}
+
+.section_application_deadlines {
+  padding-top: var(--section-space-y);
+  padding-bottom: var(--section-space-y-sm);
+}
+
+/* —— Large margin sections (were 5–10rem) —— */
+.section_contact_program {
+  margin-top: var(--section-space-y-lg);
+  margin-bottom: var(--section-space-y-lg);
+  padding-top: var(--section-space-y);
+  padding-bottom: var(--section-space-y);
+}
+
+.bg_image_section,
+.video_section,
+.scholarship_parallax_section,
+.admissions_section {
+  margin-top: var(--section-space-y);
+  margin-bottom: var(--section-space-y);
+}
+
+.page_header {
+  margin-bottom: var(--section-space-y-lg);
+}
+
+.section_interviews {
+  margin-top: var(--section-space-y);
+  margin-bottom: var(--section-space-y);
+  padding-top: var(--section-space-y-lg);
+  padding-bottom: var(--section-space-y-lg);
+}
+
+.section_applying_visa,
+.types_visa,
+.important_tips_item {
+  margin-bottom: var(--section-space-y-sm);
+}
+
+/* Inner stacks that inflate gaps under deadline cards */
+.section_application_deadlines .application_date.mb-5 {
+  margin-bottom: var(--section-space-y-sm) !important;
+}
+
+.section_application_deadlines .section_title.mb-5 {
+  margin-bottom: var(--section-space-y-sm) !important;
+}
+
+/* Contact stacked card already has its own <xl rules — keep vars in sync */
+@media (max-width: 1199.98px) {
+  .section_contact_program {
+    margin-top: var(--section-space-y);
+    margin-bottom: var(--section-space-y);
+  }
+}
+@media (max-width: 767.98px) {
+  .page_header {
+    margin-bottom: var(--section-space-y);
+  }
+  .bg_image_section,
+  .video_section,
+  .scholarship_parallax_section,
+  .admissions_section {
+    margin-top: var(--section-space-y-sm);
+    margin-bottom: var(--section-space-y-sm);
   }
 }

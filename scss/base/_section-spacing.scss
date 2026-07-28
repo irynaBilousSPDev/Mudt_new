@@ -1,0 +1,108 @@
+/* Global section rhythm — scales large desktop pad/margin without rewriting every block */
+
+@use '../abstracts/variables';
+
+/* Bootstrap utility stacks (mb-5 = 3rem) add extra white space under sections */
+.section_application_deadlines.mb-5,
+.section_contact_program.mb-5,
+.section_sub_menu.mb-5,
+.admissions_section.mb-5,
+.bg_image_section.mb-5,
+.video_section.mb-5,
+.how_apply_section.mb-5 {
+    margin-bottom: var(--section-space-y-sm) !important;
+}
+
+.section_application_deadlines.mb-5 {
+    margin-bottom: 0 !important;
+}
+
+/* —— Standard vertical sections —— */
+.section_application_deadlines,
+.how_apply_section,
+.section_fees,
+.section_scholarships,
+.section_campus,
+.section_tabs_slider,
+.faculty_expertise_section,
+.why_program_section,
+.curriculum_section,
+.section_after_arrival,
+.section_working_as_student,
+.section_admission_requirements,
+.section_application_scholarships,
+.get_in_touch,
+.faq_section,
+.section_news {
+    padding-top: var(--section-space-y);
+    padding-bottom: var(--section-space-y);
+}
+
+.section_application_deadlines {
+    padding-top: var(--section-space-y);
+    padding-bottom: var(--section-space-y-sm);
+}
+
+/* —— Large margin sections (were 5–10rem) —— */
+.section_contact_program {
+    margin-top: var(--section-space-y-lg);
+    margin-bottom: var(--section-space-y-lg);
+    padding-top: var(--section-space-y);
+    padding-bottom: var(--section-space-y);
+}
+
+.bg_image_section,
+.video_section,
+.scholarship_parallax_section,
+.admissions_section {
+    margin-top: var(--section-space-y);
+    margin-bottom: var(--section-space-y);
+}
+
+.page_header {
+    margin-bottom: var(--section-space-y-lg);
+}
+
+.section_interviews {
+    margin-top: var(--section-space-y);
+    margin-bottom: var(--section-space-y);
+    padding-top: var(--section-space-y-lg);
+    padding-bottom: var(--section-space-y-lg);
+}
+
+.section_applying_visa,
+.types_visa,
+.important_tips_item {
+    margin-bottom: var(--section-space-y-sm);
+}
+
+/* Inner stacks that inflate gaps under deadline cards */
+.section_application_deadlines .application_date.mb-5 {
+    margin-bottom: var(--section-space-y-sm) !important;
+}
+
+.section_application_deadlines .section_title.mb-5 {
+    margin-bottom: var(--section-space-y-sm) !important;
+}
+
+/* Contact stacked card already has its own <xl rules — keep vars in sync */
+@media (max-width: 1199.98px) {
+    .section_contact_program {
+        margin-top: var(--section-space-y);
+        margin-bottom: var(--section-space-y);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page_header {
+        margin-bottom: var(--section-space-y);
+    }
+
+    .bg_image_section,
+    .video_section,
+    .scholarship_parallax_section,
+    .admissions_section {
+        margin-top: var(--section-space-y-sm);
+        margin-bottom: var(--section-space-y-sm);
+    }
+}

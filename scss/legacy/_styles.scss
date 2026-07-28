@@ -1994,7 +1994,7 @@ body.programs-template-single-programs-prebachelors .item_offer_card_body_positi
 /*section_cooperation start*/
 .section_logo,
 .section_cooperation {
-    margin: 8rem 0 10rem 0;
+    margin: var(--section-space-y-lg, 5rem) 0;
 }
 
 footer .section_cooperation {
