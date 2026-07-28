@@ -1,19 +1,20 @@
 'use strict';
 
 /**
- * MUDT theme asset pipeline
+ * MUDT asset pipeline
  *
- * SCSS entry points → css/*.css (same files WordPress enqueues)
- * js/main.js        → js/main.min.js
+ * SOURCE (edit):  scss/
+ *   bundles/      entry files only → map 1:1 to css/*.css
+ *   abstracts/    variables
+ *   base/         reset, fonts, container, spacing
+ *   layout/       header, footer
+ *   sections/     one file per section block
+ *   templates/    template-specific partials
+ *   pages/        page-template partials (future)
+ *   legacy/       monolith being split — do not add new code here
  *
- * Structure:
- *   scss/abstracts/   tokens, variables
- *   scss/base/          reset, container, spacing, fonts
- *   scss/layout/        header, footer
- *   scss/sections/      one partial per flexible / program section (migrate from legacy/)
- *   scss/templates/     single-program bundles still being split
- *   scss/pages/         page-template bundles (future splits from legacy/)
- *   scss/legacy/        monolith — shrink as sections move out
+ * OUTPUT (build): css/*.css  — never edit by hand
+ * JS:              js/main.js → js/main.min.js
  */
 
 const { src, dest, watch, series, parallel } = require('gulp');
@@ -21,53 +22,48 @@ const sass = require('gulp-sass')(require('sass'));
 const terser = require('gulp-terser');
 const rename = require('gulp-rename');
 
-const paths = {
-    scss: {
-        entries: [
-            'scss/reset.scss',
-            'scss/fonts.scss',
-            'scss/footer.scss',
-            'scss/page-pt.scss',
-            'scss/styles.scss',
-            'scss/page-styles.scss',
-            'scss/single-styles.scss',
-        ],
-        watch: 'scss/**/*.scss',
-    },
-    js: {
-        entry: 'js/main.js',
-        watch: 'js/main.js',
-        dest: 'js',
-    },
-    css: {
-        dest: 'css',
-    },
+const SCSS_SRC = 'scss';
+const SCSS_BUNDLES = `${SCSS_SRC}/bundles`;
+const CSS_DEST = 'css';
+const JS_SRC = 'js/main.js';
+const JS_DEST = 'js';
+
+const BUNDLE_ENTRIES = [
+    'reset.scss',
+    'fonts.scss',
+    'footer.scss',
+    'page-pt.scss',
+    'styles.scss',
+    'page-styles.scss',
+    'single-styles.scss',
+];
+
+const sassOptions = {
+    outputStyle: 'expanded',
+    sourceMap: false,
+    silenceDeprecations: ['legacy-js-api'],
+    loadPaths: [SCSS_SRC],
 };
 
 function styles() {
-    return src(paths.scss.entries, { base: 'scss', allowEmpty: false })
-        .pipe(
-            sass
-                .sync({
-                    outputStyle: 'expanded',
-                    sourceMap: false,
-                    silenceDeprecations: ['legacy-js-api'],
-                })
-                .on('error', sass.logError)
-        )
-        .pipe(dest(paths.css.dest));
+    return src(BUNDLE_ENTRIES.map((file) => `${SCSS_BUNDLES}/${file}`), {
+        base: SCSS_BUNDLES,
+        allowEmpty: false,
+    })
+        .pipe(sass.sync(sassOptions).on('error', sass.logError))
+        .pipe(dest(CSS_DEST));
 }
 
 function scripts() {
-    return src(paths.js.entry, { allowEmpty: false })
+    return src(JS_SRC, { allowEmpty: false })
         .pipe(terser())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(dest(paths.js.dest));
+        .pipe(dest(JS_DEST));
 }
 
 function watchAssets() {
-    watch(paths.scss.watch, styles);
-    watch(paths.js.watch, scripts);
+    watch(`${SCSS_SRC}/**/*.scss`, styles);
+    watch(JS_SRC, scripts);
 }
 
 const build = parallel(styles, scripts);

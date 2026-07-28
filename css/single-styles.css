@@ -362,7 +362,7 @@
 
 .wrapper_ects {
   border-radius: clamp(32px, 6vw, 80px);
-  overflow: hidden;
+  overflow: visible;
   padding: clamp(1.5rem, 4vw, 3rem) clamp(0.75rem, 2vw, 1rem);
   margin-top: clamp(-3.5rem, -6vw, -8rem);
   background-color: #fff;
@@ -382,6 +382,17 @@
   font-size: clamp(1rem, 1.8vw, 1.375rem);
   line-height: 1.35;
   padding: 0 clamp(0.5rem, 2vw, 1rem);
+}
+
+.total_ects_list .row {
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+
+.total_ects_list .row > [class*=col-] {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .total_ects_item {
@@ -405,100 +416,134 @@
   margin-bottom: clamp(1.5rem, 3vw, 3rem);
 }
 
+.study_plan_list .row {
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+
+.study_plan_list .row > [class*=col-] {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 .study_plan_list .item_semester {
-  border-radius: 0 0 clamp(20px, 3vw, 35px) clamp(20px, 3vw, 35px);
-  overflow: hidden;
   position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .item_semester_content_wrapper {
-  display: grid;
-  grid-template-rows: 0fr;
+  max-height: 0;
   overflow: hidden;
-  transition: grid-template-rows 0.35s ease;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.45s ease, opacity 0.3s ease, visibility 0s linear 0.45s;
 }
 
 .item_semester.active .item_semester_content_wrapper {
-  grid-template-rows: 1fr;
+  max-height: 3000px;
+  opacity: 1;
+  visibility: visible;
+  transition: max-height 0.45s ease, opacity 0.3s ease, visibility 0s linear 0s;
 }
 
 .item_semester_content_panel {
-  min-height: 0;
-  overflow: hidden;
-}
-
-.item_semester_header,
-.item_semester_content {
-  position: relative;
-  z-index: 1;
-}
-
-.item_semester_content {
-  background-color: #EEF7FF;
-  border-radius: 0 0 clamp(20px, 3vw, 35px) clamp(20px, 3vw, 35px);
-  line-height: 1.5;
-  padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem) clamp(1.25rem, 3vw, 2rem);
-  font-size: clamp(0.9375rem, 1.4vw, 1rem);
-}
-
-.item_semester_content p:last-child {
-  margin-bottom: 0;
+  overflow: visible;
 }
 
 .study_plan_list .item_semester_header {
-  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
   color: #fff;
+  position: relative;
   z-index: 2;
-  background-color: #fff;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .item_semester_header_wrapper {
   display: flex;
   width: 100%;
   align-items: stretch;
-  border-radius: clamp(28px, 8vw, 120px);
-  overflow: hidden;
-}
-
-.study_plan_list .item_semester_header .col_item {
-  padding: clamp(0.75rem, 2vw, 1rem);
-  margin: 0;
-  position: relative;
+  min-height: 4.5rem;
+  border-radius: 999px;
+  overflow: visible;
 }
 
 .study_plan_list .item_semester_header .col_item--title {
   flex: 1 1 auto;
   min-width: 0;
   background-color: #1F1B51;
-  border-radius: clamp(28px, 8vw, 120px) 0 0 clamp(28px, 8vw, 120px);
-  padding: clamp(0.75rem, 2vw, 1rem) clamp(0.75rem, 2vw, 1rem) clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem);
-  cursor: pointer;
+  border-radius: 999px 0 0 999px;
+  padding: 0.75rem 0.65rem 0.75rem 1rem;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 0.75rem;
+  align-items: flex-start;
+  gap: 0.65rem;
   text-align: left;
-  border: 0;
-  color: inherit;
-  width: 100%;
+  color: #fff;
 }
 
-.study_plan_list .item_semester_header .col_item--title .semester_label {
+.study_plan_list .item_semester_header .semester_label {
   min-width: 0;
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  flex: 1;
+  font-size: clamp(0.8125rem, 1.2vw, 0.9375rem);
   line-height: 1.35;
 }
 
-.study_plan_list .item_semester_header .col_item--title .semester_label strong {
-  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+.item_semester_content {
+  position: relative;
+  z-index: 1;
+  background-color: #EEF7FF;
+  border-radius: 0 0 24px 24px;
+  line-height: 1.55;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.25rem) clamp(1.25rem, 3vw, 1.5rem);
+  font-size: clamp(0.875rem, 1.4vw, 0.9375rem);
+}
+
+.item_semester_content p:last-child,
+.item_semester_content ol:last-child,
+.item_semester_content ul:last-child {
+  margin-bottom: 0;
+}
+
+.item_semester_content ol,
+.item_semester_content ul {
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.study_plan_list .item_semester_header .semester_number {
+  display: block;
+  font-size: clamp(0.875rem, 1.3vw, 1rem);
+  line-height: 1.25;
+  margin-bottom: 0.15rem;
+}
+
+.study_plan_list .item_semester_header .semester_title {
+  display: block;
+  font-weight: 400;
+  font-size: clamp(0.75rem, 1.1vw, 0.875rem);
+  line-height: 1.35;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 .study_plan_list .long_arrow {
   display: inline-block;
   flex-shrink: 0;
-  min-width: 13px;
-  width: 13px;
-  height: 13px;
+  margin-top: 0.2rem;
+  min-width: 11px;
+  width: 11px;
+  height: 11px;
   border-top: 1px solid #fff;
   border-left: 1px solid #fff;
   transform: rotate(225deg);
@@ -513,34 +558,32 @@
   content: "";
   display: block;
   width: 1px;
-  height: 24px;
+  height: 18px;
   background-color: #fff;
-  transform: rotate(-45deg) translate(8px, 4px);
-  left: 0;
-  top: 0;
+  transform: rotate(-45deg) translate(6px, 3px);
 }
 
 .study_plan_list .item_semester_header .col_item--ects {
   flex: 0 0 auto;
-  min-width: clamp(4.5rem, 12vw, 6.5rem);
+  width: clamp(3.75rem, 18%, 5.25rem);
+  min-width: 3.75rem;
   background-color: #EEF7FF;
   color: #1F1B51;
   font-weight: bold;
-  border-radius: 0 clamp(28px, 8vw, 120px) clamp(28px, 8vw, 120px) 0;
+  border-radius: 0 999px 999px 0;
   border: 1px solid #1F1B51;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
-  line-height: 1.2;
-  padding: clamp(0.5rem, 1.5vw, 1rem) 0.5rem;
+  font-size: 0.6875rem;
+  line-height: 1.15;
+  padding: 0.5rem 0.35rem;
 }
 
 .study_plan_list .item_semester_header .col_item--ects strong {
-  font-size: clamp(1.5rem, 3.5vw, 2.0625rem);
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
   line-height: 1.1;
 }
 
@@ -557,7 +600,7 @@
 }
 
 .item_semester.active .item_semester_header:after {
-  height: clamp(2rem, 4vw, 3.75rem);
+  height: 1.5rem;
 }
 
 .elective_courses {
@@ -599,13 +642,44 @@
   margin-top: 0.35rem;
 }
 
-/* Tablet */
+/* Desktop columns — keep pills readable in col-xl-3 */
+@media (min-width: 1200px) {
+  .item_semester_header_wrapper {
+    min-height: 5rem;
+  }
+  .study_plan_list .item_semester_header .col_item--title {
+    padding: 0.85rem 0.75rem 0.85rem 1.1rem;
+  }
+  .study_plan_list .item_semester_header .col_item--ects {
+    width: 4.5rem;
+    min-width: 4.5rem;
+  }
+}
+/* Tablet + mobile — single column, readable type */
 @media (max-width: 1199.98px) {
   .wrapper_ects {
     margin-top: clamp(-3rem, -5vw, -5rem);
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-  .total_ects_item {
-    margin-bottom: 0.75rem;
+  .study_plan_list .row > [class*=col-] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .study_plan_list .item_semester_header .semester_number {
+    font-size: 1rem;
+  }
+  .study_plan_list .item_semester_header .semester_title {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+  .item_semester_content {
+    font-size: 0.9375rem;
+    padding: 1rem 1.1rem 1.25rem;
+  }
+  .study_plan_list .item_semester_header .col_item--ects {
+    width: 4.25rem;
+    min-width: 4.25rem;
   }
 }
 /* Mobile */
@@ -626,30 +700,28 @@
   .total_ects_list .row > [class*=col-]:last-child .total_ects_item {
     border-bottom: 0;
   }
-  .study_plan_list .item_semester {
+  .study_plan_list .row > [class*=col-] {
     margin-bottom: 0.75rem;
   }
   .item_semester_header_wrapper {
-    border-radius: 28px;
+    min-height: auto;
+    border-radius: 24px;
   }
   .study_plan_list .item_semester_header .col_item--title {
-    border-radius: 28px 0 0 28px;
-    padding: 0.75rem 0.65rem 0.75rem 1rem;
-    gap: 0.65rem;
+    border-radius: 24px 0 0 24px;
+    padding: 0.85rem 0.75rem 0.85rem 1rem;
   }
   .study_plan_list .item_semester_header .col_item--ects {
-    min-width: 4.25rem;
-    border-radius: 0 28px 28px 0;
-    padding: 0.5rem 0.35rem;
+    width: 4.5rem;
+    min-width: 4.5rem;
+    border-radius: 0 24px 24px 0;
+    font-size: 0.75rem;
   }
-  .study_plan_list .long_arrow {
-    min-width: 11px;
-    width: 11px;
-    height: 11px;
+  .study_plan_list .item_semester_header .col_item--ects strong {
+    font-size: 1.25rem;
   }
-  .study_plan_list .long_arrow:after {
-    height: 20px;
-    transform: rotate(-45deg) translate(7px, 3px);
+  .item_semester_content {
+    border-radius: 0 0 20px 20px;
   }
   .elective_modules {
     max-width: 100%;
@@ -664,15 +736,12 @@
     padding-left: 0.35rem;
     padding-right: 0.35rem;
   }
-  .study_plan_list .item_semester_header .col_item--title {
-    padding-left: 0.85rem;
-    padding-right: 0.5rem;
-  }
   .study_plan_list .item_semester_header .col_item--ects {
-    min-width: 3.75rem;
+    width: 3.5rem;
+    min-width: 3.5rem;
   }
   .study_plan_list .item_semester_header .col_item--ects strong {
-    font-size: 1.375rem;
+    font-size: 1.125rem;
   }
 }
 /*munich_team*/
