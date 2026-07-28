@@ -89,11 +89,11 @@ function mudt_footer_pt_defaults()
             'url' => 'https://professionals.uni-munich.de/',
             'target' => '',
         ),
-        'card_title' => 'Professional Training',
+        'card_title' => 'Professional Centers',
         'card_badge' => 'NEW',
         // Kept for ACF backward compatibility; prefer card_links below.
         'card_link' => array(
-            'title' => 'CRA Practitioner',
+            'title' => 'Course CRA Practitioner',
             'url' => 'https://professionals.uni-munich.de/cra-practitioner/',
             'target' => '',
         ),
@@ -112,7 +112,7 @@ function mudt_footer_pt_canonical_urls()
 }
 
 /**
- * Links shown under the footer PT card (Center + CRA).
+ * Links shown under the footer PT card (Professional Centers).
  */
 function mudt_footer_pt_card_links()
 {
@@ -123,7 +123,7 @@ function mudt_footer_pt_card_links()
             'target' => '',
         ),
         array(
-            'title' => 'CRA Practitioner',
+            'title' => 'Course CRA Practitioner',
             'url' => 'https://professionals.uni-munich.de/cra-practitioner/',
             'target' => '',
         ),
@@ -134,6 +134,11 @@ function mudt_footer_pt_value($key)
 {
     $defaults = mudt_footer_pt_defaults();
     $value = function_exists('get_field') ? get_field('footer_' . $key, 'option') : null;
+
+    // Card heading is fixed to match primary-nav "Professional Centers".
+    if ($key === 'card_title') {
+        return 'Professional Centers';
+    }
 
     if ($key === 'banner_btn' || $key === 'card_link') {
         $link = (is_array($value) && !empty($value['url'])) ? $value : $defaults[$key];
