@@ -1,4 +1,4 @@
-<section id="layout_id_<?php echo get_row_index(); ?>" class="section_contact_program section_sub_menu">
+<section id="layout_id_<?php echo get_row_index(); ?>" class="section_contact_program section_sub_menu" data-contact-layout="xl">
     <div class="container">
         <div class="row contact_program_row align-items-center">
             <div class="col-12 col-xl-4 contact_program_intro">

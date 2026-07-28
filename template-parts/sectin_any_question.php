@@ -1,4 +1,4 @@
-<section class="section_contact_program">
+<section class="section_contact_program" data-contact-layout="xl">
     <div class="container">
         <div class="row contact_program_row align-items-center">
             <div class="col-12 col-xl-4 contact_program_intro">
