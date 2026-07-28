@@ -296,9 +296,10 @@
         });
         $('.item_semester').each(function () {
             const $item = $(this);
-            const $trigger = $item.find('.col_item--title');
+            const $trigger = $item.find('.item_semester_header');
 
-            $item.find('.item_semester_header').on('click', function () {
+            $trigger.on('click', function (e) {
+                e.preventDefault();
                 const isOpen = $item.toggleClass('active').hasClass('active');
                 $trigger.attr('aria-expanded', isOpen ? 'true' : 'false');
             });

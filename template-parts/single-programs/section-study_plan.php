@@ -67,14 +67,14 @@ $elective_modules = $study_plan['elective_modules'] ?? null;
                                     foreach ($year['semesters'] as $number => $semester) :
                                         $semester_num = ($key * 2) + (int) $number + 1;
                                         ?>
-                                        <div class="item_semester col-12 col-md-6 col-xl-3">
-                                            <div class="item_semester_header">
-                                                <div class="item_semester_header_wrapper">
-                                                    <button
-                                                        type="button"
-                                                        class="col_item col_item--title"
-                                                        aria-expanded="false"
-                                                    >
+                                        <div class="item_semester col-12 col-xl-3">
+                                            <button
+                                                type="button"
+                                                class="item_semester_header"
+                                                aria-expanded="false"
+                                            >
+                                                <span class="item_semester_header_wrapper">
+                                                    <span class="col_item col_item--title">
                                                         <span class="long_arrow" aria-hidden="true"></span>
                                                         <span class="semester_label">
                                                             <strong class="semester_number">
@@ -85,13 +85,13 @@ $elective_modules = $study_plan['elective_modules'] ?? null;
                                                                 <span class="semester_title"><?php echo esc_html($semester['semester_title']); ?></span>
                                                             <?php endif; ?>
                                                         </span>
-                                                    </button>
-                                                    <div class="col_item col_item--ects">
+                                                    </span>
+                                                    <span class="col_item col_item--ects">
                                                         <strong><?php echo esc_html($semester['semester_ects'] ?? ''); ?></strong>
                                                         <?php echo esc_html__('ECTS', 'MUDT'); ?>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                    </span>
+                                                </span>
+                                            </button>
                                             <?php if (!empty($semester['semester_content'])) : ?>
                                                 <div class="item_semester_content_wrapper">
                                                     <div class="item_semester_content_panel">
