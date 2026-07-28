@@ -2952,9 +2952,10 @@ footer a:hover {
   }
   .page_header .parallax-section {
     height: 30vh;
+    min-height: 200px;
   }
   .page_header .parallax-image {
-    height: 40vh;
+    top: -40px;
   }
   .image_wrapper {
     border-radius: 80px;
@@ -3006,9 +3007,6 @@ footer a:hover {
     padding: 3rem !important;
     border-radius: 80px !important;
   }
-  .admissions_section .parallax-image {
-    height: 65vh;
-  }
   .admissions_section .parallax-section {
     min-height: 35vh;
     border-radius: 80px;
@@ -3058,15 +3056,16 @@ footer a:hover {
   .video_section {
     margin: 2rem 0;
   }
-  .video_section .parallax-image {
-    height: 55vh;
-  }
   .video_section .parallax-section {
     min-height: 30vh;
     border-radius: 80px;
   }
   .bg_image_section .parallax-section {
     border-radius: 80px;
+    min-height: 240px;
+  }
+  .bg_image_section.medium_height_image .parallax-section {
+    min-height: 320px;
   }
   .column_item .image_wrapper .bg {
     height: 280px;

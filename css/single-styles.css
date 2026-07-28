@@ -907,7 +907,7 @@
   }
 }
 .career_paths_section .parallax-image {
-  height: 500px;
+  /* height sized by mudt parallax JS */
 }
 
 .career_paths_wrapper .parallax-image:before {
@@ -1347,7 +1347,7 @@ body.team .faculty_expertise:nth-child(odd) {
 }
 
 .admissions_section .parallax-image {
-  height: 800px;
+  /* height sized by mudt parallax JS */
 }
 
 .admissions_section .parallax-image:before {

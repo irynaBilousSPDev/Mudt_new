@@ -28,13 +28,14 @@ candydaties
 }
 
 .parallax-section {
-  background: #000;
+  background-color: #1F1B51;
   overflow: hidden;
   position: relative;
 }
 
 .parallax-section .parallax-image {
   background-repeat: no-repeat;
+  background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -49,6 +50,12 @@ candydaties
   transform: translateZ(0);
   width: 100%;
   z-index: 1;
+  will-change: transform;
+}
+
+/* Background-image parallax only (not video iframe wrapper) */
+.parallax-section .parallax-image.bg {
+  min-height: calc(100% + 50vh);
 }
 
 .parallax-section .parallax-content {
@@ -63,7 +70,7 @@ candydaties
 
 .page_header .parallax-image {
   top: -71px;
-  height: 80vh;
+  /* height sized by mudt parallax JS */
 }
 
 .custom-page .section_title {
@@ -990,7 +997,7 @@ main.page .scholarships_financing_card .card_title {
 }
 
 .bg_image_section .parallax-image {
-  height: 700px;
+  /* height sized by mudt parallax JS */
 }
 
 .bg_image_section .content_wrapper {
@@ -1355,7 +1362,7 @@ main.page .scholarships_financing_card .card_title {
 }
 
 .section_interviews .parallax-image {
-  height: 75vh;
+  /* height sized by mudt parallax JS */
 }
 
 /*section_after_arrival*/

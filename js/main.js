@@ -43,18 +43,62 @@
         });
 
         (function () {
-            var parallax, speed;
+            var defaultSpeed = 0.5;
+            var images = document.querySelectorAll('.parallax-section .parallax-image.bg');
+            if (!images.length) {
+                return;
+            }
 
-            parallax = document.querySelectorAll('.parallax-image');
-            speed = 0.5;
-            window.onscroll = function () {
-                return [].slice.call(parallax).forEach(function (el, i) {
-                    var dist;
-                    dist = $(window).scrollTop() - $(el).offset().top;
-                    return $(el).css('top', dist * speed + 'px');
-                });
-            };
+            var ticking = false;
 
+            function getSpeed(el) {
+                var speed = parseFloat(el.getAttribute('data-parallax-speed'));
+                return isNaN(speed) ? defaultSpeed : speed;
+            }
+
+            function sizeImage(el) {
+                var section = el.closest('.parallax-section');
+                if (!section) {
+                    return;
+                }
+
+                var speed = getSpeed(el);
+                var buffer = Math.ceil(window.innerHeight * speed);
+                var sectionHeight = section.offsetHeight;
+                var minHeight = sectionHeight + buffer * 2;
+
+                el.style.minHeight = minHeight + 'px';
+                el.style.height = minHeight + 'px';
+                el.dataset.parallaxBuffer = String(buffer);
+            }
+
+            function sizeAll() {
+                images.forEach(sizeImage);
+                updateAll();
+            }
+
+            function updateImage(el) {
+                var speed = getSpeed(el);
+                var dist = -el.getBoundingClientRect().top;
+                el.style.transform = 'translate3d(0,' + (dist * speed) + 'px,0)';
+            }
+
+            function updateAll() {
+                images.forEach(updateImage);
+                ticking = false;
+            }
+
+            function onScroll() {
+                if (!ticking) {
+                    ticking = true;
+                    window.requestAnimationFrame(updateAll);
+                }
+            }
+
+            sizeAll();
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', sizeAll);
+            window.addEventListener('load', sizeAll);
         }).call(this);
 
 // counter front start
