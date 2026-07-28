@@ -32,27 +32,12 @@ if (is_front_page() && !empty($cooperation_list_logos)) :
 <?php
 $footer_sections = mudt_footer_nav_sections();
 $footer_by_slug = mudt_footer_sections_by_slug($footer_sections);
-
-$banner_btn = mudt_footer_pt_value('banner_btn');
 $card_links = mudt_footer_pt_card_links();
 ?>
 
     <div class="main_footer_section main_footer_section--redesign">
         <div class="container">
             <div class="footer_menu_wrapper footer_menu_wrapper--redesign">
-                <div class="footer-pt-banner">
-                    <div class="footer-pt-banner__content">
-                        <p class="footer-pt-banner__kicker"><?php echo esc_html(mudt_footer_pt_value('banner_kicker')); ?></p>
-                        <h2 class="footer-pt-banner__title"><?php echo esc_html(mudt_footer_pt_value('banner_title')); ?></h2>
-                        <p class="footer-pt-banner__text"><?php echo esc_html(mudt_footer_pt_value('banner_text')); ?></p>
-                    </div>
-                    <?php if (is_array($banner_btn) && !empty($banner_btn['url'])) : ?>
-                        <a class="footer-pt-banner__btn"<?php echo mudt_footer_link_attrs($banner_btn); ?>>
-                            <?php echo esc_html($banner_btn['title'] ?: 'Explore →'); ?>
-                        </a>
-                    <?php endif; ?>
-                </div>
-
                 <div class="footer-grid">
                     <div class="footer-brand">
                         <a title="<?php esc_attr_e('Home', 'mudt'); ?> Hochschule für Digitale Technologien München"
