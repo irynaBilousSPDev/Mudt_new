@@ -91,6 +91,7 @@ function mudt_footer_pt_defaults()
         ),
         'card_title' => 'Professional Training',
         'card_badge' => 'NEW',
+        // Kept for ACF backward compatibility; prefer card_links below.
         'card_link' => array(
             'title' => 'CRA Practitioner',
             'url' => 'https://professionals.uni-munich.de/cra-practitioner/',
@@ -107,6 +108,25 @@ function mudt_footer_pt_canonical_urls()
     return array(
         'banner_btn' => 'https://professionals.uni-munich.de/',
         'card_link' => 'https://professionals.uni-munich.de/cra-practitioner/',
+    );
+}
+
+/**
+ * Links shown under the footer PT card (Center + CRA).
+ */
+function mudt_footer_pt_card_links()
+{
+    return array(
+        array(
+            'title' => 'Center for Cyber Security & AI',
+            'url' => 'https://professionals.uni-munich.de/center-cyber-security-ai/',
+            'target' => '',
+        ),
+        array(
+            'title' => 'CRA Practitioner',
+            'url' => 'https://professionals.uni-munich.de/cra-practitioner/',
+            'target' => '',
+        ),
     );
 }
 

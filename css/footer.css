@@ -262,6 +262,13 @@
   text-transform: uppercase;
 }
 
+.footer_menu_wrapper--redesign .footer-pt-card__links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
 .footer_menu_wrapper--redesign .footer-pt-card__link {
   color: #fff !important;
   font-size: 16px;

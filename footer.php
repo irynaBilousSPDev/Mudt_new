@@ -34,7 +34,7 @@ $footer_sections = mudt_footer_nav_sections();
 $footer_by_slug = mudt_footer_sections_by_slug($footer_sections);
 
 $banner_btn = mudt_footer_pt_value('banner_btn');
-$card_link = mudt_footer_pt_value('card_link');
+$card_links = mudt_footer_pt_card_links();
 ?>
 
     <div class="main_footer_section main_footer_section--redesign">
@@ -115,10 +115,18 @@ $card_link = mudt_footer_pt_value('card_link');
                                 <span class="footer-pt-card__badge"><?php echo esc_html(mudt_footer_pt_value('card_badge')); ?></span>
                             <?php endif; ?>
                         </div>
-                        <?php if (is_array($card_link) && !empty($card_link['url'])) : ?>
-                            <a class="footer-pt-card__link"<?php echo mudt_footer_link_attrs($card_link); ?>>
-                                <?php echo esc_html($card_link['title'] ?: 'CRA Practitioner'); ?>
-                            </a>
+                        <?php if (!empty($card_links)) : ?>
+                            <div class="footer-pt-card__links">
+                                <?php foreach ($card_links as $card_link) :
+                                    if (!is_array($card_link) || empty($card_link['url'])) {
+                                        continue;
+                                    }
+                                    ?>
+                                    <a class="footer-pt-card__link"<?php echo mudt_footer_link_attrs($card_link); ?>>
+                                        <?php echo esc_html($card_link['title'] ?: ''); ?>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
                         <?php endif; ?>
                     </aside>
                 </div>
