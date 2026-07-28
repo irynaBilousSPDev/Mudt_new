@@ -121,11 +121,13 @@ function mudt_footer_pt_card_links()
             'title' => 'Center for Cyber Security & AI',
             'url' => 'https://professionals.uni-munich.de/center-cyber-security-ai/',
             'target' => '',
+            'badge' => '',
         ),
         array(
             'title' => 'Course CRA Practitioner',
             'url' => 'https://professionals.uni-munich.de/cra-practitioner/',
             'target' => '',
+            'badge' => 'NEW',
         ),
     );
 }

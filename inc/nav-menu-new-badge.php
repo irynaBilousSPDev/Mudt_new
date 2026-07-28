@@ -23,7 +23,7 @@ function mudt_nav_menu_item_new_badge_field($item_id, $item, $depth, $args, $id 
                    name="menu-item-mudt-new-badge[<?php echo (int) $item_id; ?>]"
                    value="1"
                 <?php checked($checked); ?> />
-            <?php esc_html_e('Highlight as new (blue text)', 'mudt'); ?>
+            <?php esc_html_e('Show “NEW” badge (text color unchanged)', 'mudt'); ?>
         </label>
     </p>
     <?php
@@ -55,3 +55,17 @@ function mudt_nav_menu_item_new_badge_class($classes, $item, $args, $depth)
 }
 
 add_filter('nav_menu_css_class', 'mudt_nav_menu_item_new_badge_class', 10, 4);
+
+function mudt_nav_menu_item_new_badge_title($title, $item, $args, $depth)
+{
+    if (!mudt_nav_menu_supports_new_badge($args) || !mudt_menu_item_has_new_badge($item->ID)) {
+        return $title;
+    }
+
+    $label = esc_html(wp_strip_all_tags($title));
+
+    return '<span class="menu-item__label">' . $label . '</span>'
+        . '<span class="menu-item__new-badge" aria-hidden="true">NEW</span>';
+}
+
+add_filter('nav_menu_item_title', 'mudt_nav_menu_item_new_badge_title', 10, 4);

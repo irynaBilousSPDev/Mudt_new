@@ -303,6 +303,12 @@ header nav .primary_menu > li.menu-item--has-new > a {
 
     header nav .primary_menu > li.menu-item--has-new > a {
         font-size: 14px;
+        gap: 6px;
+    }
+
+    header nav .primary_menu > li.menu-item--has-new > a .menu-item__new-badge {
+        padding: 3px 7px;
+        font-size: 8px;
     }
 
     header .custom_btn a,
@@ -471,24 +477,60 @@ header .sm-container .sub-menu > li > a {
     transition: all 0.2s ease-in-out;
 }
 
-/* Primary menu — optional “new” highlight (theme color: #2994FF) */
+/* Primary menu — optional “NEW” badge (checkbox); keep link color unchanged */
 header nav .primary_menu > li.menu-item--has-new > a {
-    color: #2994FF;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     text-decoration: none;
 }
 
-header nav .primary_menu > li.menu-item--has-new:hover > a {
-    color: #2994FF;
+header nav .primary_menu > li.menu-item--has-new > a .menu-item__label {
+    display: inline-block;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+header nav .primary_menu > li.menu-item--has-new > a .menu-item__new-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-height: 20px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #2994FF;
+    color: #fff;
+    font-size: 9px;
     font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 header ul.mobile > li.menu-item--has-new > a {
-    color: #2994FF;
-    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     text-decoration: none;
+}
+
+header ul.mobile > li.menu-item--has-new > a .menu-item__new-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #2994FF;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 header .blue_border_btn a {

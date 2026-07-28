@@ -111,9 +111,6 @@ $card_links = mudt_footer_pt_card_links();
                     <aside class="footer-pt-card">
                         <div class="footer-pt-card__head">
                             <h3 class="footer-pt-card__title"><?php echo esc_html(mudt_footer_pt_value('card_title')); ?></h3>
-                            <?php if (mudt_footer_pt_value('card_badge')) : ?>
-                                <span class="footer-pt-card__badge"><?php echo esc_html(mudt_footer_pt_value('card_badge')); ?></span>
-                            <?php endif; ?>
                         </div>
                         <?php if (!empty($card_links)) : ?>
                             <div class="footer-pt-card__links">
@@ -123,7 +120,10 @@ $card_links = mudt_footer_pt_card_links();
                                     }
                                     ?>
                                     <a class="footer-pt-card__link"<?php echo mudt_footer_link_attrs($card_link); ?>>
-                                        <?php echo esc_html($card_link['title'] ?: ''); ?>
+                                        <span class="footer-pt-card__link-label"><?php echo esc_html($card_link['title'] ?: ''); ?></span>
+                                        <?php if (!empty($card_link['badge'])) : ?>
+                                            <span class="footer-pt-card__badge"><?php echo esc_html($card_link['badge']); ?></span>
+                                        <?php endif; ?>
                                     </a>
                                 <?php endforeach; ?>
                             </div>
