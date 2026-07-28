@@ -168,7 +168,7 @@ $sub_title = get_field('sub_title', $page_id);
     <section class="section_contact_program">
         <div class="container">
             <div class="row contact_program_row align-items-center">
-                <div class="col-12 col-lg-4 contact_program_intro">
+                <div class="col-12 col-xl-4 contact_program_intro">
                     <div class="wrapper_content">
                         <h2 class="section_title" style="color: #1F1B51">
                             <?php echo _e('Do you have <br> any questions?', 'MUDT'); ?>
@@ -179,7 +179,7 @@ $sub_title = get_field('sub_title', $page_id);
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-8 contact_program_form">
+                <div class="col-12 col-xl-8 contact_program_form">
                     <div class="contact_program_wrapper">
                         <div class="description mb-5">
                             <?php echo _e('or by completing a form:', 'MUDT'); ?>

@@ -209,7 +209,10 @@
     min-width: 51px;
 }
 
-/*section_contact_program*/
+/*section_contact_program
+  Desktop: left copy + blue panel owned by the form column (no section-wide clip).
+  < xl: stacked full blue card.
+*/
 
 .section_contact_program {
     position: relative;
@@ -225,15 +228,17 @@
 
 .section_contact_program .wrapper_content {
     max-width: 396px;
-    padding-right: 10%;
+    padding-right: 1.5rem;
     width: 100%;
 }
 
 .contact_program_wrapper {
     color: #fff;
     width: 100%;
+    max-width: 100%;
     position: relative;
     z-index: 2;
+    box-sizing: border-box;
 }
 
 .person_information select,
@@ -296,41 +301,88 @@
     z-index: 5;
 }
 
+/* Legacy section paint — disabled; blue lives on the form column / mobile card */
 .section_contact_program:before {
-    position: absolute;
-    content: '';
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 68%;
-    border-radius: 148px 0 0 148px;
-    background-color: #2994FF;
-    z-index: 1;
-}
-
-.section_contact_program .contact_program_intro,
-.section_contact_program .contact_program_form {
-    display: flex;
-    align-items: center;
+    display: none;
 }
 
 .section_contact_program .contact_program_row {
     position: relative;
     z-index: 2;
+    align-items: stretch;
 }
 
-/* Below lg: stack — full blue card (avoids crushed 2-col tablet layout) */
-@media (max-width: 991.98px) {
-    .section_contact_program {
-        padding: 2.75rem 1.5rem;
-        margin: 4rem 0;
+.section_contact_program .contact_program_intro {
+    display: flex;
+    align-items: center;
+}
+
+.section_contact_program .contact_program_form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 0; /* prevent flex overflow */
+}
+
+.section_contact_program .contact_program_form .wpcf7,
+.section_contact_program .contact_program_form .wpcf7-form {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* CF7 often uses Bootstrap cols for Name / email / Phone — keep them usable */
+.section_contact_program .wpcf7-form .row {
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.section_contact_program .wpcf7-form .row > [class*="col-"] {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 0.75rem;
+    min-width: 0;
+}
+
+/* ========== Desktop (≥1200): two columns, blue owned by form ========== */
+@media (min-width: 1200px) {
+    .section_contact_program .contact_program_form {
+        padding: 3.5rem 2.5rem 3.5rem 4.5rem;
     }
 
-    .section_contact_program:before {
-        width: 100%;
+    /* Blue panel: form column → viewport right, large left radius */
+    .section_contact_program .contact_program_form::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
         left: 0;
-        right: 0;
-        border-radius: 56px;
+        right: -100vw;
+        background-color: #2994FF;
+        border-radius: 140px 0 0 140px;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .section_contact_program .contact_program_wrapper > .description {
+        margin-bottom: 1.75rem !important;
+    }
+
+    /* Three-up inputs only when there is room */
+    .section_contact_program .wpcf7-form .row > [class*="col-md-4"],
+    .section_contact_program .wpcf7-form .row > [class*="col-4"] {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+/* ========== Below xl: stacked full blue card ========== */
+@media (max-width: 1199.98px) {
+    .section_contact_program {
+        padding: 2.5rem 1.25rem;
+        margin: 3.5rem 1rem;
+        background-color: #2994FF;
+        border-radius: 48px;
+        overflow: hidden;
     }
 
     .section_contact_program .contact_program_row {
@@ -347,10 +399,14 @@
         padding-right: 0;
     }
 
+    .section_contact_program .contact_program_form::before {
+        display: none;
+    }
+
     .section_contact_program .wrapper_content {
         max-width: none;
         padding-right: 0;
-        margin-bottom: 2rem;
+        margin-bottom: 1.75rem;
     }
 
     .section_contact_program .contact_program_intro {
@@ -374,6 +430,13 @@
         line-height: 1.45;
     }
 
+    .section_contact_program .wrapper_content .description {
+        font-size: 1.1rem !important;
+        line-height: 1.45 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
     .section_contact_program .footer_contact a {
         color: #fff !important;
     }
@@ -382,6 +445,11 @@
         margin-bottom: 1.25rem !important;
         font-size: 1.05rem;
         line-height: 1.4;
+    }
+
+    .section_contact_program .wpcf7-form .row > [class*="col-"] {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 
     .section_contact_program .wpcf7-form p {
@@ -424,46 +492,12 @@
 @media (max-width: 575.98px) {
     .section_contact_program {
         padding: 2rem 1rem;
-        margin: 2.5rem 0;
-    }
-
-    .section_contact_program:before {
+        margin: 2.5rem 0.75rem;
         border-radius: 32px;
     }
 
     .section_contact_program .wrapper_content {
         margin-bottom: 1.5rem;
-    }
-}
-
-/* Large desktop: original proportions */
-@media (min-width: 1200px) {
-    .section_contact_program:before {
-        width: 68%;
-        border-radius: 148px 0 0 148px;
-    }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    .section_contact_program {
-        padding: 4rem 0;
-        margin: 5rem 0;
-    }
-
-    .section_contact_program:before {
-        width: 64%;
-        border-radius: 110px 0 0 110px;
-    }
-
-    .section_contact_program .wrapper_content {
-        max-width: none;
-        padding-right: 1.5rem;
-    }
-
-    .section_contact_program .wpcf7-acceptance .wpcf7-list-item-label {
-        margin-left: 2rem;
-        padding-right: 0;
-        font-size: 13px;
     }
 }
 
