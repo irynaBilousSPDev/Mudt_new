@@ -69,7 +69,7 @@
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<header class="header">
+<header class="header" data-header-order="cta-then-burger">
     <div class="header-container">
         <div class="container">
             <nav class="navbar">
