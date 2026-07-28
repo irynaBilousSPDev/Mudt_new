@@ -2,30 +2,9 @@
 candydaties
 */
 
-.page_header {
-    position: relative;
-    margin-bottom: var(--section-space-y-lg, 5rem);
-}
-
-.page_header .title_wrapper {
-    background-color: #fff;
-    border-radius: 28px 28px 0 0;
-    padding: 50px 45px 0;
-    width: 100%;
-    max-width: 504px;
-    margin-left: 140px;
-}
-
-
 .image_wrapper {
     border-radius: 120px;
     width: 100%;
-}
-
-.page_header .title_wrapper {
-    position: absolute;
-    bottom: 0;
-    z-index: 2;
 }
 
 .parallax-section {
@@ -63,15 +42,6 @@ candydaties
     height: 100%;
     position: relative;
     z-index: 1;
-}
-
-.page_header .parallax-section {
-    height: 68vh;
-}
-
-.page_header .parallax-image {
-    top: -71px;
-    /* height sized by mudt parallax JS */
 }
 
 .custom-page .section_title {

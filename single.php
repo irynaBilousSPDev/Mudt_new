@@ -3,17 +3,12 @@
         <section class="section_news">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                 <div class="container">
-                    <?php $imgurl = get_the_post_thumbnail_url(get_the_ID(), 'page_image'); ?>
-                    <div class="page_header">
-                        <div class="image_wrapper parallax-section">
-                            <div role="img" aria-label="Image" class="parallax-image bg"
-                                 style="background-image: url('<?php echo $imgurl; ?>');">
-                            </div>
-                            <div class="title_wrapper">
-                                <div class="section_title"><?php echo _e('News', 'MUDT'); ?></div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    get_template_part('template-parts/page-header', null, array(
+                        'title' => __('News', 'MUDT'),
+                        'image' => get_the_post_thumbnail_url(get_the_ID(), 'page_image'),
+                    ));
+                    ?>
                 </div>
             <?php endwhile; endif; ?>
             <?php if (!empty(get_the_content())): ?>

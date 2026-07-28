@@ -8,23 +8,12 @@ $sub_title = get_field('sub_title', $page_id);
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <div class="container">
             <?php
-            $image = get_the_post_thumbnail_url($post->ID, 'page_image');
-            $image_static = get_template_directory_uri() . '/images/study-in-munich-1-1640x740.webp';
+            get_template_part('template-parts/page-header', null, array(
+                'title' => $custom_title ? $custom_title : get_the_title(),
+                'subtitle' => $sub_title,
+                'image' => get_the_post_thumbnail_url($post->ID, 'page_image'),
+            ));
             ?>
-            <div class="page_header">
-                <div class="image_wrapper parallax-section">
-                    <div role="img" class="parallax-image bg"
-                         style="background-image: url('<?php echo $image ? $image : $image_static; ?>');">
-                    </div>
-                    <div class="title_wrapper">
-                        <h1 class="section_title"><?php echo $custom_title ? $custom_title : get_the_title(); ?></h1>
-                        <?php
-                        if (!empty($sub_title)): ?>
-                            <?php echo $sub_title; ?>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
         </div>
     <?php endwhile; endif; ?>
     <section id="fees" class="section_fees section_sub_menu">

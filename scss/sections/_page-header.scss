@@ -1,0 +1,141 @@
+/* Page hero: .header_section > .page_header (templates + flexible pages) */
+
+.header_section {
+    margin-bottom: 0;
+}
+
+.page_header {
+    position: relative;
+    margin-bottom: var(--section-space-y-lg, 5rem);
+}
+
+.page_header .image_wrapper {
+    border-radius: 120px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.page_header .parallax-section {
+    height: clamp(280px, 68vh, 620px);
+    min-height: 280px;
+}
+
+.page_header .parallax-image {
+    top: -71px;
+}
+
+.page_header .title_wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: #fff;
+    border-radius: 28px 28px 0 0;
+    padding: 50px 45px 0;
+    width: 100%;
+    max-width: 504px;
+    margin-left: clamp(1.5rem, 10vw, 140px);
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.page_header .title_wrapper .section_title {
+    font-weight: bold;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+}
+
+.page_header_subtitle,
+.page_header .title_wrapper > :not(.section_title) {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.45;
+}
+
+.page_header_subtitle p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 1599.98px) {
+    .page_header .title_wrapper {
+        margin-left: clamp(1.5rem, 6vw, 80px);
+        padding: 2.5rem 2rem 0;
+        max-width: min(504px, 58%);
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .page_header {
+        margin-bottom: var(--section-space-y, 3rem);
+    }
+
+    .page_header .parallax-section {
+        height: clamp(240px, 45vh, 480px);
+        min-height: 240px;
+    }
+
+    .page_header .parallax-image {
+        top: -40px;
+    }
+
+    .page_header .image_wrapper {
+        border-radius: 80px;
+    }
+
+    .page_header .title_wrapper {
+        left: 0;
+        right: 0;
+        max-width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2rem 2rem 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .page_header .parallax-section {
+        height: clamp(220px, 40vh, 400px);
+    }
+
+    .page_header .title_wrapper {
+        max-width: 90%;
+        padding: 1.5rem 1.5rem 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page_header {
+        margin-bottom: var(--section-space-y-sm, 2rem);
+    }
+
+    .page_header .parallax-section {
+        height: clamp(200px, 38vh, 320px);
+        min-height: 200px;
+    }
+
+    .page_header .image_wrapper {
+        border-radius: 48px;
+    }
+
+    .page_header .title_wrapper {
+        max-width: calc(100% - 2rem);
+        padding: 1.25rem 1.25rem 0;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .page_header .title_wrapper .section_title {
+        font-size: clamp(1.35rem, 5vw, 1.75rem);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .page_header .image_wrapper {
+        border-radius: 32px;
+    }
+
+    .page_header .title_wrapper {
+        max-width: calc(100% - 1.5rem);
+        padding: 1rem 1rem 0;
+        border-radius: 16px 16px 0 0;
+    }
+}

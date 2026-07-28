@@ -59,10 +59,6 @@
     margin-bottom: var(--section-space-y);
 }
 
-.page_header {
-    margin-bottom: var(--section-space-y-lg);
-}
-
 .section_interviews {
     margin-top: var(--section-space-y);
     margin-bottom: var(--section-space-y);
@@ -94,10 +90,6 @@
 }
 
 @media (max-width: 767.98px) {
-    .page_header {
-        margin-bottom: var(--section-space-y);
-    }
-
     .bg_image_section,
     .video_section,
     .scholarship_parallax_section,

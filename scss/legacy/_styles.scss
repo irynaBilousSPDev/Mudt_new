@@ -2941,15 +2941,6 @@ footer a:hover {
         font-size: 34px;
         line-height: 39px;
     }
-
-    .page_header .title_wrapper {
-        left: 0;
-        right: 0;
-        max-width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 2rem 3rem 1rem 3rem;
-    }
 }
 
 @media (min-width: 990px) and (max-width: 1024px) {
@@ -3214,25 +3205,6 @@ footer a:hover {
         margin-top: 2rem;
     }
 
-    .page_header .parallax-section {
-        height: 30vh;
-        min-height: 200px;
-    }
-
-    .page_header .parallax-image {
-        top: -40px;
-    }
-
-    .image_wrapper {
-        border-radius: 80px;
-    }
-
-    .page_header .title_wrapper {
-        padding: 1rem;
-        max-width: 80%;
-        margin-left: 2rem;
-    }
-
     .single_program h1,
     .how_apply_section .bottom_description,
     .single #content h1, .page #content h1 {
@@ -3252,11 +3224,6 @@ footer a:hover {
 
     .section_interviews .content_wrapper {
         padding: 2rem 0;
-    }
-
-    .page_header {
-        position: relative;
-        margin-bottom: 3rem;
     }
 
     .footer_menu_wrapper .bottom_footer_menu ul,
