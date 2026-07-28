@@ -3025,6 +3025,8 @@ footer a:hover {
   --section-space-y-lg: 5rem; /* was often 8–10rem — keep closer to standard */
   --section-space-y-sm: 3rem;
   --section-space-y-xs: 2rem;
+  /* Horizontal page gutter — header / hero / body share this */
+  --container-pad-x: 15px; /* Bootstrap 4 default */
 }
 
 /* ~MacBook / 1440-class desktops */
@@ -3042,6 +3044,7 @@ footer a:hover {
     --section-space-y-lg: 3.25rem;
     --section-space-y-sm: 2rem;
     --section-space-y-xs: 1.25rem;
+    --container-pad-x: 1.25rem;
   }
 }
 @media (max-width: 767.98px) {
@@ -3050,6 +3053,7 @@ footer a:hover {
     --section-space-y-lg: 2.25rem;
     --section-space-y-sm: 1.5rem;
     --section-space-y-xs: 1rem;
+    --container-pad-x: 1rem;
   }
 }
 @media (max-width: 575.98px) {
@@ -3058,6 +3062,7 @@ footer a:hover {
     --section-space-y-lg: 1.75rem;
     --section-space-y-sm: 1.25rem;
     --section-space-y-xs: 0.75rem;
+    --container-pad-x: 1rem;
   }
 }
 /* Bootstrap utility stacks (mb-5 = 3rem) add extra white space under sections */
@@ -3153,5 +3158,29 @@ footer a:hover {
   .admissions_section {
     margin-top: var(--section-space-y-sm);
     margin-bottom: var(--section-space-y-sm);
+  }
+}
+/* Shared .container gutters — keep existing desktop max-widths (legacy/_styles.scss) */
+.container {
+  padding-left: var(--container-pad-x);
+  padding-right: var(--container-pad-x);
+  box-sizing: border-box;
+}
+
+/* Intro / prose blocks: full container on mobile, readable measure on large screens */
+.text_section .description {
+  width: 100%;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 767.98px) {
+  .text_section .description {
+    max-width: none;
+    font-size: 1rem;
+    line-height: 1.55;
+    text-align: left;
   }
 }

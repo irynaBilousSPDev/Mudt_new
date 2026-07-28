@@ -1,9 +1,12 @@
-// Theme spacing tokens — section rhythm scales by viewport
+// Theme spacing tokens — section rhythm + shared container gutters
 :root {
     --section-space-y: 5rem;      /* default desktop section pad/margin */
     --section-space-y-lg: 5rem;   /* was often 8–10rem — keep closer to standard */
     --section-space-y-sm: 3rem;
     --section-space-y-xs: 2rem;
+
+    /* Horizontal page gutter — header / hero / body share this */
+    --container-pad-x: 15px; /* Bootstrap 4 default */
 }
 
 /* ~MacBook / 1440-class desktops */
@@ -22,6 +25,7 @@
         --section-space-y-lg: 3.25rem;
         --section-space-y-sm: 2rem;
         --section-space-y-xs: 1.25rem;
+        --container-pad-x: 1.25rem;
     }
 }
 
@@ -31,6 +35,7 @@
         --section-space-y-lg: 2.25rem;
         --section-space-y-sm: 1.5rem;
         --section-space-y-xs: 1rem;
+        --container-pad-x: 1rem;
     }
 }
 
@@ -40,5 +45,6 @@
         --section-space-y-lg: 1.75rem;
         --section-space-y-sm: 1.25rem;
         --section-space-y-xs: 0.75rem;
+        --container-pad-x: 1rem;
     }
 }

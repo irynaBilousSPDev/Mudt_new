@@ -1,0 +1,27 @@
+/* Shared .container gutters — keep existing desktop max-widths (legacy/_styles.scss) */
+
+@use '../abstracts/variables';
+
+.container {
+    padding-left: var(--container-pad-x);
+    padding-right: var(--container-pad-x);
+    box-sizing: border-box;
+}
+
+/* Intro / prose blocks: full container on mobile, readable measure on large screens */
+.text_section .description {
+    width: 100%;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+@media (max-width: 767.98px) {
+    .text_section .description {
+        max-width: none;
+        font-size: 1rem;
+        line-height: 1.55;
+        text-align: left;
+    }
+}

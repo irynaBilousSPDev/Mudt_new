@@ -4,6 +4,8 @@
   --section-space-y-lg: 5rem; /* was often 8–10rem — keep closer to standard */
   --section-space-y-sm: 3rem;
   --section-space-y-xs: 2rem;
+  /* Horizontal page gutter — header / hero / body share this */
+  --container-pad-x: 15px; /* Bootstrap 4 default */
 }
 
 /* ~MacBook / 1440-class desktops */
@@ -21,6 +23,7 @@
     --section-space-y-lg: 3.25rem;
     --section-space-y-sm: 2rem;
     --section-space-y-xs: 1.25rem;
+    --container-pad-x: 1.25rem;
   }
 }
 @media (max-width: 767.98px) {
@@ -29,6 +32,7 @@
     --section-space-y-lg: 2.25rem;
     --section-space-y-sm: 1.5rem;
     --section-space-y-xs: 1rem;
+    --container-pad-x: 1rem;
   }
 }
 @media (max-width: 575.98px) {
@@ -37,6 +41,7 @@
     --section-space-y-lg: 1.75rem;
     --section-space-y-sm: 1.25rem;
     --section-space-y-xs: 0.75rem;
+    --container-pad-x: 1rem;
   }
 }
 /* Program single: .goals_section (qualification goals tabs) */

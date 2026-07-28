@@ -4,6 +4,8 @@
   --section-space-y-lg: 5rem; /* was often 8–10rem — keep closer to standard */
   --section-space-y-sm: 3rem;
   --section-space-y-xs: 2rem;
+  /* Horizontal page gutter — header / hero / body share this */
+  --container-pad-x: 15px; /* Bootstrap 4 default */
 }
 
 /* ~MacBook / 1440-class desktops */
@@ -21,6 +23,7 @@
     --section-space-y-lg: 3.25rem;
     --section-space-y-sm: 2rem;
     --section-space-y-xs: 1.25rem;
+    --container-pad-x: 1.25rem;
   }
 }
 @media (max-width: 767.98px) {
@@ -29,6 +32,7 @@
     --section-space-y-lg: 2.25rem;
     --section-space-y-sm: 1.5rem;
     --section-space-y-xs: 1rem;
+    --container-pad-x: 1rem;
   }
 }
 @media (max-width: 575.98px) {
@@ -37,6 +41,7 @@
     --section-space-y-lg: 1.75rem;
     --section-space-y-sm: 1.25rem;
     --section-space-y-xs: 0.75rem;
+    --container-pad-x: 1rem;
   }
 }
 /* Page hero: .header_section > .page_header (templates + flexible pages) */
@@ -115,24 +120,30 @@
     top: -40px;
   }
   .page_header .image_wrapper {
-    border-radius: 80px;
+    border-radius: 64px;
   }
   .page_header .title_wrapper {
     left: 0;
     right: 0;
-    max-width: 85%;
+    max-width: min(504px, 92%);
     margin-left: auto;
     margin-right: auto;
-    padding: 2rem 2rem 0;
+    padding: 2rem 1.5rem 0;
   }
 }
 @media (max-width: 991.98px) {
   .page_header .parallax-section {
     height: clamp(220px, 40vh, 400px);
   }
+  .page_header .image_wrapper {
+    border-radius: 48px;
+  }
   .page_header .title_wrapper {
-    max-width: 90%;
-    padding: 1.5rem 1.5rem 0;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1.5rem 1.25rem 0;
+    border-radius: 24px 24px 0 0;
   }
 }
 @media (max-width: 767.98px) {
@@ -144,11 +155,15 @@
     min-height: 200px;
   }
   .page_header .image_wrapper {
-    border-radius: 48px;
+    border-radius: 28px;
   }
+  /* Title card flush with image edges → same column as body text */
   .page_header .title_wrapper {
-    max-width: calc(100% - 2rem);
-    padding: 1.25rem 1.25rem 0;
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1.15rem 1rem 0;
     border-radius: 20px 20px 0 0;
   }
   .page_header .title_wrapper .section_title {
@@ -157,11 +172,10 @@
 }
 @media (max-width: 575.98px) {
   .page_header .image_wrapper {
-    border-radius: 32px;
+    border-radius: 24px;
   }
   .page_header .title_wrapper {
-    max-width: calc(100% - 1.5rem);
-    padding: 1rem 1rem 0;
+    padding: 1rem 0.85rem 0;
     border-radius: 16px 16px 0 0;
   }
 }
