@@ -7,8 +7,8 @@ $contact_form_title = get_sub_field('contact_form_title');
 ?>
 <section class="section_contact_program section_sub_menu" id="layout_id_<?php echo get_row_index(); ?>">
     <div class="container">
-        <div class="row">
-            <div class="col-md-4 d-flex align-items-center">
+        <div class="row contact_program_row align-items-center">
+            <div class="col-12 col-lg-4 contact_program_intro">
                 <div class="wrapper_content">
                     <h2 class="section_title">
                         <?php echo $section_title; ?>
@@ -36,7 +36,7 @@ $contact_form_title = get_sub_field('contact_form_title');
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="col-md-8 d-flex align-items-center">
+            <div class="col-12 col-lg-8 contact_program_form">
                 <div class="contact_program_wrapper">
                     <?php if ($contact_form_title): ?>
                         <div class="description mb-5">
@@ -44,10 +44,8 @@ $contact_form_title = get_sub_field('contact_form_title');
                         </div>
                     <?php endif; ?>
                     <?php echo do_shortcode($shortcode); ?>
-                    <!--                    --><?php //echo do_shortcode('[contact-form-7 id="87b4094" title="Contact Program"]'); ?>
                 </div>
             </div>
         </div>
     </div>
 </section>
-

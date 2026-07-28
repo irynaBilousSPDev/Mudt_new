@@ -3123,8 +3123,8 @@ footer a:hover {
     }
 
     .section_contact_program {
-        /* Responsive rules live in single-styles — keep only non-conflicting fallbacks */
-        padding: 2.5rem 1.25rem;
+        /* Base responsive rules in single-styles (< lg stack) */
+        padding: 2.75rem 1.5rem;
     }
 
     .form_request_info_material h2 {
