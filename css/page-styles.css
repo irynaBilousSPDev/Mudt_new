@@ -39,7 +39,7 @@
     --section-space-y-xs: 0.75rem;
   }
 }
-/* Flexible: cards_section (+ accreditation uses .section_custom_cards) */
+/* Flexible: cards_section — accreditation reuses .section_custom_cards */
 .section_custom_cards {
   position: relative;
   padding: var(--section-space-y-sm, 3rem) 0;
@@ -55,17 +55,28 @@
   background-color: #EEF7FF;
 }
 
+.section_custom_cards .custom_cards_row {
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+.section_custom_cards .custom_cards_card {
+  display: flex;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
 .section_custom_cards .custom_cards_card_item {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.custom_cards_card_body,
-.custom_cards_card {
+.custom_cards_card_body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  flex: 1 1 auto;
 }
 
 .custom_cards_card .title {
@@ -90,11 +101,13 @@
 }
 
 .section_custom_cards .custom_cards_card_image {
+  width: 100%;
   min-height: 511px;
   margin-bottom: 3rem;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .section_custom_cards .custom_cards_card_image.medium_image {
@@ -106,29 +119,46 @@
   max-width: 100%;
 }
 
-/* Row ends: keep pill cut on wide layouts */
-@media (min-width: 992px) {
-  .section_custom_cards .custom_cards_card_image {
-    overflow: hidden;
-  }
-  .section_custom_cards .custom_cards_card:first-child .custom_cards_card_image {
+/* Desktop: pill ends by column count (data-cols = Bootstrap span) */
+@media (min-width: 1200px) {
+  .section_custom_cards[data-cols="4"] .custom_cards_card:nth-child(3n+1) .custom_cards_card_image {
     border-radius: 80px 0 0 80px;
   }
-  .section_custom_cards .custom_cards_card:last-child .custom_cards_card_image {
+  .section_custom_cards[data-cols="4"] .custom_cards_card:nth-child(3n) .custom_cards_card_image {
+    border-radius: 0 80px 80px 0;
+  }
+  .section_custom_cards[data-cols="3"] .custom_cards_card:nth-child(4n+1) .custom_cards_card_image {
+    border-radius: 80px 0 0 80px;
+  }
+  .section_custom_cards[data-cols="3"] .custom_cards_card:nth-child(4n) .custom_cards_card_image {
+    border-radius: 0 80px 80px 0;
+  }
+  .section_custom_cards[data-cols="6"] .custom_cards_card:nth-child(odd) .custom_cards_card_image {
+    border-radius: 80px 0 0 80px;
+  }
+  .section_custom_cards[data-cols="6"] .custom_cards_card:nth-child(even) .custom_cards_card_image {
     border-radius: 0 80px 80px 0;
   }
 }
+/* Tablet landscape / small desktop */
 @media (max-width: 1199.98px) {
   .section_custom_cards .custom_cards_card_image {
-    min-height: 380px;
-    margin-bottom: 2rem;
+    min-height: 0;
+    aspect-ratio: 4/3;
+    margin-bottom: 1.5rem;
+    border-radius: 48px;
   }
   .section_custom_cards .custom_cards_card_image.medium_image {
-    min-height: 320px;
+    min-height: 0;
+    aspect-ratio: 4/3;
   }
   .custom_cards_card .big_title {
     font-size: clamp(1.75rem, 3vw, 2.25rem);
     line-height: 1.2;
+  }
+  .custom_cards_card .title {
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    line-height: 1.3;
   }
   .custom_cards_text {
     margin-top: 1.25rem;
@@ -136,18 +166,10 @@
     line-height: 1.45;
   }
 }
+/* Tablet: 2-up already via col-md-6 */
 @media (max-width: 991.98px) {
   .section_custom_cards .custom_cards_card_image {
-    min-height: 300px;
-    border-radius: 64px;
-    overflow: hidden;
-  }
-  .section_custom_cards .custom_cards_card:first-child .custom_cards_card_image,
-  .section_custom_cards .custom_cards_card:last-child .custom_cards_card_image {
-    border-radius: 64px;
-  }
-  .section_custom_cards .custom_cards_card_image.medium_image {
-    min-height: 260px;
+    border-radius: 40px;
   }
 }
 @media (max-width: 767.98px) {
@@ -155,19 +177,12 @@
     padding: var(--section-space-y-xs, 1rem) 0;
   }
   .section_custom_cards .custom_cards_card {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
   .section_custom_cards .custom_cards_card_image {
-    min-height: 220px;
-    margin-bottom: 1.25rem;
-    border-radius: 40px;
-  }
-  .section_custom_cards .custom_cards_card:first-child .custom_cards_card_image,
-  .section_custom_cards .custom_cards_card:last-child .custom_cards_card_image {
-    border-radius: 40px;
-  }
-  .section_custom_cards .custom_cards_card_image.medium_image {
-    min-height: 200px;
+    aspect-ratio: 16/10;
+    margin-bottom: 1rem;
+    border-radius: 32px;
   }
   .custom_cards_card .title {
     font-size: 1.25rem;
@@ -178,28 +193,40 @@
     line-height: 1.2;
   }
   .custom_cards_text {
-    margin-top: 1rem;
+    margin-top: 0.85rem;
   }
 }
-/* accreditation (same section class) */
+@media (max-width: 575.98px) {
+  .section_custom_cards .custom_cards_card_image {
+    aspect-ratio: 5/4;
+    border-radius: 28px;
+  }
+}
+/* accreditation */
 .accreditation:before {
   display: none;
 }
 
 .accreditation_card {
   margin-bottom: 2rem;
+  height: 100%;
 }
 
 .logo_wrapper {
   min-height: 230px;
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .logo_wrapper img {
   width: auto;
+  max-width: 100%;
+  height: auto;
 }
 
-.accreditation .accreditation_card h2 {
+.accreditation .accreditation_card h2,
+.accreditation .custom_cards_title {
   font-size: 32px;
   line-height: 39px;
   font-weight: 400;
@@ -208,12 +235,134 @@
 
 @media (max-width: 767.98px) {
   .logo_wrapper {
-    min-height: 140px;
+    min-height: 120px;
   }
-  .accreditation .accreditation_card h2 {
+  .accreditation .accreditation_card h2,
+  .accreditation .custom_cards_title {
     font-size: 1.5rem;
     line-height: 1.3;
     min-height: 0;
+  }
+}
+/* Flexible: our_goals_section */
+.section_our_goals .custom_cards_card_image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.section_our_goals .custom_cards_card_image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 992px) {
+  .section_our_goals .custom_cards_card_image {
+    border-radius: 0;
+  }
+  .section_our_goals .custom_cards_card:first-child .custom_cards_card_image {
+    border-radius: 80px 0 0 80px;
+  }
+  .section_our_goals .custom_cards_card:last-child .custom_cards_card_image {
+    border-radius: 0 80px 80px 0;
+  }
+}
+@media (max-width: 991.98px) {
+  .section_our_goals .custom_cards_card_image {
+    border-radius: 48px;
+    margin-bottom: 1.25rem;
+  }
+  .section_our_goals .custom_cards_card:first-child .custom_cards_card_image,
+  .section_our_goals .custom_cards_card:last-child .custom_cards_card_image {
+    border-radius: 48px;
+  }
+  .section_our_goals .our_goals_text {
+    margin-bottom: 1rem !important;
+  }
+}
+@media (max-width: 767.98px) {
+  .section_our_goals .custom_cards_card_image {
+    border-radius: 32px;
+  }
+  .section_our_goals .section_title {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+}
+/* Flexible: why_munich_section (.section_digital_technologies) */
+.digital_technologies_card {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.digital_technologies_card:nth-child(even) {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+}
+
+.digital_technologies_card_body {
+  min-height: 320px;
+}
+
+.custom_description {
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 305px;
+  padding: 15px;
+}
+
+.digital_technologies_title {
+  padding-top: 1rem;
+}
+
+.digital_technologies_card:nth-child(odd) .digital_technologies_image {
+  margin-bottom: 2rem;
+}
+
+.digital_technologies_image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 24px;
+}
+
+@media (max-width: 1199.98px) {
+  .digital_technologies_card_body {
+    min-height: 0;
+  }
+  .custom_description {
+    font-size: 1.15rem;
+    line-height: 1.35;
+    max-width: none;
+    padding: 0.5rem 0;
+  }
+}
+@media (max-width: 767.98px) {
+  .digital_technologies_card {
+    margin-bottom: 1.5rem;
+  }
+  .digital_technologies_card:nth-child(even) {
+    flex-direction: column;
+  }
+  .digital_technologies_card:nth-child(odd) .digital_technologies_image {
+    margin-bottom: 1rem;
+  }
+  .digital_technologies_title {
+    font-size: 1.15rem;
+    padding-top: 0.5rem;
+  }
+  .digital_technologies_text {
+    margin-bottom: 0 !important;
+    font-size: 1rem;
+    line-height: 1.45;
   }
 }
 /*pages start
@@ -732,24 +881,7 @@ main.page .top_banner_description {
   margin-bottom: 1rem;
 }
 
-/*section_our_goals*/
-/* Our Goals — responsive equal-height images */
-.section_our_goals .custom_cards_card_image {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3/2; /* unified height for all images */
-  overflow: hidden; /* keeps rounded corners */
-  margin-bottom: 2rem; /* same as Bootstrap mb-5 */
-}
-
-.section_our_goals .custom_cards_card_image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* image fills container, cropped if needed */
-  object-position: center;
-}
-
+/*section_our_goals — image radii in scss/sections/_our-goals.scss */
 .section_our_goals {
   position: relative;
 }
@@ -759,22 +891,6 @@ main.page .top_banner_description {
   padding: 0 1rem;
 }
 
-@media (min-width: 991px) {
-  .section_our_goals .custom_cards_card_image {
-    overflow: hidden;
-  }
-  .section_our_goals .custom_cards_card:first-child .custom_cards_card_image {
-    border-radius: 80px 0 0 80px;
-  }
-  .section_our_goals .custom_cards_card:last-child .custom_cards_card_image {
-    border-radius: 0 80px 80px 0;
-  }
-}
-@media (max-width: 767.98px) {
-  .section_our_goals .custom_cards_card_image {
-    aspect-ratio: 4/3;
-  }
-}
 .our_goals_text {
   margin-top: 1rem;
 }
@@ -792,39 +908,7 @@ main.page .list_item_title {
   margin-bottom: 2rem;
 }
 
-/*section_digital_technologies*/
-.digital_technologies_card {
-  padding: 0.5rem;
-}
-
-.digital_technologies_card:nth-child(even) {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
-}
-
-.digital_technologies_card_body {
-  min-height: 320px;
-}
-
-.custom_description {
-  font-size: 24px;
-  line-height: 29px;
-  font-weight: 700;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 305px;
-  padding: 15px;
-}
-
-.digital_technologies_title {
-  padding-top: 1rem;
-}
-
-.digital_technologies_card:nth-child(odd) .digital_technologies_image {
-  margin-bottom: 2rem;
-}
-
+/*section_digital_technologies → scss/sections/_why-munich.scss */
 .single_specialisation h1 {
   margin-bottom: 2rem;
 }
@@ -859,7 +943,7 @@ main.page .list_item_title {
 }
 
 .section_campus {
-  margin-bottom: 100px;
+  margin-bottom: var(--section-space-y-lg, 5rem);
 }
 
 .campus_card_col {
@@ -2056,9 +2140,6 @@ body.contact .section_contact_program p {
   }
 }
 @media (max-width: 480px) {
-  .digital_technologies_card_body {
-    min-height: 1px;
-  }
   .international_card {
     max-width: 100%;
   }
@@ -2072,7 +2153,7 @@ body.contact .section_contact_program p {
     max-width: 300px;
   }
   .section_international {
-    padding-bottom: 100px;
+    padding-bottom: var(--section-space-y-lg, 5rem);
   }
   main.page .section_scholarships_financing h2 {
     font-size: 1.75rem;

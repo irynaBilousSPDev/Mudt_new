@@ -551,24 +551,7 @@ main.page .top_banner_description {
     margin-bottom: 1rem;
 }
 
-/*section_our_goals*/
-
-/* Our Goals — responsive equal-height images */
-.section_our_goals .custom_cards_card_image {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3 / 2; /* unified height for all images */
-    overflow: hidden; /* keeps rounded corners */
-    margin-bottom: 2rem; /* same as Bootstrap mb-5 */
-}
-
-.section_our_goals .custom_cards_card_image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* image fills container, cropped if needed */
-    object-position: center;
-}
+/*section_our_goals — image radii in scss/sections/_our-goals.scss */
 
 .section_our_goals {
     position: relative;
@@ -578,27 +561,6 @@ main.page .top_banner_description {
     font-weight: 500;
     padding: 0 1rem;
 }
-
-@media (min-width: 991px) {
-    .section_our_goals .custom_cards_card_image {
-        overflow: hidden;
-    }
-
-    .section_our_goals .custom_cards_card:first-child .custom_cards_card_image {
-        border-radius: 80px 0 0 80px;
-    }
-
-    .section_our_goals .custom_cards_card:last-child .custom_cards_card_image {
-        border-radius: 0 80px 80px 0;
-    }
-}
-
-@media (max-width: 767.98px) {
-    .section_our_goals .custom_cards_card_image {
-        aspect-ratio: 4 / 3;
-    }
-}
-
 
 .our_goals_text {
     margin-top: 1rem;
@@ -618,38 +580,7 @@ main.page .list_item_title {
     margin-bottom: 2rem;
 }
 
-/*section_digital_technologies*/
-.digital_technologies_card {
-    padding: 0.5rem;
-}
-
-.digital_technologies_card:nth-child(even) {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: flex-end;
-}
-
-.digital_technologies_card_body {
-    min-height: 320px;
-}
-
-.custom_description {
-    font-size: 24px;
-    line-height: 29px;
-    font-weight: 700;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 305px;
-    padding: 15px;
-}
-
-.digital_technologies_title {
-    padding-top: 1rem;
-}
-
-.digital_technologies_card:nth-child(odd) .digital_technologies_image {
-    margin-bottom: 2rem;
-}
+/*section_digital_technologies → scss/sections/_why-munich.scss */
 
 .single_specialisation h1 {
     margin-bottom: 2rem;
@@ -686,7 +617,7 @@ main.page .list_item_title {
 }
 
 .section_campus {
-    margin-bottom: 100px;
+    margin-bottom: var(--section-space-y-lg, 5rem);
 }
 
 .campus_card_col {
@@ -1982,10 +1913,6 @@ body.contact .section_contact_program p {
 
 @media (max-width: 480px) {
 
-    .digital_technologies_card_body {
-        min-height: 1px;
-    }
-
     .international_card {
         max-width: 100%;
     }
@@ -2003,7 +1930,7 @@ body.contact .section_contact_program p {
     }
 
     .section_international {
-        padding-bottom: 100px;
+        padding-bottom: var(--section-space-y-lg, 5rem);
     }
 
     main.page .section_scholarships_financing h2 {

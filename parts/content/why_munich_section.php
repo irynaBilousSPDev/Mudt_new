@@ -23,7 +23,7 @@ $custom_cards = get_sub_field('why_munich_cards');
                         $title = $item['title'];
                         $description = $item['description']; ?>
                         <?php if (!empty($image)) : ?>
-                            <div class="col-md-6 col-xl-3 digital_technologies_card">
+                        <div class="col-12 col-md-6 col-xl-3 digital_technologies_card">
                                 <div class="digital_technologies_image">
                                     <img src="<?php echo $image['sizes']['image_398_282']; ?>"
                                          alt="<?php echo $image['alt']; ?>">
@@ -34,7 +34,7 @@ $custom_cards = get_sub_field('why_munich_cards');
                                 </div>
                             </div>
                         <?php else: ?>
-                            <div class="col-md-6 col-xl-3  digital_technologies_card">
+                            <div class="col-12 col-md-6 col-xl-3 digital_technologies_card">
                                 <div class="digital_technologies_card_body custom_description">
                                     <?php echo $description; ?>
                                 </div>
