@@ -2950,12 +2950,6 @@ footer a:hover {
     }
 }
 
-@media (min-width: 990px) and (max-width: 1280px) {
-    .goals_section .tab-contents {
-        border-radius: 5px 5px 51px 51px;
-    }
-}
-
 @media (max-width: 1440px) {
     .fees_cards {
         border-radius: 80px;
@@ -3058,27 +3052,6 @@ footer a:hover {
     .modulus_content {
         border-radius: 80px;
         overflow: hidden;
-    }
-
-    .goals_section .tab-buttons-content {
-        flex-wrap: wrap;
-    }
-
-    .goals_section .tab-button {
-        border-radius: 28px;
-        padding: 0.5rem 1rem;
-        max-width: 100%;
-        width: 100%;
-    }
-
-    .goals_item_wrapper {
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 2rem;
-    }
-
-    .goals_item h4 {
-        min-width: 40px;
     }
 
     .bottom_footer_section {

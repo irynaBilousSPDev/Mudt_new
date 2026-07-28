@@ -158,27 +158,36 @@
         tabs.forEach((tabs) => {
             const tabButtons = tabs.querySelectorAll(".tab-button");
             const tabContents = tabs.querySelectorAll(".tab-content");
-            const tabButtonsContainer = tabs.querySelector(".tab-buttons");
+
+            if (!tabButtons.length || !tabContents.length) {
+                return;
+            }
 
             tabButtons.forEach((button) => {
                 button.addEventListener("click", function () {
                     const tab = this.getAttribute("data-tab");
 
-                    tabButtons.forEach((btn) => btn.classList.remove("active"));
+                    tabButtons.forEach((btn) => {
+                        btn.classList.remove("active");
+                        btn.setAttribute("aria-selected", "false");
+                    });
                     tabContents.forEach((content) => content.classList.remove("active"));
 
                     this.classList.add("active");
+                    this.setAttribute("aria-selected", "true");
                     tabs
                         .querySelector(`.tab-content[data-tab="${tab}"]`)
                         .classList.add("active");
 
-                    tabs
-                        .querySelector(".tab-contents")
-                        .scrollTo({top: 0, behavior: "smooth"});
+                    const tabContentsEl = tabs.querySelector(".tab-contents");
+                    if (tabContentsEl) {
+                        tabContentsEl.scrollTo({top: 0, behavior: "smooth"});
+                    }
                 });
             });
 
             tabButtons[0].classList.add("active");
+            tabButtons[0].setAttribute("aria-selected", "true");
             tabContents[0].classList.add("active");
 
         });
