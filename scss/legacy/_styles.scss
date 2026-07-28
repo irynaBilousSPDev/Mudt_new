@@ -477,6 +477,37 @@ header .sm-container .sub-menu > li > a {
     transition: all 0.2s ease-in-out;
 }
 
+header .sm-container .sub-menu > li.menu-item--has-new > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header .sm-container .sub-menu > li.menu-item--has-new > a .menu-item__label {
+    display: inline-block;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+header .sm-container .sub-menu > li.menu-item--has-new > a .menu-item__new-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-height: 20px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #2994FF;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
 /* Primary menu — optional “NEW” badge (checkbox); keep link color unchanged */
 header nav .primary_menu > li.menu-item--has-new > a {
     display: inline-flex;
@@ -517,7 +548,8 @@ header ul.mobile > li.menu-item--has-new > a {
     text-decoration: none;
 }
 
-header ul.mobile > li.menu-item--has-new > a .menu-item__new-badge {
+header ul.mobile > li.menu-item--has-new > a .menu-item__new-badge,
+header ul.mobile .sub-menu > li.menu-item--has-new > a .menu-item__new-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -531,6 +563,13 @@ header ul.mobile > li.menu-item--has-new > a .menu-item__new-badge {
     line-height: 1;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+}
+
+header ul.mobile .sub-menu > li.menu-item--has-new > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
 }
 
 header .blue_border_btn a {
