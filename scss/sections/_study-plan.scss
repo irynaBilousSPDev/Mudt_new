@@ -92,24 +92,17 @@
 .item_semester_content_wrapper {
     display: grid;
     grid-template-rows: 0fr;
+    overflow: hidden;
     transition: grid-template-rows 0.35s ease;
-    position: relative;
-}
-
-.item_semester_content_wrapper:before {
-    position: absolute;
-    content: '';
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #EEF7FF;
-    border-radius: 0 0 clamp(20px, 3vw, 35px) clamp(20px, 3vw, 35px);
-    z-index: 0;
 }
 
 .item_semester.active .item_semester_content_wrapper {
     grid-template-rows: 1fr;
+}
+
+.item_semester_content_panel {
+    min-height: 0;
+    overflow: hidden;
 }
 
 .item_semester_header,
@@ -119,8 +112,8 @@
 }
 
 .item_semester_content {
-    overflow: hidden;
-    min-height: 0;
+    background-color: #EEF7FF;
+    border-radius: 0 0 clamp(20px, 3vw, 35px) clamp(20px, 3vw, 35px);
     line-height: 1.5;
     padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem) clamp(1.25rem, 3vw, 2rem);
     font-size: clamp(0.9375rem, 1.4vw, 1rem);

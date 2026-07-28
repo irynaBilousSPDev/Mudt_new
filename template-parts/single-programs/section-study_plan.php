@@ -92,8 +92,10 @@ $elective_modules = $study_plan['elective_modules'] ?? null;
                                             </div>
                                             <?php if (!empty($semester['semester_content'])) : ?>
                                                 <div class="item_semester_content_wrapper">
-                                                    <div class="item_semester_content">
-                                                        <?php echo $semester['semester_content']; ?>
+                                                    <div class="item_semester_content_panel">
+                                                        <div class="item_semester_content">
+                                                            <?php echo $semester['semester_content']; ?>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             <?php endif; ?>
