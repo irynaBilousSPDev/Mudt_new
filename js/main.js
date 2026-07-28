@@ -295,8 +295,11 @@
             }
         });
         $('.item_semester').each(function () {
-            $(this).on('click', function () {
-                $(this).toggleClass("active");
+            const $item = $(this);
+            const $trigger = $item.find('.col_item--title');
+            $item.on('click', function () {
+                $item.toggleClass('active');
+                $trigger.attr('aria-expanded', $item.hasClass('active') ? 'true' : 'false');
             });
         });
 
