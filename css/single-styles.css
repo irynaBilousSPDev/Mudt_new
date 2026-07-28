@@ -226,40 +226,61 @@
     border-radius: clamp(16px, 3vw, 51px);
   }
 }
-/* Mobile */
+/* Mobile — stacked tab list (all tabs visible, no horizontal scroll) */
 @media (max-width: 767.98px) {
   .goals_section {
     padding-top: var(--section-space-y-sm, 2rem);
     padding-bottom: var(--section-space-y, 3rem);
   }
-  .goals_section .tabs {
-    margin-left: -0.25rem;
-    margin-right: -0.25rem;
+  .goals_section--multi .tab-buttons {
+    margin-bottom: 0.75rem;
   }
-  .goals_section .tab-buttons-content {
+  .goals_section--multi .tab-buttons-content {
+    flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    padding: 0 0.25rem 0.5rem;
+    justify-content: stretch;
+    overflow: visible;
+    scroll-snap-type: none;
     gap: 0.5rem;
+    padding: 0;
   }
-  .goals_section .tab-buttons-content::-webkit-scrollbar {
+  .goals_section--multi .tab-button {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(31, 27, 81, 0.22);
+    padding: 0.85rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  .goals_section--multi .tab-button.active {
+    background-color: #1F1B51;
+    border-color: #1F1B51;
+    color: #fff;
+    font-weight: bold;
+  }
+  .goals_section--multi .goals_list_sub_title {
+    font-size: 1.125rem;
+    line-height: 1.2;
+    padding-right: 0;
+    margin-right: 0;
+  }
+  .goals_section--multi .goals_list_sub_title:before {
     display: none;
   }
-  .goals_section .tab-button {
-    flex: 0 0 auto;
-    width: auto;
-    min-width: min(260px, 78vw);
-    max-width: 85vw;
-    scroll-snap-align: start;
-    border-radius: 20px 20px 0 0;
-    padding: 0.75rem 1rem;
+  .goals_section--multi .tab-button.active .goals_list_sub_title:before {
+    display: none;
   }
-  .goals_section .tab-contents {
-    border-radius: 0 0 32px 32px;
+  .goals_section--multi .goals_list_title {
+    font-size: 0.9375rem;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+  .goals_section--multi .tab-contents {
+    border-radius: 20px;
   }
   .goals_section .goals_item_wrapper {
     padding-left: 1rem;
@@ -291,9 +312,6 @@
   }
 }
 @media (max-width: 479.98px) {
-  .goals_section .tab-button {
-    min-width: min(240px, 88vw);
-  }
   .goals_item {
     flex-direction: column;
     gap: 0.35rem;

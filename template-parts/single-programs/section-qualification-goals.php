@@ -9,7 +9,8 @@ if (empty($goals_lists) || !is_array($goals_lists)) {
 
 $tab_count = count($goals_lists);
 $is_single = $tab_count === 1;
-$section_class = 'goals_section section_sub_menu' . ($is_single ? ' goals_section--single' : '');
+$section_class = 'goals_section section_sub_menu'
+    . ($is_single ? ' goals_section--single' : ' goals_section--multi');
 ?>
 <section class="<?php echo esc_attr($section_class); ?>" id="goals" data-tabs-count="<?php echo (int) $tab_count; ?>">
     <div class="container">
