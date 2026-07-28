@@ -1487,6 +1487,16 @@ body.contact .section_contact_program p {
   line-height: 30px;
 }
 
+@media (max-width: 767.98px) {
+  body.contact .section_contact_program h2,
+  body.contact .section_contact_program .wrapper_content,
+  body.contact .section_contact_program .wrapper_content p,
+  body.contact .section_contact_program p {
+    color: #fff !important;
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
 .get_in_touch h3 {
   font-weight: bold;
   font-size: 16px;
@@ -1825,6 +1835,6 @@ body.contact .section_contact_program p {
     padding: 2rem 0;
   }
   .section_contact_program {
-    margin: 0;
+    margin: 3rem 0;
   }
 }

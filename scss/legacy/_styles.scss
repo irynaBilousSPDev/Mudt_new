@@ -3123,19 +3123,8 @@ footer a:hover {
     }
 
     .section_contact_program {
-        padding: 4rem 1rem;
-    }
-
-    .section_contact_program:before {
-        border-radius: 80px;
-        width: 100%;
-    }
-
-    .section_contact_program a,
-    .section_contact_program h2,
-    .section_contact_program .description,
-    .section_contact_program .wrapper_content {
-        color: #FFFFFF !important;
+        /* Responsive rules live in single-styles — keep only non-conflicting fallbacks */
+        padding: 2.5rem 1.25rem;
     }
 
     .form_request_info_material h2 {
