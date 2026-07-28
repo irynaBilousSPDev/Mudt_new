@@ -1,3 +1,11 @@
+// Single program template → css/single-styles.css
+// Program sections: scss/sections/* (migrate from templates/_single-styles.scss).
+//
+// Migrated:
+//   qualification-goals, study-plan
+// Still in templates/_single-styles.scss:
+//   contact, faculty, career paths, specialisations, curriculum, admissions, etc.
+
 @use 'abstracts/variables';
 @use 'sections/qualification-goals';
 @use 'sections/study-plan';

@@ -36,7 +36,26 @@ const EXCLUDE_FILE_NAMES = new Set([
 ]);
 const EXCLUDE_FILE_BASENAMES = new Set(['package.json', 'package-lock.json']);
 
-function deployGitOnlyEnabled(env) {
+const BUILD_OUTPUT_DIR_PREFIX = 'css/';
+const BUILD_OUTPUT_FILES = new Set(['js/main.min.js']);
+
+function isBuildOutputPath(relativePosix) {
+	return (
+		relativePosix.startsWith(BUILD_OUTPUT_DIR_PREFIX) ||
+		BUILD_OUTPUT_FILES.has(relativePosix)
+	);
+}
+
+function runAssetBuild(env) {
+	if (envFlag(env, 'SKIP_BUILD')) {
+		console.log('SKIP_BUILD set — skipping asset build.');
+		return;
+	}
+
+	console.log('Building assets (npm run build)...');
+	execSync('npm run build', { cwd: ROOT, stdio: 'inherit' });
+}
+
 	if (envFlag(env, 'DEPLOY_FULL')) return false;
 	if (env.DEPLOY_GIT_ONLY !== undefined) return envFlag(env, 'DEPLOY_GIT_ONLY');
 	return true;
@@ -135,7 +154,15 @@ function assertGitReadyForDeploy(env) {
 
 	const dirty = listDirtyTrackedFiles();
 	if (dirty.length) {
-		throw new Error(`Deploy blocked: uncommitted changes (${dirty.join(', ')}). Commit first.`);
+		const nonBuildDirty = dirty.filter((file) => !isBuildOutputPath(file));
+		if (nonBuildDirty.length) {
+			throw new Error(
+				`Deploy blocked: uncommitted changes (${nonBuildDirty.join(', ')}). Commit first.`
+			);
+		}
+		console.log(
+			`Build output not committed (${dirty.join(', ')}) — will still upload fresh CSS/JS.`
+		);
 	}
 
 	const branch = resolveTrackingBranch();
@@ -190,6 +217,7 @@ async function main() {
 	const remotePath = resolveRemotePath(env);
 
 	console.log(`Deploy target: ${resolveDeployLabel(env)}`);
+	runAssetBuild(env);
 	assertGitReadyForDeploy(env);
 	console.log('Git check OK.');
 
@@ -199,6 +227,11 @@ async function main() {
 
 	if (gitOnly) {
 		const gitPaths = new Set(getGitDeployRelativePaths(env));
+		for (const file of listDirtyTrackedFiles()) {
+			if (isBuildOutputPath(file)) {
+				gitPaths.add(file);
+			}
+		}
 		const before = files.length;
 		files = files.filter((file) => gitPaths.has(file.relative));
 		console.log(`Git-only deploy: ${files.length} file(s) (${before} in theme)`);

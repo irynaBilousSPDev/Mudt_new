@@ -2,11 +2,13 @@
   "name": "mudt-new-theme",
   "version": "1.0.0",
   "private": true,
-  "description": "MUDT WordPress theme — dev deploy to iratest.site",
+  "description": "MUDT WordPress theme — SCSS/JS build (Gulp) + deploy to iratest.site",
   "scripts": {
-    "build:css": "sass scss/reset.scss:css/reset.css scss/fonts.scss:css/fonts.css scss/footer.scss:css/footer.css scss/page-pt.scss:css/page-pt.css scss/single-styles.scss:css/single-styles.css scss/styles.scss:css/styles.css scss/page-styles.scss:css/page-styles.css --no-source-map",
-    "build:js": "terser js/main.js -c -m -o js/main.min.js",
-    "build": "npm run build:css && npm run build:js",
+    "build:css": "gulp styles",
+    "build:js": "gulp scripts",
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "dev": "gulp",
     "deploy:dev": "node scripts/deploy-dev.js dev",
     "deploy:prod": "node scripts/deploy-dev.js prod",
     "import:db:dev": "node scripts/import-db-dev.js",
@@ -17,6 +19,10 @@
   },
   "devDependencies": {
     "basic-ftp": "^6.0.1",
+    "gulp": "^5.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^6.0.1",
+    "gulp-terser": "^2.1.0",
     "sass": "^1.101.7",
     "ssh2-sftp-client": "^12.1.1",
     "terser": "^5.49.0"

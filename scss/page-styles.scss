@@ -1,3 +1,11 @@
+// Pages + flexible content → css/page-styles.css
+// One partial per ACF flexible layout in scss/sections/ (migrate from legacy/_page-styles.scss).
+//
+// Migrated:
+//   page-header, custom-cards, our-goals, why-munich
+// Still in legacy/_page-styles.scss:
+//   fees, campus, scholarships, visa, deadlines, text/image, FAQ, contact, etc.
+
 @use 'abstracts/variables';
 @use 'sections/page-header';
 @use 'sections/custom-cards';
