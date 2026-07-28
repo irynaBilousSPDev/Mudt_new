@@ -77,11 +77,13 @@ $elective_modules = $study_plan['elective_modules'] ?? null;
                                                     >
                                                         <span class="long_arrow" aria-hidden="true"></span>
                                                         <span class="semester_label">
-                                                            <strong>
+                                                            <strong class="semester_number">
                                                                 <?php echo esc_html__('Semester', 'MUDT'); ?>
                                                                 <?php echo (int) $semester_num; ?>:
-                                                            </strong><br>
-                                                            <?php echo esc_html($semester['semester_title'] ?? ''); ?>
+                                                            </strong>
+                                                            <?php if (!empty($semester['semester_title'])) : ?>
+                                                                <span class="semester_title"><?php echo esc_html($semester['semester_title']); ?></span>
+                                                            <?php endif; ?>
                                                         </span>
                                                     </button>
                                                     <div class="col_item col_item--ects">
