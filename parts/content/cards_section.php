@@ -4,27 +4,39 @@ $columns_count = get_sub_field('columns_count_cards');
 $bg_color = get_sub_field('bg_color');
 ?>
 <?php if ($custom_cards) : ?>
-    <section id="layout_id_<?php echo get_row_index(); ?>" class="section_custom_cards mb-5 <?php if ($bg_color == true): ?>bg_color<?php endif; ?> section_sub_menu">
+    <section id="layout_id_<?php echo get_row_index(); ?>"
+             class="section_custom_cards <?php echo $bg_color ? 'bg_color' : ''; ?> section_sub_menu"
+             data-section="custom_cards">
         <div class="custom_cards_content">
             <div class="container">
-                <div class="row">
-                    <?php foreach ($custom_cards as $key => $item) : ?>
+                <div class="row custom_cards_row">
+                    <?php foreach ($custom_cards as $item) : ?>
                         <?php
                         $image = $item['image'];
                         $big_title = $item['big_title'];
                         $title = $item['title'];
                         $sub_title = $item['sub_title'];
                         $description = $item['description'];
+                        $col_xl = $columns_count ? 'col-xl-' . (int) $columns_count : '';
                         ?>
-                        <div class="col-md-6 mb-3 <?php if ($columns_count): ?>col-xl-<?php echo $columns_count; ?> <?php endif; ?> custom_cards_card">
+                        <div class="col-12 col-md-6 <?php echo esc_attr($col_xl); ?> mb-3 custom_cards_card">
                             <div class="custom_cards_card_item">
-                                <div role="img" aria-label="<?php echo $image['alt']; ?>"
-                                     class="custom_cards_card_image bg <?php if ($columns_count == 4): ?>medium_image<?php endif; ?>"
-                                     style="background-image: url(<?php echo $image['url']; ?>)">
-                                </div>
-                                    <h2 class="<?php if ($big_title == true): ?>big_title<?php else:; ?>title<?php endif; ?>"><?php echo $title; ?></h2>
-                                <h3 class="sub_title mb-3"><?php echo $sub_title; ?></h3>
-                                <div class="custom_cards_text"><?php echo $description; ?> </div>
+                                <?php if (!empty($image['url'])) : ?>
+                                    <div role="img"
+                                         aria-label="<?php echo esc_attr($image['alt'] ?? ''); ?>"
+                                         class="custom_cards_card_image bg <?php echo ((int) $columns_count === 4) ? 'medium_image' : ''; ?>"
+                                         style="background-image: url('<?php echo esc_url($image['url']); ?>')">
+                                    </div>
+                                <?php endif; ?>
+                                <h2 class="<?php echo $big_title ? 'big_title' : 'title'; ?>">
+                                    <?php echo $title; ?>
+                                </h2>
+                                <?php if ($sub_title) : ?>
+                                    <h3 class="sub_title mb-3"><?php echo $sub_title; ?></h3>
+                                <?php endif; ?>
+                                <?php if ($description) : ?>
+                                    <div class="custom_cards_text"><?php echo $description; ?></div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php endforeach; ?>

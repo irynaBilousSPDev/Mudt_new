@@ -536,90 +536,7 @@ main.page .top_banner_description {
     position: relative
 }
 
-.section_custom_cards {
-    position: relative;
-    padding: 3rem 0;
-}
-
-.section_custom_cards.bg_color:before {
-    position: absolute;
-    content: '';
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-color: #EEF7FF;
-}
-
-.custom_cards_card .title {
-    font-size: 24px;
-    line-height: 29px;
-    font-weight: bold;
-}
-
-.custom_cards_card .big_title {
-    font-size: 41px;
-    line-height: 50px;
-    font-weight: bold;
-}
-
-.custom_cards_card .sub_title {
-    position: relative;
-    display: inline;
-}
-
-.custom_cards_text {
-    margin-top: 2rem;
-}
-
-.section_custom_cards .custom_cards_card_image {
-    min-height: 511px;
-    margin-bottom: 3rem;
-}
-
-.section_custom_cards .custom_cards_card_image.medium_image {
-    min-height: 423px;
-}
-
-.custom_cards_card_body,
-.custom_cards_card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/*accreditation*/
-
-
-.accreditation:before {
-    display: none;
-}
-
-/*accreditation_card*/
-.accreditation_card {
-    margin-bottom: 2rem;
-}
-
-.logo_wrapper {
-    min-height: 230px;
-    margin-bottom: 1rem;
-}
-
-.logo_wrapper img {
-    width: auto;
-}
-
-.accreditation .accreditation_card h2 {
-    font-size: 32px;
-    line-height: 39px;
-    font-weight: 400;
-    min-height: 115px;
-}
-
-
-.section_custom_cards img {
-    height: auto;
-}
+/* section_custom_cards → scss/sections/_custom-cards.scss */
 
 /*section_language*/
 
@@ -663,15 +580,15 @@ main.page .top_banner_description {
 }
 
 @media (min-width: 991px) {
-    .custom_cards_card_image {
+    .section_our_goals .custom_cards_card_image {
         overflow: hidden;
     }
 
-    .custom_cards_card:first-child .custom_cards_card_image {
+    .section_our_goals .custom_cards_card:first-child .custom_cards_card_image {
         border-radius: 80px 0 0 80px;
     }
 
-    .custom_cards_card:last-child .custom_cards_card_image {
+    .section_our_goals .custom_cards_card:last-child .custom_cards_card_image {
         border-radius: 0 80px 80px 0;
     }
 }
