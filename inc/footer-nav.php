@@ -86,16 +86,27 @@ function mudt_footer_pt_defaults()
         'banner_text' => "Center for Cyber Security and AI — starting with course 'CRA Practitioner'",
         'banner_btn' => array(
             'title' => 'Explore →',
-            'url' => home_url('/professional-training/'),
+            'url' => 'https://professionals.uni-munich.de/',
             'target' => '',
         ),
         'card_title' => 'Professional Training',
         'card_badge' => 'NEW',
         'card_link' => array(
             'title' => 'CRA Practitioner',
-            'url' => home_url('/cra-practitioner/'),
+            'url' => 'https://professionals.uni-munich.de/cra-practitioner/',
             'target' => '',
         ),
+    );
+}
+
+/**
+ * Canonical external URLs for footer PT CTAs (overrides stale ACF option URLs).
+ */
+function mudt_footer_pt_canonical_urls()
+{
+    return array(
+        'banner_btn' => 'https://professionals.uni-munich.de/',
+        'card_link' => 'https://professionals.uni-munich.de/cra-practitioner/',
     );
 }
 
@@ -105,10 +116,12 @@ function mudt_footer_pt_value($key)
     $value = function_exists('get_field') ? get_field('footer_' . $key, 'option') : null;
 
     if ($key === 'banner_btn' || $key === 'card_link') {
-        if (is_array($value) && !empty($value['url'])) {
-            return $value;
+        $link = (is_array($value) && !empty($value['url'])) ? $value : $defaults[$key];
+        $canonical = mudt_footer_pt_canonical_urls();
+        if (!empty($canonical[$key])) {
+            $link['url'] = $canonical[$key];
         }
-        return $defaults[$key];
+        return $link;
     }
 
     if ($value !== null && $value !== '') {
