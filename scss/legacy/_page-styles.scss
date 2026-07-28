@@ -1481,7 +1481,6 @@ main.page .scholarships_financing_card .card_title {
     padding: 5rem 0;
 }
 
-
 .section_application_deadlines ul li {
     margin-bottom: 1rem;
     font-size: 16px;
@@ -1509,9 +1508,24 @@ main.page .scholarships_financing_card .card_title {
     font-weight: 400;
 }
 
+.application_deadlines_row {
+    position: relative;
+}
+
+.application_deadlines_col {
+    display: flex;
+    flex-direction: column;
+}
+
 .application_deadlines_item {
     border-radius: 85px;
-    padding: 3rem 1rem;
+    padding: 3rem 1.25rem;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .application_deadlines_item h2.title {
@@ -1519,7 +1533,8 @@ main.page .scholarships_financing_card .card_title {
     line-height: 28px;
 }
 
-.application_deadlines_item h3.sub_title {
+.application_deadlines_item h3.sub_title,
+.application_deadlines_item .sub_title {
     font-size: 14px;
     line-height: 18px;
     text-transform: uppercase;
@@ -1527,29 +1542,155 @@ main.page .scholarships_financing_card .card_title {
 }
 
 .application_deadlines_item .dates_wrapper h2 {
-    font-size: 41px;
-    line-height: 50px;
+    font-size: clamp(1.75rem, 2.5vw, 2.55rem);
+    line-height: 1.2;
     font-weight: bold;
 }
 
 .application_deadlines_item .dates_wrapper h3 {
-    font-size: 24px;
-    line-height: 29px;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    line-height: 1.25;
     font-weight: 400;
 }
 
+/* Explicit colors (avoid fragile :first-child / :last-child) */
+.application_deadlines_item--fall,
 .application_deadlines_col:first-child .application_deadlines_item {
     color: #fff;
     background-color: #2994FF;
 }
 
+.application_deadlines_item--fall h4,
+.application_deadlines_item--fall h3,
 .application_deadlines_col:first-child h4,
 .application_deadlines_col:first-child h3 {
     color: #fff;
 }
 
+.application_deadlines_item--spring,
 .application_deadlines_col:last-child .application_deadlines_item {
     background-color: #EEF7FF;
+}
+
+.application_deadlines_center {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem 0.75rem;
+}
+
+.application_deadlines_center .section_title {
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    line-height: 1.25;
+}
+
+.application_deadlines_center p,
+.application_deadlines_center li {
+    font-size: clamp(1rem, 1.35vw, 1.35rem);
+    line-height: 1.35;
+}
+
+/* Tablet: center copy on top, Fall + Spring side by side */
+@media (max-width: 1199.98px) {
+    .section_application_deadlines {
+        padding: 3.5rem 0;
+    }
+
+    .application_deadlines_col--center {
+        order: -1;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .application_deadlines_center {
+        max-width: 640px;
+        margin: 0 auto 0.5rem;
+        padding: 0;
+    }
+
+    .application_deadlines_center .section_title {
+        margin-bottom: 1rem !important;
+    }
+
+    .application_deadlines_item {
+        border-radius: 64px;
+        padding: 2.25rem 1.25rem;
+        min-height: 280px;
+    }
+
+    .section_application_deadlines .section_title.text-center {
+        margin-bottom: 2rem !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .application_deadlines_col--fall,
+    .application_deadlines_col--spring {
+        display: flex;
+    }
+
+    .application_deadlines_item .dates_wrapper h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile: stack all cards, softer pills */
+@media (max-width: 767.98px) {
+    .section_application_deadlines {
+        padding: 2.5rem 0;
+    }
+
+    .application_deadlines_col--fall,
+    .application_deadlines_col--spring,
+    .application_deadlines_col--center {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .application_deadlines_item {
+        border-radius: 40px;
+        padding: 2rem 1.25rem;
+        min-height: 0;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .application_deadlines_center {
+        max-width: 420px;
+    }
+
+    .application_deadlines_item .dates_wrapper h2 {
+        font-size: 1.85rem;
+        line-height: 1.2;
+    }
+
+    .application_deadlines_item .dates_wrapper h3 {
+        font-size: 1.05rem;
+    }
+
+    .section_application_deadlines p {
+        font-size: 1.05rem;
+        line-height: 1.4;
+    }
+
+    .section_application_deadlines .application_date {
+        font-size: 1.1rem;
+        line-height: 1.35;
+        margin-bottom: 1.5rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .section_application_deadlines {
+        padding: 2rem 0;
+    }
+
+    .application_deadlines_item {
+        border-radius: 32px;
+        padding: 1.75rem 1rem;
+    }
 }
 
 /*section_scholarships*/
