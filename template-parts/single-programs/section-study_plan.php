@@ -41,10 +41,22 @@ $elective_modules = $study_plan['elective_modules'] ?? null;
                                 <?php echo esc_html($total_ects_title); ?>
                             </h3>
                         <?php endif; ?>
-                        <?php if ($total_ects_list) : ?>
+                        <?php
+                        $ects_items = array();
+                        if ($total_ects_list && is_array($total_ects_list)) {
+                            foreach ($total_ects_list as $item) {
+                                $item_title = trim(wp_strip_all_tags($item['title_ects'] ?? ''));
+                                $item_ects = trim((string) ($item['total_ects'] ?? ''));
+                                if ($item_title !== '' || $item_ects !== '') {
+                                    $ects_items[] = $item;
+                                }
+                            }
+                        }
+                        ?>
+                        <?php if ($ects_items) : ?>
                             <div class="total_ects_list">
-                                <div class="row g-2 g-xl-3 justify-content-center">
-                                    <?php foreach ($total_ects_list as $item) : ?>
+                                <div class="row justify-content-center">
+                                    <?php foreach ($ects_items as $item) : ?>
                                         <div class="col-6 col-md-6 col-xl-3">
                                             <div class="total_ects_item">
                                                 <?php echo $item['title_ects']; ?>

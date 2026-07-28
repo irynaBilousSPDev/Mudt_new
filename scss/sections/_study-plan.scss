@@ -41,7 +41,7 @@
 .wrapper_ects {
     border-radius: clamp(32px, 6vw, 80px);
     overflow: visible;
-    padding: clamp(1.5rem, 4vw, 3rem) clamp(0.75rem, 2vw, 1rem);
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2.5rem);
     margin-top: clamp(-3.5rem, -6vw, -8rem);
     background-color: #fff;
     box-shadow: 0 8px 32px rgba(31, 27, 81, 0.06);
@@ -56,10 +56,24 @@
 
 .total_ects_list {
     max-width: 1440px;
-    margin: 0 auto clamp(1.5rem, 3vw, 3rem);
+    margin: 0 auto;
     font-size: clamp(1rem, 1.8vw, 1.375rem);
     line-height: 1.35;
     padding: 0 clamp(0.5rem, 2vw, 1rem);
+}
+
+.total_ects_list + .study_plan_list {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+    border-top: 1px solid rgba(31, 27, 81, 0.08);
+}
+
+.total_ects h3 + .study_plan_list {
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.study_plan_list {
+    margin-bottom: 0;
 }
 
 .total_ects_list .row {
@@ -81,17 +95,12 @@
     text-align: center;
     gap: 0.35rem;
     padding: 1rem 0.75rem;
-    min-height: 100%;
 }
 
 .total_ects_item strong {
     font-size: clamp(1.5rem, 3vw, 2rem);
     line-height: 1.1;
     color: #1F1B51;
-}
-
-.study_plan_list {
-    margin-bottom: clamp(1.5rem, 3vw, 3rem);
 }
 
 .study_plan_list .row {
