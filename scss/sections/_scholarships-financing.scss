@@ -1,0 +1,92 @@
+/* Migrated from scss/legacy — edit this file, not css/ */
+
+.section_scholarships_financing {
+    margin-bottom: 65px;
+}
+
+.section_scholarships_financing .description {
+    font-size: 1.85rem;
+    line-height: 39px;
+}
+
+.scholarships_financing_card_col {
+    padding: 65px 28px 75px 28px;
+}
+
+.scholarships_financing_card_col:nth-child(2) {
+    background-color: #1F9CD8;
+    color: #FFFFFF;
+}
+
+.scholarships_financing_card {
+    max-width: 465px;
+    margin: 0 auto;
+}
+
+main.page .scholarships_financing_card .card_title {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 2rem;
+}
+
+.scholarships .text {
+    margin-left: 2rem;
+    color: #707070;
+    font-size: 1.5rem;
+    line-height: 1.813rem;
+}
+
+/*section_scholarship*/
+.scholarship_item {
+    padding: 4rem;
+    color: #fff;
+    background-color: #1F1B51;
+    border-radius: 85px 0 0 85px;
+    height: 100%;
+}
+
+.scholarship_col:first-child .scholarship_item {
+    padding-left: 8rem;
+}
+
+.scholarship_col:last-child .scholarship_item {
+    border-radius: 0 85px 85px 0;
+}
+
+.scholarship_sub_title {
+    font-size: 1.5rem;
+    line-height: 30px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+/*financing_options*/
+.container_bg_mood,
+.financing_options {
+    background-color: transparent;
+}
+
+.container_bg_mood .how_apply_wrapper,
+.financing_options_wrapper {
+    background-color: #EEF7FF;
+    padding: 4rem 2rem;
+    border-radius: 91px;
+}
+
+.financing_options_wrapper .apply_item_title {
+    margin-bottom: 1rem;
+}
+
+/*section_working_as_student*/
+.section_working_as_student .content_wrapper {
+    max-width: 675px;
+}
+
+.section_working_as_student .image_wrapper {
+    border-radius: 80px;
+}
+
+/*scholarship_paralax_section*/
+.scholarship_parallax_section {
+    margin: var(--section-space-y, 5rem) 0;
+}

@@ -1,11 +1,195 @@
 /* Flexible: our_goals_section */
 
+.section_our_goals {
+    position: relative;
+    margin: var(--section-space-y) 0;
+    padding: 0;
+}
+
+.section_our_goals.my-5 {
+    margin-top: var(--section-space-y) !important;
+    margin-bottom: var(--section-space-y) !important;
+}
+
+.section_our_goals__title {
+    margin: 0 0 clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.section_our_goals__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 2.5vw, 1.75rem);
+    align-items: stretch;
+}
+
+.section_our_goals__card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+}
+
+.section_our_goals__card-copy {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    margin-bottom: 1rem;
+    min-height: 0;
+}
+
+.section_our_goals__card-title {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.125rem, 2.2vw, 1.625rem);
+    line-height: 1.25;
+    font-weight: 700;
+    color: #000;
+    min-height: 2.5em;
+}
+
+.section_our_goals__card-text {
+    margin: 0;
+    font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+    line-height: 1.5;
+    color: #333;
+    flex: 1 1 auto;
+}
+
+.section_our_goals__card-text p {
+    margin: 0 0 0.5rem;
+}
+
+.section_our_goals__card-text p:last-child {
+    margin-bottom: 0;
+}
+
+.section_our_goals__card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: clamp(20px, 5vw, 32px);
+    background-color: #eef2f7;
+    flex: 0 0 auto;
+    margin-top: auto;
+}
+
+.section_our_goals__card-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section_our_goals__footer {
+    margin-top: clamp(1.5rem, 4vw, 2.75rem);
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.625rem);
+    line-height: 1.4;
+    font-weight: 400;
+    max-width: 52rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section_our_goals__footer p {
+    margin: 0;
+}
+
+/* Tablet: still one column — avoids broken 2+1 with 3 cards */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .section_our_goals__grid {
+        grid-template-columns: 1fr;
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 2rem;
+    }
+
+    .section_our_goals__card-image {
+        border-radius: 40px;
+    }
+}
+
+/* Desktop: 3 equal columns */
+@media (min-width: 992px) {
+    .section_our_goals__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.75rem 1.5rem;
+        align-items: stretch;
+    }
+
+    .section_our_goals__card {
+        height: 100%;
+    }
+
+    .section_our_goals__card-copy {
+        margin-bottom: 1.25rem;
+        min-height: 9.5rem;
+    }
+
+    .section_our_goals__card-title {
+        min-height: 3.75em; /* up to 3 lines — equal headers */
+        line-height: 1.25;
+    }
+
+    .section_our_goals__card-text {
+        min-height: 4.5em;
+    }
+
+    .section_our_goals__card-image {
+        border-radius: 0;
+        aspect-ratio: 16 / 11;
+        height: auto;
+    }
+
+    .section_our_goals__card:first-child .section_our_goals__card-image {
+        border-radius: 80px 0 0 80px;
+    }
+
+    .section_our_goals__card:last-child .section_our_goals__card-image {
+        border-radius: 0 80px 80px 0;
+    }
+
+    /* Middle card (3 items): square corners on image */
+    .section_our_goals__card:not(:first-child):not(:last-child) .section_our_goals__card-image {
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .section_our_goals {
+        margin: var(--section-space-y-sm) 0;
+    }
+
+    .section_our_goals__title {
+        margin-bottom: 1.25rem;
+        font-size: clamp(1.375rem, 6vw, 1.75rem);
+        line-height: 1.25;
+    }
+
+    .section_our_goals__grid {
+        gap: 1.35rem;
+    }
+
+    .section_our_goals__card-copy {
+        margin-bottom: 0.75rem;
+    }
+
+    .section_our_goals__footer {
+        margin-top: 1.35rem;
+        font-size: 1rem;
+        line-height: 1.45;
+        text-align: left;
+    }
+}
+
+/* Legacy class hooks (if old markup still cached) */
 .section_our_goals .custom_cards_card_image {
     position: relative;
     width: 100%;
     aspect-ratio: 3 / 2;
     overflow: hidden;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
 }
 
 .section_our_goals .custom_cards_card_image img {
@@ -13,45 +197,4 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-@media (min-width: 992px) {
-    .section_our_goals .custom_cards_card_image {
-        border-radius: 0;
-    }
-
-    .section_our_goals .custom_cards_card:first-child .custom_cards_card_image {
-        border-radius: 80px 0 0 80px;
-    }
-
-    .section_our_goals .custom_cards_card:last-child .custom_cards_card_image {
-        border-radius: 0 80px 80px 0;
-    }
-}
-
-@media (max-width: 991.98px) {
-    .section_our_goals .custom_cards_card_image {
-        border-radius: 48px;
-        margin-bottom: 1.25rem;
-    }
-
-    .section_our_goals .custom_cards_card:first-child .custom_cards_card_image,
-    .section_our_goals .custom_cards_card:last-child .custom_cards_card_image {
-        border-radius: 48px;
-    }
-
-    .section_our_goals .our_goals_text {
-        margin-bottom: 1rem !important;
-    }
-}
-
-@media (max-width: 767.98px) {
-    .section_our_goals .custom_cards_card_image {
-        border-radius: 32px;
-    }
-
-    .section_our_goals .section_title {
-        margin-top: 1.5rem !important;
-        margin-bottom: 1.5rem !important;
-    }
 }

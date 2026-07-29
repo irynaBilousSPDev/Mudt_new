@@ -11,7 +11,7 @@ $default_image = get_template_directory_uri() . '/images/scholarship_paralax_sec
     <div class="container">
         <div class="parallax-section">
             <div role="img" class="parallax-image bg"
-                 style="background-image: url('<?php echo esc_url($image_url ? $image_url : $default_image); ?>')">
+                 style="--bg-image: url('<?php echo esc_url($image_url ? $image_url : $default_image); ?>');">
             </div>
             <?php if ($content): ?>
                 <div class="content_wrapper">

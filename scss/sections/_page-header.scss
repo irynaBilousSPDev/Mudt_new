@@ -10,18 +10,38 @@
 }
 
 .page_header .image_wrapper {
-    border-radius: 120px;
+    --page-header-radius: 120px;
+    border-radius: var(--page-header-radius);
     width: 100%;
     overflow: hidden;
+    /* White underlay — navy .parallax-section bg was bleeding as a dark arc on the title card */
+    background-color: #fff;
 }
 
 .page_header .parallax-section {
-    height: clamp(280px, 68vh, 620px);
-    min-height: 280px;
+    height: clamp(300px, 48vh, 520px);
+    min-height: 300px;
+    background-color: transparent !important;
 }
 
-.page_header .parallax-image {
-    top: -71px;
+/* Static hero photo — parallax stretch/transform made campus images soft & distorted */
+.page_header .parallax-image,
+.page_header .parallax-image.bg {
+    position: absolute !important;
+    inset: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    transform: none !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    will-change: auto;
+    filter: none;
+    /* Avoid dark fringe on rounded clip */
+    backface-visibility: hidden;
 }
 
 .page_header .title_wrapper {
@@ -30,11 +50,12 @@
     left: 0;
     z-index: 2;
     background-color: #fff;
-    border-radius: 28px 28px 0 0;
-    padding: 50px 45px 0;
+    /* Top-right only; bottom-left follows the hero radius so overflow clip doesn’t cut a dark arc */
+    border-radius: 0 var(--page-header-title-radius, 28px) 0 var(--page-header-radius);
+    padding: clamp(1.15rem, 3vw, 3.125rem) clamp(1rem, 3vw, 2.8125rem) 0;
     width: 100%;
-    max-width: 504px;
-    margin-left: clamp(1.5rem, 10vw, 140px);
+    max-width: min(504px, 52%);
+    margin-left: 0;
     margin-right: auto;
     box-sizing: border-box;
 }
@@ -58,8 +79,6 @@
 
 @media (max-width: 1599.98px) {
     .page_header .title_wrapper {
-        margin-left: clamp(1.5rem, 6vw, 80px);
-        padding: 2.5rem 2rem 0;
         max-width: min(504px, 58%);
     }
 }
@@ -70,16 +89,18 @@
     }
 
     .page_header .parallax-section {
-        height: clamp(240px, 45vh, 480px);
+        height: clamp(240px, 42vh, 440px);
         min-height: 240px;
     }
 
-    .page_header .parallax-image {
-        top: -40px;
+    .page_header .parallax-image,
+    .page_header .parallax-image.bg {
+        top: 0 !important;
+        background-position: center center !important;
     }
 
     .page_header .image_wrapper {
-        border-radius: 64px;
+        --page-header-radius: 64px;
     }
 
     .page_header .title_wrapper {
@@ -89,6 +110,7 @@
         margin-left: auto;
         margin-right: auto;
         padding: 2rem 1.5rem 0;
+        --page-header-title-radius: 24px;
     }
 }
 
@@ -98,7 +120,7 @@
     }
 
     .page_header .image_wrapper {
-        border-radius: 48px;
+        --page-header-radius: 48px;
     }
 
     .page_header .title_wrapper {
@@ -106,7 +128,7 @@
         margin-left: 0;
         margin-right: 0;
         padding: 1.5rem 1.25rem 0;
-        border-radius: 24px 24px 0 0;
+        --page-header-title-radius: 24px;
     }
 }
 
@@ -121,7 +143,7 @@
     }
 
     .page_header .image_wrapper {
-        border-radius: 28px;
+        --page-header-radius: 28px;
     }
 
     /* Title card flush with image edges → same column as body text */
@@ -131,7 +153,7 @@
         margin-left: 0;
         margin-right: 0;
         padding: 1.15rem 1rem 0;
-        border-radius: 20px 20px 0 0;
+        --page-header-title-radius: 20px;
     }
 
     .page_header .title_wrapper .section_title {
@@ -141,11 +163,11 @@
 
 @media (max-width: 575.98px) {
     .page_header .image_wrapper {
-        border-radius: 24px;
+        --page-header-radius: 24px;
     }
 
     .page_header .title_wrapper {
         padding: 1rem 0.85rem 0;
-        border-radius: 16px 16px 0 0;
+        --page-header-title-radius: 16px;
     }
 }

@@ -5,7 +5,7 @@ $how_apply_description = get_field('how_apply_bottom_description', $program_post
 $how_apply = get_field('how_apply', $program_post_id);
 ?>
 
-<section id="how_apply" class="how_apply_section section_sub_menu" style="margin-bottom: 8rem">
+<section id="how_apply" class="how_apply_section section_sub_menu">
     <div class="container">
         <h2 class="section_title text-center mb-5">
             <?php echo $how_apply_title; ?> How to apply

@@ -1,1 +1,9 @@
-// Page-template partials — import from scss/bundles/page-styles.scss when ready.
+// Page templates & flexible-page shells.
+// Wired individually from bundles/page-styles.scss (do not @use this index there —
+// it would double-load). This file documents the page-layer inventory.
+//
+// - custom-page
+// - request-info-material
+// - visa-guide
+// - contact
+// - page-responsive-misc

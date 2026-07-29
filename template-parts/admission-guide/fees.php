@@ -14,7 +14,8 @@
             <h2 class="section_title mb-3"><?php echo $title; ?></h2>
             <div class="fees_sub_title mb-5"><?php echo $sub_title; ?></div>
             <?php if ($fees_cards): ?>
-                <div class="fees_cards">
+                <?php $fees_count = count($fees_cards); ?>
+                <div class="fees_cards fees_cards--count-<?php echo (int) $fees_count; ?>">
                     <div class="row">
                         <?php foreach ($fees_cards as $fees_card): ?>
                             <div class="col-md-3 fees_card_col">

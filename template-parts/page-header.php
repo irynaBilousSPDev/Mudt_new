@@ -19,13 +19,13 @@ $bg_url = $image ? $image : $fallback;
     <div class="image_wrapper parallax-section">
         <div role="img"
              aria-label="<?php echo esc_attr(wp_strip_all_tags($title)); ?>"
-             class="parallax-image bg"
+             class="parallax-image parallax-image--static bg"
              style="background-image: url('<?php echo esc_url($bg_url); ?>')">
         </div>
         <div class="title_wrapper">
-            <h1 class="section_title"><?php echo esc_html($title); ?></h1>
+            <h1 class="section_title"><?php echo mudt_kses_title($title); ?></h1>
             <?php if (!empty($subtitle)) : ?>
-                <div class="page_header_subtitle"><?php echo $subtitle; ?></div>
+                <div class="page_header_subtitle"><?php echo wp_kses_post($subtitle); ?></div>
             <?php endif; ?>
         </div>
     </div>

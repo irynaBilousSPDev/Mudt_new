@@ -2,6 +2,7 @@
 $position_title = get_field('position_title');
 $short_description = get_field('short_description');
 $information_about_person = get_field('information_about_person');
+$has_information_about_person = trim(wp_strip_all_tags((string) $information_about_person)) !== '';
 ?>
     <main>
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -30,11 +31,13 @@ $information_about_person = get_field('information_about_person');
                         </div>
                     </div>
                 </div>
-                <div class="information_about_person">
-                    <div class="container">
-                        <?php echo $information_about_person; ?>
+                <?php if ($has_information_about_person) : ?>
+                    <div class="information_about_person">
+                        <div class="container">
+                            <?php echo $information_about_person; ?>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </section>
         <?php endwhile; endif; ?>
     </main>

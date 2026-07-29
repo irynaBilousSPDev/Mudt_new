@@ -31,20 +31,69 @@
         }
 
         /***********************************/
-        AOS.init();
-
-        $('.main_slider').slick({
-            dots: true,
-            infinite: true,
-            arrows: false,
-            speed: 500,
-            fade: true,
-            cssEase: 'linear'
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-cubic',
+            offset: window.matchMedia('(max-width: 767.98px)').matches ? 40 : 120
         });
 
+        var $mainSlider = $('.main_slider');
+        if ($mainSlider.length && $mainSlider.children('.main_slider__slide').length > 1) {
+            $mainSlider.slick({
+                dots: true,
+                infinite: true,
+                arrows: false,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear'
+            });
+        }
+
+        var $offersSlider = $('.offers_programs_slider');
+        if ($offersSlider.length) {
+            $offersSlider.slick({
+                dots: true,
+                infinite: true,
+                speed: 450,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                arrows: false,
+                adaptiveHeight: false,
+                responsive: [
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+
+            $('.section_offers__arrow--prev').on('click', function () {
+                $offersSlider.slick('slickPrev');
+            });
+            $('.section_offers__arrow--next').on('click', function () {
+                $offersSlider.slick('slickNext');
+            });
+        }
+
         (function () {
-            var defaultSpeed = 0.5;
-            var images = document.querySelectorAll('.parallax-section .parallax-image.bg');
+            var defaultSpeed = 0.35;
+            var images = Array.prototype.filter.call(
+                document.querySelectorAll('.parallax-section .parallax-image.bg'),
+                function (el) {
+                    /* Page heroes stay sharp — skip stretch/transform parallax */
+                    return !el.classList.contains('parallax-image--static')
+                        && !el.closest('.page_header');
+                }
+            );
             if (!images.length) {
                 return;
             }
@@ -63,12 +112,19 @@
                 }
 
                 var speed = getSpeed(el);
-                var buffer = Math.ceil(window.innerHeight * speed);
+                var viewH = window.innerHeight || 1;
+                var isMobile = window.matchMedia('(max-width: 767.98px)').matches;
+                /* Extra travel for parallax — keep modest so the subject stays in frame */
+                var buffer = Math.ceil(viewH * (isMobile ? 0.1 : 0.22) * Math.min(speed / 0.35, 1.25));
+                buffer = Math.max(20, buffer);
+
                 var sectionHeight = section.offsetHeight;
                 var minHeight = sectionHeight + buffer * 2;
 
                 el.style.minHeight = minHeight + 'px';
                 el.style.height = minHeight + 'px';
+                /* Split overflow evenly — subject stays centered in the crop */
+                el.style.top = (-buffer) + 'px';
                 el.dataset.parallaxBuffer = String(buffer);
             }
 
@@ -78,9 +134,20 @@
             }
 
             function updateImage(el) {
+                var section = el.closest('.parallax-section');
+                if (!section) {
+                    return;
+                }
+
+                var buffer = parseFloat(el.dataset.parallaxBuffer) || 0;
                 var speed = getSpeed(el);
-                var dist = -el.getBoundingClientRect().top;
-                el.style.transform = 'translate3d(0,' + (dist * speed) + 'px,0)';
+                var rect = section.getBoundingClientRect();
+                var viewH = window.innerHeight || 1;
+                var progress = (viewH - rect.top) / (viewH + rect.height);
+                progress = Math.max(0, Math.min(1, progress));
+                /* 0.5 = section mid-viewport → no shift (true center) */
+                var y = (progress - 0.5) * buffer * 2 * speed;
+                el.style.transform = 'translate3d(0,' + y + 'px,0)';
             }
 
             function updateAll() {
@@ -155,41 +222,128 @@
 
 
         tabs = document.querySelectorAll(".tabs");
-        tabs.forEach((tabs) => {
-            const tabButtons = tabs.querySelectorAll(".tab-button");
-            const tabContents = tabs.querySelectorAll(".tab-content");
+        tabs.forEach((tabsRoot) => {
+            const tabButtons = tabsRoot.querySelectorAll(".tab-button");
+            const tabContentsHost = tabsRoot.querySelector(".tab-contents");
+            const tabButtonsContent = tabsRoot.querySelector(".tab-buttons-content");
+            const isTabsSlider = !!tabsRoot.closest(".section_tabs_slider");
 
-            if (!tabButtons.length || !tabContents.length) {
+            if (!tabButtons.length) {
                 return;
             }
 
+            const allPanels = () => Array.from(tabsRoot.querySelectorAll(".tab-content"));
+
+            if (!allPanels().length) {
+                return;
+            }
+
+            const isAccordionMode = () =>
+                isTabsSlider && window.matchMedia("(max-width: 991.98px)").matches;
+
+            const restorePanelsToHost = () => {
+                if (!tabContentsHost) {
+                    return;
+                }
+                allPanels().forEach((panel) => {
+                    tabContentsHost.appendChild(panel);
+                });
+            };
+
+            const placePanelUnderButton = (button, panel) => {
+                if (!button || !panel) {
+                    return;
+                }
+                button.insertAdjacentElement("afterend", panel);
+            };
+
+            const syncAccordionLayout = () => {
+                if (!isTabsSlider || !tabContentsHost || !tabButtonsContent) {
+                    return;
+                }
+
+                if (isAccordionMode()) {
+                    const activeBtn = tabsRoot.querySelector(".tab-button.active");
+                    const activePanel = activeBtn
+                        ? tabsRoot.querySelector(
+                              `.tab-content[data-tab="${activeBtn.getAttribute("data-tab")}"]`
+                          )
+                        : null;
+
+                    restorePanelsToHost();
+                    if (activeBtn && activePanel) {
+                        placePanelUnderButton(activeBtn, activePanel);
+                    }
+                } else {
+                    restorePanelsToHost();
+                }
+            };
+
+            const activateTab = (button, allowToggle) => {
+                const tab = button.getAttribute("data-tab");
+                if (!tab) {
+                    return;
+                }
+
+                if (allowToggle && isAccordionMode() && button.classList.contains("active")) {
+                    button.classList.remove("active");
+                    button.setAttribute("aria-selected", "false");
+                    button.setAttribute("aria-expanded", "false");
+                    allPanels().forEach((panel) => {
+                        panel.classList.remove("active");
+                    });
+                    restorePanelsToHost();
+                    return;
+                }
+
+                tabButtons.forEach((btn) => {
+                    btn.classList.remove("active");
+                    btn.setAttribute("aria-selected", "false");
+                    btn.setAttribute("aria-expanded", "false");
+                });
+                allPanels().forEach((panel) => {
+                    panel.classList.remove("active");
+                });
+
+                button.classList.add("active");
+                button.setAttribute("aria-selected", "true");
+                button.setAttribute("aria-expanded", "true");
+
+                const panel = tabsRoot.querySelector(`.tab-content[data-tab="${tab}"]`);
+                if (panel) {
+                    panel.classList.add("active");
+                }
+
+                if (isTabsSlider) {
+                    syncAccordionLayout();
+                }
+
+                if (tabContentsHost && !isAccordionMode()) {
+                    tabContentsHost.scrollTo({ top: 0, behavior: "smooth" });
+                }
+
+                if (isAccordionMode()) {
+                    window.setTimeout(() => {
+                        button.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                    }, 40);
+                }
+            };
+
             tabButtons.forEach((button) => {
                 button.addEventListener("click", function () {
-                    const tab = this.getAttribute("data-tab");
-
-                    tabButtons.forEach((btn) => {
-                        btn.classList.remove("active");
-                        btn.setAttribute("aria-selected", "false");
-                    });
-                    tabContents.forEach((content) => content.classList.remove("active"));
-
-                    this.classList.add("active");
-                    this.setAttribute("aria-selected", "true");
-                    tabs
-                        .querySelector(`.tab-content[data-tab="${tab}"]`)
-                        .classList.add("active");
-
-                    const tabContentsEl = tabs.querySelector(".tab-contents");
-                    if (tabContentsEl) {
-                        tabContentsEl.scrollTo({top: 0, behavior: "smooth"});
-                    }
+                    activateTab(this, true);
                 });
             });
 
-            tabButtons[0].classList.add("active");
-            tabButtons[0].setAttribute("aria-selected", "true");
-            tabContents[0].classList.add("active");
+            activateTab(tabButtons[0], false);
 
+            if (isTabsSlider) {
+                let resizeTimer;
+                window.addEventListener("resize", () => {
+                    window.clearTimeout(resizeTimer);
+                    resizeTimer = window.setTimeout(syncAccordionLayout, 120);
+                });
+            }
         });
 
         // single program  sub menu
@@ -333,10 +487,9 @@
             ]
         });
 
-        // Scroll to open mobile menu
+        // Mobile menu open/close + accordion parents
         const $menu = $('#navbarToggleExternalContent');
 
-        // Watch for menu open/close
         const observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (mutation.attributeName === 'class') {
@@ -344,7 +497,7 @@
                         $('body').addClass('menu-open');
                     } else {
                         $('body').removeClass('menu-open');
-                        // Recalculate after menu closes (header no longer full-viewport)
+                        $menu.find('ul.mobile > li.menu-item-has-children').removeClass('is-open');
                         window.requestAnimationFrame(setHeaderOffset);
                     }
                 }
@@ -353,9 +506,15 @@
 
         if ($menu.length) {
             observer.observe($menu[0], { attributes: true });
-        }
-        // console.log('yes 2');
 
+            $menu.on('click', 'ul.mobile > li.menu-item-has-children > a', function (e) {
+                e.preventDefault();
+                var $item = $(this).parent();
+                var willOpen = !$item.hasClass('is-open');
+                $item.siblings('.menu-item-has-children').removeClass('is-open');
+                $item.toggleClass('is-open', willOpen);
+            });
+        }
 
 
         /***********************************/

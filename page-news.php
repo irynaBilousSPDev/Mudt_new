@@ -12,6 +12,13 @@ $ppp   = 9; // posts per page in grid
 
 ?>
 <main id="content">
+    <div class="container">
+        <?php
+        if (function_exists('mudt_render_breadcrumbs')) {
+            mudt_render_breadcrumbs();
+        }
+        ?>
+    </div>
 
     <?php // Hero section (defines mudt_get_news_term_id_strict)
 get_template_part('template-parts/section_news');

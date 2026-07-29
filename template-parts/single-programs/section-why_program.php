@@ -11,14 +11,16 @@ $why_program_list = get_field('why_program_list', $program_post_id);
         <div class="why_program_list">
             <?php foreach ($why_program_list as $why_program_item) : ?>
                 <div class="why_program_item">
-                    <?php if ($why_program_item['why_program_item_icon']) : ?>
+                    <?php if (!empty($why_program_item['why_program_item_icon'])) : ?>
                         <div class="image_wrapper">
-                            <img src="<?php echo $why_program_item['why_program_item_icon']['url']; ?>">
+                            <img src="<?php echo esc_url($why_program_item['why_program_item_icon']['url']); ?>"
+                                 alt="">
                         </div>
                     <?php endif; ?>
-                    <h3 class="why_program_item_title">
-                        <?php echo $why_program_item['why_program_item']; ?>
-                    </h3>
+                    <?php /* div not h3 — ACF HTML often includes <p>/<strong>; h3 would be split by the browser */ ?>
+                    <div class="why_program_item_title">
+                        <?php echo wp_kses_post($why_program_item['why_program_item']); ?>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>

@@ -126,7 +126,6 @@
                 </div>
             </nav>
             <div class="collapse" id="navbarToggleExternalContent">
-                <br> <br>
                 <?php wp_nav_menu(array(
                     'theme_location' => 'primary',
                     'container' => '',

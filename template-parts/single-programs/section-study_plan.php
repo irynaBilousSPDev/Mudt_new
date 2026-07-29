@@ -164,7 +164,7 @@ $elective_modules = $study_plan['elective_modules'] ?? null;
             </div>
         </div>
         <?php if ($elective_details) : ?>
-            <div class="container">
+            <div class="container elective_modules_details">
                 <div class="elective_modules_title text-center">
                     <?php echo $elective_details; ?>
                 </div>

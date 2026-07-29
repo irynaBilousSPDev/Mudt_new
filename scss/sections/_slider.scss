@@ -1,0 +1,304 @@
+/* Migrated from scss/legacy — edit this file, not css/ */
+
+/*section_slider*/
+
+.slide_wrapper {
+    width: 100%;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 128px;
+    overflow: hidden;
+    padding: 48px 80px;
+    color: #fff;
+    background-color: #1F1B51;
+    background-image: none;
+    isolation: isolate;
+}
+
+@media (max-width: 1199.98px) {
+    .slide_wrapper {
+        min-height: 280px;
+        border-radius: 56px;
+        padding: 2rem 1.5rem;
+    }
+
+    .section_slider {
+        margin-bottom: var(--section-space-y-sm, 1.75rem) !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .slide_wrapper {
+        min-height: 220px;
+        border-radius: 32px;
+        padding: 1.35rem 1.1rem;
+    }
+
+    .slide_content h2 {
+        font-size: 1.35rem;
+        line-height: 1.3;
+    }
+
+    .slide_content .wrapper_date_open_day {
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        padding: 1rem 1.15rem;
+    }
+
+    .slide_content .custom_btn {
+        margin-top: 1rem;
+    }
+
+    .slide_content .custom_btn a {
+        min-width: 0;
+        width: auto;
+        padding: 0.65rem 1.35rem;
+        min-height: 2.5rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Photo layer — natural cover, light overlay for text */
+.slide_wrapper:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-color: #1F1B51;
+    background-image: var(--slide-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: none;
+    pointer-events: none;
+}
+
+/* Soft vignette — lighter center so the subject stays visible */
+.slide_wrapper:before {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(31, 27, 81, 0.38) 0%,
+            rgba(31, 27, 81, 0.16) 38%,
+            rgba(31, 27, 81, 0.22) 62%,
+            rgba(31, 27, 81, 0.42) 100%
+        );
+}
+
+.slide_content {
+    position: relative;
+    z-index: 2;
+}
+
+.slide_content h2 {
+    font-weight: bold;
+    font-size: clamp(1.5rem, 1rem + 1.2vw, 2.35rem);
+    line-height: 1.22;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+.slide_content .wrapper_date_open_day {
+    background-color: #1F1A51;
+    width: 100%;
+    max-width: 471px;
+    height: 105px;
+    padding: 25px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.date_open_day_item {
+    font-size: 35px;
+    line-height: 43px;
+    color: #fff;
+    margin-right: 48px;
+}
+
+.date_open_day_item span {
+    display: block;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.slide_content .custom_btn {
+    margin: 1.25rem 0 0;
+}
+
+.slide_content .custom_btn a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 10.5rem;
+    max-width: 100%;
+    height: auto;
+    min-height: 2.75rem;
+    padding: 0.7rem 1.75rem;
+    box-sizing: border-box;
+    border-radius: 999px;
+    border: 2px solid #2994FF;
+    background-color: #2994FF;
+    color: #fff;
+    font-size: 0.9375rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    text-transform: none;
+    box-shadow: 0 6px 20px rgba(31, 27, 81, 0.28);
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.slide_content .custom_btn a:hover,
+.slide_content .custom_btn a:focus-visible {
+    background-color: #1F7FE0;
+    border-color: #1F7FE0;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(31, 27, 81, 0.35);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.slide_content .custom_btn a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.slide_content .custom_btn a:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 14px rgba(31, 27, 81, 0.25);
+}
+
+.slide_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider_date_group {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.slider_date_group__item {
+    margin: 0 1rem;
+}
+
+.slide_item .custom_btn {
+    margin-top: -2rem;
+}
+
+.slide_item .small_text {
+    margin-top: -1rem;
+    margin-right: 1rem;
+    display: block;
+}
+
+.slider_date_group__item__sub_title {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 300;
+}
+
+.slider_date_group__item_title {
+    font-size: 35px;
+    line-height: 43px;
+    font-weight: 400;
+}
+
+.main_slider {
+    position: relative;
+    z-index: 1;
+}
+
+.section_slider .slick-dots {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 2rem 0;
+    list-style-type: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.section_slider .slick-dots li {
+    margin: 0 4px;
+}
+
+.section_slider .slick-dots button {
+    display: block;
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border-radius: 100%;
+    background-color: transparent;
+    border: 0px solid transparent;
+    text-indent: -9999px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.section_slider .slick-dots button:before {
+    background-color: #fff;
+    position: absolute;
+    content: '';
+    left: calc(50% - 3px);
+    right: 0;
+    top: calc(50% - 3px);
+    bottom: 0;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+}
+
+.section_slider .slick-dots li.slick-active {
+    width: 88px;
+}
+
+.section_slider .slick-dots li.slick-active button:before {
+    background-color: #fff;
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    top: calc(50% - 3px);
+    bottom: 0;
+    border-radius: 5px;
+    height: 12px;
+    width: 88px;
+    animation-duration: 0.25s;
+    animation-name: slickDot;
+}
+
+@keyframes slickDot {
+    0% {
+        width: 12px;
+    }
+    100% {
+        width: 88px;
+    }
+}
+
+.section_slider .slick-dots button:focus {
+    outline: 0px dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+}

@@ -8,12 +8,23 @@ $sub_title = get_field('sub_title', $page_id);
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <div class="container">
             <?php
-            get_template_part('template-parts/page-header', null, array(
-                'title' => $custom_title ? $custom_title : get_the_title(),
-                'subtitle' => $sub_title,
-                'image' => get_the_post_thumbnail_url($post->ID, 'page_image'),
-            ));
+            $image = get_the_post_thumbnail_url($post->ID, 'page_image');
+            $image_static = get_template_directory_uri() . '/images/study-in-munich-1-1640x740.webp';
             ?>
+            <div class="page_header">
+                <div class="image_wrapper parallax-section">
+                    <div role="img" class="parallax-image bg"
+                         style="background-image: url('<?php echo $image ? $image : $image_static; ?>');">
+                    </div>
+                    <div class="title_wrapper">
+                        <h1 class="section_title"><?php echo $custom_title ? $custom_title : get_the_title(); ?></h1>
+                        <?php
+                        if (!empty($sub_title)): ?>
+                            <?php echo $sub_title; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
         </div>
     <?php endwhile; endif; ?>
 
@@ -207,17 +218,17 @@ $sub_title = get_field('sub_title', $page_id);
         </div>
     </section>
 
-    <section class="section_contact_program" data-contact-layout="xl-v2">
+    <section class="section_contact_program">
         <div class="container">
-            <div class="row contact_program_row align-items-stretch">
-                <div class="col-12 col-xl-4 contact_program_intro">
+            <div class="row contact_program_row align-items-center">
+                <div class="col-12 col-lg-4 contact_program_intro">
                     <div class="wrapper_content">
                         <h2 class="section_title" style="color: #1F1B51">
                             <?php echo _e('Do you have <br> any questions?', 'MUDT'); ?>
                         </h2>
                     </div>
                 </div>
-                <div class="col-12 col-xl-8 contact_program_form">
+                <div class="col-12 col-lg-8 contact_program_form">
                     <div class="contact_program_wrapper">
                         <div class="description mb-5">
                             <?php echo _e('or by completing a form:', 'MUDT'); ?>

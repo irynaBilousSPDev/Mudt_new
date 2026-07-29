@@ -1,15 +1,19 @@
 /**
- * SCSS entry map (D — 1:1 migration).
+ * SCSS source — MUDT theme (layered architecture, no legacy/)
  *
- * Build: npm run build:css
- * Output: existing css/*.css (enqueue unchanged).
+ * Build:  npm run build:css  |  npm run watch
+ * Output: css/*.css (enqueued in inc/enqueue.php) — never edit CSS by hand
  *
- * Next slices (DEV only, one at a time):
- *   layout/_header.scss
- *   sections/_<{acf_layout}>.scss  → then wire into page-styles / styles entries
- *   templates/_front-page.scss, _single-programs.scss, _page-pt.scss
+ * See ../ARCHITECTURE.md
  *
- * Done: reset, fonts, footer, page-pt, single-styles, styles, page-styles (legacy blobs)
- * Next (optional): peel header / flexible sections out of legacy into scss/sections/
- * Rules: no selector renames, no visual refactors in the same commit as a move.
+ * bundles/     Gulp entrypoints only
+ * abstracts/   Design tokens
+ * base/        Globals, utilities, titles, spacing, container, typography
+ * layout/      Header, footer, sub-menu, mobile-menu, breadcrumbs
+ * components/  Shared UI (buttons, cards, parallax, …)
+ * sections/    One file per section / ACF block
+ * templates/   Template sheets (single, page-pt, pre-bachelors)
+ * pages/       Page-template shells (visa, contact, custom-page, …)
+ *
+ * Historical split tool: scripts/split-legacy-scss.js
  */

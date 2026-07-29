@@ -38,6 +38,12 @@
     padding-bottom: var(--section-space-y);
 }
 
+/* Team page blocks set their own padding on .faculty_expertise children */
+.faculty_expertise_section {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .section_application_deadlines {
     padding-top: var(--section-space-y);
     padding-bottom: var(--section-space-y-sm);
@@ -81,8 +87,8 @@
     margin-bottom: var(--section-space-y-sm) !important;
 }
 
-/* Contact stacked card already has its own <xl rules — keep vars in sync */
-@media (max-width: 1199.98px) {
+/* Contact stacked card already has its own <lg rules — keep vars in sync */
+@media (max-width: 991.98px) {
     .section_contact_program {
         margin-top: var(--section-space-y);
         margin-bottom: var(--section-space-y);

@@ -1,0 +1,221 @@
+/* Migrated from scss/legacy — edit this file, not css/ */
+
+/*program_benefits_section*/
+.program_benefits_section {
+    background-color: #EEF7FF;
+    padding: 5rem 0;
+}
+
+.program_benefits_section .image_wrapper {
+    border-radius: 80px;
+    overflow: hidden;
+    height: 326px;
+}
+
+@media (min-width: 1281px) {
+
+    .program_benefits_section .image_wrapper {
+        border-radius: 120px;
+    }
+
+}
+
+.program_benefits_wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.program_benefits_section .image_wrapper .bg {
+    height: 700px;
+}
+
+.program_benefits_item_title {
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: bold;
+    color: #1F1B51;
+}
+
+.program_structure_info {
+    border-radius: 80px;
+    overflow: hidden;
+}
+
+.program_structure_info .item_wrapper:not(:nth-last-child(-1n+2)) {
+    margin-bottom: 2rem;
+}
+
+.program_structure_info .item {
+    background-color: #EEF7FF;
+    height: 100%;
+    padding: 2rem 4rem;
+    font-weight: inherit;
+}
+
+@media (max-width: 767px) {
+
+    .program_structure_info .item_wrapper:first-child {
+        margin-bottom: 1rem;
+    }
+
+}
+
+@media (min-width: 1281px) {
+
+    .contact_page_section .map_wrapper {
+        border-radius: 0 80px 80px 0;
+        overflow: hidden;
+    }
+
+}
+
+.program_structure_modules .title_container {
+    background-color: #1F1A51;
+    border-radius: 85px 0 0 85px;
+    padding: .75rem 0;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.program_structure_modules .title_container h3 {
+    font-size: 1.5rem;
+    line-height: 29px;
+    font-weight: bold;
+}
+
+.program_structure_modules .item_wrapper {
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.program_structure_modules .item_wrapper .item {
+    height: 100%;
+}
+
+.program_structure_modules .item_wrapper .title_container {
+    border-radius: 80px;
+}
+
+
+@media (min-width: 1281px) {
+
+    .program_structure_modules .item_wrapper:nth-child(odd) .title_container {
+        border-radius: 85px 0 0 85px;
+    }
+
+    .program_structure_modules .item_wrapper:nth-child(even) .title_container {
+        border-radius: 0 85px 85px 0;
+    }
+}
+
+.program_structure_modules .content_wrapper {
+    background-color: #EEF7FF;
+    padding: 1.5rem;
+    max-width: 620px;
+    height: 100%;
+}
+
+.program_structure_info.bottom .content_wrapper,
+.program_structure_modules .title_wrapper {
+    max-width: 620px;
+}
+
+.program_structure_info.bottom .item {
+    padding: 2rem 0;
+}
+
+.program_structure_info.bottom .content_wrapper .text,
+.program_structure_modules .item_wrapper h3,
+.program_structure_modules .content_wrapper .text {
+    max-width: 450px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.program_structure_info.bottom .item_wrapper:nth-child(odd) .content_wrapper,
+.program_structure_modules .item_wrapper:nth-child(odd) .title_wrapper,
+.program_structure_modules .item_wrapper:nth-child(odd) .content_wrapper {
+    margin-left: auto;
+}
+
+.program_structure_info.bottom .item_wrapper:nth-child(even) .content_wrapper,
+.program_structure_modules .item_wrapper:nth-child(even) .title_wrapper,
+.program_structure_modules .item_wrapper:nth-child(even) .content_wrapper {
+    margin-right: auto;
+}
+
+.program_structure_modules .item_wrapper:last-child .title_container {
+    background-color: #EEF7FF;
+    color: #000;
+}
+
+.program_structure_info.bottom .item_wrapper:first-child .item,
+.program_structure_modules .item_wrapper:last-child .content_wrapper {
+    background-color: #1F1B51;
+    color: #fff;
+}
+
+.program_structure_info.bottom .item_wrapper:first-child .item {
+    font-weight: bold;
+}
+
+.program_structure_info.bottom .item_wrapper:last-child .item {
+    background-color: #2994FF;
+    color: #fff
+}
+
+.program_structure_info.bottom .item_wrapper:last-child h3 {
+    font-weight: bold;
+    font-size: 24px;
+    font-height: 29px;
+}
+
+@media (max-width: 1200px) {
+    .program_structure_info.bottom .item {
+        padding: 2rem;
+    }
+
+    .program_structure_modules .title_container h3 {
+        padding: 0 1rem;
+        font-size: 22px;
+        line-height: 28px;
+    }
+}
+
+@media (max-width: 990px) {
+
+    .program_structure_modules .title_container h3 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .programs_nav__mini_row {
+        flex-direction: column;
+    }
+
+    .programs_nav__mini {
+        display: none;
+    }
+
+    .section_personal_interviews {
+        padding-top: 1rem;
+    }
+
+    .personal_interviews_content {
+        padding: 30px 15px !important;
+    }
+
+    .english_language_certificate_list ul {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+
+    .english_language_certificate_content ul {
+        margin-left: 0;
+    }
+
+    main.page .section_scholarships_financing h2 {
+        font-size: 2.25rem;
+    }
+}

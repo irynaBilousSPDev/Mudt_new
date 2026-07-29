@@ -1,20 +1,20 @@
-'use strict';
-
 /**
  * MUDT asset pipeline
  *
  * SOURCE (edit):  scss/
  *   bundles/      entry files only → map 1:1 to css/*.css
- *   abstracts/    variables
- *   base/         reset, fonts, container, spacing
- *   layout/       header, footer
- *   sections/     one file per section block
- *   templates/    template-specific partials
- *   pages/        page-template partials (future)
- *   legacy/       monolith being split — do not add new code here
+ *   abstracts/    variables / tokens
+ *   base/         globals, utilities, titles, spacing, container, typography
+ *   layout/       header, footer, sub-menu, mobile-menu, breadcrumbs
+ *   components/   buttons, lists, offer-card, parallax, price-date-card
+ *   sections/     one file per UI / ACF section
+ *   templates/    single-styles, page-pt, pre-bachelors
+ *   pages/        page-template shells (custom-page, visa, contact, …)
  *
  * OUTPUT (build): css/*.css  — never edit by hand
  * JS:              js/main.js → js/main.min.js
+ *
+ * There is no scss/legacy/ — monoliths were split into the folders above.
  */
 
 const { src, dest, watch, series, parallel } = require('gulp');
@@ -62,14 +62,12 @@ function scripts() {
 }
 
 function watchAssets() {
-    watch(`${SCSS_SRC}/**/*.scss`, styles);
-    watch(JS_SRC, scripts);
+    watch([`${SCSS_SRC}/**/*.scss`], styles);
+    watch([JS_SRC], scripts);
 }
-
-const build = parallel(styles, scripts);
 
 exports.styles = styles;
 exports.scripts = scripts;
-exports.build = build;
-exports.watch = series(build, watchAssets);
+exports.build = parallel(styles, scripts);
+exports.watch = series(exports.build, watchAssets);
 exports.default = exports.watch;

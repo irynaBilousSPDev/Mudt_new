@@ -7,7 +7,7 @@
                 <?php foreach ($numbers_count as $key => $item) : ?>
                     <?php $number = $item['number_count'];
                     $title = $item['title_count']; ?>
-                    <div class="col-md-3 numbers_count__item">
+                    <div class="col-6 col-md-3 numbers_count__item">
                         <div class="data_count_box">
                             <div class="data_count" data-count="<?php echo $number; ?>">10</div>
                             <span>%</span>

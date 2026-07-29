@@ -1,0 +1,315 @@
+/* Migrated from scss/legacy — edit this file, not css/ */
+
+/* Mobile menu open state — see scss/layout/_mobile-menu.scss */
+
+
+@media (max-width: 990px) {
+    .apply_item_text, .apply_item_title {
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .section_tabs_slider .tab-button .arrow {
+        display: none;
+    }
+
+    .sub_header .sub_menu_page {
+        display: none;
+    }
+
+    .why_program_item {
+        width: 100%;
+        max-width: none;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab-buttons,
+    .tab-contents,
+    .section_tabs_slider .tab-contents,
+    .section_tabs_slider .tab-buttons {
+        width: 100%;
+        height: auto;
+    }
+
+    .section_tabs_slider .tab-buttons {
+        padding-top: 2.5rem;
+    }
+
+    .section_tabs_slider h2 {
+        padding: 2rem 2rem 0 2rem;
+    }
+
+    .section_tabs_slider h2, .section_title {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .section_tabs_slider .tab-button {
+        line-height: 26px;
+        font-size: 18px;
+    }
+
+    .section_tabs_slider .tabs {
+        border-radius: 80px;
+    }
+
+    .section_tabs_slider .tab-content-image {
+        height: auto;
+        min-height: 160px;
+    }
+
+    .modul_item {
+        padding: 3rem 2rem !important;
+    }
+
+    .modulus_content {
+        border-radius: 80px;
+        overflow: hidden;
+    }
+
+    .bottom_footer_section {
+        flex-wrap: wrap;
+    }
+
+    .bottom_footer_section img {
+        margin: 2rem;
+        max-width: 35%;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    .fees_card_col:nth-child(2),
+    .fees_card_col:first-child {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    header .btn_group {
+        width: auto;
+        flex-shrink: 0;
+    }
+
+    .section_tabs_slider .tab-content-image {
+        height: auto;
+        min-height: 140px;
+    }
+
+    .apply_item_text, .apply_item_title {
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .fees_card_col:not(.fees_card_col:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    .form_request_info_material h2 {
+        color: #000 !important;
+    }
+
+    .faculty_expertise_image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .faculty_expertise_btn {
+        right: 10px;
+        bottom: -15px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .faculty_expertise_btn .text {
+        font-size: 12px;
+    }
+
+    main {
+        margin-top: calc(var(--header-offset, 145px) + var(--header-gap, 1rem));
+    }
+
+    body.home main {
+        margin-top: 0 !important;
+        padding-top: calc(var(--header-offset, 145px) + var(--header-bar, 20px)) !important;
+    }
+
+    body.home .section_main_banner {
+        margin-top: var(--header-gap, 1rem) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .image_side .bg {
+        height: 40vh;
+    }
+
+    .section_program_main .image_side .bg {
+        height: auto;
+        aspect-ratio: 5 / 4;
+        border-radius: 22px;
+    }
+
+    .single #content h1,
+    .page #content h1 {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    .item_offer_card .custom_btn {
+        min-width: 120px;
+    }
+
+    .slide_content .wrapper_date_open_day {
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .slide_wrapper {
+        min-height: 0;
+        border-radius: 40px;
+        padding: 1.75rem 1.25rem;
+    }
+
+    .section_logo .logo_item {
+        margin-bottom: 3rem;
+    }
+
+    .section_logo {
+        margin: 2rem 0;
+    }
+
+    .section_news {
+        padding: 0;
+    }
+
+    .single_program h1,
+    .how_apply_section .bottom_description,
+    .single #content h1, .page #content h1 {
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    .single .scholarships .text,
+    .single .item_offer_card_body_position .item_offer_card_body__title {
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .item_offer_card_body_position {
+        margin-bottom: 1rem;
+    }
+
+    .section_interviews .content_wrapper {
+        padding: 2rem 0;
+    }
+
+    .footer_menu_wrapper .bottom_footer_menu ul,
+    .footer_menu > ul {
+        flex-direction: column;
+    }
+
+    .footer_menu_wrapper .bottom_footer_menu ul a {
+        padding: 0.5rem 0;
+        display: block;
+    }
+
+    .section_application_deadlines {
+        padding: 2.5rem 0;
+    }
+
+    .scholarship_col {
+        margin-bottom: 3rem;
+    }
+
+    .scholarship_item {
+        padding: 3rem !important;
+        border-radius: 80px !important;
+    }
+
+    .admissions_section .parallax-section {
+        min-height: 35vh;
+        border-radius: 80px;
+    }
+
+    .faculty_expertise_image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .types_visa {
+        border-radius: 80px;
+        overflow: hidden;
+    }
+
+    .types_visa_col .types_visa_item {
+        border-radius: 0 !important;
+    }
+
+    .campus_card_col {
+        margin-bottom: 1rem;
+    }
+
+    .campus_card {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .entering_item {
+        border-radius: 80px !important;
+        padding: 3rem 2rem;
+
+    }
+
+    .entering_item .content {
+        height: auto;
+    }
+
+    .entering_item .description {
+        min-height: 1px;
+    }
+
+    .important_tips_item,
+    .entering_col {
+        margin-bottom: 3rem;
+    }
+
+    .section_applying_visa .bg {
+        height: 140px !important;
+    }
+
+    .section_important_tips .important_tips_item ul li {
+        font-size: 22px;
+        line-height: 26px;
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    .video_section {
+        margin: 2rem 0;
+    }
+
+    .video_section .parallax-section {
+        min-height: 30vh;
+        border-radius: 80px;
+    }
+
+    .bg_image_section .parallax-section {
+        border-radius: 32px;
+        min-height: 220px;
+    }
+
+    .bg_image_section.medium_height_image .parallax-section {
+        min-height: 280px;
+    }
+
+    .column_item .image_wrapper .bg {
+        height: 280px;
+    }
+}

@@ -51,8 +51,8 @@ $bottom_description = get_sub_field('campus_bottom_description');
     <?php endif; ?>
     <?php if ($bottom_description) : ?>
         <div class="container">
-            <div class="my-5">
-                <?php echo $bottom_description; ?>
+            <div class="campus_bottom">
+                <?php echo wp_kses_post($bottom_description); ?>
             </div>
         </div>
     <?php endif; ?>

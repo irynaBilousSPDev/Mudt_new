@@ -1,14 +1,58 @@
-/* Shared .container gutters — keep existing desktop max-widths (legacy/_styles.scss) */
+/* Global .container — width, gutters, grid alignment (all templates) */
 
 @use '../abstracts/variables';
 
 .container {
-    padding-left: var(--container-pad-x);
-    padding-right: var(--container-pad-x);
+    width: 100%;
+    max-width: var(--container-max-width) !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-pad-x) !important;
+    padding-right: var(--container-pad-x) !important;
     box-sizing: border-box;
 }
 
-/* Intro / prose blocks: full container on mobile, readable measure on large screens */
+/* Bootstrap row/col gutters match page gutter (not fixed 15px) */
+.container > .row {
+    margin-left: calc(var(--container-pad-x) * -0.5);
+    margin-right: calc(var(--container-pad-x) * -0.5);
+}
+
+.container > .row > [class*='col-'] {
+    padding-left: calc(var(--container-pad-x) * 0.5);
+    padding-right: calc(var(--container-pad-x) * 0.5);
+}
+
+/* Nested .container — avoid double horizontal padding */
+.container .container {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.container .container > .row {
+    margin-left: calc(var(--container-pad-x) * -0.5);
+    margin-right: calc(var(--container-pad-x) * -0.5);
+}
+
+/* Narrow band for stats / focused content */
+.container--narrow,
+.section_numbers_count .container {
+    max-width: min(var(--container-max-width), 970px);
+}
+
+/* Page-specific widths kept explicit */
+.page_request_info_material .container {
+    max-width: 100%;
+}
+
+@media (min-width: 1441px) {
+    .page_request_info_material .container {
+        max-width: min(var(--container-max-width), 1320px);
+    }
+}
+
+/* Intro / prose blocks */
 .text_section .description {
     width: 100%;
     max-width: 48rem;

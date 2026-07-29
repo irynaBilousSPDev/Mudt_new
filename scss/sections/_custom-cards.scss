@@ -40,14 +40,14 @@
 }
 
 .custom_cards_card .title {
-    font-size: 24px;
-    line-height: 29px;
+    font-size: clamp(1.15rem, 1rem + 0.45vw, 1.4rem);
+    line-height: 1.3;
     font-weight: bold;
 }
 
 .custom_cards_card .big_title {
-    font-size: 41px;
-    line-height: 50px;
+    font-size: clamp(1.65rem, 1.1rem + 1.1vw, 2.35rem);
+    line-height: 1.2;
     font-weight: bold;
 }
 
@@ -181,46 +181,104 @@
     }
 }
 
-/* accreditation */
+/* accreditation — stacked card: logo → title → text
+   (must override .section_custom_cards .custom_cards_card { display: flex } row) */
 .accreditation:before {
     display: none;
 }
 
-.accreditation_card {
-    margin-bottom: 2rem;
+.accreditation .accreditation_card.custom_cards_card,
+.accreditation .accreditation_card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.75rem;
     height: 100%;
+    margin-bottom: 0;
+    padding-left: 12px;
+    padding-right: 12px;
+    min-width: 0;
 }
 
-.logo_wrapper {
-    min-height: 230px;
-    margin-bottom: 1rem;
+.accreditation .logo_wrapper {
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    margin-bottom: 0;
+    padding: 0.25rem 0;
 }
 
-.logo_wrapper img {
+.accreditation .logo_wrapper img,
+.accreditation .custom_cards_image {
+    display: block;
     width: auto;
-    max-width: 100%;
+    max-width: min(100%, 220px);
+    max-height: 96px;
     height: auto;
+    object-fit: contain;
+    object-position: left center;
+    flex-shrink: 0;
 }
 
 .accreditation .accreditation_card h2,
 .accreditation .custom_cards_title {
-    font-size: 32px;
-    line-height: 39px;
-    font-weight: 400;
-    min-height: 115px;
+    flex: 0 0 auto;
+    width: 100%;
+    margin: 0;
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    line-height: 1.25;
+    font-weight: 700;
+    min-height: 0;
+    color: #1F1B51;
+}
+
+.accreditation .custom_cards_text {
+    flex: 1 1 auto;
+    width: 100%;
+    margin-top: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #1F1B51;
+}
+
+.accreditation .custom_cards_text p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 991.98px) {
+    .accreditation .logo_wrapper img,
+    .accreditation .custom_cards_image {
+        max-height: 80px;
+        max-width: min(100%, 180px);
+    }
 }
 
 @media (max-width: 767.98px) {
-    .logo_wrapper {
-        min-height: 120px;
+    .accreditation .accreditation_card.custom_cards_card,
+    .accreditation .accreditation_card {
+        gap: 0.65rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .accreditation .logo_wrapper img,
+    .accreditation .custom_cards_image {
+        max-height: 72px;
+        max-width: min(100%, 160px);
     }
 
     .accreditation .accreditation_card h2,
     .accreditation .custom_cards_title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         line-height: 1.3;
-        min-height: 0;
+    }
+
+    .accreditation .custom_cards_text {
+        font-size: 0.9375rem;
+        line-height: 1.45;
     }
 }

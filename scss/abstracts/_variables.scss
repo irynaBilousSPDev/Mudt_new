@@ -1,12 +1,34 @@
-// Theme spacing tokens — section rhythm + shared container gutters
+// Theme spacing + layout tokens
 :root {
-    --section-space-y: 5rem;      /* default desktop section pad/margin */
-    --section-space-y-lg: 5rem;   /* was often 8–10rem — keep closer to standard */
+    --section-space-y: 5rem;
+    --section-space-y-lg: 5rem;
     --section-space-y-sm: 3rem;
     --section-space-y-xs: 2rem;
 
-    /* Horizontal page gutter — header / hero / body share this */
-    --container-pad-x: 15px; /* Bootstrap 4 default */
+    /* Fluid on small screens — avoid narrow Bootstrap gutters */
+    --container-pad-x: 1rem;
+    --container-max-width: 100%;
+}
+
+@media (min-width: 768px) {
+    :root {
+        --container-pad-x: 1.5rem;
+        --container-max-width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    :root {
+        --container-pad-x: 1.75rem;
+        --container-max-width: 100%;
+    }
+}
+
+@media (min-width: 1200px) {
+    :root {
+        --container-pad-x: 15px;
+        --container-max-width: 1140px;
+    }
 }
 
 /* ~MacBook / 1440-class desktops */
@@ -19,32 +41,55 @@
     }
 }
 
+@media (min-width: 1360px) {
+    :root {
+        --container-max-width: 1280px;
+    }
+}
+
 @media (max-width: 1199.98px) {
     :root {
-        --section-space-y: 3rem;
-        --section-space-y-lg: 3.25rem;
-        --section-space-y-sm: 2rem;
-        --section-space-y-xs: 1.25rem;
-        --container-pad-x: 1.25rem;
+        --section-space-y: 2.5rem;
+        --section-space-y-lg: 2.75rem;
+        --section-space-y-sm: 1.75rem;
+        --section-space-y-xs: 1.15rem;
+    }
+}
+
+@media (min-width: 1441px) {
+    :root {
+        --container-max-width: 1380px;
+    }
+}
+
+@media (min-width: 1601px) {
+    :root {
+        --container-max-width: 1440px;
+    }
+}
+
+@media (min-width: 1920px) {
+    :root {
+        --container-max-width: 1640px;
     }
 }
 
 @media (max-width: 767.98px) {
     :root {
-        --section-space-y: 2rem;
-        --section-space-y-lg: 2.25rem;
-        --section-space-y-sm: 1.5rem;
-        --section-space-y-xs: 1rem;
-        --container-pad-x: 1rem;
+        --section-space-y: 1.75rem;
+        --section-space-y-lg: 2rem;
+        --section-space-y-sm: 1.35rem;
+        --section-space-y-xs: 0.85rem;
+        --container-pad-x: 0.85rem;
     }
 }
 
 @media (max-width: 575.98px) {
     :root {
-        --section-space-y: 1.5rem;
-        --section-space-y-lg: 1.75rem;
-        --section-space-y-sm: 1.25rem;
-        --section-space-y-xs: 0.75rem;
-        --container-pad-x: 1rem;
+        --section-space-y: 1.35rem;
+        --section-space-y-lg: 1.5rem;
+        --section-space-y-sm: 1.1rem;
+        --section-space-y-xs: 0.65rem;
+        --container-pad-x: 0.75rem;
     }
 }

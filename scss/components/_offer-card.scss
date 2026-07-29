@@ -1,0 +1,254 @@
+/* Migrated from scss/legacy — edit this file, not css/ */
+
+/*item_offer_card*/
+.section_offers .item_offer {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+@media (min-width: 991px) {
+    .section_offers .item_offer {
+        flex: 0 0 33.3%;
+        max-width: 33.3%;
+    }
+}
+
+
+/* .section_main_banner — see scss/sections/_main-banner.scss */
+
+.offers_side .item_offer {
+    overflow: visible;
+}
+
+.item_offer_card {
+    background-color: #1F1A51;
+    height: 100%;
+    color: #fff;
+    position: relative;
+}
+
+
+/*item_offer_card_header*/
+.item_offer_card_header {
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.item_offer_card_sub_title,
+.offers_tab_content_title {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+}
+
+.offers_header_description {
+    font-size: 1.938rem;
+    line-height: 2.438rem;
+    font-weight: 500;
+}
+
+.item_offer_card_title {
+    font-size: 21px;
+    line-height: 32px;
+    font-weight: bold;
+    display: flex;
+}
+
+.section_offers .item_offer_card_title {
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_offer_card_header_image {
+    min-height: 262px;
+    position: relative;
+    background-position: center 40%;
+}
+
+.start_date_group {
+    position: absolute;
+    height: 80px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F5F5;
+    padding: 1rem 2rem;
+}
+
+.section_offers .start_date_group {
+    top: 0;
+    left: 0;
+}
+
+.section_offers .item_offer_card_body {
+    padding: 1.5rem 1rem;
+}
+
+.wrapper_offers .item_offer_card_body {
+    padding-right: 2rem;
+}
+
+.item_offer_card_body_position {
+    margin-bottom: 25px;
+    padding-left: 0;
+}
+
+@media (min-width: 1441px) {
+
+    .item_offer_card_body_position {
+        margin-bottom: 20px;
+    }
+}
+
+.start_date_group {
+    color: #000000;
+}
+
+.item_offer_card_body_position .item_offer_card_body__title {
+    font-size: 16px;
+    line-height: 19px;
+    /*font-weight: bold;*/
+}
+
+@media (max-width: 767.98px) {
+    .item_offer_card_body_position .item_offer_card_body__title {
+        font-weight: 700;
+    }
+}
+
+.price_date_info .item_offer_card_body__title {
+    font-weight: bold;
+}
+
+.single .item_offer_card_body_position .item_offer_card_body__title {
+    font-size: 22px;
+    line-height: 26px;
+}
+
+@media (min-width: 1441px) {
+
+    .single .item_offer_card_body_position .item_offer_card_body__title {
+        font-size: 1.5rem;
+        line-height: 29px;
+    }
+}
+
+body.programs-template-single-programs-prebachelors .item_offer_card_body_position .item_offer_card_body__title {
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.start_date_group .start_date_title,
+.item_offer_card_body_position .item_offer_card_body_sub__title {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.start_date_group .start_date {
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: bold;
+}
+
+
+.item_offer_card .custom_btn a {
+    color: #fff;
+}
+
+
+@media (max-width: 767px) {
+
+    .section_offers .item_offer {
+        flex: 0 100%;
+        max-width: 100%;
+    }
+
+    .item_offer_card_body__title {
+        max-width: 100%;
+    }
+}
+
+
+@media (min-width: 991px) {
+    .section_offers .item_offer:first-child .item_offer_card {
+        border-radius: 80px 0 0 80px;
+    }
+
+    .section_offers .item_offer:last-child .item_offer_card {
+        border-radius: 0 80px 80px 0;
+    }
+
+}
+
+/* .section_main_banner — see scss/sections/_main-banner.scss */
+
+@media (max-width: 767px) {
+    .section_numbers_count {
+        padding: 2.5rem 0;
+    }
+
+    .section_offers {
+        margin: 2.5rem 0;
+    }
+
+    .section_offers .item_offer_card_title {
+        min-height: 0;
+    }
+
+    .item_offer_card_header_image {
+        min-height: 180px;
+    }
+
+    .slide_wrapper {
+        min-height: 0;
+        border-radius: 48px;
+        padding: 2rem 1.25rem;
+    }
+}
+
+.wrapper_offers .offer_options,
+.wrapper_offers .btns_card {
+    margin: 0;
+}
+
+@media (min-width: 991px) and (max-width: 1440px) {
+    .wrapper_offers .btns_card {
+        padding: 0;
+        justify-content: flex-start;
+    }
+
+    .wrapper_offers .btn_group {
+        flex-direction: row !important;
+    }
+
+    .item_offer_card_body_position {
+        margin-bottom: 0.5rem;
+    }
+
+    .wrapper_offers .offer_options {
+        /*padding-left: 30px*/
+    }
+
+    .wrapper_offers .offer_options,
+    .wrapper_offers .btns_card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1600px) {
+    .btns_card {
+        display: flex;
+        align-items: self-start;
+        justify-content: flex-end;
+    }
+}

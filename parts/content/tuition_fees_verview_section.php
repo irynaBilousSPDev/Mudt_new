@@ -9,7 +9,8 @@ $fees_details = get_sub_field('fees_details');
                 <h2 class="section_title mb-3"><?php echo $fees_title; ?></h2>
             <?php endif; ?>
             <?php if ($fees_cards): ?>
-                <div class="fees_cards">
+                <?php $fees_count = count($fees_cards); ?>
+                <div class="fees_cards fees_cards--count-<?php echo (int) $fees_count; ?>">
                     <div class="row">
                         <?php foreach ($fees_cards as $key => $item) : ?>
                             <div class="col-md-6 col-xl-3 fees_card_col">

@@ -1,0 +1,275 @@
+/* Migrated from scss/legacy — edit this file, not css/ */
+
+/*page visa guide*/
+.section_entering {
+    margin-bottom: 5rem;
+}
+
+
+.entering_item {
+    background-color: #EEF7FF;
+    color: #1F1B51;
+    display: flex;
+    flex-direction: column;
+    padding: 107px 15% 43px 15%;
+    position: relative;
+    height: 100%;
+    justify-content: flex-start;
+}
+
+.entering_item .description {
+    font-size: 1.5rem;
+    line-height: 32px;
+    min-height: 180px;
+}
+
+.entering_item .content {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    height: 100%;
+}
+
+.entering_item .content {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.entering_item h2 {
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.entering_item .content,
+.entering_item h2 {
+    font-weight: 300;
+}
+
+.citizens_visa_guide {
+    border-radius: 80px;
+    overflow: hidden;
+}
+
+
+@media (max-width: 1200px) {
+
+    .citizens_visa_guide .entering_col:not(.citizens_visa_guide .entering_col:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    .entering_item {
+        padding: 4rem 2rem 2rem 2rem;
+    }
+
+    .entering_item .description {
+        min-height: 1px;
+    }
+}
+
+/*section_types_visa*/
+.section_types_visa {
+    margin-bottom: var(--section-space-y-lg, 5rem);
+}
+
+.header_types_visa .section_title {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section_types_visa .description {
+    font-weight: 300;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section_types_visa .description,
+.section_types_visa .section_title {
+    color: #1F1B51;
+}
+
+.section_types_visa .btn_wrapper a {
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.types_visa_col .types_visa_item {
+    background-color: #1F1B51;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 15%;
+    position: relative;
+    height: 100%;
+    justify-content: flex-start;
+}
+
+.types_visa_col .types_visa_item h2,
+.types_visa_col .types_visa_item .description {
+    color: #fff;
+}
+
+.types_visa {
+    border-radius: 80px;
+    overflow: hidden;
+}
+
+@media (max-width: 767px) {
+    .types_visa .types_visa_col:first-child {
+        margin-bottom: 1rem;
+    }
+}
+
+/*section_applying_visa*/
+.section_applying_visa {
+    margin-bottom: var(--section-space-y-lg, 5rem);
+}
+
+.section_applying_visa .section_title {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section_applying_visa .image_wrapper {
+    margin-bottom: 5rem;
+}
+
+.section_applying_visa .image_wrapper .bg {
+    height: 326px;
+    border-radius: 120px;
+}
+
+.section_applying_visa .bottom_description {
+    max-width: 860px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.section_applying_visa h3 {
+    margin-bottom: 2rem;
+}
+
+.applying_visa_item {
+    max-width: 260px;
+}
+
+.applying_visa_col {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+
+    .applying_visa_col {
+        width: 50%;
+    }
+
+}
+
+@media (min-width: 1281px) {
+
+    .applying_visa_col {
+        width: 33.3%;
+    }
+
+}
+
+@media (min-width: 1441px) {
+
+    .applying_visa_col {
+        width: 20%;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    .section_applying_visa .image_wrapper .bg {
+        border-radius: 80px;
+    }
+
+}
+
+@media (min-width: 1201px) and (max-width: 1440px) {
+
+    .entering_item {
+        padding: 5rem 2rem 2rem 2rem;
+    }
+}
+
+/*section_important_tips*/
+.section_important_tips .important_tips_item ul li {
+    font-size: 1.5rem;
+    line-height: 32px;
+    margin-left: 5rem;
+}
+
+/*section_interviews*/
+.section_interviews {
+    margin-top: var(--section-space-y, 5rem);
+    margin-bottom: var(--section-space-y, 5rem);
+    padding: var(--section-space-y-lg, 5rem) 0;
+    background-color: #EEF7FF;
+}
+
+.section_interviews .description {
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 400;
+}
+
+.section_interviews .parallax-section {
+    border-radius: 80px;
+}
+
+.section_interviews .interviews:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(31, 27, 81, 0.67);
+    z-index: 1;
+}
+
+
+.wrapper_interviews h2 {
+    margin-bottom: 1rem;
+}
+
+.section_interviews .parallax-section {
+    height: 56vh;
+}
+
+.section_interviews .content_wrapper {
+    padding: 0 5rem;
+}
+
+.section_interviews .parallax-image {
+    /* height sized by mudt parallax JS */
+}
+
+/*section_after_arrival*/
+.section_after_arrival {
+    background-color: #EEF7FF;
+    margin: 5rem auto;
+}
+
+.section_after_arrival .text_wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section_after_arrival .text_wrapper h2 {
+    max-width: 680px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.section_after_arrival .description {
+    font-size: 1.5rem;
+    line-height: 32px;
+    font-weight: 300;
+}

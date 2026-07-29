@@ -17,10 +17,13 @@ $sub_title = get_field('sub_title', $page_id);
                         ?>
                     </div>
                 <?php endwhile; endif; ?>
-                <?php if (!empty(get_the_content())): ?>
+                <?php
+                $page_content = trim(wp_strip_all_tags(get_the_content()));
+                if ($page_content !== '') :
+                    ?>
                     <div class="container">
                         <div class="entry-content my-5">
-                            <?php echo get_the_content(); ?>
+                            <?php the_content(); ?>
                         </div>
                     </div>
                 <?php endif; ?>

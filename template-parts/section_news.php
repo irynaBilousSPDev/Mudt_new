@@ -55,10 +55,10 @@ if ($news_term_id) {
         }
         wp_reset_postdata();
         if (!empty($posts)) : ?>
-            <section class="section_news my-5">
+            <section class="section_news">
                 <div class="container">
                     <h2 class="section_title text-center"><?php _e('News:', 'MUDT'); ?></h2>
-                    <div class="text-center mb-5">
+                    <div class="section_news__intro text-center">
                         <?php _e("Check out what's happening <br> at the university.", 'MUDT'); ?>
                     </div>
 
@@ -79,10 +79,10 @@ if ($news_term_id) {
                                         <a href="<?php echo esc_url(get_permalink($left)); ?>">
                                             <h3><?php echo esc_html(get_the_title($left)); ?></h3>
                                         </a>
-                                        <p><?php echo wp_kses_post(get_the_excerpt($left)); ?></p>
+                                        <p><?php echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_excerpt($left)), 36, '…')); ?></p>
                                     </div>
-                                    <a title="Read <?php echo esc_html(get_the_title($left)); ?>"
-                                       href="<?php echo esc_url(get_permalink($p)); ?>" class="read-btn mt-5">
+                                    <a title="<?php echo esc_attr(sprintf(__('Read %s', 'MUDT'), get_the_title($left))); ?>"
+                                       href="<?php echo esc_url(get_permalink($left)); ?>" class="read-btn">
                                         <?php _e('read', 'MUDT'); ?>
                                     </a>
                                 </div>
@@ -102,10 +102,10 @@ if ($news_term_id) {
                                                 <a href="<?php echo esc_url(get_permalink($p)); ?>">
                                                     <h4><?php echo esc_html(get_the_title($p)); ?></h4>
                                                 </a>
-                                                <p><?php echo wp_kses_post(get_the_excerpt($p)); ?></p>
+                                                <p><?php echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_excerpt($p)), 28, '…')); ?></p>
                                             </div>
-                                            <a title="Read <?php echo esc_html(get_the_title($p)); ?>"
-                                               href="<?php echo esc_url(get_permalink($p)); ?>" class="read-btn mt-5">
+                                            <a title="<?php echo esc_attr(sprintf(__('Read %s', 'MUDT'), get_the_title($p))); ?>"
+                                               href="<?php echo esc_url(get_permalink($p)); ?>" class="read-btn">
                                                 <?php _e('read', 'MUDT'); ?>
                                             </a>
                                         </div>
@@ -116,8 +116,8 @@ if ($news_term_id) {
                     </div>
 
                     <?php if (is_front_page()) : ?>
-                        <div class="read-all-wrapper text-center my-5">
-                            <a href="/contact/news/" class="read-all-link">
+                        <div class="read-all-wrapper text-center">
+                            <a href="<?php echo esc_url(function_exists('mudt_get_news_archive_url') ? mudt_get_news_archive_url() : home_url('/news/')); ?>" class="read-all-link">
                                 <?php _e('read all', 'MUDT'); ?>
                             </a>
                         </div>

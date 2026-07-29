@@ -1,13 +1,32 @@
 @charset "UTF-8";
 :root {
-  --section-space-y: 5rem; /* default desktop section pad/margin */
-  --section-space-y-lg: 5rem; /* was often 8–10rem — keep closer to standard */
+  --section-space-y: 5rem;
+  --section-space-y-lg: 5rem;
   --section-space-y-sm: 3rem;
   --section-space-y-xs: 2rem;
-  /* Horizontal page gutter — header / hero / body share this */
-  --container-pad-x: 15px; /* Bootstrap 4 default */
+  /* Fluid on small screens — avoid narrow Bootstrap gutters */
+  --container-pad-x: 1rem;
+  --container-max-width: 100%;
 }
 
+@media (min-width: 768px) {
+  :root {
+    --container-pad-x: 1.5rem;
+    --container-max-width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  :root {
+    --container-pad-x: 1.75rem;
+    --container-max-width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  :root {
+    --container-pad-x: 15px;
+    --container-max-width: 1140px;
+  }
+}
 /* ~MacBook / 1440-class desktops */
 @media (max-width: 1599.98px) {
   :root {
@@ -17,494 +36,53 @@
     --section-space-y-xs: 1.5rem;
   }
 }
+@media (min-width: 1360px) {
+  :root {
+    --container-max-width: 1280px;
+  }
+}
 @media (max-width: 1199.98px) {
   :root {
-    --section-space-y: 3rem;
-    --section-space-y-lg: 3.25rem;
-    --section-space-y-sm: 2rem;
-    --section-space-y-xs: 1.25rem;
-    --container-pad-x: 1.25rem;
+    --section-space-y: 2.5rem;
+    --section-space-y-lg: 2.75rem;
+    --section-space-y-sm: 1.75rem;
+    --section-space-y-xs: 1.15rem;
+  }
+}
+@media (min-width: 1441px) {
+  :root {
+    --container-max-width: 1380px;
+  }
+}
+@media (min-width: 1601px) {
+  :root {
+    --container-max-width: 1440px;
+  }
+}
+@media (min-width: 1920px) {
+  :root {
+    --container-max-width: 1640px;
   }
 }
 @media (max-width: 767.98px) {
   :root {
-    --section-space-y: 2rem;
-    --section-space-y-lg: 2.25rem;
-    --section-space-y-sm: 1.5rem;
-    --section-space-y-xs: 1rem;
-    --container-pad-x: 1rem;
+    --section-space-y: 1.75rem;
+    --section-space-y-lg: 2rem;
+    --section-space-y-sm: 1.35rem;
+    --section-space-y-xs: 0.85rem;
+    --container-pad-x: 0.85rem;
   }
 }
 @media (max-width: 575.98px) {
   :root {
-    --section-space-y: 1.5rem;
-    --section-space-y-lg: 1.75rem;
-    --section-space-y-sm: 1.25rem;
-    --section-space-y-xs: 0.75rem;
-    --container-pad-x: 1rem;
+    --section-space-y: 1.35rem;
+    --section-space-y-lg: 1.5rem;
+    --section-space-y-sm: 1.1rem;
+    --section-space-y-xs: 0.65rem;
+    --container-pad-x: 0.75rem;
   }
 }
-/* Page hero: .header_section > .page_header (templates + flexible pages) */
-.header_section {
-  margin-bottom: 0;
-}
-
-.page_header {
-  position: relative;
-  margin-bottom: var(--section-space-y-lg, 5rem);
-}
-
-.page_header .image_wrapper {
-  border-radius: 120px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.page_header .parallax-section {
-  height: clamp(280px, 68vh, 620px);
-  min-height: 280px;
-}
-
-.page_header .parallax-image {
-  top: -71px;
-}
-
-.page_header .title_wrapper {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  background-color: #fff;
-  border-radius: 28px 28px 0 0;
-  padding: 50px 45px 0;
-  width: 100%;
-  max-width: 504px;
-  margin-left: clamp(1.5rem, 10vw, 140px);
-  margin-right: auto;
-  box-sizing: border-box;
-}
-
-.page_header .title_wrapper .section_title {
-  font-weight: bold;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  line-height: 1.2;
-  margin-bottom: 0.35rem;
-}
-
-.page_header_subtitle,
-.page_header .title_wrapper > :not(.section_title) {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
-  line-height: 1.45;
-}
-
-.page_header_subtitle p:last-child {
-  margin-bottom: 0;
-}
-
-@media (max-width: 1599.98px) {
-  .page_header .title_wrapper {
-    margin-left: clamp(1.5rem, 6vw, 80px);
-    padding: 2.5rem 2rem 0;
-    max-width: min(504px, 58%);
-  }
-}
-@media (max-width: 1199.98px) {
-  .page_header {
-    margin-bottom: var(--section-space-y, 3rem);
-  }
-  .page_header .parallax-section {
-    height: clamp(240px, 45vh, 480px);
-    min-height: 240px;
-  }
-  .page_header .parallax-image {
-    top: -40px;
-  }
-  .page_header .image_wrapper {
-    border-radius: 64px;
-  }
-  .page_header .title_wrapper {
-    left: 0;
-    right: 0;
-    max-width: min(504px, 92%);
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2rem 1.5rem 0;
-  }
-}
-@media (max-width: 991.98px) {
-  .page_header .parallax-section {
-    height: clamp(220px, 40vh, 400px);
-  }
-  .page_header .image_wrapper {
-    border-radius: 48px;
-  }
-  .page_header .title_wrapper {
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 1.5rem 1.25rem 0;
-    border-radius: 24px 24px 0 0;
-  }
-}
-@media (max-width: 767.98px) {
-  .page_header {
-    margin-bottom: var(--section-space-y-sm, 2rem);
-  }
-  .page_header .parallax-section {
-    height: clamp(200px, 38vh, 320px);
-    min-height: 200px;
-  }
-  .page_header .image_wrapper {
-    border-radius: 28px;
-  }
-  /* Title card flush with image edges → same column as body text */
-  .page_header .title_wrapper {
-    max-width: 100%;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 1.15rem 1rem 0;
-    border-radius: 20px 20px 0 0;
-  }
-  .page_header .title_wrapper .section_title {
-    font-size: clamp(1.35rem, 5vw, 1.75rem);
-  }
-}
-@media (max-width: 575.98px) {
-  .page_header .image_wrapper {
-    border-radius: 24px;
-  }
-  .page_header .title_wrapper {
-    padding: 1rem 0.85rem 0;
-    border-radius: 16px 16px 0 0;
-  }
-}
-/* Flexible: cards_section — accreditation reuses .section_custom_cards */
-.section_custom_cards {
-  position: relative;
-  padding: var(--section-space-y-sm, 3rem) 0;
-}
-
-.section_custom_cards.bg_color:before {
-  position: absolute;
-  content: "";
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-color: #EEF7FF;
-}
-
-.section_custom_cards .custom_cards_row {
-  margin-left: -12px;
-  margin-right: -12px;
-}
-
-.section_custom_cards .custom_cards_card {
-  display: flex;
-  padding-left: 12px;
-  padding-right: 12px;
-}
-
-.section_custom_cards .custom_cards_card_item {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.custom_cards_card_body {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-}
-
-.custom_cards_card .title {
-  font-size: 24px;
-  line-height: 29px;
-  font-weight: bold;
-}
-
-.custom_cards_card .big_title {
-  font-size: 41px;
-  line-height: 50px;
-  font-weight: bold;
-}
-
-.custom_cards_card .sub_title {
-  position: relative;
-  display: inline;
-}
-
-.custom_cards_text {
-  margin-top: 2rem;
-}
-
-.section_custom_cards .custom_cards_card_image {
-  width: 100%;
-  min-height: 511px;
-  margin-bottom: 3rem;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  overflow: hidden;
-}
-
-.section_custom_cards .custom_cards_card_image.medium_image {
-  min-height: 423px;
-}
-
-.section_custom_cards img {
-  height: auto;
-  max-width: 100%;
-}
-
-/* Desktop: pill ends by column count (data-cols = Bootstrap span) */
-@media (min-width: 1200px) {
-  .section_custom_cards[data-cols="4"] .custom_cards_card:nth-child(3n+1) .custom_cards_card_image {
-    border-radius: 80px 0 0 80px;
-  }
-  .section_custom_cards[data-cols="4"] .custom_cards_card:nth-child(3n) .custom_cards_card_image {
-    border-radius: 0 80px 80px 0;
-  }
-  .section_custom_cards[data-cols="3"] .custom_cards_card:nth-child(4n+1) .custom_cards_card_image {
-    border-radius: 80px 0 0 80px;
-  }
-  .section_custom_cards[data-cols="3"] .custom_cards_card:nth-child(4n) .custom_cards_card_image {
-    border-radius: 0 80px 80px 0;
-  }
-  .section_custom_cards[data-cols="6"] .custom_cards_card:nth-child(odd) .custom_cards_card_image {
-    border-radius: 80px 0 0 80px;
-  }
-  .section_custom_cards[data-cols="6"] .custom_cards_card:nth-child(even) .custom_cards_card_image {
-    border-radius: 0 80px 80px 0;
-  }
-}
-/* Tablet landscape / small desktop */
-@media (max-width: 1199.98px) {
-  .section_custom_cards .custom_cards_card_image {
-    min-height: 0;
-    aspect-ratio: 4/3;
-    margin-bottom: 1.5rem;
-    border-radius: 48px;
-  }
-  .section_custom_cards .custom_cards_card_image.medium_image {
-    min-height: 0;
-    aspect-ratio: 4/3;
-  }
-  .custom_cards_card .big_title {
-    font-size: clamp(1.75rem, 3vw, 2.25rem);
-    line-height: 1.2;
-  }
-  .custom_cards_card .title {
-    font-size: clamp(1.15rem, 2vw, 1.5rem);
-    line-height: 1.3;
-  }
-  .custom_cards_text {
-    margin-top: 1.25rem;
-    font-size: 1rem;
-    line-height: 1.45;
-  }
-}
-/* Tablet: 2-up already via col-md-6 */
-@media (max-width: 991.98px) {
-  .section_custom_cards .custom_cards_card_image {
-    border-radius: 40px;
-  }
-}
-@media (max-width: 767.98px) {
-  .section_custom_cards {
-    padding: var(--section-space-y-xs, 1rem) 0;
-  }
-  .section_custom_cards .custom_cards_card {
-    margin-bottom: 1.25rem;
-  }
-  .section_custom_cards .custom_cards_card_image {
-    aspect-ratio: 16/10;
-    margin-bottom: 1rem;
-    border-radius: 32px;
-  }
-  .custom_cards_card .title {
-    font-size: 1.25rem;
-    line-height: 1.3;
-  }
-  .custom_cards_card .big_title {
-    font-size: 1.65rem;
-    line-height: 1.2;
-  }
-  .custom_cards_text {
-    margin-top: 0.85rem;
-  }
-}
-@media (max-width: 575.98px) {
-  .section_custom_cards .custom_cards_card_image {
-    aspect-ratio: 5/4;
-    border-radius: 28px;
-  }
-}
-/* accreditation */
-.accreditation:before {
-  display: none;
-}
-
-.accreditation_card {
-  margin-bottom: 2rem;
-  height: 100%;
-}
-
-.logo_wrapper {
-  min-height: 230px;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.logo_wrapper img {
-  width: auto;
-  max-width: 100%;
-  height: auto;
-}
-
-.accreditation .accreditation_card h2,
-.accreditation .custom_cards_title {
-  font-size: 32px;
-  line-height: 39px;
-  font-weight: 400;
-  min-height: 115px;
-}
-
-@media (max-width: 767.98px) {
-  .logo_wrapper {
-    min-height: 120px;
-  }
-  .accreditation .accreditation_card h2,
-  .accreditation .custom_cards_title {
-    font-size: 1.5rem;
-    line-height: 1.3;
-    min-height: 0;
-  }
-}
-/* Flexible: our_goals_section */
-.section_our_goals .custom_cards_card_image {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3/2;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.section_our_goals .custom_cards_card_image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-@media (min-width: 992px) {
-  .section_our_goals .custom_cards_card_image {
-    border-radius: 0;
-  }
-  .section_our_goals .custom_cards_card:first-child .custom_cards_card_image {
-    border-radius: 80px 0 0 80px;
-  }
-  .section_our_goals .custom_cards_card:last-child .custom_cards_card_image {
-    border-radius: 0 80px 80px 0;
-  }
-}
-@media (max-width: 991.98px) {
-  .section_our_goals .custom_cards_card_image {
-    border-radius: 48px;
-    margin-bottom: 1.25rem;
-  }
-  .section_our_goals .custom_cards_card:first-child .custom_cards_card_image,
-  .section_our_goals .custom_cards_card:last-child .custom_cards_card_image {
-    border-radius: 48px;
-  }
-  .section_our_goals .our_goals_text {
-    margin-bottom: 1rem !important;
-  }
-}
-@media (max-width: 767.98px) {
-  .section_our_goals .custom_cards_card_image {
-    border-radius: 32px;
-  }
-  .section_our_goals .section_title {
-    margin-top: 1.5rem !important;
-    margin-bottom: 1.5rem !important;
-  }
-}
-/* Flexible: why_munich_section (.section_digital_technologies) */
-.digital_technologies_card {
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.digital_technologies_card:nth-child(even) {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
-}
-
-.digital_technologies_card_body {
-  min-height: 320px;
-}
-
-.custom_description {
-  font-size: 24px;
-  line-height: 29px;
-  font-weight: 700;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 305px;
-  padding: 15px;
-}
-
-.digital_technologies_title {
-  padding-top: 1rem;
-}
-
-.digital_technologies_card:nth-child(odd) .digital_technologies_image {
-  margin-bottom: 2rem;
-}
-
-.digital_technologies_image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 24px;
-}
-
-@media (max-width: 1199.98px) {
-  .digital_technologies_card_body {
-    min-height: 0;
-  }
-  .custom_description {
-    font-size: 1.15rem;
-    line-height: 1.35;
-    max-width: none;
-    padding: 0.5rem 0;
-  }
-}
-@media (max-width: 767.98px) {
-  .digital_technologies_card {
-    margin-bottom: 1.5rem;
-  }
-  .digital_technologies_card:nth-child(even) {
-    flex-direction: column;
-  }
-  .digital_technologies_card:nth-child(odd) .digital_technologies_image {
-    margin-bottom: 1rem;
-  }
-  .digital_technologies_title {
-    font-size: 1.15rem;
-    padding-top: 0.5rem;
-  }
-  .digital_technologies_text {
-    margin-bottom: 0 !important;
-    font-size: 1rem;
-    line-height: 1.45;
-  }
-}
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*pages start
 candydaties
 */
@@ -539,9 +117,11 @@ candydaties
   will-change: transform;
 }
 
-/* Background-image parallax only (not video iframe wrapper) */
+/* Background-image parallax only (not video iframe wrapper).
+   Height/top are set by JS so the subject stays centered. */
 .parallax-section .parallax-image.bg {
-  min-height: calc(100% + 50vh);
+  min-height: 100%;
+  height: 100%;
 }
 
 .parallax-section .parallax-content {
@@ -550,6 +130,7 @@ candydaties
   z-index: 1;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 .custom-page .section_title {
   font-weight: bold;
 }
@@ -647,6 +228,97 @@ candydaties
   padding-left: 30px;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
+/*about us____________________________________________*/
+:root {
+  --header-offset: 110px;
+  --header-gap: 2rem;
+  --header-bar: 30px; /* desktop purple strip */
+}
+
+@media (max-width: 1399.98px) {
+  :root {
+    --header-offset: 120px;
+    --header-bar: 20px; /* mobile + tablet */
+  }
+}
+@media (max-width: 767.98px) {
+  :root {
+    --header-offset: 145px;
+    --header-gap: 1rem;
+  }
+}
+main {
+  margin-top: calc(var(--header-offset) + var(--header-gap));
+}
+
+/* Homepage header gap — see scss/sections/_main-banner.scss + header critical CSS */
+main.single_program {
+  margin-top: calc(var(--header-offset) + var(--header-gap) + 10px);
+}
+
+main.page .top_banner {
+  /*height: 88vh;*/
+  height: 972px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+main.page .top_banner img {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 10rem;
+  width: auto;
+}
+
+main.page .top_banner:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  background: linear-gradient(0deg, rgb(31, 27, 81) 0%, rgba(9, 9, 121, 0) 30%);
+}
+
+main.page .section_offer_nav {
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+main.page h1.section_title {
+  font-weight: bold;
+}
+
+.section_title.text-left {
+  text-align: left;
+}
+
+.section_title.text-center {
+  text-align: center;
+}
+
+.section_title.text-right {
+  text-align: right;
+}
+
+main.page .top_banner_description {
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+}
+
+.page_studying,
+.page_about_us {
+  position: relative;
+}
+
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*admission_requirements*/
 .section_admission_requirements .buttons_group .btn {
   padding: 6px 24px;
@@ -658,6 +330,7 @@ candydaties
   line-height: 16px;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*section_language*/
 .section_language .content_wrapper,
 .section_language.list_style_vertical li {
@@ -665,6 +338,19 @@ candydaties
   line-height: 29px;
 }
 
+/*section_language*/
+.section_language {
+  padding: 5rem 0;
+  background-color: #EEF7FF;
+}
+
+.section_language ul li {
+  font-size: 24px;
+  line-height: 29px;
+  margin-bottom: 1rem;
+}
+
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*section_application_seps*/
 .section_application_steps {
   position: relative;
@@ -726,9 +412,14 @@ candydaties
   margin-top: 15px;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*section_fees*/
 .section_fees {
   padding: 2rem 0;
+}
+
+.fees_cards .row {
+  justify-content: center;
 }
 
 .fees_card_col {
@@ -747,6 +438,18 @@ candydaties
   justify-content: center;
 }
 
+/* Two cards: a bit wider so the pill reads as one centered group */
+.fees_cards--count-2 .fees_card_col {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 280px;
+}
+
+@media (min-width: 768px) {
+  .fees_cards--count-2 .fees_card_col {
+    max-width: 320px;
+  }
+}
 @media (min-width: 1281px) {
   .fees_card_col:first-child .fees_card {
     border-radius: 80px 0 0 80px;
@@ -756,19 +459,19 @@ candydaties
   }
 }
 .fees_card_item_sub_title {
-  font-size: 26px;
-  line-height: 32px;
+  font-size: clamp(1.125rem, 0.95rem + 0.5vw, 1.5rem);
+  line-height: 1.3;
 }
 
 .fees_sub_title {
-  font-size: 24px;
-  line-height: 29px;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.35rem);
+  line-height: 1.35;
 }
 
 .fees_card_item_sum {
   font-weight: bold;
-  font-size: 41px;
-  line-height: 50px;
+  font-size: clamp(1.75rem, 1.2rem + 1vw, 2.35rem);
+  line-height: 1.2;
 }
 
 .fees_details {
@@ -778,14 +481,14 @@ candydaties
 
 .fees_details h2 {
   font-weight: bold;
-  line-height: 1;
-  font-size: 41px;
+  line-height: 1.2;
+  font-size: clamp(1.65rem, 1.1rem + 1.1vw, 2.35rem);
   margin-bottom: 0;
 }
 
 @media (min-width: 1201px) and (max-width: 1440px) {
   .fees_card_item_sum {
-    font-size: 31px;
+    font-size: clamp(1.5rem, 1.1rem + 0.8vw, 1.9rem);
   }
 }
 @media (max-width: 1440px) {
@@ -880,146 +583,7 @@ candydaties
     border: 1px solid #707070;
   }
 }
-/*about us____________________________________________*/
-:root {
-  --header-offset: 110px;
-  --header-gap: 2rem;
-  --header-bar: 30px; /* desktop purple strip */
-}
-
-@media (max-width: 1399.98px) {
-  :root {
-    --header-offset: 120px;
-    --header-bar: 20px; /* mobile + tablet */
-  }
-}
-@media (max-width: 767.98px) {
-  :root {
-    --header-offset: 145px;
-    --header-gap: 1rem;
-  }
-}
-main {
-  margin-top: calc(var(--header-offset) + var(--header-gap));
-}
-
-/* Homepage: clear header + purple bar, then visible 2rem/1rem gap on banner */
-body.home main {
-  margin-top: 0 !important;
-  padding-top: calc(var(--header-offset) + var(--header-bar)) !important;
-}
-
-body.home .section_main_banner {
-  margin-top: var(--header-gap) !important;
-  padding-top: 0 !important;
-}
-
-main.single_program {
-  margin-top: calc(var(--header-offset) + var(--header-gap) + 10px);
-}
-
-main.page .top_banner {
-  /*height: 88vh;*/
-  height: 972px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-main.page .top_banner img {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 10rem;
-  width: auto;
-}
-
-main.page .top_banner:before {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
-  background: linear-gradient(0deg, rgb(31, 27, 81) 0%, rgba(9, 9, 121, 0) 30%);
-}
-
-main.page .section_offer_nav {
-  position: absolute;
-  z-index: 99;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-main.page h1.section_title {
-  font-weight: bold;
-}
-
-.section_title.text-left {
-  text-align: left;
-}
-
-.section_title.text-center {
-  text-align: center;
-}
-
-.section_title.text-right {
-  text-align: right;
-}
-
-main.page .top_banner_description {
-  font-size: 1.5rem;
-  line-height: 1.875rem;
-}
-
-.page_studying,
-.page_about_us {
-  position: relative;
-}
-
-/* section_custom_cards → scss/sections/_custom-cards.scss */
-/*section_language*/
-.section_language {
-  padding: 5rem 0;
-  background-color: #EEF7FF;
-}
-
-.section_language ul li {
-  font-size: 24px;
-  line-height: 29px;
-  margin-bottom: 1rem;
-}
-
-/*section_our_goals — image radii in scss/sections/_our-goals.scss */
-.section_our_goals {
-  position: relative;
-}
-
-.section_our_goals .description {
-  font-weight: 500;
-  padding: 0 1rem;
-}
-
-.our_goals_text {
-  margin-top: 1rem;
-}
-
-.list_item {
-  color: black;
-}
-
-main.page .list_item_title {
-  position: relative;
-  padding-left: 25px;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 39px;
-  margin-bottom: 2rem;
-}
-
-/*section_digital_technologies → scss/sections/_why-munich.scss */
+/* Migrated from scss/legacy — edit this file, not css/ */
 .single_specialisation h1 {
   margin-bottom: 2rem;
 }
@@ -1053,10 +617,99 @@ main.page .list_item_title {
   height: 858px;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 .section_campus {
   margin-bottom: var(--section-space-y-lg, 5rem);
 }
 
+.section_campus .campus_bottom {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: clamp(2rem, 5vw, 3.5rem);
+  padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.section_campus .campus_bottom > *:first-child {
+  margin-top: 0;
+}
+
+.section_campus .campus_bottom > *:last-child {
+  margin-bottom: 0;
+}
+
+.section_campus .campus_bottom h1,
+.section_campus .campus_bottom h2,
+.section_campus .campus_bottom h3,
+.section_campus .campus_bottom h4 {
+  font-size: clamp(1.125rem, 2.2vw, 1.75rem);
+  line-height: 1.35;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1.35rem;
+}
+
+.section_campus .campus_bottom p {
+  margin-top: 0;
+  margin-bottom: 0.85rem;
+  font-size: clamp(0.9375rem, 1.4vw, 1.125rem);
+  line-height: 1.5;
+}
+
+/* Bold lead line (often a <p><strong>…</strong></p>) needs space before the list */
+.section_campus .campus_bottom > p:first-child,
+.section_campus .campus_bottom > p:has(> strong:only-child) {
+  font-size: clamp(1.125rem, 2.2vw, 1.75rem);
+  line-height: 1.35;
+  font-weight: 700;
+  margin-bottom: 1.35rem;
+}
+
+.section_campus .campus_bottom ul,
+.section_campus .campus_bottom ol {
+  margin: 1.35rem auto 0;
+  padding: 0;
+  list-style: none;
+  max-width: 36rem;
+}
+
+.section_campus .campus_bottom li {
+  margin: 0 0 0.55rem;
+  font-size: clamp(0.9375rem, 1.4vw, 1.125rem);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.section_campus .campus_bottom li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767.98px) {
+  .section_campus .campus_bottom {
+    padding-top: 1.75rem;
+    padding-bottom: 1.25rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    text-align: left;
+  }
+  .section_campus .campus_bottom h1,
+  .section_campus .campus_bottom h2,
+  .section_campus .campus_bottom h3,
+  .section_campus .campus_bottom h4,
+  .section_campus .campus_bottom > p:first-child,
+  .section_campus .campus_bottom > p:has(> strong:only-child) {
+    font-size: 1.125rem;
+    line-height: 1.35;
+    margin-bottom: 1.15rem;
+  }
+  .section_campus .campus_bottom p,
+  .section_campus .campus_bottom li {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+}
 .campus_card_col {
   padding: 30px;
   border-radius: 80px;
@@ -1102,16 +755,17 @@ main.page .card_title {
 
 .single .scholarships .text {
   color: #1F1B51;
-  font-size: 26px;
+  font-size: 1.5rem;
   line-height: 29px;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 .section_scholarships_financing {
   margin-bottom: 65px;
 }
 
 .section_scholarships_financing .description {
-  font-size: 32px;
+  font-size: 1.85rem;
   line-height: 39px;
 }
 
@@ -1160,7 +814,7 @@ main.page .scholarships_financing_card .card_title {
 }
 
 .scholarship_sub_title {
-  font-size: 26px;
+  font-size: 1.5rem;
   line-height: 30px;
   margin-bottom: 1rem;
   font-weight: bold;
@@ -1197,6 +851,7 @@ main.page .scholarships_financing_card .card_title {
   margin: var(--section-space-y, 5rem) 0;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*page_visa_guide*/
 .price_date_card {
   width: 100%;
@@ -1256,6 +911,7 @@ main.page .scholarships_financing_card .card_title {
   line-height: 29px;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*text_image_section*/
 .text_image_section {
   padding: 4rem 0;
@@ -1299,11 +955,38 @@ main.page .scholarships_financing_card .card_title {
   line-height: 1.17;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*bg_image_section*/
 .bg_image_section {
   margin: var(--section-space-y, 5rem) auto;
 }
 
+.bg_image_section .parallax-section {
+  height: 100%;
+  min-height: clamp(280px, 36vw, 420px);
+  border-radius: clamp(48px, 9vw, 120px);
+  overflow: hidden;
+}
+
+.bg_image_section.medium_height_image .parallax-section {
+  min-height: clamp(360px, 55vw, 560px);
+  display: flex;
+}
+
+/* Photo layer — natural look (no heavy brighten that washed images out) */
+.bg_image_section .parallax-image.bg {
+  background-color: #1F1B51;
+  background-image: var(--bg-image);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg_image_section .parallax-image.bg:after {
+  display: none;
+}
+
+/* Soft vignette for text contrast */
 .bg_image_section.content .bg:before {
   width: 100%;
   height: 100%;
@@ -1311,24 +994,9 @@ main.page .scholarships_financing_card .card_title {
   content: "";
   left: 0;
   top: 0;
-  background-color: rgba(31, 27, 81, 0.55);
-  z-index: 0;
-}
-
-.bg_image_section .parallax-section {
-  height: 100%;
-  min-height: 326px;
-  border-radius: 148px;
-  overflow: hidden;
-}
-
-.bg_image_section.medium_height_image .parallax-section {
-  min-height: 631px;
-  display: flex;
-}
-
-.bg_image_section .parallax-image {
-  /* height sized by mudt parallax JS */
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(31, 27, 81, 0.38) 0%, rgba(31, 27, 81, 0.2) 40%, rgba(31, 27, 81, 0.28) 65%, rgba(31, 27, 81, 0.45) 100%);
 }
 
 .bg_image_section .content_wrapper {
@@ -1336,21 +1004,41 @@ main.page .scholarships_financing_card .card_title {
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
-  padding: 60px 15px;
+  padding: clamp(2rem, 5vw, 3.75rem) clamp(1.25rem, 6vw, 3rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 24px rgba(0, 0, 0, 0.28);
 }
 
 .bg_image_section .content_wrapper h2 {
-  font-size: 41px;
-  line-height: 50px;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.2;
 }
 
+.bg_image_section .content_wrapper p {
+  font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
+  line-height: 1.5;
+}
+
+@media (max-width: 767.98px) {
+  .bg_image_section .parallax-section {
+    min-height: 220px;
+    border-radius: 32px;
+  }
+  .bg_image_section.medium_height_image .parallax-section {
+    min-height: 280px;
+  }
+  .bg_image_section .content_wrapper {
+    padding: 1.5rem 1.15rem;
+  }
+}
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*video_section*/
 .video_section {
   margin: var(--section-space-y, 5rem) 0;
@@ -1384,6 +1072,7 @@ main.page .scholarships_financing_card .card_title {
   height: 100vh;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*page_request_info_material*/
 .page_request_info_material h1 {
   color: #1F1B51;
@@ -1454,19 +1143,8 @@ main.page .scholarships_financing_card .card_title {
     border-radius: 148px;
   }
 }
-.page_request_info_material .container {
-  max-width: 100%;
-}
-
-@media (min-width: 1441px) {
-  .page_request_info_material .container {
-    max-width: 1320px;
-  }
-}
-.request-information footer {
-  margin-top: 0;
-}
-
+/* .request-information footer margin override no longer needed (global footer margin-top is 0) */
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*page visa guide*/
 .section_entering {
   margin-bottom: 5rem;
@@ -1484,7 +1162,7 @@ main.page .scholarships_financing_card .card_title {
 }
 
 .entering_item .description {
-  font-size: 26px;
+  font-size: 1.5rem;
   line-height: 32px;
   min-height: 180px;
 }
@@ -1646,7 +1324,7 @@ main.page .scholarships_financing_card .card_title {
 }
 /*section_important_tips*/
 .section_important_tips .important_tips_item ul li {
-  font-size: 26px;
+  font-size: 1.5rem;
   line-height: 32px;
   margin-left: 5rem;
 }
@@ -1714,11 +1392,12 @@ main.page .scholarships_financing_card .card_title {
 }
 
 .section_after_arrival .description {
-  font-size: 26px;
+  font-size: 1.5rem;
   line-height: 32px;
   font-weight: 300;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*section_application_deadlines*/
 .section_application_deadlines {
   position: relative;
@@ -1919,6 +1598,7 @@ main.page .scholarships_financing_card .card_title {
     padding: 1.75rem 1rem;
   }
 }
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*section_scholarships*/
 .section_scholarships {
   padding: var(--section-space-y-lg, 5rem) 0;
@@ -1931,10 +1611,11 @@ main.page .scholarships_financing_card .card_title {
   font-weight: 400;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*contact_page_section*/
 .contact_page_section .description,
 .contact_page_section h2 {
-  font-size: 26px;
+  font-size: 1.5rem;
   line-height: 32px;
 }
 
@@ -1949,7 +1630,7 @@ body.contact .section_contact_program p {
   line-height: 30px;
 }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 991.98px) {
   body.contact .section_contact_program h2,
   body.contact .section_contact_program .wrapper_content,
   body.contact .section_contact_program .wrapper_content p,
@@ -2003,9 +1684,10 @@ body.contact .section_contact_program p {
   margin: 0 auto;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*pre_bachelors_single*/
 .pre_bachelors_single .information_content {
-  font-size: 26px;
+  font-size: 1.5rem;
   line-height: 32px;
 }
 
@@ -2035,10 +1717,11 @@ body.contact .section_contact_program p {
 
 .pre_bachelors_single .text_section ul li,
 .pre_bachelors_single .section_offers .description {
-  font-size: 26px;
+  font-size: 1.5rem;
   line-height: 32px;
 }
 
+/* Migrated from scss/legacy — edit this file, not css/ */
 /*program_benefits_section*/
 .program_benefits_section {
   background-color: #EEF7FF;
@@ -2108,7 +1791,7 @@ body.contact .section_contact_program p {
 }
 
 .program_structure_modules .title_container h3 {
-  font-size: 26px;
+  font-size: 1.5rem;
   line-height: 29px;
   font-weight: bold;
 }
@@ -2235,6 +1918,7 @@ body.contact .section_contact_program p {
     font-size: 2.25rem;
   }
 }
+/* Migrated from scss/legacy — edit this file, not css/ */
 @media (max-width: 768px) {
   .campus_card_col:nth-child(even) {
     background-color: #fff;
@@ -2280,17 +1964,742 @@ body.contact .section_contact_program p {
     padding-top: 1rem;
     padding-bottom: 3rem;
   }
-  .career_paths_text {
-    font-size: 18px;
-    line-height: 1.3;
-  }
+  /* .career_paths_text mobile — see career_paths in single-styles */
   .section_tabs_slider .tab-button {
     text-align: left;
   }
+  /* specialisations mobile handled in sections/_specialisations.scss */
   .fees_card_col:not(.fees_card_col:last-child) {
     margin-bottom: 1rem;
   }
   .text_image_section {
     padding: 2rem 0;
+  }
+}
+/* Page hero: .header_section > .page_header (templates + flexible pages) */
+.header_section {
+  margin-bottom: 0;
+}
+
+.page_header {
+  position: relative;
+  margin-bottom: var(--section-space-y-lg, 5rem);
+}
+
+.page_header .image_wrapper {
+  --page-header-radius: 120px;
+  border-radius: var(--page-header-radius);
+  width: 100%;
+  overflow: hidden;
+  /* White underlay — navy .parallax-section bg was bleeding as a dark arc on the title card */
+  background-color: #fff;
+}
+
+.page_header .parallax-section {
+  height: clamp(300px, 48vh, 520px);
+  min-height: 300px;
+  background-color: transparent !important;
+}
+
+/* Static hero photo — parallax stretch/transform made campus images soft & distorted */
+.page_header .parallax-image,
+.page_header .parallax-image.bg {
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  transform: none !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  will-change: auto;
+  filter: none;
+  /* Avoid dark fringe on rounded clip */
+  backface-visibility: hidden;
+}
+
+.page_header .title_wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background-color: #fff;
+  /* Top-right only; bottom-left follows the hero radius so overflow clip doesn’t cut a dark arc */
+  border-radius: 0 var(--page-header-title-radius, 28px) 0 var(--page-header-radius);
+  padding: clamp(1.15rem, 3vw, 3.125rem) clamp(1rem, 3vw, 2.8125rem) 0;
+  width: 100%;
+  max-width: min(504px, 52%);
+  margin-left: 0;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.page_header .title_wrapper .section_title {
+  font-weight: bold;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+}
+
+.page_header_subtitle,
+.page_header .title_wrapper > :not(.section_title) {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.45;
+}
+
+.page_header_subtitle p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1599.98px) {
+  .page_header .title_wrapper {
+    max-width: min(504px, 58%);
+  }
+}
+@media (max-width: 1199.98px) {
+  .page_header {
+    margin-bottom: var(--section-space-y, 3rem);
+  }
+  .page_header .parallax-section {
+    height: clamp(240px, 42vh, 440px);
+    min-height: 240px;
+  }
+  .page_header .parallax-image,
+  .page_header .parallax-image.bg {
+    top: 0 !important;
+    background-position: center center !important;
+  }
+  .page_header .image_wrapper {
+    --page-header-radius: 64px;
+  }
+  .page_header .title_wrapper {
+    left: 0;
+    right: 0;
+    max-width: min(504px, 92%);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem 1.5rem 0;
+    --page-header-title-radius: 24px;
+  }
+}
+@media (max-width: 991.98px) {
+  .page_header .parallax-section {
+    height: clamp(220px, 40vh, 400px);
+  }
+  .page_header .image_wrapper {
+    --page-header-radius: 48px;
+  }
+  .page_header .title_wrapper {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1.5rem 1.25rem 0;
+    --page-header-title-radius: 24px;
+  }
+}
+@media (max-width: 767.98px) {
+  .page_header {
+    margin-bottom: var(--section-space-y-sm, 2rem);
+  }
+  .page_header .parallax-section {
+    height: clamp(200px, 38vh, 320px);
+    min-height: 200px;
+  }
+  .page_header .image_wrapper {
+    --page-header-radius: 28px;
+  }
+  /* Title card flush with image edges → same column as body text */
+  .page_header .title_wrapper {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1.15rem 1rem 0;
+    --page-header-title-radius: 20px;
+  }
+  .page_header .title_wrapper .section_title {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+  }
+}
+@media (max-width: 575.98px) {
+  .page_header .image_wrapper {
+    --page-header-radius: 24px;
+  }
+  .page_header .title_wrapper {
+    padding: 1rem 0.85rem 0;
+    --page-header-title-radius: 16px;
+  }
+}
+/* Flexible: cards_section — accreditation reuses .section_custom_cards */
+.section_custom_cards {
+  position: relative;
+  padding: var(--section-space-y-sm, 3rem) 0;
+}
+
+.section_custom_cards.bg_color:before {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #EEF7FF;
+}
+
+.section_custom_cards .custom_cards_row {
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+.section_custom_cards .custom_cards_card {
+  display: flex;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.section_custom_cards .custom_cards_card_item {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom_cards_card_body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.custom_cards_card .title {
+  font-size: clamp(1.15rem, 1rem + 0.45vw, 1.4rem);
+  line-height: 1.3;
+  font-weight: bold;
+}
+
+.custom_cards_card .big_title {
+  font-size: clamp(1.65rem, 1.1rem + 1.1vw, 2.35rem);
+  line-height: 1.2;
+  font-weight: bold;
+}
+
+.custom_cards_card .sub_title {
+  position: relative;
+  display: inline;
+}
+
+.custom_cards_text {
+  margin-top: 2rem;
+}
+
+.section_custom_cards .custom_cards_card_image {
+  width: 100%;
+  min-height: 511px;
+  margin-bottom: 3rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.section_custom_cards .custom_cards_card_image.medium_image {
+  min-height: 423px;
+}
+
+.section_custom_cards img {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Desktop: pill ends by column count (data-cols = Bootstrap span) */
+@media (min-width: 1200px) {
+  .section_custom_cards[data-cols="4"] .custom_cards_card:nth-child(3n+1) .custom_cards_card_image {
+    border-radius: 80px 0 0 80px;
+  }
+  .section_custom_cards[data-cols="4"] .custom_cards_card:nth-child(3n) .custom_cards_card_image {
+    border-radius: 0 80px 80px 0;
+  }
+  .section_custom_cards[data-cols="3"] .custom_cards_card:nth-child(4n+1) .custom_cards_card_image {
+    border-radius: 80px 0 0 80px;
+  }
+  .section_custom_cards[data-cols="3"] .custom_cards_card:nth-child(4n) .custom_cards_card_image {
+    border-radius: 0 80px 80px 0;
+  }
+  .section_custom_cards[data-cols="6"] .custom_cards_card:nth-child(odd) .custom_cards_card_image {
+    border-radius: 80px 0 0 80px;
+  }
+  .section_custom_cards[data-cols="6"] .custom_cards_card:nth-child(even) .custom_cards_card_image {
+    border-radius: 0 80px 80px 0;
+  }
+}
+/* Tablet landscape / small desktop */
+@media (max-width: 1199.98px) {
+  .section_custom_cards .custom_cards_card_image {
+    min-height: 0;
+    aspect-ratio: 4/3;
+    margin-bottom: 1.5rem;
+    border-radius: 48px;
+  }
+  .section_custom_cards .custom_cards_card_image.medium_image {
+    min-height: 0;
+    aspect-ratio: 4/3;
+  }
+  .custom_cards_card .big_title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    line-height: 1.2;
+  }
+  .custom_cards_card .title {
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    line-height: 1.3;
+  }
+  .custom_cards_text {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+}
+/* Tablet: 2-up already via col-md-6 */
+@media (max-width: 991.98px) {
+  .section_custom_cards .custom_cards_card_image {
+    border-radius: 40px;
+  }
+}
+@media (max-width: 767.98px) {
+  .section_custom_cards {
+    padding: var(--section-space-y-xs, 1rem) 0;
+  }
+  .section_custom_cards .custom_cards_card {
+    margin-bottom: 1.25rem;
+  }
+  .section_custom_cards .custom_cards_card_image {
+    aspect-ratio: 16/10;
+    margin-bottom: 1rem;
+    border-radius: 32px;
+  }
+  .custom_cards_card .title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+  .custom_cards_card .big_title {
+    font-size: 1.65rem;
+    line-height: 1.2;
+  }
+  .custom_cards_text {
+    margin-top: 0.85rem;
+  }
+}
+@media (max-width: 575.98px) {
+  .section_custom_cards .custom_cards_card_image {
+    aspect-ratio: 5/4;
+    border-radius: 28px;
+  }
+}
+/* accreditation — stacked card: logo → title → text
+   (must override .section_custom_cards .custom_cards_card { display: flex } row) */
+.accreditation:before {
+  display: none;
+}
+
+.accreditation .accreditation_card.custom_cards_card,
+.accreditation .accreditation_card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  height: 100%;
+  margin-bottom: 0;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-width: 0;
+}
+
+.accreditation .logo_wrapper {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  margin-bottom: 0;
+  padding: 0.25rem 0;
+}
+
+.accreditation .logo_wrapper img,
+.accreditation .custom_cards_image {
+  display: block;
+  width: auto;
+  max-width: min(100%, 220px);
+  max-height: 96px;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  flex-shrink: 0;
+}
+
+.accreditation .accreditation_card h2,
+.accreditation .custom_cards_title {
+  flex: 0 0 auto;
+  width: 100%;
+  margin: 0;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  line-height: 1.25;
+  font-weight: 700;
+  min-height: 0;
+  color: #1F1B51;
+}
+
+.accreditation .custom_cards_text {
+  flex: 1 1 auto;
+  width: 100%;
+  margin-top: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1F1B51;
+}
+
+.accreditation .custom_cards_text p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 991.98px) {
+  .accreditation .logo_wrapper img,
+  .accreditation .custom_cards_image {
+    max-height: 80px;
+    max-width: min(100%, 180px);
+  }
+}
+@media (max-width: 767.98px) {
+  .accreditation .accreditation_card.custom_cards_card,
+  .accreditation .accreditation_card {
+    gap: 0.65rem;
+    margin-bottom: 0.5rem;
+  }
+  .accreditation .logo_wrapper img,
+  .accreditation .custom_cards_image {
+    max-height: 72px;
+    max-width: min(100%, 160px);
+  }
+  .accreditation .accreditation_card h2,
+  .accreditation .custom_cards_title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+  .accreditation .custom_cards_text {
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+}
+/* Flexible: our_goals_section */
+.section_our_goals {
+  position: relative;
+  margin: var(--section-space-y) 0;
+  padding: 0;
+}
+
+.section_our_goals.my-5 {
+  margin-top: var(--section-space-y) !important;
+  margin-bottom: var(--section-space-y) !important;
+}
+
+.section_our_goals__title {
+  margin: 0 0 clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.section_our_goals__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 2.5vw, 1.75rem);
+  align-items: stretch;
+}
+
+.section_our_goals__card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+}
+
+.section_our_goals__card-copy {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin-bottom: 1rem;
+  min-height: 0;
+}
+
+.section_our_goals__card-title {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.125rem, 2.2vw, 1.625rem);
+  line-height: 1.25;
+  font-weight: 700;
+  color: #000;
+  min-height: 2.5em;
+}
+
+.section_our_goals__card-text {
+  margin: 0;
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  line-height: 1.5;
+  color: #333;
+  flex: 1 1 auto;
+}
+
+.section_our_goals__card-text p {
+  margin: 0 0 0.5rem;
+}
+
+.section_our_goals__card-text p:last-child {
+  margin-bottom: 0;
+}
+
+.section_our_goals__card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  border-radius: clamp(20px, 5vw, 32px);
+  background-color: #eef2f7;
+  flex: 0 0 auto;
+  margin-top: auto;
+}
+
+.section_our_goals__card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section_our_goals__footer {
+  margin-top: clamp(1.5rem, 4vw, 2.75rem);
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 1.625rem);
+  line-height: 1.4;
+  font-weight: 400;
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section_our_goals__footer p {
+  margin: 0;
+}
+
+/* Tablet: still one column — avoids broken 2+1 with 3 cards */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .section_our_goals__grid {
+    grid-template-columns: 1fr;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 2rem;
+  }
+  .section_our_goals__card-image {
+    border-radius: 40px;
+  }
+}
+/* Desktop: 3 equal columns */
+@media (min-width: 992px) {
+  .section_our_goals__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.75rem 1.5rem;
+    align-items: stretch;
+  }
+  .section_our_goals__card {
+    height: 100%;
+  }
+  .section_our_goals__card-copy {
+    margin-bottom: 1.25rem;
+    min-height: 9.5rem;
+  }
+  .section_our_goals__card-title {
+    min-height: 3.75em; /* up to 3 lines — equal headers */
+    line-height: 1.25;
+  }
+  .section_our_goals__card-text {
+    min-height: 4.5em;
+  }
+  .section_our_goals__card-image {
+    border-radius: 0;
+    aspect-ratio: 16/11;
+    height: auto;
+  }
+  .section_our_goals__card:first-child .section_our_goals__card-image {
+    border-radius: 80px 0 0 80px;
+  }
+  .section_our_goals__card:last-child .section_our_goals__card-image {
+    border-radius: 0 80px 80px 0;
+  }
+  /* Middle card (3 items): square corners on image */
+  .section_our_goals__card:not(:first-child):not(:last-child) .section_our_goals__card-image {
+    border-radius: 0;
+  }
+}
+@media (max-width: 767.98px) {
+  .section_our_goals {
+    margin: var(--section-space-y-sm) 0;
+  }
+  .section_our_goals__title {
+    margin-bottom: 1.25rem;
+    font-size: clamp(1.375rem, 6vw, 1.75rem);
+    line-height: 1.25;
+  }
+  .section_our_goals__grid {
+    gap: 1.35rem;
+  }
+  .section_our_goals__card-copy {
+    margin-bottom: 0.75rem;
+  }
+  .section_our_goals__footer {
+    margin-top: 1.35rem;
+    font-size: 1rem;
+    line-height: 1.45;
+    text-align: left;
+  }
+}
+/* Legacy class hooks (if old markup still cached) */
+.section_our_goals .custom_cards_card_image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.section_our_goals .custom_cards_card_image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Migrated from scss/legacy — edit this file, not css/ */
+/*section_our_goals — image radii in scss/sections/_our-goals.scss */
+.section_our_goals {
+  position: relative;
+}
+
+.section_our_goals .description {
+  font-weight: 500;
+  padding: 0 1rem;
+}
+
+.our_goals_text {
+  margin-top: 1rem;
+}
+
+.list_item {
+  color: black;
+}
+
+main.page .list_item_title {
+  position: relative;
+  padding-left: 25px;
+  font-weight: 400;
+  font-size: 1.85rem;
+  line-height: 39px;
+  margin-bottom: 2rem;
+}
+
+/* Flexible: why_munich_section (.section_digital_technologies) */
+.digital_technologies_card {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.digital_technologies_card:nth-child(even) {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+}
+
+.digital_technologies_card_body {
+  min-height: 320px;
+}
+
+.custom_description {
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 305px;
+  padding: 15px;
+}
+
+.digital_technologies_title {
+  padding-top: 1rem;
+}
+
+.digital_technologies_card:nth-child(odd) .digital_technologies_image {
+  margin-bottom: 2rem;
+}
+
+.digital_technologies_image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 24px;
+}
+
+@media (max-width: 1199.98px) {
+  .digital_technologies_card_body {
+    min-height: 0;
+  }
+  .custom_description {
+    font-size: 1.15rem;
+    line-height: 1.35;
+    max-width: none;
+    padding: 0.5rem 0;
+  }
+}
+@media (max-width: 767.98px) {
+  .digital_technologies_card {
+    margin-bottom: 1.5rem;
+  }
+  .digital_technologies_card:nth-child(even) {
+    flex-direction: column;
+  }
+  .digital_technologies_card:nth-child(odd) .digital_technologies_image {
+    margin-bottom: 1rem;
+  }
+  .digital_technologies_title {
+    font-size: 1.15rem;
+    padding-top: 0.5rem;
+  }
+  .digital_technologies_text {
+    margin-bottom: 0 !important;
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+}
+/* Global type scale — laptops / MacBooks denser than 1920 desktops.
+   Rem / em / clamp(...rem) type follows html font-size site-wide. */
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* MacBook Pro 16 / large laptop (~1512–1799 CSS px) */
+@media (max-width: 1799.98px) and (min-width: 1512px) {
+  html {
+    font-size: 95%; /* ~15.2px */
+  }
+}
+/* Common MacBook 13–15 / 1440-class */
+@media (max-width: 1511.98px) and (min-width: 1280px) {
+  html {
+    font-size: 90.625%; /* ~14.5px */
+  }
+}
+/* Smaller laptop / landscape tablet */
+@media (max-width: 1279.98px) and (min-width: 992px) {
+  html {
+    font-size: 93.75%; /* ~15px */
   }
 }

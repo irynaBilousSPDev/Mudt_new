@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-xl-4 d-flex align-items-center">
                             <h1 class="section_title mb-5">
-                                <?php echo $studying_banner_title; ?>
+                                <?php echo mudt_kses_title($studying_banner_title); ?>
                             </h1>
                         </div>
                         <?php if ($studying_banner_description) : ?>

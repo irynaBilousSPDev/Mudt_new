@@ -1,0 +1,76 @@
+/* Migrated from scss/legacy — edit this file, not css/ */
+
+@media (max-width: 768px) {
+    .campus_card_col:nth-child(even) {
+        background-color: #fff;
+    }
+
+    .campus_card_col:nth-child(odd) {
+        background-color: #E9F3FF;
+    }
+
+    .information_side {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+
+    .price_date_info, .item_offer_card_body {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .international_card {
+        max-width: 100%;
+    }
+
+    .campus_card_col {
+        padding: 15px;
+    }
+
+    .logo_wrapper {
+        min-height: auto;
+    }
+
+    .logo_wrapper img {
+        max-width: 300px;
+    }
+
+    .section_international {
+        padding-bottom: var(--section-space-y-lg, 5rem);
+    }
+
+    main.page .section_scholarships_financing h2 {
+        font-size: 1.75rem;
+    }
+
+    .section_scholarships_financing .description {
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    .scholarships_financing_card_col {
+        padding: 15px;
+    }
+
+    .why_program_section {
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+    }
+
+    /* .career_paths_text mobile — see career_paths in single-styles */
+
+    .section_tabs_slider .tab-button {
+        text-align: left;
+    }
+
+    /* specialisations mobile handled in sections/_specialisations.scss */
+
+    .fees_card_col:not(.fees_card_col:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    .text_image_section {
+        padding: 2rem 0;
+    }
+}

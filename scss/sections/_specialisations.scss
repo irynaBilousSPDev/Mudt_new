@@ -1,0 +1,276 @@
+/* Program single: .specialisations_section */
+
+.specialisations_section {
+    position: relative;
+    padding-top: var(--section-space-y, 3rem);
+    padding-bottom: var(--section-space-y, 3rem);
+}
+
+.specialisations_section.bg-gray {
+    padding-top: var(--section-space-y-lg, 5rem);
+    padding-bottom: var(--section-space-y-lg, 5rem);
+}
+
+.specialisations_section.bg-gray::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #F5F5F5;
+    z-index: -1;
+}
+
+.specialisations_section__title {
+    margin-bottom: clamp(1rem, 2.5vw, 2rem);
+}
+
+.specialisations_section .description {
+    max-width: 52rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: clamp(1.5rem, 4vw, 3rem);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.5;
+}
+
+.specialisations_section.bg-gray .description {
+    margin-bottom: 0;
+}
+
+.specialisations_section .specialisations_list {
+    margin-top: 0;
+}
+
+.specialisations_section .section_tabs_slider {
+    margin-bottom: 0;
+}
+
+.specialisations_section .section_tabs_slider .tabs {
+    background-color: #EEF7FF;
+    border-radius: clamp(32px, 6vw, 121px);
+    display: flex;
+    overflow: hidden;
+    min-height: 0;
+    height: auto;
+}
+
+.specialisations_section .section_tabs_slider .tab-buttons {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 2.5vw, 1.5rem);
+    overflow: visible;
+    position: relative;
+    top: auto;
+}
+
+.specialisations_section .section_tabs_slider .tab-buttons-content {
+    width: 100%;
+    max-width: 536px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.specialisations_section .section_tabs_slider .specialisations_tabs_title {
+    margin-bottom: clamp(1.25rem, 3vw, 2.5rem);
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    line-height: 1.2;
+    padding: 0;
+}
+
+.specialisations_section .section_tabs_slider .tab-button {
+    width: 100%;
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
+    line-height: 1.35;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    color: #000;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    padding: 0.65rem 2.5rem 0.65rem 0;
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.specialisations_section .section_tabs_slider .tab-button:hover,
+.specialisations_section .section_tabs_slider .tab-button.active {
+    font-weight: bold;
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
+}
+
+.specialisations_section .section_tabs_slider .tab-button .arrow_wrapper {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.specialisations_section .section_tabs_slider .tab-button.active .tab_button_title {
+    padding-left: 1rem;
+}
+
+.specialisations_section .section_tabs_slider .tab-contents {
+    width: 50%;
+    color: #fff;
+    min-width: 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+}
+
+.specialisations_section .section_tabs_slider .tab-contents .tab-content {
+    background-color: #1F1B51;
+    display: none;
+}
+
+.specialisations_section .section_tabs_slider .tab-contents .tab-content.active {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 100%;
+}
+
+.specialisations_section .section_tabs_slider .tab-content-image {
+    /* full-width cover — shared rules in _tabs-slider.scss */
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.specialisations_section .section_tabs_slider .tab-content-wrapper {
+    min-height: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.specialisations_section .section_tabs_slider .tab-contents .content {
+    padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.specialisations_section .section_tabs_slider .tab-contents .sub_title {
+    font-size: clamp(1.125rem, 2vw, 1.625rem);
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+}
+
+.specialisations_section .section_tabs_slider .tab-content-wrapper a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Legacy list items */
+
+.specialisation_item {
+    padding: clamp(1rem, 2.5vw, 1.625rem) clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.specialisation_item h3 {
+    font-weight: bold;
+    font-size: clamp(1.25rem, 2.5vw, 2.25rem);
+    line-height: 1.25;
+}
+
+.specialisation_item:nth-child(odd) {
+    background-color: #E9F3FF;
+}
+
+/* —— Desktop: title lives in the tabs panel —— */
+
+@media (min-width: 992px) {
+    .specialisations_section--has-tabs > .container > .specialisations_section__title {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .specialisations_section--has-tabs .description {
+        margin-bottom: clamp(2rem, 5vw, 4rem);
+    }
+
+    /* Keep panels in .tab-contents on desktop */
+    .specialisations_section .section_tabs_slider .tab-buttons-content > .tab-content {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .specialisations_section .section_tabs_slider .tabs {
+        border-radius: clamp(28px, 5vw, 80px);
+    }
+}
+
+/* Accordion UI shared via _tabs-slider.scss — only section chrome here */
+
+@media (max-width: 991.98px) {
+    .specialisations_section .section_tabs_slider .tab-buttons,
+    .specialisations_section .section_tabs_slider .tab-contents {
+        width: 100%;
+    }
+
+    .specialisations_section .section_tabs_slider .specialisations_tabs_title {
+        display: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .specialisations_section {
+        padding-top: var(--section-space-y-sm, 2rem);
+        padding-bottom: var(--section-space-y, 2.5rem);
+    }
+
+    .specialisations_section.bg-gray {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .specialisations_section__title,
+    .specialisations_section .section_title {
+        font-size: 1.375rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.75rem;
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    .specialisations_section .description {
+        font-size: 0.9375rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: 1rem;
+        padding-left: 0.15rem;
+        padding-right: 0.15rem;
+        max-width: 36rem;
+    }
+
+    .specialisations_section .description p {
+        font-size: inherit;
+        line-height: inherit;
+        margin-bottom: 0.85rem;
+    }
+
+    .specialisations_section .description p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .specialisations_section__title,
+    .specialisations_section .section_title {
+        font-size: 1.25rem !important;
+    }
+
+    .specialisations_section .description {
+        font-size: 0.875rem !important;
+        line-height: 1.45 !important;
+    }
+}

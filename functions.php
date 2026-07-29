@@ -12,6 +12,8 @@ require_once get_template_directory() . '/inc/cf7.php';
 require_once get_template_directory() . '/inc/acf-options.php';
 require_once get_template_directory() . '/inc/acf-json.php';
 require_once get_template_directory() . '/inc/nav-walker.php';
+require_once get_template_directory() . '/inc/title-kses.php';
+require_once get_template_directory() . '/inc/breadcrumbs.php';
 
 if (function_exists('add_theme_support')) {
     add_theme_support('post-thumbnails');

@@ -36,6 +36,7 @@
 .summary_credits {
     position: relative;
     z-index: 1;
+    margin-bottom: var(--section-space-y-sm);
 }
 
 .wrapper_ects {
@@ -309,6 +310,15 @@
     margin-bottom: clamp(1.5rem, 3vw, 3rem);
 }
 
+.elective_modules_details {
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+    padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.elective_modules_details .elective_modules_title {
+    margin-bottom: 0;
+}
+
 .elective_modules {
     max-width: 890px;
     margin: 0 auto;
@@ -317,6 +327,44 @@
 .elective_modules .col-md-6,
 .elective_modules [class*='col-'] {
     margin-bottom: 1rem;
+    min-width: 0;
+}
+
+.elective_modules p {
+    margin-bottom: 0.65rem;
+}
+
+.elective_modules p:last-child {
+    margin-bottom: 0;
+}
+
+/* ACF WYSIWYG: title is usually <p><strong>…</strong></p> or a heading */
+.elective_modules h2,
+.elective_modules h3,
+.elective_modules h4,
+.elective_modules strong,
+.elective_modules b {
+    font-size: 1.05em;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.elective_modules p:has(> strong:only-child),
+.elective_modules p:has(> b:only-child) {
+    margin-bottom: 0.25rem;
+}
+
+.elective_modules p + p:has(> strong),
+.elective_modules p + p:has(> b),
+.elective_modules p + h2,
+.elective_modules p + h3,
+.elective_modules p + h4 {
+    margin-top: 1.15rem;
+}
+
+.elective_modules p:empty,
+.elective_modules p:has(> br:only-child) {
+    display: none;
 }
 
 .elective_modules ul {
@@ -360,6 +408,12 @@
         max-width: 100%;
     }
 
+    /* Electives: avoid 2-col stagger before full mobile stack */
+    .elective_modules .row > [class*='col-'] {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
     .study_plan_list .item_semester_header .semester_number {
         font-size: 1rem;
     }
@@ -380,23 +434,68 @@
     }
 }
 
-/* Mobile */
+/* Mobile — standard mobile type scale */
 
 @media (max-width: 767.98px) {
+    .study_plan_header {
+        padding: 2rem 0 2.75rem;
+    }
+
+    .study_plan_header .section_title {
+        font-size: 1.25rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 0.85rem;
+        padding-left: 0.15rem;
+        padding-right: 0.15rem;
+    }
+
+    .study_plan_header .description {
+        font-size: 0.9375rem !important;
+        line-height: 1.5 !important;
+        text-align: left;
+        max-width: 36rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 0.15rem;
+    }
+
+    .study_plan_header .description p {
+        font-size: inherit;
+        line-height: inherit;
+        margin-bottom: 0.75rem;
+        text-align: left;
+    }
+
+    .study_plan_header .description p:last-child {
+        margin-bottom: 0;
+    }
+
     .wrapper_ects {
         margin-top: -2.5rem;
-        padding: 1.25rem 0.5rem 1.5rem;
-        border-radius: 32px;
+        padding: 1.25rem 0.75rem 1.5rem;
+        border-radius: 28px;
+    }
+
+    .wrapper_ects .total_ects h3 {
+        font-size: 1.125rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 1.15rem;
     }
 
     .total_ects_list {
         padding: 0;
         margin-bottom: 1.5rem;
+        font-size: 0.875rem;
+        line-height: 1.35;
     }
 
     .total_ects_item {
         padding: 0.75rem 0.5rem;
         border-bottom: 1px solid rgba(31, 27, 81, 0.08);
+    }
+
+    .total_ects_item strong {
+        font-size: 1.25rem;
     }
 
     .total_ects_list .row > [class*='col-']:last-child .total_ects_item {
@@ -417,35 +516,129 @@
         padding: 0.85rem 0.75rem 0.85rem 1rem;
     }
 
+    .study_plan_list .item_semester_header .semester_number {
+        font-size: 0.9375rem;
+    }
+
+    .study_plan_list .item_semester_header .semester_title {
+        font-size: 0.8125rem;
+        line-height: 1.35;
+    }
+
     .study_plan_list .item_semester_header .col_item--ects {
-        width: 4.5rem;
-        min-width: 4.5rem;
+        width: 4.25rem;
+        min-width: 4.25rem;
         border-radius: 0 24px 24px 0;
-        font-size: 0.75rem;
+        font-size: 0.6875rem;
     }
 
     .study_plan_list .item_semester_header .col_item--ects strong {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
     }
 
     .item_semester_content {
         border-radius: 0 0 20px 20px;
+        font-size: 0.875rem;
+        line-height: 1.45;
+        padding: 0.9rem 1rem 1.1rem;
+    }
+
+    .elective_courses {
+        padding: 2rem 0;
+    }
+
+    .elective_courses .container,
+    .study_plan_section > .container {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
     }
 
     .elective_modules {
         max-width: 100%;
     }
 
-    .elective_modules [class*='col-'] {
-        margin-bottom: 1.25rem;
+    .elective_modules_title {
+        font-size: 1.125rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 1rem;
+        padding-left: 0.15rem;
+        padding-right: 0.15rem;
+        box-sizing: border-box;
+    }
+
+    /* One column — keep side inset (do not bleed to viewport edges) */
+    .elective_modules .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 0;
+        row-gap: 0;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .elective_modules .row > [class*='col-'] {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 0;
+        padding-left: 0.15rem !important;
+        padding-right: 0.15rem !important;
+        font-size: 0.875rem !important;
+        line-height: 1.45 !important;
+        box-sizing: border-box;
+    }
+
+    .elective_modules .row > [class*='col-'] + [class*='col-'] {
+        margin-top: 1.15rem;
+    }
+
+    .elective_modules h2,
+    .elective_modules h3,
+    .elective_modules h4,
+    .elective_modules strong,
+    .elective_modules b {
+        font-size: 0.9375rem !important;
+        line-height: 1.3 !important;
+        overflow-wrap: break-word;
+        word-break: normal;
+    }
+
+    .elective_modules p {
+        margin-bottom: 0.55rem;
+    }
+
+    .elective_modules p:has(> strong:only-child),
+    .elective_modules p:has(> b:only-child) {
+        margin-bottom: 0.2rem;
+    }
+
+    .elective_modules p + p:has(> strong),
+    .elective_modules p + p:has(> b),
+    .elective_modules p + h2,
+    .elective_modules p + h3,
+    .elective_modules p + h4 {
+        margin-top: 1rem;
     }
 }
 
 @media (max-width: 479.98px) {
+    .study_plan_header .section_title {
+        font-size: 1.125rem !important;
+        line-height: 1.25 !important;
+    }
+
+    .study_plan_header .description {
+        font-size: 0.875rem !important;
+        line-height: 1.5 !important;
+    }
+
     .wrapper_ects {
         margin-top: -2rem;
-        padding-left: 0.35rem;
-        padding-right: 0.35rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        border-radius: 24px;
+    }
+
+    .wrapper_ects .total_ects h3 {
+        font-size: 1rem !important;
     }
 
     .study_plan_list .item_semester_header .col_item--ects {
@@ -454,6 +647,28 @@
     }
 
     .study_plan_list .item_semester_header .col_item--ects strong {
-        font-size: 1.125rem;
+        font-size: 1.0625rem;
+    }
+
+    .elective_courses .container,
+    .study_plan_section > .container {
+        padding-left: 1.15rem !important;
+        padding-right: 1.15rem !important;
+    }
+
+    .elective_modules .row > [class*='col-'] {
+        font-size: 0.8125rem !important;
+        line-height: 1.45 !important;
+        padding-left: 0.1rem !important;
+        padding-right: 0.1rem !important;
+    }
+
+    .elective_modules h2,
+    .elective_modules h3,
+    .elective_modules h4,
+    .elective_modules strong,
+    .elective_modules b {
+        font-size: 0.875rem !important;
+        line-height: 1.3 !important;
     }
 }

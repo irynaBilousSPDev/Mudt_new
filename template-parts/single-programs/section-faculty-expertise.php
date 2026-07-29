@@ -37,7 +37,7 @@ $faculty_expertise = new WP_Query($args); ?>
                         $image = get_the_post_thumbnail_url($post->ID, 'image_team');
                         $title_position = get_field('position_title', $post->ID);
                         ?>
-                        <div class="col-6 col-lg-3">
+                        <div class="col-6 col-md-4 col-lg-3 faculty_expertise_col">
                             <div class="faculty_expertise_item">
                                 <div class="faculty_expertise_image_wrapper">
                                     <div role="img" class="faculty_expertise_image bg"

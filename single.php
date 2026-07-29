@@ -4,6 +4,9 @@
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                 <div class="container">
                     <?php
+                    if (function_exists('mudt_render_breadcrumbs')) {
+                        mudt_render_breadcrumbs();
+                    }
                     get_template_part('template-parts/page-header', null, array(
                         'title' => __('News', 'MUDT'),
                         'image' => get_the_post_thumbnail_url(get_the_ID(), 'page_image'),

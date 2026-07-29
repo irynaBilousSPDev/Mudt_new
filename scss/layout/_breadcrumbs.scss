@@ -1,0 +1,63 @@
+/* Theme breadcrumbs */
+
+.mudt-breadcrumbs {
+    margin: 0 0 1rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: #6b6b6b;
+}
+
+.mudt-breadcrumbs__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.mudt-breadcrumbs__item {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.mudt-breadcrumbs__item:not(:last-child)::after {
+    content: '/';
+    margin-left: 0.5rem;
+    color: #9a9a9a;
+}
+
+.mudt-breadcrumbs__link {
+    color: #1F1B51;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.mudt-breadcrumbs__link:hover,
+.mudt-breadcrumbs__link:focus-visible {
+    color: #2994FF;
+    border-bottom-color: #2994FF;
+}
+
+.mudt-breadcrumbs__current {
+    color: #6b6b6b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: min(100%, 42ch);
+}
+
+@media (max-width: 575.98px) {
+    .mudt-breadcrumbs {
+        font-size: 0.8125rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .mudt-breadcrumbs__current {
+        white-space: normal;
+        max-width: 100%;
+    }
+}

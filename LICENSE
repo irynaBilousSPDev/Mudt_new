@@ -1,0 +1,13 @@
+Copyright (c) Munich University of Digital Technologies & Applied Sciences (MUDT).
+All rights reserved.
+
+This WordPress theme ("Mudt_new" / MUDT) and its accompanying files are proprietary
+software developed for MUDT. Unauthorized copying, modification, distribution, or
+use of this software, via any medium, is strictly prohibited without prior written
+permission from the copyright holder.
+
+Third-party libraries and CDN assets used by the theme remain under their respective
+licenses (e.g. Bootstrap, jQuery, Slick, AOS).
+
+For deployment and contribution practices within the authorized team, see
+README.md and CONTRIBUTING.md.

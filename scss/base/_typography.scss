@@ -1,0 +1,29 @@
+/* Global type scale — laptops / MacBooks denser than 1920 desktops.
+   Rem / em / clamp(...rem) type follows html font-size site-wide. */
+
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* MacBook Pro 16 / large laptop (~1512–1799 CSS px) */
+@media (max-width: 1799.98px) and (min-width: 1512px) {
+    html {
+        font-size: 95%; /* ~15.2px */
+    }
+}
+
+/* Common MacBook 13–15 / 1440-class */
+@media (max-width: 1511.98px) and (min-width: 1280px) {
+    html {
+        font-size: 90.625%; /* ~14.5px */
+    }
+}
+
+/* Smaller laptop / landscape tablet */
+@media (max-width: 1279.98px) and (min-width: 992px) {
+    html {
+        font-size: 93.75%; /* ~15px */
+    }
+}
