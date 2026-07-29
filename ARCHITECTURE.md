@@ -67,10 +67,9 @@ Mudt_new/
 | | |
 |--|--|
 | URL | uni-munich.de |
-| Branch | `main` |
 | Theme folder | `Mudt_new` |
 
-Local secrets (if used): `deploy.local.env` (gitignored). Do not document staging hosts in this repo.
+Local secrets (if used): `deploy.local.env` (not committed). Do not document staging hosts in this repo.
 
 ## Conventions
 

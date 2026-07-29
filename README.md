@@ -60,10 +60,3 @@ acf-json/          ACF field groups (partial)
 ```
 
 Full map: [ARCHITECTURE.md](./ARCHITECTURE.md).
-
-## GitHub
-
-https://github.com/irynaBilousSPDev/Mudt_new.git
-
-- `dev` — day-to-day work  
-- `main` — production

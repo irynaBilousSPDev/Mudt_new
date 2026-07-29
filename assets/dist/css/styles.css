@@ -3096,7 +3096,7 @@ body.home .section_main_banner {
   min-width: 0;
   min-height: 0 !important;
   margin-bottom: 0;
-  font-size: clamp(1rem, 1.8vw, 1.3125rem);
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
   line-height: 1.05 !important;
   max-width: 100%;
   text-align: left;
@@ -3150,7 +3150,7 @@ body.home .section_main_banner {
 }
 
 .section_main_banner .item_offer_card_body_position .item_offer_card_body__title {
-  font-size: clamp(0.875rem, 1.3vw, 1rem);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
   line-height: 1.25;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -3159,7 +3159,7 @@ body.home .section_main_banner {
 }
 
 .section_main_banner .item_offer_card_body_position .item_offer_card_body_sub__title {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1.2;
   margin-bottom: 0.25rem;
 }
@@ -3314,7 +3314,7 @@ body.home .section_main_banner {
     max-width: calc(100% - 7rem);
     margin: 0;
     padding-right: 0.35rem;
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
     line-height: 1.05 !important;
   }
   .section_main_banner .start_date_group {
@@ -3370,12 +3370,12 @@ body.home .section_main_banner {
     display: block;
   }
   .section_main_banner .item_offer_card_body_position .item_offer_card_body__title {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     line-height: 1.2;
     font-weight: 700;
   }
   .section_main_banner .item_offer_card_body_position .item_offer_card_body_sub__title {
-    font-size: 0.625rem;
+    font-size: 0.6875rem;
     margin-bottom: 0.1rem;
     letter-spacing: 0.02em;
     opacity: 0.85;
@@ -3471,7 +3471,7 @@ body.home .section_main_banner {
     max-width: 100%;
     padding-right: 0;
     padding-top: 2.35rem; /* room under flush start_date */
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
     line-height: 1.1 !important;
   }
   .section_main_banner .start_date_group {
@@ -3508,12 +3508,12 @@ body.home .section_main_banner {
     width: 100%;
   }
   .section_main_banner .item_offer_card_body_position .item_offer_card_body__title {
-    font-size: 0.6875rem;
+    font-size: 0.8125rem;
     line-height: 1.2;
     font-weight: 700;
   }
   .section_main_banner .item_offer_card_body_position .item_offer_card_body_sub__title {
-    font-size: 0.5625rem;
+    font-size: 0.625rem;
   }
   .section_main_banner .btns_card {
     margin-top: auto;
@@ -3729,7 +3729,7 @@ body.home .section_main_banner {
     max-width: calc(100% - 9.5rem);
     margin: 0 0 0.65rem;
     padding-right: 0.5rem;
-    font-size: clamp(0.9375rem, 1.15vw, 1.25rem);
+    font-size: clamp(1.0625rem, 1.35vw, 1.4375rem);
     line-height: 1.05 !important;
   }
   /*
@@ -3818,13 +3818,13 @@ body.home .section_main_banner {
     display: none;
   }
   .section_main_banner .item_offer_card_body_position .item_offer_card_body__title {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.25;
     white-space: normal;
     font-weight: 700;
   }
   .section_main_banner .item_offer_card_body_position .item_offer_card_body_sub__title {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     margin-bottom: 0.2rem;
     opacity: 0.9;
   }
@@ -3880,12 +3880,12 @@ body.home .section_main_banner {
   }
   .section_main_banner__offers.three_programs .item_offer,
   .section_main_banner .offers_side.three_programs .item_offer {
-    max-height: 170px;
+    max-height: 190px;
   }
 }
 @media (min-width: 1440px) {
   .section_main_banner .item_offer_card_title {
-    font-size: clamp(1.0625rem, 1.2vw, 1.375rem);
+    font-size: clamp(1.1875rem, 1.4vw, 1.5625rem);
     max-width: calc(100% - 11rem);
     line-height: 1.2;
   }
@@ -3905,7 +3905,7 @@ body.home .section_main_banner {
   }
   .section_main_banner__offers.three_programs .item_offer,
   .section_main_banner .offers_side.three_programs .item_offer {
-    max-height: 185px;
+    max-height: 205px;
   }
   .section_main_banner .custom_btn a {
     font-size: 0.875rem;

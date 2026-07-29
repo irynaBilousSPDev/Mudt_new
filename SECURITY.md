@@ -7,7 +7,7 @@ actively maintained.
 
 ## Reporting a vulnerability
 
-Do **not** open a public GitHub issue for security problems.
+Do **not** open a public issue for security problems.
 
 Contact the project maintainers / SPDev team privately with:
 

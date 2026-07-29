@@ -1,19 +1,15 @@
-Deploy the **Mudt_new** theme to **production** — merge **`dev` → `main`**, push, then FTPS via `deploy.local.env` (`SFTP_PROD_*`).
-
-| Branch | Use |
-|--------|-----|
-| `dev` | Day-to-day work |
-| `main` | Production |
-
-Prefer this flow over ad-hoc prod uploads.
+Deploy the **Mudt_new** theme to **production** via FTPS (`deploy.local.env` / `SFTP_PROD_*`).
 
 ```bash
-git checkout main
-git merge dev
-git push origin main
 npm run deploy:prod
 ```
 
-First full sync: `DEPLOY_FULL=true npm run deploy:prod`
+Full sync / large updates (batched FTPS):
 
-Never commit `deploy.local.env`.
+```bash
+DEPLOY_FULL=true npm run deploy:prod
+```
+
+Optional: `DEPLOY_BATCH_SIZE`, `DEPLOY_BATCH_PAUSE_MS` in `deploy.local.env`.
+
+Never commit `deploy.local.env`. Git metadata (`.git*`) is not uploaded.

@@ -33,6 +33,8 @@ const EXCLUDE_FILE_NAMES = new Set([
 	'deploy.local.env.example',
 	'.DS_Store',
 	'Thumbs.db',
+	'.gitignore',
+	'.gitattributes',
 ]);
 const EXCLUDE_FILE_BASENAMES = new Set(['package.json', 'package-lock.json']);
 
@@ -121,6 +123,7 @@ function shouldSkip(relativePosix) {
 	const parts = relativePosix.split('/');
 	for (const part of parts) {
 		if (EXCLUDE_DIR_NAMES.has(part)) return true;
+		if (part.startsWith('.git')) return true;
 	}
 	const base = parts[parts.length - 1];
 	if (EXCLUDE_FILE_NAMES.has(base) || EXCLUDE_FILE_BASENAMES.has(base)) return true;
@@ -185,7 +188,7 @@ function assertGitReadyForDeploy(env) {
 	}).trim();
 	if (parseInt(ahead, 10) > 0) {
 		throw new Error(
-			`Deploy blocked: push first (git push origin ${branch}) — ${ahead} commit(s) not on GitHub yet.`
+			`Deploy blocked: push remote first (git push) — ${ahead} local commit(s) not on remote yet.`
 		);
 	}
 }
@@ -212,10 +215,44 @@ async function connectDeployClient(env) {
 	return connectFtp(env);
 }
 
+/** Prefer live site files first; docs/src last. */
+function deployPhase(relativePosix) {
+	if (relativePosix.startsWith('assets/dist/')) return 0;
+	if (/\.(php|css)$/i.test(relativePosix) && !relativePosix.startsWith('assets/')) return 1;
+	if (relativePosix === 'style.css' || relativePosix === 'functions.php') return 1;
+	if (relativePosix.startsWith('inc/') || relativePosix.startsWith('template-parts/') || relativePosix.startsWith('parts/')) return 1;
+	if (relativePosix.startsWith('images/')) return 2;
+	if (relativePosix.startsWith('assets/src/') || relativePosix.startsWith('configure/')) return 3;
+	return 4;
+}
+
+function sortFilesForDeploy(files) {
+	return [...files].sort((a, b) => {
+		const pa = deployPhase(a.relative);
+		const pb = deployPhase(b.relative);
+		if (pa !== pb) return pa - pb;
+		return a.relative.localeCompare(b.relative);
+	});
+}
+
+function chunkArray(items, size) {
+	const chunks = [];
+	for (let i = 0; i < items.length; i += size) {
+		chunks.push(items.slice(i, i + size));
+	}
+	return chunks;
+}
+
+function sleep(ms) {
+	return new Promise((r) => setTimeout(r, ms));
+}
+
 async function main() {
 	const env = loadEnv(ENV_FILE);
 	const dryRun = envFlag(env, 'DRY_RUN');
 	const remotePath = resolveRemotePath(env);
+	const batchSize = Math.max(5, parseInt(env.DEPLOY_BATCH_SIZE || (TARGET === 'prod' ? '25' : '50'), 10) || 25);
+	const batchPauseMs = Math.max(0, parseInt(env.DEPLOY_BATCH_PAUSE_MS || (TARGET === 'prod' ? '2000' : '500'), 10) || 0);
 
 	console.log(`Deploy target: ${resolveDeployLabel(env)}`);
 	runAssetBuild(env);
@@ -240,6 +277,8 @@ async function main() {
 		console.log(`Full deploy: ${files.length} theme file(s)`);
 	}
 
+	files = sortFilesForDeploy(files);
+
 	if (!files.length) {
 		console.log('Nothing to upload.');
 		return;
@@ -252,10 +291,13 @@ async function main() {
 		return;
 	}
 
-	let client = await connectDeployClient(env);
+	const batches = chunkArray(files, batchSize);
+	console.log(`Batched upload: ${batches.length} batch(es) × up to ${batchSize} file(s)`);
+
 	let uploaded = 0;
 	let skipped = 0;
 	let reconnects = 0;
+	const maxReconnects = 30;
 
 	async function uploadOne(activeClient, file) {
 		const remoteFile = `${remotePath}/${file.relative}`.replace(/\/+/g, '/');
@@ -273,26 +315,57 @@ async function main() {
 		uploaded += 1;
 	}
 
+	let client = await connectDeployClient(env);
+
 	try {
 		await ensureRemoteDir(client, remotePath);
 
-		for (const file of files) {
-			try {
-				await uploadOne(client, file);
-			} catch (err) {
-				const msg = String(err.message || '');
-				if (!/fin packet|closed|timeout|econnreset/i.test(msg) || reconnects >= 5) {
-					throw err;
+		for (let bi = 0; bi < batches.length; bi += 1) {
+			const batch = batches[bi];
+			console.log(`— Batch ${bi + 1}/${batches.length} (${batch.length} file(s)) —`);
+
+			for (const file of batch) {
+				let attempts = 0;
+				for (;;) {
+					try {
+						await uploadOne(client, file);
+						break;
+					} catch (err) {
+						const msg = String(err.message || '');
+						const retriable = /fin packet|closed|timeout|econnreset|tls|ssl|decode error|socket/i.test(
+							msg
+						);
+						attempts += 1;
+						reconnects += 1;
+						if (!retriable || reconnects > maxReconnects || attempts > 3) {
+							throw err;
+						}
+						console.log(`Reconnecting (${reconnects}/${maxReconnects})...`);
+						try {
+							client.close();
+						} catch (_) {}
+						await sleep(1500 * attempts);
+						client = await connectDeployClient(env);
+					}
 				}
-				reconnects += 1;
-				console.log(`Reconnecting (${reconnects}/5)...`);
-				try { client.close(); } catch (_) {}
+			}
+
+			// Fresh FTPS session between batches (prod Contabo drops long transfers)
+			if (bi < batches.length - 1) {
+				try {
+					client.close();
+				} catch (_) {}
+				if (batchPauseMs) {
+					console.log(`Pause ${batchPauseMs}ms before next batch...`);
+					await sleep(batchPauseMs);
+				}
 				client = await connectDeployClient(env);
-				await uploadOne(client, file);
 			}
 		}
 	} finally {
-		client.close();
+		try {
+			client.close();
+		} catch (_) {}
 	}
 
 	console.log(`Done. Uploaded: ${uploaded}, unchanged: ${skipped}`);
