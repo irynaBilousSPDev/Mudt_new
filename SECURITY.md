@@ -9,7 +9,7 @@ actively maintained.
 
 Do **not** open a public issue for security problems.
 
-Contact the project maintainers / SPDev team privately with:
+Contact the project maintainers privately with:
 
 - Affected URL or template (if known)
 - Steps to reproduce
