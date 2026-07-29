@@ -1,0 +1,132 @@
+/*footer*/
+footer {
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 0;
+}
+
+footer a {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    color: #fff;
+    font-weight: 400;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.main_footer_section {
+    background-color: #1F1B51;
+    padding-top: 80px;
+    padding-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+}
+
+.footer_menu_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.footer_social a {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer_social a img {
+    width: 2rem;
+    height: auto;
+}
+
+.footer_menu li {
+    margin-bottom: 8px;
+}
+
+.footer_menu_wrapper .bottom_footer_menu ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 80px;
+    flex-wrap: wrap;
+}
+
+.footer_menu_wrapper .bottom_footer_menu ul a {
+    padding: 0 2rem;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.footer_menu > ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 40px;
+}
+
+.footer_menu > ul > li > a,
+.main_footer_section h2 {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    font-size: 24px;
+    line-height: 29px;
+    display: block;
+    text-decoration: none;
+}
+
+.main_footer_section:after {
+    position: absolute;
+    content: '';
+    top: 36rem;
+    right: 5rem;
+    width: 1005px;
+    height: 967px;
+    transform: matrix(-0.87, 0.5, -0.5, -0.87, 0, 0);
+    z-index: 0;
+    background-color: rgba(255, 255, 255, 0.07);
+    pointer-events: none;
+}
+
+.main_footer_section:before {
+    position: absolute;
+    content: '';
+    top: -48rem;
+    right: -19.45rem;
+    width: 1005px;
+    height: 967px;
+    transform: matrix(0.87, -0.5, 0.5, 0.87, 0, 0);
+    z-index: 0;
+    background-color: rgba(255, 255, 255, 0.07);
+    pointer-events: none;
+}
+
+.bottom_footer_section {
+    padding: 0 15px;
+    background-color: #17143D;
+    min-height: 174px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom_footer_section img {
+    width: auto;
+    margin: 0 35px;
+    filter: grayscale(100%);
+}
+
+.footer_year {
+    background-color: #080716;
+    color: #fff;
+    padding: 15px;
+}

@@ -7,7 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.join(__dirname, '..', 'scss');
+const ROOT = path.join(__dirname, '..', 'assets', 'src', 'scss');
 
 function readLines(rel) {
   const p = path.join(ROOT, rel);
@@ -22,9 +22,7 @@ function writeExtract(outRel, lines, ranges, header) {
   const out = path.join(ROOT, outRel);
   fs.mkdirSync(path.dirname(out), { recursive: true });
   const body = parts.filter(Boolean).join('\n\n');
-  const banner =
-    header ||
-    `/* Migrated from scss/legacy — edit this file, not css/ */\n\n`;
+  const banner = header ? `${header}\n\n` : '';
   fs.writeFileSync(out, banner + body + '\n');
   const count = body.split(/\n/).length;
   console.log('✓', outRel, `(~${count} lines)`);

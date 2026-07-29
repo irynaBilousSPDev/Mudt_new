@@ -1,0 +1,74 @@
+/*contact_page_section*/
+
+
+.contact_page_section .description,
+.contact_page_section h2 {
+    font-size: 1.5rem;
+    line-height: 32px;
+}
+
+body.contact .section_contact_program h2,
+body.contact .section_contact_program .wrapper_content,
+.contact_page_section .description {
+    color: #1F1B51;
+}
+
+body.contact .section_contact_program p {
+    font-size: 24px;
+    line-height: 30px;
+}
+
+@media (max-width: 991.98px) {
+    body.contact .section_contact_program h2,
+    body.contact .section_contact_program .wrapper_content,
+    body.contact .section_contact_program .wrapper_content p,
+    body.contact .section_contact_program p {
+        color: #fff !important;
+        font-size: inherit;
+        line-height: inherit;
+    }
+}
+
+.get_in_touch h3 {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.get_in_touch .social_contact a {
+    position: relative;
+    padding-left: 25px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.get_in_touch a:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.get_in_touch a.phone_link:before {
+    top: calc(50% - 6px);
+    left: 4px;
+    width: 7px;
+    height: 12px;
+    background-image: url(../../../images/icon_phone_contact.png);
+}
+
+.get_in_touch a.mail_link:before {
+    top: calc(50% - 5px);
+    width: 14px;
+    height: 9px;
+    background-image: url(../../../images/icon_mail_contact.png);
+}
+
+.contact_page_section .map_wrapper {
+    border-radius: 80px;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+}

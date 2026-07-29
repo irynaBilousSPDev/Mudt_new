@@ -5,34 +5,37 @@
 
 function my_theme_enqueue_styles()
 {
-    wp_register_style('reset', get_template_directory_uri() . '/css/reset.css');
-    wp_register_style('fonts', get_template_directory_uri() . '/css/fonts.css');
+    $dist_css = get_template_directory_uri() . '/assets/dist/css';
+    $dist_css_path = get_template_directory() . '/assets/dist/css';
+
+    wp_register_style('reset', $dist_css . '/reset.css');
+    wp_register_style('fonts', $dist_css . '/fonts.css');
 
     wp_register_style('bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css');
     wp_register_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css');
     wp_register_style('owl-carousel-css', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css');
     wp_register_style('aos-css', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
 
-    $page_styles = get_template_directory() . '/css/page-styles.css';
+    $page_styles = $dist_css_path . '/page-styles.css';
     wp_register_style(
         'page-styles',
-        get_template_directory_uri() . '/css/page-styles.css',
+        $dist_css . '/page-styles.css',
         array(),
         file_exists($page_styles) ? (string) filemtime($page_styles) : '20260724c'
     );
 
-    $single_styles = get_template_directory() . '/css/single-styles.css';
+    $single_styles = $dist_css_path . '/single-styles.css';
     wp_register_style(
         'single-styles',
-        get_template_directory_uri() . '/css/single-styles.css',
+        $dist_css . '/single-styles.css',
         array(),
         file_exists($single_styles) ? (string) filemtime($single_styles) : '20260724c'
     );
 
-    $theme_styles = get_template_directory() . '/css/styles.css';
+    $theme_styles = $dist_css_path . '/styles.css';
     wp_register_style(
         'styles',
-        get_template_directory_uri() . '/css/styles.css',
+        $dist_css . '/styles.css',
         array('page-styles'),
         file_exists($theme_styles) ? (string) filemtime($theme_styles) : '20260724c'
     );
@@ -44,28 +47,26 @@ function my_theme_enqueue_styles()
     wp_enqueue_style('aos-css');
     wp_enqueue_style('fonts');
 
-//    if (is_single()) {
     wp_enqueue_style('single-styles');
-//    }
     wp_enqueue_style('page-styles');
     wp_enqueue_style('styles');
 
-    $footer_css = get_template_directory() . '/css/footer.css';
+    $footer_css = $dist_css_path . '/footer.css';
     if (file_exists($footer_css)) {
         wp_enqueue_style(
             'footer',
-            get_template_directory_uri() . '/css/footer.css',
+            $dist_css . '/footer.css',
             array('styles'),
             filemtime($footer_css)
         );
     }
 
     if (is_page_template('page-professional-training.php') || is_page_template('page-cra-practitioner.php')) {
-        $pt_css = get_template_directory() . '/css/page-pt.css';
+        $pt_css = $dist_css_path . '/page-pt.css';
         if (file_exists($pt_css)) {
             wp_enqueue_style(
                 'page-pt',
-                get_template_directory_uri() . '/css/page-pt.css',
+                $dist_css . '/page-pt.css',
                 array('styles'),
                 filemtime($pt_css)
             );
@@ -94,10 +95,10 @@ function theme_scripts()
     wp_enqueue_script('owl-carousel-js', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js', array('jquery'), null, true);
     wp_enqueue_script('aos-js', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array('jquery'), null, true);
 
-    $main_src = '/js/main.js';
-    $main_min = get_template_directory() . '/js/main.min.js';
+    $main_src = '/assets/dist/js/main.js';
+    $main_min = get_template_directory() . '/assets/dist/js/main.min.js';
     if (! (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) && file_exists($main_min)) {
-        $main_src = '/js/main.min.js';
+        $main_src = '/assets/dist/js/main.min.js';
     }
     $main_path = get_template_directory() . $main_src;
     wp_enqueue_script(

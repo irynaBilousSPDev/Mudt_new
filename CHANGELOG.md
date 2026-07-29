@@ -12,10 +12,12 @@ Version numbers follow the WordPress `style.css` **Version** header.
 - Theme docs: `ARCHITECTURE.md`, `CONTRIBUTING.md`, `LICENSE`, `SECURITY.md`, `.editorconfig`
 - Shared tabs / specialisations accordion on mobile (`scss/sections/_tabs-slider.scss`)
 - Homepage slider: hide `wrapper_date_open_day` when session date/time has passed
+- Assets layout: `assets/src/{scss,js}` → `assets/dist/{css,js}` (+ `configure/gulpfile.js`)
 
 ### Changed
 
 - **SCSS architecture:** removed hybrid `scss/legacy/` — monoliths split into `base/`, `layout/`, `components/`, `sections/`, `pages/`, `templates/`
+- AOS + tabs accordion enter animation: play once only
 - Mobile typography tightened on program sections (career paths, why study, campus bottom)
 - Why Study: 2-column icon grid on mobile with larger icons
 - Page header: fixed dark arc on white title card (radius / underlay)

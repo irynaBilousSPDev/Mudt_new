@@ -1,0 +1,34 @@
+// → css/styles.css
+@use 'abstracts/variables';
+
+@use 'base/globals';
+@use 'base/utilities';
+@use 'components/buttons';
+@use 'components/lists';
+@use 'base/titles';
+@use 'layout/header';
+@use 'layout/sub-menu';
+@use 'sections/offer-nav';
+@use 'sections/slider';
+@use 'sections/numbers-count-base';
+@use 'sections/offers-tabs';
+@use 'components/offer-card';
+@use 'sections/video-lecturers';
+@use 'sections/cooperation';
+@use 'sections/news-base';
+@use 'sections/tabs-base';
+@use 'layout/footer-classic';
+@use 'base/responsive-misc';
+
+// Refined overrides (after foundations)
+@use 'sections/main-banner';
+@use 'sections/numbers-count';
+@use 'sections/offers';
+@use 'sections/tabs-slider';
+@use 'sections/news';
+@use 'sections/faculty-expertise';
+@use 'layout/mobile-menu';
+@use 'layout/breadcrumbs';
+@use 'base/section-spacing';
+@use 'base/container';
+@use 'base/typography';

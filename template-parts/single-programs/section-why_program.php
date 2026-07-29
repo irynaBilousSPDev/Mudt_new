@@ -17,7 +17,7 @@ $why_program_list = get_field('why_program_list', $program_post_id);
                                  alt="">
                         </div>
                     <?php endif; ?>
-                    <?php /* div not h3 — ACF HTML often includes <p>/<strong>; h3 would be split by the browser */ ?>
+                    <?php /* div not h3 — ACF may include block HTML */ ?>
                     <div class="why_program_item_title">
                         <?php echo wp_kses_post($why_program_item['why_program_item']); ?>
                     </div>

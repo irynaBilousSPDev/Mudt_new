@@ -1,0 +1,292 @@
+/* Team / faculty expertise grid — equal cards + fluid responsive */
+
+.faculty_expertise_list .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+}
+
+.faculty_expertise_col {
+    display: flex;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    margin-bottom: 1.35rem;
+}
+
+.faculty_expertise_item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
+    overflow: visible;
+}
+
+.faculty_expertise_image_wrapper {
+    position: relative;
+    width: 100%;
+    max-width: min(260px, 100%);
+    margin: 0 auto 0.75rem 0;
+    overflow: visible;
+}
+
+.faculty_expertise_image {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+    margin-bottom: 0;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.faculty_expertise_image_wrapper:hover .faculty_expertise_image {
+    filter: grayscale(0%);
+}
+
+.faculty_expertise_body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: 0.2rem;
+    text-align: left;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Role: ~2 lines min-height */
+.faculty_expertise_item .title_position {
+    font-size: clamp(0.875rem, 1.2vw, 1.0625rem);
+    line-height: 1.3;
+    margin: 0;
+    max-width: 100%;
+    min-height: 2.6em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.faculty_expertise_item .title_position:empty {
+    display: none;
+    min-height: 0;
+}
+
+.faculty_expertise_item h3 {
+    font-weight: bold;
+    font-size: clamp(0.875rem, 1.15vw, 1.0625rem);
+    line-height: 1.3;
+    margin: 0;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+}
+
+.faculty_expertise_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    width: clamp(52px, 8vw, 80px);
+    height: clamp(52px, 8vw, 80px);
+    color: #fff;
+    background-color: #1F1B51;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(18%, 18%);
+    z-index: 2;
+}
+
+.faculty_expertise_btn span {
+    transition: all 0.3s ease-in-out;
+}
+
+.faculty_expertise_btn .text {
+    position: absolute;
+    left: 5px;
+    opacity: 0;
+}
+
+.faculty_expertise_btn:hover .text {
+    left: 15px;
+    color: #fff;
+    opacity: 1;
+}
+
+.faculty_expertise_btn .icon {
+    position: relative;
+    margin-left: 10px;
+}
+
+.faculty_expertise_btn .icon:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 12px;
+    border-color: transparent transparent transparent #fff;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.faculty_expertise_btn:hover .icon {
+    margin-left: 40px;
+}
+
+/* —— Tablet: 3 columns (less tall than 2×N stack) —— */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .faculty_expertise_col.col-6 {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+
+    .faculty_expertise_image_wrapper {
+        max-width: 200px;
+    }
+
+    .faculty_expertise_item .title_position {
+        min-height: 2.6em;
+        font-size: 0.9375rem;
+    }
+
+    .faculty_expertise_btn {
+        width: 56px;
+        height: 56px;
+        transform: translate(12%, 12%);
+    }
+}
+
+/* —— Desktop mid: keep 4 cols, fluid avatars —— */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .faculty_expertise_image_wrapper {
+        max-width: 210px;
+    }
+
+    .faculty_expertise_item .title_position {
+        min-height: 2.6em;
+        font-size: 1rem;
+    }
+
+    .faculty_expertise_btn {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .faculty_expertise_image_wrapper {
+        max-width: 260px;
+    }
+
+    .faculty_expertise_item .title_position {
+        min-height: 2.6em;
+    }
+
+    .faculty_expertise_btn {
+        width: 80px;
+        height: 80px;
+        transform: translate(20%, 20%);
+    }
+
+    .faculty_expertise_btn .icon:before {
+        border-width: 10px 0 10px 15px;
+    }
+}
+
+/* —— Mobile —— */
+@media (max-width: 767.98px) {
+    .faculty_expertise_section > .faculty_expertise {
+        padding-top: var(--section-space-y-sm, 2rem);
+        padding-bottom: var(--section-space-y-sm, 2rem);
+    }
+
+    .faculty_expertise_col {
+        margin-bottom: 1.15rem;
+    }
+
+    .faculty_expertise_image_wrapper {
+        max-width: 150px;
+        margin-bottom: 0.65rem;
+    }
+
+    .faculty_expertise_item .title_position {
+        min-height: 2.6em;
+        font-size: 0.8125rem;
+        line-height: 1.25;
+    }
+
+    .faculty_expertise_item h3 {
+        font-size: 0.875rem;
+        line-height: 1.25;
+    }
+
+    .faculty_expertise_btn {
+        width: 48px;
+        height: 48px;
+        transform: translate(10%, 10%);
+    }
+
+    .faculty_expertise_btn .text {
+        display: none;
+    }
+
+    .faculty_expertise_btn .icon {
+        margin-left: 0;
+    }
+
+    .faculty_expertise_btn .icon:before {
+        border-width: 7px 0 7px 11px;
+        margin-right: 0;
+    }
+
+    .faculty_expertise_btn:hover .icon {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .faculty_expertise_list .row {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+    }
+
+    .faculty_expertise_col {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .faculty_expertise_image_wrapper {
+        max-width: 130px;
+    }
+
+    .faculty_expertise_btn {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+/* Featured first card full-width on desktop */
+@media (min-width: 992px) {
+    .faculty_expertise_section .management .faculty_expertise_list .faculty_expertise_col:first-child,
+    .faculty_expertise_section .advisory-board .faculty_expertise_list .faculty_expertise_col:first-child {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .faculty_expertise_section .management .faculty_expertise_item,
+    .faculty_expertise_section .advisory-board .faculty_expertise_item {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 260px;
+    }
+}

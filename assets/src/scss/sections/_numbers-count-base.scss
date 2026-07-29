@@ -1,0 +1,45 @@
+/*section_numbers_count*/
+
+.home .section_offer_nav {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+}
+
+.section_numbers_count {
+    padding: 5rem 0;
+}
+
+/* Mobile/tablet stats — see scss/sections/_numbers-count.scss */
+
+/* .section_numbers_count .container — see scss/base/_container.scss */
+
+.data_count_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    color: #1F1A51;
+}
+
+.numbers_count__item .data_count {
+    font-size: clamp(2.75rem, 2rem + 2.5vw, 4.5rem);
+    line-height: 1.15;
+    font-weight: bold;
+}
+
+.numbers_count__item h2 {
+    font-size: clamp(1rem, 0.9rem + 0.4vw, 1.35rem);
+    line-height: 1.3;
+    font-weight: 400;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1F1A51;
+}
+
+.numbers_count__item span {
+    font-size: clamp(2rem, 1.5rem + 1.5vw, 3.375rem);
+}

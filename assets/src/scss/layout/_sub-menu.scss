@@ -1,0 +1,31 @@
+/*sub menu*/
+
+.sub_menu_page ul {
+    display: flex;
+}
+
+.sub_menu__item a {
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    display: inline-block;
+    margin-right: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.sub_menu__item.active a {
+    font-weight: bold;
+}
+
+.sub_menu__item:hover a:before,
+.sub_menu__item.active a:before {
+    position: absolute;
+    content: '';
+    width: calc(100% + 4px);
+    left: -2px;
+    height: 5px;
+    bottom: 10px;
+    background-color: #2994FF;
+    border-radius: 3px
+}

@@ -8,7 +8,7 @@ Custom theme for **Munich University of Digital Technologies & Applied Sciences*
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | Branches, commits, deploy workflow |
 | [CHANGELOG.md](./CHANGELOG.md) | Version history |
 | [LICENSE](./LICENSE) | Proprietary — all rights reserved |
-| [scss/README.txt](./scss/README.txt) | SCSS migration notes |
+| [assets/src/scss/README.txt](./assets/src/scss/README.txt) | SCSS notes |
 
 ## Infrastructure
 
@@ -44,8 +44,8 @@ npm run build    # one-shot CSS + JS
 | Script | Action |
 |--------|--------|
 | `npm run build` | Compile all SCSS bundles + minify `main.js` |
-| `npm run build:css` | SCSS → `css/*.css` |
-| `npm run build:js` | `js/main.js` → `js/main.min.js` |
+| `npm run build:css` | SCSS → `assets/dist/css/` |
+| `npm run build:js` | `assets/src/js/main.js` → `assets/dist/js/` |
 | `npm run watch` | Watch SCSS + JS |
 | `npm run deploy:dev` | Upload theme to DEV |
 | `npm run deploy:prod` | Upload theme to PROD |
@@ -98,9 +98,10 @@ npm run import:uploads:dev
 inc/               PHP helpers (enqueue, CPT, ACF, nav…)
 template-parts/    Template fragments
 parts/content/     ACF Flexible Content layouts
-scss/              Layered source → npm run build:css → css/
-  abstracts|base|layout|components|sections|pages|templates|bundles
-js/main.js         Source JS → main.min.js
+assets/src/scss/   Source → npm run build:css → assets/dist/css/
+assets/src/js/     Source → assets/dist/js/
+configure/         gulpfile.js
+images/            Static images (not in assets pipeline)
 scripts/           Deploy + import
 acf-json/          ACF field groups (partial)
 ```

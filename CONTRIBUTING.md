@@ -18,16 +18,16 @@ npm run watch                                  # SCSS + JS while developing
 ## Making changes
 
 1. Work on `dev`.
-2. Edit **source** only: PHP templates, `scss/`, `js/main.js`, `inc/`.
+2. Edit **source** only: PHP templates, `assets/src/scss/`, `assets/src/js/main.js`, `inc/`.
 3. Rebuild when needed: `npm run build` (or rely on `watch`).
 4. Keep commits focused; messages in **English**.
 
 ### SCSS rules
 
-- Prefer `scss/sections/` or `scss/components/` for new UI.
-- Do not hand-edit `css/*.css`.
-- Do **not** recreate `scss/legacy/` — foundations live in `base/`, `layout/`, `components/`, `pages/`.
-- Wire new partials with `@use` from the correct file in `scss/bundles/`.
+- Prefer `assets/src/scss/sections/` or `components/` for new UI.
+- Do not hand-edit `assets/dist/css/*.css`.
+- Do **not** recreate `scss/legacy/`.
+- Wire new partials with `@use` from the correct file in `assets/src/scss/bundles/`.
 - Avoid renaming selectors in the same commit as a large move when possible.
 
 ## Commit / push / deploy

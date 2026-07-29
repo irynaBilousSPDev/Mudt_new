@@ -36,8 +36,8 @@ const EXCLUDE_FILE_NAMES = new Set([
 ]);
 const EXCLUDE_FILE_BASENAMES = new Set(['package.json', 'package-lock.json']);
 
-const BUILD_OUTPUT_DIR_PREFIX = 'css/';
-const BUILD_OUTPUT_FILES = new Set(['js/main.min.js']);
+const BUILD_OUTPUT_DIR_PREFIX = 'assets/dist/css/';
+const BUILD_OUTPUT_FILES = new Set(['assets/dist/js/main.min.js', 'assets/dist/js/main.js']);
 
 function isBuildOutputPath(relativePosix) {
 	return (

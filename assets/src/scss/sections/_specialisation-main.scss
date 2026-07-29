@@ -1,0 +1,33 @@
+.single_specialisation h1 {
+    margin-bottom: 2rem;
+}
+
+.section_specialisation_main {
+    position: relative;
+    padding-bottom: 5rem;
+    overflow: hidden;
+    margin-top: 1.5rem;
+}
+
+.information_side {
+    width: 100%;
+    max-width: calc(100% - 30px);
+    margin-left: 0;
+}
+
+.information_content {
+    width: 100%;
+    max-width: 674px;
+}
+
+.information_side .information_content {
+    position: relative;
+    padding: 1rem 0;
+}
+
+
+.image_side .bg {
+    border-top-right-radius: 121px;
+    border-bottom-right-radius: 121px;
+    height: 858px
+}

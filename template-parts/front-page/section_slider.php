@@ -21,7 +21,7 @@
 
                     $tz = wp_timezone();
                     $time_for_parse = $slide_time_label !== '' ? $slide_time_label : '23:59';
-                    // Normalise "17.30" → "17:30"
+                    // Normalise 17.30 → 17:30
                     $time_for_parse = str_replace('.', ':', $time_for_parse);
                     if (preg_match('/^\d{1,2}:\d{2}$/', $time_for_parse)) {
                         $time_for_parse .= ':00';
@@ -48,7 +48,7 @@
                         $now = new DateTimeImmutable('now', $tz);
                         $show_slide_date = $event >= $now;
                     } else {
-                        // Unrecognised format — keep showing rather than hide by mistake
+                        // Keep visible if date unparseable
                         $show_slide_date = true;
                     }
                 }

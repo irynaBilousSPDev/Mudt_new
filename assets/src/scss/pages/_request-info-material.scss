@@ -1,0 +1,83 @@
+/*page_request_info_material*/
+.page_request_info_material h1 {
+    color: #1F1B51;
+}
+
+.wrapper_request_info_material {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form_request_info_material h2 {
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+.form_request_info_material {
+    margin: 3rem 0;
+}
+
+.form_request_info_material:before {
+    position: absolute;
+    content: '';
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 51px;
+    background-color: #EEF7FF;
+    z-index: -1;
+}
+
+.form_request_info_material .wpcf7-checkbox .wpcf7-list-item-label {
+    margin-left: 0.5rem;
+}
+
+.form_request_info_material .wpcf7-acceptance .wpcf7-list-item-label {
+    color: #000;
+}
+
+
+@media (max-width: 1005px) {
+
+    .smartapply_contact iframe {
+        height: 1300px;
+    }
+
+}
+
+@media (max-width: 514px) {
+
+    .smartapply_contact iframe {
+        height: 1600px;
+    }
+
+}
+
+@media (min-width: 1006px) {
+
+    .smartapply_contact iframe {
+        height: 980px;
+    }
+
+}
+
+.iframe_wrap {
+    margin: 3rem 0;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+
+@media (min-width: 768px) {
+
+    .iframe_wrap {
+        margin: 5rem 0;
+        border-radius: 148px;
+    }
+
+}

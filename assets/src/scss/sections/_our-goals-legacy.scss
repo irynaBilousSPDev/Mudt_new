@@ -1,0 +1,28 @@
+/*section_our_goals — image radii in scss/sections/_our-goals.scss */
+
+.section_our_goals {
+    position: relative;
+}
+
+.section_our_goals .description {
+    font-weight: 500;
+    padding: 0 1rem;
+}
+
+.our_goals_text {
+    margin-top: 1rem;
+}
+
+
+.list_item {
+    color: black;
+}
+
+main.page .list_item_title {
+    position: relative;
+    padding-left: 25px;
+    font-weight: 400;
+    font-size: 1.85rem;
+    line-height: 39px;
+    margin-bottom: 2rem;
+}
