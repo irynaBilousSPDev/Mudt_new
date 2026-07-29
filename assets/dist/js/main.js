@@ -538,6 +538,54 @@
         }
 
 
+        /* SmartApply contact iframe — grow with postMessage / no inner scroll */
+        (function () {
+            var iframes = document.querySelectorAll(
+                '.smartapply_contact iframe, iframe.smartapply-contact-iframe'
+            );
+            if (!iframes.length) {
+                return;
+            }
+
+            function applyHeight(px) {
+                var h = Math.ceil(Number(px));
+                if (!h || h < 600) {
+                    return;
+                }
+                // Cap runaway values; floor matches CSS breakpoints roughly
+                h = Math.min(Math.max(h, 900), 2800);
+                iframes.forEach(function (el) {
+                    el.style.height = h + 'px';
+                    el.setAttribute('scrolling', 'no');
+                });
+            }
+
+            window.addEventListener('message', function (e) {
+                if (!e.origin || e.origin.indexOf('uni-munich.de') === -1) {
+                    return;
+                }
+                var data = e.data;
+                if (typeof data === 'number') {
+                    applyHeight(data);
+                    return;
+                }
+                if (typeof data === 'string') {
+                    try {
+                        data = JSON.parse(data);
+                    } catch (err) {
+                        return;
+                    }
+                }
+                if (!data || typeof data !== 'object') {
+                    return;
+                }
+                var h = data.height || data.iframeHeight || data.value || data.scrollHeight;
+                if (h) {
+                    applyHeight(h);
+                }
+            });
+        })();
+
         /* FAQ accordion */
         const accordions = document.querySelectorAll('[data-faq-accordion]');
 

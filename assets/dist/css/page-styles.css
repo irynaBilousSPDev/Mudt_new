@@ -1058,6 +1058,64 @@ main.page .scholarships_financing_card .card_title {
   height: 100vh;
 }
 
+/* SmartApply contact iframe — heights include Turnstile + consent */
+.smartapply_contact {
+  width: 100%;
+}
+
+.smartapply_contact iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 0;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.iframe_wrap {
+  margin: 3rem 0;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .iframe_wrap {
+    margin: 5rem 0;
+    border-radius: 148px;
+  }
+}
+/* Desktop / large tablet landscape */
+@media (min-width: 1006px) {
+  .smartapply_contact iframe {
+    height: 1280px;
+    min-height: 1280px;
+  }
+}
+/* Tablet */
+@media (max-width: 1005px) {
+  .smartapply_contact iframe {
+    height: 1580px;
+    min-height: 1580px;
+  }
+}
+/* Mobile */
+@media (max-width: 767.98px) {
+  .smartapply_contact iframe {
+    height: 1750px;
+    min-height: 1750px;
+  }
+  .iframe_wrap {
+    margin: 2rem 0;
+    border-radius: 24px;
+  }
+}
+/* Small mobile — stacked fields + Turnstile */
+@media (max-width: 514px) {
+  .smartapply_contact iframe {
+    height: 1980px;
+    min-height: 1980px;
+  }
+}
 /*page_request_info_material*/
 .page_request_info_material h1 {
   color: #1F1B51;
@@ -1101,33 +1159,6 @@ main.page .scholarships_financing_card .card_title {
   color: #000;
 }
 
-@media (max-width: 1005px) {
-  .smartapply_contact iframe {
-    height: 1300px;
-  }
-}
-@media (max-width: 514px) {
-  .smartapply_contact iframe {
-    height: 1600px;
-  }
-}
-@media (min-width: 1006px) {
-  .smartapply_contact iframe {
-    height: 980px;
-  }
-}
-.iframe_wrap {
-  margin: 3rem 0;
-  border-radius: 40px;
-  overflow: hidden;
-}
-
-@media (min-width: 768px) {
-  .iframe_wrap {
-    margin: 5rem 0;
-    border-radius: 148px;
-  }
-}
 /*page visa guide*/
 .section_entering {
   margin-bottom: 5rem;
