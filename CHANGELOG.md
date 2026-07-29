@@ -35,7 +35,7 @@ Version numbers follow the WordPress `style.css` **Version** header.
 ### Changed
 
 - SCSS pipeline via Gulp bundles; partial extraction from legacy monolith
-- DEV/PROD deploy scripts (Hostinger FTP + Plesk FTPS)
+- DEV/PROD deploy scripts (local tooling; secrets not in repo)
 - Section spacing tokens (`scss/abstracts/_variables.scss`, `base/_section-spacing.scss`)
 
 ## [7.0.0] — earlier

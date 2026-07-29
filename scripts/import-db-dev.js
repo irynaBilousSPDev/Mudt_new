@@ -87,7 +87,10 @@ async function main() {
 	const env = loadEnv(ENV_FILE);
 	const sourceSql = env.BACKUP_SQL || DEFAULT_SQL;
 	const prodUrl = env.PROD_SITE_URL || 'https://uni-munich.de';
-	const devUrl = env.DEV_SITE_URL || 'https://iratest.site';
+	const devUrl = env.DEV_SITE_URL;
+	if (!devUrl) {
+		throw new Error('Set DEV_SITE_URL in deploy.local.env (staging site URL)');
+	}
 
 	if (!fs.existsSync(sourceSql)) {
 		throw new Error(`SQL dump not found: ${sourceSql}\nSet BACKUP_SQL in deploy.local.env`);
@@ -114,8 +117,8 @@ async function main() {
 		}
 	}
 
-	console.log('\nManual import (phpMyAdmin on Hostinger):');
-	console.log('1. Open phpMyAdmin for your dev database');
+	console.log('\nManual import (phpMyAdmin):');
+	console.log('1. Open phpMyAdmin for the target database');
 	console.log('2. Drop existing tables OR use a fresh empty database');
 	console.log(`3. Import file: ${OUTPUT_SQL}`);
 	console.log('4. In wp-config.php set table prefix: nIF3Zpc_');

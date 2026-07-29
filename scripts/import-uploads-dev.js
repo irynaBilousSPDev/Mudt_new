@@ -1,5 +1,5 @@
 /**
- * One-time: upload wp-content/uploads from Plesk prod backup to Hostinger dev via FTP.
+ * One-time: upload wp-content/uploads from a prod backup to staging via FTP.
  */
 const fs = require('fs');
 const path = require('path');

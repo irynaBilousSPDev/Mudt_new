@@ -1,5 +1,5 @@
 /**
- * Hostinger FTP connection helper (plain FTP port 21).
+ * FTP/FTPS connection helper (credentials from deploy.local.env).
  */
 const fs = require('fs');
 const path = require('path');

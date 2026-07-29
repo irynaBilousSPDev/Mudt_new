@@ -1,5 +1,5 @@
 /**
- * One-time: upload a plugin folder from Plesk prod backup to Hostinger dev via FTP.
+ * One-time: upload a plugin folder from a prod backup to staging via FTP.
  * Usage: node scripts/import-plugin-dev.js advanced-custom-fields-pro
  */
 const fs = require('fs');

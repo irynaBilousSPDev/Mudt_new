@@ -2,7 +2,7 @@
   "name": "mudt-new-theme",
   "version": "1.0.0",
   "private": true,
-  "description": "MUDT WordPress theme (Mudt_new) — SCSS/JS Gulp build, DEV/PROD deploy. See README.md and ARCHITECTURE.md.",
+  "description": "MUDT WordPress theme (Mudt_new) — SCSS/JS Gulp build. See README.md and ARCHITECTURE.md.",
   "scripts": {
     "build:css": "gulp --gulpfile configure/gulpfile.js styles",
     "build:js": "gulp --gulpfile configure/gulpfile.js scripts",

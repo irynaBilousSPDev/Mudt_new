@@ -2,8 +2,8 @@
 
 ## Supported versions
 
-Only the theme version deployed on **production** (`main` / uni-munich.de) and the
-active **dev** branch are maintained.
+Only the theme version deployed on **production** (`main` / uni-munich.de) is
+actively maintained.
 
 ## Reporting a vulnerability
 

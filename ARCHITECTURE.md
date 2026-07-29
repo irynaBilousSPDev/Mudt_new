@@ -12,7 +12,7 @@ Where things live, what to edit, and how assets reach the browser.
 | JS | `assets/src/js/main.js` | → `assets/dist/js/` |
 | Enqueue / supports | `inc/enqueue.php`, `functions.php` | no build |
 | Build / gulp | `configure/gulpfile.js` | `npm run build` / `watch` |
-| Deploy | `scripts/deploy-dev.js` + `deploy.local.env` | `npm run deploy:dev` / `:prod` |
+| Deploy (optional) | `scripts/` + local `deploy.local.env` | never commit secrets |
 
 **Never edit compiled `assets/dist/css/*.css` by hand.** Images stay in theme-root `images/`.
 
@@ -62,15 +62,15 @@ Mudt_new/
 └── .cursor/commands/
 ```
 
-## Environments
+## Production
 
-| | Dev | Production |
-|--|-----|------------|
-| URL | iratest.site | uni-munich.de |
-| Branch | `dev` | `main` |
-| Theme folder | `Mudt_new` | `Mudt_new` |
+| | |
+|--|--|
+| URL | uni-munich.de |
+| Branch | `main` |
+| Theme folder | `Mudt_new` |
 
-Secrets: `deploy.local.env` (gitignored).
+Local secrets (if used): `deploy.local.env` (gitignored). Do not document staging hosts in this repo.
 
 ## Conventions
 
